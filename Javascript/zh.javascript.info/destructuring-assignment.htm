@@ -1,0 +1,802 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">解构赋值</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/destructuring-assignment"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="解构赋值"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="解构赋值"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/keys-values-entries"><link rel="next" href="/date"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="解构赋值"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/destructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/destructuring-assignment'" tppabs="https://javascript.info/destructuring-assignment"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="destructuring-assignment.htm" tppabs="https://zh.javascript.info/destructuring-assignment"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/destructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/destructuring-assignment'" tppabs="https://ja.javascript.info/destructuring-assignment"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/destructuring-assignment">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/destructuring-assignment" selected>简体中文</option><option value="https://ja.javascript.info/destructuring-assignment">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="40" max="67" data-tooltip="第 67 章，第 40 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types" itemprop="url"><span itemprop="title">数据类型</span></a></li></ol><h1 class="main__header-title">解构赋值</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="解构赋值"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript 中最常用的两种数据结构是 <code>Object</code>（对象）和 <code>Array</code>（数组）。</p>
+<p>对象让我们能够把许多信息打包到一个单一的实体中，数组则让我们能够存放有序的集合。所以我们可以创建一个对象或一个数组，把它当作一个实体进行处理，或者把它当作参数传递给一个函数调用。</p>
+<p><strong>解构赋值</strong>是一种特殊的语法，它让我们可以将数组或对象进行“拆包”，存放到一系列的变量中，因为有时候使用变量更加方便。解构操作在那些具有很多参数和默认参数值的函数中也很奏效，很快我们就会看到这些都是怎么处理的。</p>
+<h2><a class="main__anchor" name="shu-zu-jie-gou" href="#shu-zu-jie-gou">数组解构</a></h2><p>以下是将数组解构到变量中的一个例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 有一个存放了名字和姓氏的数组
+let arr = [&quot;Ilya&quot;, &quot;Kantor&quot;]
+
+// 解构赋值
+let [firstName, surname] = arr;
+
+alert(firstName); // Ilya
+alert(surname);  // Kantor</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在我们就可以针对这些变量进行操作，而不是针对原来的数组元素。</p>
+<p>当与 <code>split</code> 函数（或其他返回值是数组的函数）结合使用时，看起来就更优雅了：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let [firstName, surname] = &quot;Ilya Kantor&quot;.split(' ');</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">“解构&quot;并不意味着&quot;破坏”</span></div>
+            <div class="important__content"><p>这种语法叫做“解构赋值”，因为它通过将结构中的各元素复制到变量中来达到“解构”的目的。但数组本身是没有被修改的。</p>
+<p>也就是以下代码的更精简写法而已：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// let [firstName, surname] = arr;
+let firstName = arr[0];
+let surname = arr[1];</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">忽略第一个元素</span></div>
+            <div class="important__content"><p>数组中不想要的元素也可以通过添加额外的逗号来把它丢弃：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 不需要第一个和第二个元素
+let [, , title] = [&quot;Julius&quot;, &quot;Caesar&quot;, &quot;Consul&quot;, &quot;of the Roman Republic&quot;];
+
+alert( title ); // Consul</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在以上的代码中，数组的第一个和第二个元素被跳过，第三个元素被赋值给了 <code>title</code> 变量，剩下的元素也被跳过了。</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">用于等号右侧的任何可迭代对象</span></div>
+            <div class="important__content"><p>…事实上我们也可以在任何可迭代对象中使用，不仅仅是数组：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let [a, b, c] = &quot;abc&quot;; // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+let [one, two, three] = new Set([1, 2, 3]);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">赋值给等号左侧的任何类型</span></div>
+            <div class="important__content"><p>我们可以在等号左侧使用任何“可以被赋值的”变量。</p>
+<p>例如，一个对象的属性：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {};
+[user.name, user.surname] = &quot;Ilya Kantor&quot;.split(' ');
+
+alert(user.name); // Ilya</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">使用 .entries() 循环</span></div>
+            <div class="important__content"><p>在前面的章节中我们已经见过了 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries(obj)</a> 方法。</p>
+<p>我们可以使用 .entries() 方法和解构语法来遍历一个对象的键-值对：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30
+};
+
+// 循环遍历键-值对
+for (let [key, value] of Object.entries(user)) {
+  alert(`${key}:${value}`); // name:John, then age:30
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…对于 map 对象也类似：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = new Map();
+user.set(&quot;name&quot;, &quot;John&quot;);
+user.set(&quot;age&quot;, &quot;30&quot;);
+
+for (let [key, value] of user.entries()) {
+  alert(`${key}:${value}`); // name:John, then age:30
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h3><a class="main__anchor" name="sheng-yu-de" href="#sheng-yu-de">剩余的 ‘…’</a></h3><p>如果我们不仅要获得第一个值，还要将后续的所有元素也收集起来——我们可以使用三个点 <code>&quot;...&quot;</code> 加一个参数来接收“剩余的”元素：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:7},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:19,&quot;end&quot;:26},{&quot;start&quot;:51,&quot;end&quot;:84}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let [name1, name2, ...rest] = [&quot;Julius&quot;, &quot;Caesar&quot;, &quot;Consul&quot;, &quot;of the Roman Republic&quot;];
+
+alert(name1); // Julius
+alert(name2); // Caesar
+
+alert(rest[0]); // Consul
+alert(rest[1]); // of the Roman Republic
+alert(rest.length); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>rest</code> 变量的值就是数组中剩下的元素组成的数组。不一定要使用变量名 <code>rest</code>，我们也可以使用其他的变量名，只要确保它前面有三个点，并且在解构赋值的最后一个参数位置上就行了。</p>
+<h3><a class="main__anchor" name="mo-ren-zhi" href="#mo-ren-zhi">默认值</a></h3><p>如果赋值语句中变量的数量多于数组中实际元素的数量，赋值不会报错。未赋值的变量被当作 <code>undifined</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let [firstName, surname] = [];
+
+alert(firstName); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们想要提供一个“默认值”给未赋值的变量，我们可以使用 <code>=</code> 来提供：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 默认值
+let [name = &quot;Guest&quot;, surname = &quot;Anonymous&quot;] = [&quot;Julius&quot;];
+
+alert(name);    // Julius (来自数组的值)
+alert(surname); // Anonymous (默认值被使用了)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>默认值可以是更加复杂的表达式甚至可以是函数调用，这些表达式或函数只会在这个变量未被赋值的时候才会被计算。</p>
+<p>举个例子，我们使用了 <code>prompt</code> 函数来提供两个默认值，但它只会在未被赋值的那个变量上进行调用：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 只会提示输入姓氏
+let [name = prompt('name?'), surname = prompt('surname?')] = [&quot;Julius&quot;];
+
+alert(name);    // Julius (来自数组)
+alert(surname); // 你输入的值</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="dui-xiang-jie-gou" href="#dui-xiang-jie-gou">对象解构</a></h2><p>解构赋值同样适用于对象。</p>
+<p>基本的语法是：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let {var1, var2} = {var1:…, var2…}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在等号右侧有一个已经存在的对象，我们想把它拆开到变量中。等号左侧包含了对象相应属性的一个“模式”。以下简单例子中就是 <code>{...}</code> 中一系列变量。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;,
+  width: 100,
+  height: 200
+};
+
+let {title, width, height} = options;
+
+alert(title);  // Menu
+alert(width);  // 100
+alert(height); // 200</code></pre>
+        </div>
+      </div>
+      
+      </div><p>属性 <code>options.title</code>、<code>options.width</code> 和 <code>options.height</code> 的值被赋给了对应的变量。变量的顺序并不重要，以下的代码也奏效：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 改变 let {...} 中属性的顺序
+let {height, width, title} = { title: &quot;Menu&quot;, height: 200, width: 100 }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>等号左侧的模式可以更加复杂，并给属性和变量之间指定一个映射关系。</p>
+<p>如果我们想把一个属性赋值给不同名字的变量，比如把 <code>options.width</code> 属性赋值给变量 <code>w</code>，那可以使用冒号来指定：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;,
+  width: 100,
+  height: 200
+};
+
+// { 原属性：目标变量 }
+let {width: w, height: h, title} = options;
+
+// width -&gt; w
+// height -&gt; h
+// title -&gt; title
+
+alert(title);  // Menu
+alert(w);      // 100
+alert(h);      // 200</code></pre>
+        </div>
+      </div>
+      
+      </div><p>冒号表示了“什么值：赋值给谁”。以上的例子中就是属性 <code>width</code> 赋值给 <code>w</code>，属性 <code>height</code> 赋值给 <code>h</code>，属性 <code>title</code> 赋值给同名变量。</p>
+<p>对于可能缺失的属性，我们可以使用 <code>&quot;=&quot;</code> 来指定默认值，如下：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;
+};
+
+let {width = 100, height = 200, title} = options;
+
+alert(title);  // Menu
+alert(width);  // 100
+alert(height); // 200</code></pre>
+        </div>
+      </div>
+      
+      </div><p>就像数组或函数参数一样，默认值可以是表达式甚至是函数调用。只会在这个变量未被赋值的时候才会被计算/调用。</p>
+<p>以下的代码提示输入宽度 width，但不会提示输入标题 title。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;
+};
+
+let {width = prompt(&quot;width?&quot;), title = prompt(&quot;title?&quot;)} = options;
+
+alert(title);  // Menu
+alert(width);  // 你输入的宽度值</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们也可以结合冒号和等号一起使用：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;
+};
+
+let {width: w = 100, height: h = 200, title} = options;
+
+alert(title);  // Menu
+alert(w);      // 100
+alert(h);      // 200</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="sheng-yu-cao-zuo-fu" href="#sheng-yu-cao-zuo-fu">剩余操作符</a></h3><p>如果对象拥有的属性数量比我们提供的变量数量还多怎么办？我们可以只取其中的某一些属性然后把“剩余的”赋值到其他地方吗？</p>
+<p>关于剩余操作符（即三个点）的文档几乎已经要被列为标准了，但大部分的浏览器还尚未支持。</p>
+<p>看起来就像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;Menu&quot;,
+  height: 200,
+  width: 100
+};
+
+let {title, ...rest} = options;
+
+// now title=&quot;Menu&quot;, rest={height: 200, width: 100}
+alert(rest.height);  // 200
+alert(rest.width);   // 100</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">不使用 <code>let</code> 的疑难病症</span></div>
+            <div class="important__content"><p>在以上的例子中，变量都是在赋值前才被声明的：<code>let {…} = {…}</code>。当然，我们也可以使用已有的变量。但这里有一个问题需要注意。</p>
+<p>以下代码无法正常运行：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let title, width, height;
+
+// 这一行发生错误
+{title, width, height} = {title: &quot;Menu&quot;, width: 200, height: 100};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>问题在于 JavaScript 把主代码流（即不在其他表达式中）的 <code>{...}</code> 当做一个代码块，这样的代码块可以被用来组织语句，如下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">{
+  // 一个代码块
+  let message = &quot;Hello&quot;;
+  // ...
+  alert( message );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为了告诉 JavaScript 这不是一个代码块，我们可以把整个赋值表达式用括号 <code>(...)</code> 包起来：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:1},{&quot;start&quot;:66,&quot;end&quot;:67}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let title, width, height;
+
+// 现在就正确了
+({title, width, height} = {title: &quot;Menu&quot;, width: 200, height: 100});
+
+alert( title ); // Menu</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="qian-tao-jie-gou" href="#qian-tao-jie-gou">嵌套解构</a></h2><p>如果一个对象或数组包含了其他的对象和数组，我们可以在等号左侧使用更复杂的模式来抽取深层的数据。</p>
+<p>在以下代码中 <code>options</code> 的属性 <code>size</code> 是另一个对象，属性 <code>items</code> 是另一个数组。赋值语句中等号左侧的模式拥有相同的结构：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  size: {
+    width: 100,
+    height: 200
+  },
+  items: [&quot;Cake&quot;, &quot;Donut&quot;],
+  extra: true    // 一些不会被解构的额外属性
+};
+
+// 为了清晰起见，解构赋值语句被写成多行
+let {
+  size: { // 把 size 赋值到这里
+    width,
+    height
+  },
+  items: [item1, item2], // 把 items 赋值到这里
+  title = &quot;Menu&quot; // 在对象中不存在的属性（会使用默认值）
+} = options;
+
+alert(title);  // Menu
+alert(width);  // 100
+alert(height); // 200
+alert(item1);  // Cake
+alert(item2);  // Donut</code></pre>
+        </div>
+      </div>
+      
+      </div><p>除了 <code>extra</code> 属性的整个 <code>options</code> 对象都能被赋值给对应的变量。</p>
+<figure><div class="image" style="width:467px">
+      <div class="image__ratio" style="padding-top:28.26552462526767%"></div>
+      <img src="article/destructuring-assignment/destructuring-complex.png" tppabs="https://zh.javascript.info/article/destructuring-assignment/destructuring-complex.png" alt="" width="467" height="132" class="image__image">
+      </div></figure><p>最终，我们得到了 <code>width</code>、<code>height</code>、<code>item1</code>、<code>item2</code> 和具有默认值的 <code>title</code> 变量。</p>
+<p>有一个拥有很多属性的复杂对象，我们只想要抽取我们所需要的其中某些属性。这在解构赋值语句中是很常见的。</p>
+<p>甚至还可能是这样的情况：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 将 size 作为一个整体取出赋值给一个变量，忽略剩下的所有
+let { size } = options;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zhi-neng-han-shu-can-shu" href="#zhi-neng-han-shu-can-shu">智能函数参数</a></h2><p>有时候一个函数可能有很多参数，大部分的参数是可选的，对用户界面来说就尤其如此。想象一下这种情况：有一个创建菜单的函数，可能有宽度参数，高度参数，标题参数和菜单中的菜单项等等。</p>
+<p>以下是这种函数的一个不好的写法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function showMenu(title = &quot;Untitled&quot;, width = 200, height = 100, items = []) {
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现实情况下的问题就是你怎么记得住这么多参数的顺序，通常集成开发环境工具（IDE）会尽力帮助我们，特别是当代码有良好的文档注释的时候，但… 另一个问题就是当大部分的参数采用默认值就好的情况下，怎么调用这个函数。</p>
+<p>难道像这样？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">showMenu(&quot;My Menu&quot;, undefined, undefined, [&quot;Item1&quot;, &quot;Item2&quot;])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这太难看了。而且当我们处理更多参数的时候可读性还会变得更差。</p>
+<p>解构赋值语法前来救援！</p>
+<p>我们可以把所有参数当作一个对象来传递，然后函数马上把这个对象解构成多个变量：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:77}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 我们传递一个对象给函数
+let options = {
+  title: &quot;My menu&quot;,
+  items: [&quot;Item1&quot;, &quot;Item2&quot;]
+};
+
+// ...然后函数马上把对象展开成变量
+function showMenu({title = &quot;Untitled&quot;, width = 200, height = 100, items = []}) {
+  // title, items – 从 options 参数提取出来,
+  // width, height – 使用默认值
+  alert( `${title} ${width} ${height}` ); // My Menu 200 100
+  alert( items ); // Item1, Item2
+}
+
+showMenu(options);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们同样可以对含有嵌套对象的对象使用更加复杂的结构语句和冒号映射：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let options = {
+  title: &quot;My menu&quot;,
+  items: [&quot;Item1&quot;, &quot;Item2&quot;]
+};
+
+function showMenu({
+  title = &quot;Untitled&quot;,
+  width: w = 100,  // width 赋值给 w
+  height: h = 200, // height 赋值给 h
+  items: [item1, item2] // items 第一个元素赋值给 item1, 第二个元素赋值给 item2
+}) {
+  alert( `${title} ${w} ${h}` ); // My Menu 100 200
+  alert( item1 ); // Item1
+  alert( item2 ); // Item2
+}
+
+showMenu(options);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>语法和解构赋值是一样的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function({
+  incomingProperty: parameterName = defaultValue
+  ...
+})</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，这种解构假定了调用 <code>showMenu()</code> 函数时传递了一个参数，如果我们想让所有的参数都使用默认值，那我们应该传递一个空的对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">showMenu({});
+
+
+showMenu(); // 这样会导致错误</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们可以通过指定空对象 <code>{}</code> 为整个函数参数的默认值：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:68}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 清晰起见，精简了部分参数
+function showMenu({ title = &quot;Menu&quot;, width = 100, height = 200 } = {}) {
+  alert( `${title} ${width} ${height}` );
+}
+
+showMenu(); // Menu 100 200</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在以上的代码中，整个参数对象默认就是 <code>{}</code>，因此总会有对象可以用来解构。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>
+<p>解构赋值允许将对象或数组立即映射到多个变量上。</p>
+</li>
+<li>
+<p>解构对象的语法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let {prop : varName = default, ...} = object</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这表示属性 <code>prop</code> 会被赋值给变量 <code>varName</code>，如果没有这个属性的话，就会使用 <code>default</code> 的值。</p>
+</li>
+<li>
+<p>解构数组的语法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let [item1 = default, item2, ...rest] = array</code></pre>
+        </div>
+      </div>
+      
+      </div><p>数组的第一个元素赋值给 <code>item1</code>，第二个元素赋值给 <code>item2</code>，剩下的所有组成另一个数组 <code>rest</code>。</p>
+</li>
+<li>
+<p>更多复杂的案例情况下，等号左侧必须和等号右侧有相同的结构。</p>
+</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jie-gou-fu-zhi" name="jie-gou-fu-zhi">解构赋值</a></h3><a class="task__open-link" href="task/destruct-user.htm" tppabs="https://zh.javascript.info/task/destruct-user" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>有以下对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  years: 30
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>写一个解构赋值语句使得：</p>
+<ul>
+<li><code>name</code> 属性赋值给变量 <code>name</code>。</li>
+<li><code>years</code> 属性赋值给 <code>age</code>。</li>
+<li><code>isAdmin</code> 属性赋值给变量 <code>isAdmin</code>（如果属性缺失则赋值为 false）。</li>
+</ul>
+<p>赋值语句后的值必须是：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { name: &quot;John&quot;, years: 30 };
+
+// 等号左侧是你的代码
+// ... = user
+
+alert( name ); // John
+alert( age ); // 30
+alert( isAdmin ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  years: 30
+};
+
+let {name, years: age, isAdmin = false} = user;
+
+alert( name ); // John
+alert( age ); // 30
+alert( isAdmin ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zui-gao-xin-zi" name="zui-gao-xin-zi">最高薪资</a></h3><a class="task__open-link" href="task/max-salary.htm" tppabs="https://zh.javascript.info/task/max-salary" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>以下是一个 <code>salaries</code> 对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let salaries = {
+  &quot;John&quot;: 100,
+  &quot;Pete&quot;: 300,
+  &quot;Mary&quot;: 250
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>新建一个函数 <code>topSalary(salaries)</code>，返回拥有最高薪资的人。</p>
+<ul>
+<li>如果 <code>salaries</code> 是空的，函数应该返回 <code>null</code>。</li>
+<li>如果有多个最高薪资的人，返回其中任意一个。</li>
+</ul>
+<p>提示：使用 <code>Object.entries</code> 和解构语法来遍历键/值对。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/xuOmfwwJ2kjEV3DGKPy5?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xuOmfwwJ2kjEV3DGKPy5?p=preview'" tppabs="http://plnkr.co/edit/xuOmfwwJ2kjEV3DGKPy5?p=preview" target="_blank" data-plunk-id="xuOmfwwJ2kjEV3DGKPy5">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/1es9An8zuYBIa56eHDVS?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/1es9An8zuYBIa56eHDVS?p=preview'" tppabs="http://plnkr.co/edit/1es9An8zuYBIa56eHDVS?p=preview" target="_blank" data-plunk-id="1es9An8zuYBIa56eHDVS">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="keys-values-entries.htm" tppabs="https://zh.javascript.info/keys-values-entries" data-tooltip="对象的键、值、项"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="date.htm" tppabs="https://zh.javascript.info/date" data-tooltip="日期和时间"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/destructuring-assignment","identifier":"\/destructuring-assignment"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types">数据类型</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shu-zu-jie-gou">数组解构</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dui-xiang-jie-gou">对象解构</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#qian-tao-jie-gou">嵌套解构</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zhi-neng-han-shu-can-shu">智能函数参数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdestructuring-assignment"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/09-destructuring-assignment/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/09-destructuring-assignment/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/09-destructuring-assignment/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

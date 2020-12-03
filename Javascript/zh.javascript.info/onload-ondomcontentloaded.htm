@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">页面生命周期：DOMContentLoaded、load、beforeunload 和 unload</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/onload-ondomcontentloaded"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="页面生命周期：DOMContentLoaded、load、beforeunload 和 unload"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="页面生命周期：DOMContentLoaded、load、beforeunload 和 unload"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/onscroll"><link rel="next" href="/onload-onerror"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="页面生命周期：DOMContentLoaded、load、beforeunload 和 unload"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/onload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/onload-ondomcontentloaded'" tppabs="https://javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/onload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/onload-ondomcontentloaded'" tppabs="https://learn.javascript.ru/onload-ondomcontentloaded"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="onload-ondomcontentloaded.htm" tppabs="https://zh.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/onload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/onload-ondomcontentloaded'" tppabs="https://ja.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/onload-ondomcontentloaded">English</option><option value="https://learn.javascript.ru/onload-ondomcontentloaded">Русский</option><option value="https://zh.javascript.info/onload-ondomcontentloaded" selected>简体中文</option><option value="https://ja.javascript.info/onload-ondomcontentloaded">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="22" max="27" data-tooltip="第 27 章，第 22 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="event-details.htm" tppabs="https://zh.javascript.info/event-details" itemprop="url"><span itemprop="title">事件细节</span></a></li></ol><h1 class="main__header-title">页面生命周期：DOMContentLoaded、load、beforeunload 和 unload</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="页面生命周期：DOMContentLoaded、load、beforeunload 和 unload"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>HTML 页面的生命周期有三个重要事件：</p>
+<ul>
+<li><code>DOMContentLoaded</code> —— 浏览器加载 HTML，并构建 DOM 树，但像 <code>&lt;img&gt;</code> 和样式这样的资源可能还没有加载。</li>
+<li><code>load</code> —— 浏览器加载所有资源（图像，样式等）。</li>
+<li><code>beforeunload/unload</code> —— 当用户离开页面时。</li>
+</ul>
+<p>每个事件都是有用的：</p>
+<ul>
+<li><code>DOMContentLoaded</code> 事件 —— DOM 已经准备好，因此处理器可以查找 DOM 节点，并初始化接口。</li>
+<li><code>load</code> 事件 —— 额外资源被加载后，我们可以获取图像大小（如果在 HTML/CSS 中没有指定）等。</li>
+<li><code>beforeunload/unload</code> 事件 —— 用户即将离开：我们可以检查用户是否保存了修改，并在询问他是否真的要离开。</li>
+</ul>
+<p>我们探讨一下这些事件的细节。</p>
+<h2><a class="main__anchor" name="domcontentloaded" href="#domcontentloaded">DOMContentLoaded</a></h2><p><code>DOMContentLoaded</code> 事件发生在 <code>document</code> 对象上。</p>
+<p>我们必须使用 <code>addEventListener</code> 来监听它：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.addEventListener(&quot;DOMContentLoaded&quot;, ready);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>例如：</p>
+<div data-trusted="1" class="code-example" data-demo-height="200" data-refresh="1" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;script&gt;
+  function ready() {
+    alert('DOM is ready');
+
+    // 图像尚未加载（除非已经有了缓存）因此大小是 0x0
+    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+  }
+
+  document.addEventListener(&quot;DOMContentLoaded&quot;, ready);
+&lt;/script&gt;
+
+&lt;img id=&quot;img&quot; src=&quot;https://en.js.cx/clipart/train.gif?speed=1&amp;cache=0&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在示例中，<code>DOMContentLoaded</code> 处理器在文档加载时运行，而不是等到页面被加载时运行。因此 <code>alert</code> 显示大小为零。</p>
+<p>初识 <code>DOMContentLoaded</code> 事件时，觉得它比较简单。DOM 树已经准备好了 —— 这是事件。但却没有什么特别之处。</p>
+<h3><a class="main__anchor" name="domcontentloaded-he-jiao-ben" href="#domcontentloaded-he-jiao-ben">DOMContentLoaded 和脚本</a></h3><p>当浏览器开始加载 HTML 并在文本中遇到 <code>&lt;script&gt;...&lt;/script&gt;</code> 时，就会停止构建 DOM。它必须立即执行脚本。因此 <code>DOMContentLoaded</code> 只有在所有此类脚本被执行后才会发生。</p>
+<p>额外的脚本（带有 <code>src</code>）也会促使 DOM 构建在加载和执行过程时暂停。因此 <code>DOMContentLoaded</code> 也会等待外部脚本。</p>
+<p>唯一的例外是具有 <code>async</code> 和 <code>defer</code> 属性的外部脚本。它们告诉浏览器可以继续解析文档而不必等待脚本解析和执行。因此用户可以在脚本完成加载之前就看到页面，这对性能来说是有好处的。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">A word about <code>async</code> and <code>defer</code></span></div>
+            <div class="important__content"><p>属性 <code>async</code>和 <code>defer</code> 仅适用于外部脚本。如果没有 <code>src</code>，它们就会被忽略。</p>
+<p>这两种方法告诉浏览器，它可以继续解析页面，并“在后台”继续加载脚本，然后在外部脚本加载完成后执行它。因此脚本不会阻塞 DOM 的构建和页面的渲染。</p>
+<p>他们之间有两个不同之处。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>async</code></th>
+<th><code>defer</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order</td>
+<td>具有 <code>async</code> 的脚本以<strong>第一顺序被加载</strong>。它们的文档顺序并不重要 —— 先加载先运行。</td>
+<td>具有 <code>defer</code> 的脚本总是按照<strong>文档顺序</strong>来执行（就像它们在文档中那样）。</td>
+</tr>
+<tr>
+<td><code>DOMContentLoaded</code></td>
+<td>具有 <code>async</code> 的脚本可以在文档尚未完全下载时加载和执行。如果脚本较小或被缓存，而且文档足够长，就会发生这种情况。</td>
+<td>在 <code>DOMContentLoaded</code> 之前，具有 <code>defer</code> 的脚本会在文档被加载并解析后执行（如果需要，它们会等待）。</td>
+</tr>
+</tbody>
+</table>
+<p>因此 <code>async</code> 用于完全独立的脚本。</p>
+</div></div>
+<h3><a class="main__anchor" name="domcontentloaded-he-yang-shi" href="#domcontentloaded-he-yang-shi">DOMContentLoaded 和样式</a></h3><p>外部样式不会影响 DOM，因此 <code>DOMContentLoaded</code> 无需等待它们。</p>
+<p>但有一个陷阱：如果在样式之后有一个脚本，那么该脚本必须等待样式被执行：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;script&gt;
+  // the script doesn't not execute until the stylesheet is loaded
+  alert(getComputedStyle(document.body).marginTop);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>原因是脚本可能希望获取如上述示例所描述的元素坐标和其他与样式相关的属性。当然，它必须等待样式被加载。</p>
+<p>当 <code>DOMContentLoaded</code> 等待脚本时，它也在等待它们之前的样式。</p>
+<h3><a class="main__anchor" name="liu-lan-qi-nei-zhi-tian-xie" href="#liu-lan-qi-nei-zhi-tian-xie">浏览器内置填写</a></h3><p>Firefox、Chrome 和 Opera 都会在 <code>DOMContentLoaded</code> 中自动填写表单。</p>
+<p>比如，如果页面有一个带有登录和密码的表单，并且浏览器记住了这些值，那么在 <code>DOMContentLoaded</code> 上，它就可以尝试自动填写它们（如果用户允许）。</p>
+<p>因此如果 <code>DOMContentLoaded</code> 被长加载脚本延迟，那么自动填写也在等待。你可能在某些站点上（如果你使用浏览器自动填写）—— 登录/密码字段将不会立即自动填写，在页面被完全加载前会出现延迟。这实际上是延迟到 <code>DOMContentLoaded</code> 事件。</p>
+<p>为外部脚本使用 <code>async</code> 和 <code>defer</code> 的一个好处是 —— 它们不会阻塞 <code>DOMContentLoaded</code>，而且也不会延迟浏览器的自动填写。</p>
+<h2><a class="main__anchor" name="window-onload" href="#window-onload">window.onload</a></h2><p>当包括样式、图像和其他资源的页面被全部加载时，<code>load</code> 事件就会在 <code>window</code> 对象上被触发。</p>
+<p>以下示例正确地显示了图像大小，因为 <code>window.onload</code> 等待了所有的图像：</p>
+<div data-trusted="1" class="code-example" data-demo-height="200" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;script&gt;
+  window.onload = function() {
+    alert('Page loaded');
+
+    // image is loaded at this time
+    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+  };
+&lt;/script&gt;
+
+&lt;img id=&quot;img&quot; src=&quot;https://en.js.cx/clipart/train.gif?speed=1&amp;cache=0&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="windowonunload" href="#windowonunload">window.onunload</a></h2><p>当访问者离开页面时，<code>unload</code> 事件会在 <code>window</code> 上被触发。我们可以在那里做一些不涉及延迟的事件，比如关闭相关的弹出窗口。但我们不能取消跳转到另一个页面的事件。</p>
+<p>因此我们需要使用另一个事件 —— <code>onbeforeunload</code>。</p>
+<h2><a class="main__anchor" name="window.onbeforeunload" href="#window.onbeforeunload">window.onbeforeunload</a></h2><p>如果访问中启动了离开页面的导航或试图关闭窗口，<code>beforeunload</code> 处理器将要求提供更多的确认。</p>
+<p>它可能会返回一个带有问题的字符串。从历史上看，浏览器通常会显示它，但到目前为止，只有一些浏览器这样做。这是因为某些站长滥用了这个事件处理器，显示了误导和恶意的信息。</p>
+<p>你可以通过运行这段代码，然后重新加载页面来进行尝试。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">window.onbeforeunload = function() {
+  return &quot;There are unsaved changes. Leave now?&quot;;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>你也可以单击以下 <code>&lt;iframe&gt;</code> 中的按钮来设置处理器，然后单击链接：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/'" tppabs="https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="javascript:if(confirm('http://plnkr.co/edit/vmhbeII3gtJ4Mn1gbfN1?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/vmhbeII3gtJ4Mn1gbfN1?p=preview'" tppabs="http://plnkr.co/edit/vmhbeII3gtJ4Mn1gbfN1?p=preview" target="_blank" title="在沙箱中打开"
+        data-plunk-id="vmhbeII3gtJ4Mn1gbfN1" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:80px" src="javascript:if(confirm('https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/'" tppabs="https://zh.js.cx/article/onload-ondomcontentloaded/window-onbeforeunload/"></iframe>
+  </div><h2><a class="main__anchor" name="readystate" href="#readystate">readyState</a></h2><p>如果在加载文档之后设置 <code>DOMContentLoaded</code> 处理器会发生什么？</p>
+<p>很自然地，它从未运行过。</p>
+<p>在某些情况下，我们不确定文档是否已经准备就绪，比如一个具有 <code>async</code> 属性的脚本加载并异步运行。取决于网络，它可能在文档完成之前加载和执行，或者在此之后，我们无法确定。因此，我们应该能够知道文件的当前状态。</p>
+<p><code>document.readyState</code> 属性为我们提供了一些关于它的信息。有三个可能的值：</p>
+<ul>
+<li><code>&quot;loading&quot;</code> —— 文档正在被加载。</li>
+<li><code>&quot;interactive&quot;</code> —— 文档被全部读取。</li>
+<li><code>&quot;complete&quot;</code> —— 文档被全部读取，所有的资源（图像之类的）都被加载。</li>
+</ul>
+<p>因此我们检查 <code>document.readyState</code> 并设置一个处理器，或在代码准备就绪时立即执行它。</p>
+<p>就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function work() { /*...*/ }
+
+if (document.readyState == 'loading') {
+  document.addEventListener('DOMContentLoaded', work);
+} else {
+  work();
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>有一个 <code>readystatechange</code> 事件，当状态发生变化时触发，因此我们可以打印如下所有这些状态：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// current state
+console.log(document.readyState);
+
+// print state changes
+document.addEventListener('readystatechange', () =&gt; console.log(document.readyState));</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>readystatechange</code> 事件是跟踪文档加载状态的另一种机制，它很早就存在了。现在则很少被使用，但我们还是需要来讨论一下它的完整性。</p>
+<p><code>readystatechange</code> 在其他事件中的地位？</p>
+<p>要查看时间，这里有一个带有 <code>&lt;iframe&gt;</code>、<code>&lt;img&gt;</code> 和记录事件的处理器：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;script&gt;
+  function log(text) { /* output the time and message */ }
+  log('initial readyState:' + document.readyState);
+
+  document.addEventListener('readystatechange', () =&gt; log('readyState:' + document.readyState));
+  document.addEventListener('DOMContentLoaded', () =&gt; log('DOMContentLoaded'));
+
+  window.onload = () =&gt; log('window onload');
+&lt;/script&gt;
+
+&lt;iframe src=&quot;iframe.html&quot; onload=&quot;log('iframe onload')&quot;&gt;&lt;/iframe&gt;
+
+&lt;img src=&quot;http://en.js.cx/clipart/train.gif&quot; id=&quot;img&quot;&gt;
+&lt;script&gt;
+  img.onload = () =&gt; log('img onload');
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/zia9iE8JAhcIpBOXqxAb?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/zia9iE8JAhcIpBOXqxAb?p=preview'" tppabs="http://plnkr.co/edit/zia9iE8JAhcIpBOXqxAb?p=preview">在 sandbox</a> 中的运行示例。</p>
+<p>典型输出：</p>
+<ol>
+<li>[1] initial readyState:loading</li>
+<li>[2] readyState:interactive</li>
+<li>[2] DOMContentLoaded</li>
+<li>[3] iframe onload</li>
+<li>[4] readyState:complete</li>
+<li>[4] img onload</li>
+<li>[4] window onload</li>
+</ol>
+<p>方括号中的数字表示发生这种情况的大致时间。实际时间会长一些，但标记为相同数字的事件几乎是同时发生的（± 几毫秒）。</p>
+<ul>
+<li><code>document.readyState</code> 在 <code>DOMContentLoaded</code> 之前会立即变成了 <code>interactive</code>。这两个事件的意义没有任何差别。</li>
+<li>当所有资源（<code>iframe</code> 和 <code>img</code>）都被加载后，<code>document.readyState</code> 变成了 <code>complete</code>。这里我们可以发现，它大约发生在 <code>img.onload</code> (<code>img</code> 是最后的资源) 和 <code>window.onload</code> 之间。转换到 <code>complete</code> 状态的意义与 <code>window.onload</code> 一致。区别在于 <code>window.onload</code> 在所有其他 <code>load</code> 处理器之后一直有效。</li>
+</ul>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>页面生命周期事件：</p>
+<ul>
+<li>当 DOM 准备就绪时，<code>DOMContentLoaded</code> 事件就会在 <code>document</code> 上触发。在这个阶段，我们可以将 JavaScript 应用于元素。
+<ul>
+<li>除了 <code>async</code> 或 <code>defer</code> 的脚本外，所有的脚本都会被执行。</li>
+<li>图像和其他资源仍然可以继续被加载。</li>
+</ul>
+</li>
+<li>当页面和所有资源被加载时，<code>load</code> 事件会在 <code>window</code> 上被触发。我们很少使用它，因为通常没有必要去等待那么久。</li>
+<li>当用户想要离开页面时，<code>beforeunload</code> 事件会在 <code>window</code> 上被触发。如果他返回一个字符串，那么浏览器就会以问题的形式向用户确认是否真的要离开。</li>
+<li>当用户最终离开时，<code>unload</code> 事件会在 <code>window</code> 上被触发，在处理器中，我们只能做一些简单的事情，不会涉及到延迟或询问用户。正是由于这个限制，它很少被使用。</li>
+<li><code>document.readyState</code> 是文档的当前状态，可以在 <code>readystatechange</code> 事件中跟踪变更：
+<ul>
+<li><code>loading</code> —— 文档正在被加载。</li>
+<li><code>interactive</code> —— 文档被解析，大概是与 <code>DOMContentLoaded</code> 同时发生，而不是在它之前发生。</li>
+<li><code>complete</code> —— 文档和资源被加载，与 <code>window.onload</code> 同时发生，而不是在它之前发生。</li>
+</ul>
+</li>
+</ul>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="onscroll.htm" tppabs="https://zh.javascript.info/onscroll" data-tooltip="滚动"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="onload-onerror.htm" tppabs="https://zh.javascript.info/onload-onerror" data-tooltip="资源加载：onload 和 onerror"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/onload-ondomcontentloaded","identifier":"\/onload-ondomcontentloaded"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="event-details.htm" tppabs="https://zh.javascript.info/event-details">事件细节</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#domcontentloaded">DOMContentLoaded</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#window-onload">window.onload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#windowonunload">window.onunload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#window.onbeforeunload">window.onbeforeunload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#readystate">readyState</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fonload-ondomcontentloaded"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/3-event-details/10-onload-ondomcontentloaded/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/3-event-details/10-onload-ondomcontentloaded/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/3-event-details/10-onload-ondomcontentloaded/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

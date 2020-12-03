@@ -1,0 +1,964 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">修改文档内容</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/modifying-document"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="修改文档内容"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="修改文档内容"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/dom-attributes-and-properties"><link rel="next" href="/styles-and-classes"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="修改文档内容"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/modifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/modifying-document'" tppabs="https://javascript.info/modifying-document"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="modifying-document.htm" tppabs="https://zh.javascript.info/modifying-document"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/modifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/modifying-document'" tppabs="https://ja.javascript.info/modifying-document"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/modifying-document">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/modifying-document" selected>简体中文</option><option value="https://ja.javascript.info/modifying-document">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="7" max="27" data-tooltip="第 27 章，第 7 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">修改文档内容</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="修改文档内容"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>DOM（document object model 文档对象模型，此文中全部以缩写 DOM 表示）的可修改性是网页能“实时”刷新的关键。</p>
+<p>以下的例子向我们展示如何创建一个“弹幕”新元素并且修改它在页面中展示的内容。</p>
+<p>这里我们先展示出一个建单的例子，随后会逐一向你说明。</p>
+<h2><a class="main__anchor" name="li-zi-zhan-shi-yi-tiao-xin-xi" href="#li-zi-zhan-shi-yi-tiao-xin-xi">例子：展示一条信息</a></h2><p>首先，我们可以看到一条信息，它看起来像是一个美化版的 <code>alert</code>。</p>
+<p>这里是它的样式：</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:12}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;alert&quot;&gt;
+  &lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-3sctju"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>在上面这个 HTML 例子中，使用 JavaScript 创建一个像 <code>div</code> 一样的元素（假定 CSS 样式是 HTML 中的内联样式或者是从外部引用 CSS 文件）。</p>
+<h2><a class="main__anchor" name="sheng-cheng-yi-ge-yuan-su" href="#sheng-cheng-yi-ge-yuan-su">生成一个元素</a></h2><p>这两种方法都可以创建 DOM 节点：</p>
+<dl>
+<dt><code>document.createElement(tag)</code></dt>
+<dd>
+<p>用给定的标签创建一个新元素：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let div = document.createElement('div');</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>document.createTextNode(text)</code></dt>
+<dd>
+<p>用给定的文本创建一个<strong>文本节点</strong></p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let textNode = document.createTextNode('Here I am');</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<h3><a class="main__anchor" name="sheng-cheng-yi-tiao-xin-xi" href="#sheng-cheng-yi-tiao-xin-xi">生成一条信息</a></h3><p>在这个例子中，我们想要为 <code>div</code> 设定我们需要的类名和文字信息：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let div = document.createElement('div');
+div.className = &quot;alert alert-success&quot;;
+div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>之后，我们就有拥有一个 DOM 元素。现在这个元素已经有一个保存类名的变量和一个保存文字信息的变量，但是在页面上依然看不到我们想要的内容，因为它还没有被插入到页面中。</p>
+<h2><a class="main__anchor" name="cha-zhi-fang-fa" href="#cha-zhi-fang-fa">插值方法</a></h2><p>为了让 <code>div</code> 显示我们想要的内容，我们需要在 <code>document</code> 中找个合适的位置插值，这里我们选择 <code>document.body</code>。</p>
+<p>这里有一个特定的插值方法：<code>document.body.appendChild(div)</code>。</p>
+<p>这里是完整代码：</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  let div = document.createElement('div');
+  div.className = &quot;alert alert-success&quot;;
+  div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
+
+  document.body.appendChild(div);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里有一个简短的列表，我们把一个节点插入到父元素中（用 <code>parentElem</code> 指代父元素）：</p>
+<dl>
+<dt><code>parentElem.appendChild(node)</code></dt>
+<dd>
+<p>将 <code>node</code> 作为 <code>parentElem</code> 最后一个子元素。</p>
+<p>可以看到增加了一个 <code>&lt;li&gt;</code> 在 <code>&lt;ol&gt;</code> 的最末尾：</p>
+<div data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ol id=&quot;list&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  let newLi = document.createElement('li');
+  newLi.innerHTML = 'Hello, world!';
+
+  list.appendChild(newLi);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>parentElem.insertBefore(node, nextSibling)</code></dt>
+<dd>
+<p>在 <code>parentElem</code> 的 <code>nextSibling</code> 插入 <code>node</code>。</p>
+<p>下面这段代码在第二个 <code>&lt;li&gt;</code> 标签前面插入一个新列表项：</p>
+<div data-trusted="1" class="code-example" data-demo-height="100" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ol id=&quot;list&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+&lt;script&gt;
+  let newLi = document.createElement('li');
+  newLi.innerHTML = 'Hello, world!';
+
+  list.insertBefore(newLi, list.children[1]);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果需要把 <code>newLi</code> 插入成为第一个子元素，我们可以这样做：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">list.insertBefore(newLi, list.firstChild);</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>parentElem.replaceChild(node, oldChild)</code></dt>
+<dd>
+<p>将 <code>parentElem</code> 的 <code>oldChild</code> 替换为 <code>node</code>。</p>
+</dd>
+</dl>
+<p>所有这些插入节点的操作都会返回节点。换句话说，<code>parentElem.appendChild(node)</code> 返回 <code>node</code>。但是通常返回的节点都没有用，只是插入方法的默认返回值。</p>
+<p>以上方法都是“旧三板斧”：它们从很早就存在，我们在老的脚本里能看到它们的影子。很不幸，它们已经没法很好的处理现在的需求了。</p>
+<p>例如，我们怎样在 <strong>html</strong> 插入字符串呢？又或者，给定你一个节点，你怎样插入到<strong>节点</strong>之前？虽然也能完成需求开发，总归不是那么优雅的解决方式。</p>
+<p>所以诞生了两种优雅插入方法来代替这些繁琐的插入操作。</p>
+<h3><a class="main__anchor" name="zai-kai-tou-cha-ru-zai-mo-wei-cha-ru-zai-qian-mian-cha-ru-zai-hou-mian-cha-ru" href="#zai-kai-tou-cha-ru-zai-mo-wei-cha-ru-zai-qian-mian-cha-ru-zai-hou-mian-cha-ru">在开头插入/在末尾插入/在前面插入/在后面插入</a></h3><p>This set of methods provides more flexible insertions:</p>
+<ul>
+<li><code>node.append(...nodes or strings)</code> —— 在 <code>node</code> 末尾插入节点或者字符串，</li>
+<li><code>node.prepend(...nodes or strings)</code> —— 在 <code>node</code> 开头插入节点或者字符串，</li>
+<li><code>node.before(...nodes or strings)</code> —— 在 <code>node</code> 前面插入节点或者字符串，</li>
+<li><code>node.after(...nodes or strings)</code> —— 在 <code>node</code> 后面插入节点或者字符串，</li>
+<li><code>node.replaceWith(...nodes or strings)</code> —— 将 <code>node</code> 替换为节点或者字符串。</li>
+</ul>
+<p>下面例子是使用以上提到的方法在列表项前面或后面插入文本：</p>
+<div data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  ol.before('before');
+  ol.after('after');
+
+  let prepend = document.createElement('li');
+  prepend.innerHTML = 'prepend';
+  ol.prepend(prepend);
+
+  let append = document.createElement('li');
+  append.innerHTML = 'append';
+  ol.append(append);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-8dhab9"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>这张图片展示插入方法的工作方式：</p>
+<figure><div class="image" style="width:354px">
+      <div class="image__ratio" style="padding-top:50.282485875706215%"></div>
+      <img src="article/modifying-document/before-prepend-append-after.png" tppabs="https://zh.javascript.info/article/modifying-document/before-prepend-append-after.png" alt="" width="354" height="178" class="image__image">
+      </div></figure><p>列表最后表现为：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">before
+&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;prepend&lt;/li&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;append&lt;/li&gt;
+&lt;/ol&gt;
+after</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这些方法通过简单的调用就能插入多个节点或者字符串。</p>
+<p>例如，这里将字符串和一个元素插入到 <code>div</code> 前面：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.before('&lt;p&gt;Hello&lt;/p&gt;', document.createElement('hr'));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所有字符串都会作为“文本”插入。</p>
+<p>所以最后的 HTML 表现为：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&amp;lt;p&amp;gt;Hello&amp;lt;/p&amp;gt;
+&lt;hr&gt;
+&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换句话说，字符串以安全的方式插入到页面中，就像调用 <code>elem.textContent</code> 方法一样。</p>
+<p>所以这些方法只能用来插入 DOM 节点或者文本块。</p>
+<p>如果我们想在 HTML 页面中插入一个标签，有没有这样的方法，就像调用 <code>elem.innerHTML</code> 方法一样？</p>
+<h3><a class="main__anchor" name="zai-xiang-lin-de-html-biao-qian-zhong-cha-ru-wen-ben-yuan-su" href="#zai-xiang-lin-de-html-biao-qian-zhong-cha-ru-wen-ben-yuan-su">在相邻的 HTML 标签中插入/文本/元素</a></h3><p>接下来登场的这个方法就可以做到：<code>elem.insertAdjacentHTML(where, html)</code>。</p>
+<p>该方法第一个参数是字符串，指定插值的位置，必须是以下四个值之一：</p>
+<ul>
+<li><code>&quot;beforebegin&quot;</code> —— 在 <code>html</code> 开头位置前插入 <code>elem</code>，</li>
+<li><code>&quot;afterbegin&quot;</code> —— 在 <code>html</code> 开头位置后插入 <code>elem</code>，</li>
+<li><code>&quot;beforeend&quot;</code> —— 在 <code>html</code> 结束位置前插入 <code>elem</code>，</li>
+<li><code>&quot;afterend&quot;</code> —— 在 <code>html</code> 结束位置后插入 <code>elem</code>。</li>
+</ul>
+<p>第二个参数是 HTML 字符串，会作为标签插入到页面中。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.insertAdjacentHTML('beforebegin', '&lt;p&gt;Hello&lt;/p&gt;');
+  div.insertAdjacentHTML('afterend', '&lt;p&gt;Bye&lt;/p&gt;');
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…将会表现为：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;p&gt;Hello&lt;/p&gt;
+&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Bye&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>通过这个方法我们可以随意在 HTML任何位置插入值。</p>
+<p>这里有一张图片描述插入方式：</p>
+<figure><div class="image" style="width:366px">
+      <div class="image__ratio" style="padding-top:48.63387978142077%"></div>
+      <img src="article/modifying-document/insert-adjacent.png" tppabs="https://zh.javascript.info/article/modifying-document/insert-adjacent.png" alt="" width="366" height="178" class="image__image">
+      </div></figure><p>通过跟前面的图片做比较可以看出，两个方法的插入方式是一样的，只不过后者是插入 HTML 标签。</p>
+<p>这个方法还有两个变种：</p>
+<ul>
+<li><code>elem.insertAdjacentText(where, text)</code> —— 一样的语法，只不过把 <code>text</code> 作为“文本”直接插入到 HTML 中，</li>
+<li><code>elem.insertAdjacentElement(where, elem)</code> —— 一样的语法，只不过插入的是一个元素。</li>
+</ul>
+<p>他们存在的意义更多是为了使语法“整齐划一”，在实践中，通常只使用 <code>insertAdjacentHTML</code>，因为插入文本和元素的方法可以使用 <code>append/prepend/before/after</code> —— 同样的效果这样写起来更简洁。</p>
+<p>这里有一个展示一条信息的变种写法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  document.body.insertAdjacentHTML(&quot;afterbegin&quot;, `&lt;div class=&quot;alert alert-success&quot;&gt;
+    &lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.
+  &lt;/div&gt;`);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="ke-long-jie-dian-clonenode" href="#ke-long-jie-dian-clonenode">克隆节点：cloneNode</a></h2><p>怎么插入多条相同的信息？</p>
+<p>我们可以声明一个函数来实现这个方法。但是怎样通过<strong>克隆</strong>的方式来替换掉那些原本存在的 <code>div</code> 并且更改里面的文本（如果有这样一个需求）。</p>
+<p>如果我们有一个很大的元素，克隆的方式要远比创建后插入来的更简单，性能也更好。</p>
+<ul>
+<li><code>elem.cloneNode(true)</code> 方法用来对一个元素进行“深”克隆 —— 包括所有特性和子元素。<code>elem.cloneNode(false)</code> 方法只克隆该元素本身，不对子元素进行克隆。</li>
+</ul>
+<p>一个复制信息的例子：</p>
+<div data-trusted="1" class="code-example" data-demo-height="120" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;alert&quot; id=&quot;div&quot;&gt;
+  &lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.
+&lt;/div&gt;
+
+&lt;script&gt;
+  let div2 = div.cloneNode(true); // 克隆信息
+  div2.querySelector('strong').innerHTML = 'Bye there!'; // 改变克隆信息
+
+  div.after(div2); // 显示克隆信息在已经存在的 div 后
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="yi-chu" href="#yi-chu">移除</a></h2><p>想要移除节点，可以通过以下方法：</p>
+<dl>
+<dt><code>parentElem.removeChild(node)</code></dt>
+<dd>从 <code>parentElem</code> 中移除 <code>elem</code>（假设它是元素中的子元素）。</dd>
+<dt><code>node.remove()</code></dt>
+<dd>从当前位置移除 <code>node</code>。</dd>
+</dl>
+<p>能看出第二个方法更加简洁，第一个方法的存在是有其历史原因的。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">请注意：</span></div>
+            <div class="important__content"><p>如果我们想要<strong>移动</strong>一个元素到另一个地方 —— 不需要移除旧的元素。</p>
+<p><strong>所有插入操作都会从节点原来的位置把节点移除掉。</strong></p>
+<p>例如，这里有一些嵌套的元素：</p>
+<div data-trusted="1" class="code-example" data-demo-height="50">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;first&quot;&gt;First&lt;/div&gt;
+&lt;div id=&quot;second&quot;&gt;Second&lt;/div&gt;
+&lt;script&gt;
+  // 没有用到移除方法
+  second.after(first); //在 id 为 #second 的元素后插入id为 #first 的元素
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>使信息一秒后消失：</p>
+<div data-trusted="0" class="code-example" data-highlight="[{&quot;start&quot;:16,&quot;end&quot;:17}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  let div = document.createElement('div');
+  div.className = &quot;alert alert-success&quot;;
+  div.innerHTML = &quot;&lt;strong&gt;Hi there!&lt;/strong&gt; You've read an important message.&quot;;
+
+  document.body.append(div);
+  setTimeout(() =&gt; div.remove(), 1000);
+  // or setTimeout(() =&gt; document.body.removeChild(div), 1000);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="liao-yi-liao-documentwrite" href="#liao-yi-liao-documentwrite">聊一聊 “document.write”</a></h2><p><code>document.write</code> 是一个很老的方法，用来为 web 页面添加内容。</p>
+<p>语法如下：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;p&gt;Somewhere in the page...&lt;/p&gt;
+&lt;script&gt;
+  document.write('&lt;b&gt;Hello from JS&lt;/b&gt;');
+&lt;/script&gt;
+&lt;p&gt;The end&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>调动 <code>document.write(html)</code> 时意味着将 <code>html</code> “就地并马上”放入到页面中。<code>html</code> 字符串会动态的创建，所以它以自动伸缩的方式放入到页面中。我们可以通过 JavaScript 创建一个完整的 HTML 页面并写入浏览器窗口中。</p>
+<p>这个方法的起源于没有 DOM，没有 Web 标准的上古时期……，但是这个方法依旧保留了下来，因为很多的脚本使用它来实现一些功能。</p>
+<p>现代的脚本已经很少再看到这个方法，因为使用它有一个很重要的局限性：</p>
+<p><strong>只能在页面加载的时候调用 <code>document.write</code>。</strong></p>
+<p>如果在加载完成以后，渲染好的页面会被擦除。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;p&gt;After one second the contents of this page will be replaced...&lt;/p&gt;
+&lt;script&gt;
+  // 在一秒后调用 document.write
+  // 页面已经加载完毕，所以会被擦除
+  setTimeout(() =&gt; document.write('&lt;b&gt;...By this.&lt;/b&gt;'), 1000);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以，不像其他 DOM 操作一样，一旦页面“加载完毕”最好就不使用 document.write 方法。</p>
+<p>这是它的缺陷。</p>
+<p>从技术上讲，当调用 <code>document.write</code>，如果浏览器仍然在解析 HTML，该方法会添加一些内容，浏览器会把添加进来的内容替换掉原来接收到内容，解析后展示在窗口中。</p>
+<p>反过来说这也是一个优势 —— 它性能出奇的快，因为它不用<strong>修改 DOM 结构</strong>。它直接在 DOM 结构构建之前，对整个页面直接进行重写，再交给浏览器去构建 DOM 结构。</p>
+<p>所以如果我们需要在 HTML 加载阶段动态的添加很多文本，它会很高效。不过能用到的机会不多就是了。在一些很老的脚本里倒是能经常看到。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>创建节点的方法：</p>
+<ul>
+<li><code>document.createElement(tag)</code> —— 用给定标签创建一个节点，</li>
+<li><code>document.createTextNode(value)</code> —— 创建一个文本节点（很少使用），</li>
+<li><code>elem.cloneNode(deep)</code> —— 如果参数 <code>deep==true</code> 将元素及后代子元素进行克隆。</li>
+</ul>
+<p>插入和移除节点的方法：</p>
+<ul>
+<li>
+<p>从 parent</p>
+<ul>
+<li><code>parent.appendChild(node)</code></li>
+<li><code>parent.insertBefore(node, nextSibling)</code></li>
+<li><code>parent.removeChild(node)</code></li>
+<li><code>parent.replaceChild(newElem, node)</code></li>
+</ul>
+<p>这些方法都返回 <code>node</code>。</p>
+</li>
+<li>
+<p>添加一些节点和字符串：</p>
+<ul>
+<li><code>node.append(...nodes or strings)</code> —— 在 <code>node</code> 末尾位置增加，</li>
+<li><code>node.prepend(...nodes or strings)</code> —— 在 <code>node</code>开头位置增加 ，</li>
+<li><code>node.before(...nodes or strings)</code> —— 在 <code>node</code> 之前位置增加，</li>
+<li><code>node.after(...nodes or strings)</code> —— 在 <code>node</code> 之后位置增加，</li>
+<li><code>node.replaceWith(...nodes or strings)</code> —— 替换 <code>node</code>。</li>
+<li><code>node.remove()</code> —— 移除 <code>node</code>。</li>
+</ul>
+<p>把字符串当成“文本”插入。</p>
+</li>
+<li>
+<p>在 HTML 中添加内容 <code>elem.insertAdjacentHTML(where, html)</code>，在 where 位置进行操作：</p>
+<ul>
+<li><code>&quot;beforebegin&quot;</code> —— 将 <code>html</code> 插入 <code>elem</code> 到开头的前面位置，</li>
+<li><code>&quot;afterbegin&quot;</code> —— 将 <code>html</code> 插入 <code>elem</code> 到开头的后面位置，</li>
+<li><code>&quot;beforeend&quot;</code> —— 将 <code>html</code> 插入 <code>elem</code> 到结尾的前面位置，</li>
+<li><code>&quot;afterend&quot;</code> —— 将 <code>html</code> 插入 <code>elem</code> 到结尾的后面位置。</li>
+</ul>
+<p><code>elem.insertAdjacentText</code> 和 <code>elem.insertAdjacentElement</code> 跟 <code>elem.insertAdjacentHTML</code> 很相似，只不过他们一个用来插入字符串，一个用来插入元素，但是很少使用这两个方法。</p>
+</li>
+<li>
+<p>在页面加载完成之前添加 HTML 到页面中：</p>
+<ul>
+<li><code>document.write(html)</code></li>
+</ul>
+<p>如果是在页面加载完成以后调用会擦除加载完毕的内容。通常在很老的脚本才会使用这个方法了。</p>
+</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dui-bi-createtextnodeinnerhtml-he-textcontent" name="dui-bi-createtextnodeinnerhtml-he-textcontent">对比 createTextNode、innerHTML 和 textContent</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/createtextnode-vs-innerhtml  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/createtextnode-vs-innerhtml'" tppabs="https://zh.javascript.info/task/createtextnode-vs-innerhtml" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>我们有一个空的 DOM 元素 <code>elem</code> 和一个字符串 <code>text</code>。</p>
+<p>以下这三个命令行的结果是一样的吗？</p>
+<ol>
+<li><code>elem.append(document.createTextNode(text))</code></li>
+<li><code>elem.innerHTML = text</code></li>
+<li><code>elem.textContent = text</code></li>
+</ol>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>回答：<strong>1 和 3</strong>。</p>
+<p>所有命令行都是将 <code>text</code> “作为文本”添加到 <code>elem</code>。</p>
+<p>这里有个简单的例子：</p>
+<div data-trusted="1" class="code-example" data-demo-height="80">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;elem1&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;elem2&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;elem3&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  let text = '&lt;b&gt;text&lt;/b&gt;';
+
+  elem1.append(document.createTextNode(text));
+  elem2.textContent = text;
+  elem3.innerHTML = text;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#qing-chu-yuan-su" name="qing-chu-yuan-su">清除元素</a></h3><a class="task__open-link" href="task/clear-elem.htm" tppabs="https://zh.javascript.info/task/clear-elem" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个函数 <code>clear(elem)</code> 用来移除元素里的内容。</p>
+<div data-trusted="1" class="code-example" data-demo-height="60">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ol id=&quot;elem&quot;&gt;
+  &lt;li&gt;Hello&lt;/li&gt;
+  &lt;li&gt;World&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  function clear(elem) { /* 你的代码 */ }
+
+  clear(elem); // 清除列表
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>首先我们看看<strong>错误</strong>的做法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function clear(elem) {
+  for (let i=0; i &lt; elem.childNodes.length; i++) {
+      elem.childNodes[i].remove();
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是无效的，因为调用 <code>remove()</code> 从前面开始移除 <code>elem.childNodes</code> 集合里元素，元素的起始下标一直都是 <code>0</code>，但是 <code>i</code> 却一直在增长，有的元素会直接被忽略了。</p>
+<p>用 <code>for..of</code> 循环的结果也跟上面一样。</p>
+<p>正确的做法是：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function clear(elem) {
+  while (elem.firstChild) {
+    elem.firstChild.remove();
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里还有一种更简便的方法，也能达到我们需要的效果：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function clear(elem) {
+  elem.innerHTML = '';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#wei-shi-mo-liu-xia-aaa" name="wei-shi-mo-liu-xia-aaa">为什么留下 &quot;aaa&quot;？</a></h3><a class="task__open-link" href="task/why-aaa.htm" tppabs="https://zh.javascript.info/task/why-aaa" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 1</span></div><div class="task__content"><p>运行下面例子，为什么 <code>table.remove()</code> 没有删除 <code>&quot;aaa&quot;</code> 文本？</p>
+<div data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;table id=&quot;table&quot;&gt;
+  aaa
+  &lt;tr&gt;
+    &lt;td&gt;Test&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  alert(table); // table 应该显示出的样子
+
+  table.remove();
+  // 为什么 aaa 依旧在文档中
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>HTML 在这个任务中是错误的，这也是造成怪异的原因所在。</p>
+<p>浏览器会自动修复它。但 <code>&lt;table&gt;</code> 可能会没有文本：根据 table 的特殊规范，这是允许的。所以浏览器会在 <code>&lt;table&gt;</code> <strong>前面</strong>添加 <code>&quot;aaa&quot;</code>。</p>
+<p>现在当我们移除 table 时，它就被保留下来了。</p>
+<p>通过浏览器开发者工具很容易就能在 DOM 找到答案。它显示出 <code>&quot;aaa&quot;</code> 在 <code>&lt;table&gt;</code> 前面。</p>
+<p>HTML 标准规范详细描述了对于异常的 HTML 会如何处理，以及浏览器的行为是否合乎规范。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#chuang-jian-yi-ge-lie-biao" name="chuang-jian-yi-ge-lie-biao">创建一个列表</a></h3><a class="task__open-link" href="task/create-list.htm" tppabs="https://zh.javascript.info/task/create-list" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>编写一个接口，根据用户输入生成一个列表。</p>
+<p>每一个列表项：</p>
+<ol>
+<li>使用 <code>prompt</code> 询问用户输入的内容。</li>
+<li>创建 <code>&lt;li&gt;</code> 并添加到 <code>&lt;ul&gt;</code>。</li>
+<li>重复以上两步，直到用户输入取消指令（按下 <kbd class="shortcut">Esc</kbd> 或者 prompt 的 CANCEL）。</li>
+</ol>
+<p>所有元素应该都是动态创建的。</p>
+<p>如果把用户输入了 HTML 标签，就应该将其视为文本。</p>
+<a href="javascript:if(confirm('https://zh.js.cx/task/create-list/solution/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/create-list/solution/'" tppabs="https://zh.js.cx/task/create-list/solution/" target="blank">在新窗口中演示</a><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>请留意 <code>textContent</code> 复制 <code>&lt;li&gt;</code> 内容的用法。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/uamev186UQKd0SfC21pi?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/uamev186UQKd0SfC21pi?p=preview'" tppabs="http://plnkr.co/edit/uamev186UQKd0SfC21pi?p=preview" target="_blank" data-plunk-id="uamev186UQKd0SfC21pi">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#li-yong-dui-xiang-chuang-jian-jie-dian-shu" name="li-yong-dui-xiang-chuang-jian-jie-dian-shu">利用对象创建节点树</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/create-object-tree  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/create-object-tree'" tppabs="https://zh.javascript.info/task/create-object-tree" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写一个函数 <code>createTree</code> 将嵌套的对象生成 <code>ul/li</code> 的嵌套列表。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let data = {
+  &quot;Fish&quot;: {
+    &quot;trout&quot;: {},
+    &quot;salmon&quot;: {}
+  },
+
+  &quot;Tree&quot;: {
+    &quot;Huge&quot;: {
+      &quot;sequoia&quot;: {},
+      &quot;oak&quot;: {}
+    },
+    &quot;Flowering&quot;: {
+      &quot;redbud&quot;: {},
+      &quot;magnolia&quot;: {}
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>语句：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let container = document.getElementById('container');
+createTree(container, data); // 在 container 中创建树。</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果（树）看起来像这样：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="../zh.js.cx/task/create-object-tree/build-tree-dom/index.htm" tppabs="https://zh.js.cx/task/create-object-tree/build-tree-dom/"></iframe>
+  </div><p>选择其中一种方式来完成这个任务：</p>
+<ol>
+<li>通过树创建 HTML 然后派发给 <code>container.innerHTML</code>。</li>
+<li>创建节点树然后插入到 DOM 中。</li>
+</ol>
+<p>如果两种方式都尝试一下就更好。</p>
+<p>P.S. 树应该没有“额外”的元素，像空的 <code>&lt;ul&gt;&lt;/ul&gt;</code> 没有列表项。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/Si1najXZviFKPMVBV682?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/Si1najXZviFKPMVBV682?p=preview'" tppabs="http://plnkr.co/edit/Si1najXZviFKPMVBV682?p=preview" target="_blank" data-plunk-id="Si1najXZviFKPMVBV682">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>在对象间游走的最简单方式就是递归了。</p>
+<ol>
+<li><a href="javascript:if(confirm('http://plnkr.co/edit/RzDsKC5VqX7w6khH5Fxa?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/RzDsKC5VqX7w6khH5Fxa?p=preview'" tppabs="http://plnkr.co/edit/RzDsKC5VqX7w6khH5Fxa?p=preview">The solution with innerHTML</a>.</li>
+<li><a href="javascript:if(confirm('http://plnkr.co/edit/nYRyp8959wqIOBge8TnJ?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/nYRyp8959wqIOBge8TnJ?p=preview'" tppabs="http://plnkr.co/edit/nYRyp8959wqIOBge8TnJ?p=preview">The solution with DOM</a>.</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zai-shu-zhong-xian-shi-hou-dai" name="zai-shu-zhong-xian-shi-hou-dai">在树中显示后代</a></h3><a class="task__open-link" href="task/tree-count.htm" tppabs="https://zh.javascript.info/task/tree-count" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这里有一棵由嵌套的 <code>ul/li</code> 组成的树。</p>
+<p>编写代码在 <code>&lt;li&gt;</code> 添加后代数量的数字。跳过一些叶子（如果节点没有后代节点）。</p>
+<p>最终结果：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="../zh.js.cx/task/tree-count/solution/index.htm" tppabs="https://zh.js.cx/task/tree-count/solution/"></iframe>
+  </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/kZDnIHGEf6OkhH0lOZCn?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/kZDnIHGEf6OkhH0lOZCn?p=preview'" tppabs="http://plnkr.co/edit/kZDnIHGEf6OkhH0lOZCn?p=preview" target="_blank" data-plunk-id="kZDnIHGEf6OkhH0lOZCn">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>为每个 <code>&lt;li&gt;</code> 插入文本，我们可以改变文本节点 <code>data</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/De63GJ2KDV3cimmztt7C?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/De63GJ2KDV3cimmztt7C?p=preview'" tppabs="http://plnkr.co/edit/De63GJ2KDV3cimmztt7C?p=preview" target="_blank" data-plunk-id="De63GJ2KDV3cimmztt7C">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#chuang-jian-yi-ge-ri-li" name="chuang-jian-yi-ge-ri-li">创建一个日历</a></h3><a class="task__open-link" href="task/calendar-table.htm" tppabs="https://zh.javascript.info/task/calendar-table" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>编写一个函数 <code>createCalendar(elem, year, month)</code>。</p>
+<p>调用后会创建一个日历并添加到 <code>elem</code>。</p>
+<p>日历应该是一个 table，每一周用 <code>&lt;tr&gt;</code> 表示，每一天用 <code>&lt;td&gt;</code> 表示。table 顶部是 <code>&lt;th&gt;</code> 表示周几：第一天应该是星期一，直到星期日。</p>
+<p>例如，<code>createCalendar(cal, 2012, 9)</code> 应该在 <code>cal</code> 生成一个日历，如下：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:210px" src="../zh.js.cx/task/calendar-table/solution/index.htm" tppabs="https://zh.js.cx/task/calendar-table/solution/"></iframe>
+  </div><p>P.S. 这里只要生成一个展示日历就好，不需要点击交互功能。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/X87WzB1JFUrP1JyL7nkM?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/X87WzB1JFUrP1JyL7nkM?p=preview'" tppabs="http://plnkr.co/edit/X87WzB1JFUrP1JyL7nkM?p=preview" target="_blank" data-plunk-id="X87WzB1JFUrP1JyL7nkM">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们用字符串创建 table：<code>&quot;&lt;table&gt;...&lt;/table&gt;&quot;</code>，然后派发给 <code>innerHTML</code>。</p>
+<p>算法如下：</p>
+<ol>
+<li>通过 <code>&lt;th&gt;</code> 创建 table 头和周末名字。</li>
+<li>创建一个日期对象 <code>d = new Date(year, month-1)</code>。它是<code>月份</code>的第一天（注意 JavaScript 计算月份是从 <code>0</code> 开始，而不是 <code>1</code>）。</li>
+<li>将每月第一天的日期生成单元格，直到月份的第一天 <code>d.getDay()</code> 是空的。然后将它们填充到 <code>&lt;td&gt;&lt;/td&gt;</code>。</li>
+<li>天数增长 <code>d</code>：<code>d.setDate(d.getDate()+1)</code>。如果 <code>d.getMonth()</code> 不是下一个月，就添加新单元格 <code>&lt;td&gt;</code> 到日历表中，如果那天是星期日，就添加一行 <code>“&lt;/tr&gt;&lt;tr&gt;”</code>。</li>
+<li>如果天数遍历完但 table 没有填满，就用空的 <code>&lt;td&gt;</code> 补齐。</li>
+</ol>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/K3D8IxWnylCLekVbDk5z?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/K3D8IxWnylCLekVbDk5z?p=preview'" tppabs="http://plnkr.co/edit/K3D8IxWnylCLekVbDk5z?p=preview" target="_blank" data-plunk-id="K3D8IxWnylCLekVbDk5z">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#setinterval-de-cai-se-shi-zhong" name="setinterval-de-cai-se-shi-zhong">setInterval 的彩色时钟</a></h3><a class="task__open-link" href="task/clock-setinterval.htm" tppabs="https://zh.javascript.info/task/clock-setinterval" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>创建一个彩色时钟：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:60px" src="../zh.js.cx/task/clock-setinterval/solution/index.htm" tppabs="https://zh.js.cx/task/clock-setinterval/solution/"></iframe>
+  </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/qjmGej2ITcvQ5bP36LS6?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/qjmGej2ITcvQ5bP36LS6?p=preview'" tppabs="http://plnkr.co/edit/qjmGej2ITcvQ5bP36LS6?p=preview" target="_blank" data-plunk-id="qjmGej2ITcvQ5bP36LS6">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>首先，使用 HTML/CSS。</p>
+<p>每个时间组件在<code>&lt;span&gt;</code>标签中看起来很棒：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;clock&quot;&gt;
+  &lt;span class=&quot;hour&quot;&gt;hh&lt;/span&gt;:&lt;span class=&quot;min&quot;&gt;mm&lt;/span&gt;:&lt;span class=&quot;sec&quot;&gt;ss&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们还会用 CSS 丰富样式。</p>
+<p><code>update</code> 会刷新时钟，它调用 <code>setInterval</code> 每秒刷新一次：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function update() {
+  let clock = document.getElementById('clock');
+  let date = new Date(); // (*)
+  let hours = date.getHours();
+  if (hours &lt; 10) hours = '0' + hours;
+  clock.children[0].innerHTML = hours;
+
+  let minutes = date.getMinutes();
+  if (minutes &lt; 10) minutes = '0' + minutes;
+  clock.children[1].innerHTML = minutes;
+
+  let seconds = date.getSeconds();
+  if (seconds &lt; 10) seconds = '0' + seconds;
+  clock.children[2].innerHTML = seconds;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这行 <code>(*)</code> 我们每秒检查当前时间。调用 <code>setInterval</code> 并不是完全可靠：它有可能发生延迟现象。</p>
+<p>时钟管理函数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let timerId;
+
+function clockStart() { // run the clock
+  timerId = setInterval(update, 1000);
+  update(); // (*)
+}
+
+function clockStop() {
+  clearInterval(timerId);
+  timerId = null;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请留意 <code>update()</code>，它不单在 <code>clockStart()</code> 被间隔器调用，也会在 <code>(*)</code> 立即调用一次。如果不是这样，只有在 <code>setInterval</code> 第一次执行周期时，才能看到时钟，在此之前时钟一直都是空的。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/twT0epfU9JvHVBkyAmIw?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/twT0epfU9JvHVBkyAmIw?p=preview'" tppabs="http://plnkr.co/edit/twT0epfU9JvHVBkyAmIw?p=preview" target="_blank" data-plunk-id="twT0epfU9JvHVBkyAmIw">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jiang-html-biao-qian-zhong-cha-ru-lie-biao" name="jiang-html-biao-qian-zhong-cha-ru-lie-biao">将 HTML 标签中插入列表</a></h3><a class="task__open-link" href="task/append-to-list.htm" tppabs="https://zh.javascript.info/task/append-to-list" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写需要插入的文本代码 <code>&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;</code>，插入到两个 <code>&lt;li&gt;</code> 之中：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;ul id=&quot;ul&quot;&gt;
+  &lt;li id=&quot;one&quot;&gt;1&lt;/li&gt;
+  &lt;li id=&quot;two&quot;&gt;4&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>当我们需要在 HTML 某处插入元素，<code>insertAdjacentHTML</code> 是最好方案。</p>
+<p>具体做法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">one.insertAdjacentHTML('afterend', '&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;');</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#sortthetable" name="sortthetable">Sort the table</a></h3><a class="task__open-link" href="task/sort-table.htm" tppabs="https://zh.javascript.info/task/sort-table" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>There’s a table:</p>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Surname</th>
+  <th>Age</th>
+</tr>
+<tr>
+  <td>John</td>
+  <td>Smith</td>
+  <td>10</td>
+</tr>
+<tr>
+  <td>Pete</td>
+  <td>Brown</td>
+  <td>15</td>
+</tr>
+<tr>
+  <td>Ann</td>
+  <td>Lee</td>
+  <td>5</td>
+</tr>
+<tr>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+</table>
+<p>可能会有更多的行数。</p>
+<p>编写代码对 <code>&quot;name&quot;</code> 列进行排序。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/3Xl8T7MIp5fCs60PZsIV?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/3Xl8T7MIp5fCs60PZsIV?p=preview'" tppabs="http://plnkr.co/edit/3Xl8T7MIp5fCs60PZsIV?p=preview" target="_blank" data-plunk-id="3Xl8T7MIp5fCs60PZsIV">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>这个方法很精简，但是看起来有点难理解，所以我添加了一些注释：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sortedRows = Array.from(table.rows)
+  .slice(1)
+  .sort((rowA, rowB) =&gt; rowA.cells[0].innerHTML &gt; rowB.cells[0].innerHTML ? 1 : -1);
+
+table.tBodies[0].append(...sortedRows);</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>
+<p>使用 <code>table.querySelectorAll('tr')</code> 获取所有 <code>&lt;tr&gt;</code>，然后生成数组，因为我们需要用到数组方法。</p>
+</li>
+<li>
+<p>第一个 TR（<code>table.rows[0]</code>）实际上是 table 头，所以我们需要调用 <code>.slice(1)</code> 裁剪掉。</p>
+</li>
+<li>
+<p>比较 <code>&lt;td&gt;</code> 的内容（字符在字符集中的序号），进行排序。</p>
+</li>
+<li>
+<p>现在使用 <code>.append(...sortedRows)</code> 插入节点。</p>
+<p>table 永远包含 <tbody> 元素，所以我们需要考虑到它，并将内容插入到其中：单纯的调用 <code>table.append(...)</code> 将会失败。</p>
+<p>请留意：我们没有移除操作，只进行“重复插入”，它们会将旧的位置的内容自动去除。</p>
+</li>
+</ol>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/xJmpkNCoe9MGDLAmPG9R?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xJmpkNCoe9MGDLAmPG9R?p=preview'" tppabs="http://plnkr.co/edit/xJmpkNCoe9MGDLAmPG9R?p=preview" target="_blank" data-plunk-id="xJmpkNCoe9MGDLAmPG9R">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="dom-attributes-and-properties.htm" tppabs="https://zh.javascript.info/dom-attributes-and-properties" data-tooltip="特性和属性"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="styles-and-classes.htm" tppabs="https://zh.javascript.info/styles-and-classes" data-tooltip="样式和类"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/modifying-document","identifier":"\/modifying-document"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#li-zi-zhan-shi-yi-tiao-xin-xi">例子：展示一条信息</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#sheng-cheng-yi-ge-yuan-su">生成一个元素</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cha-zhi-fang-fa">插值方法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ke-long-jie-dian-clonenode">克隆节点：cloneNode</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yi-chu">移除</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#liao-yi-liao-documentwrite">聊一聊 “document.write”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (10)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fmodifying-document"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/07-modifying-document/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/07-modifying-document/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/07-modifying-document/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

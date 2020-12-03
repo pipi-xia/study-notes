@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">遍历 DOM</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/dom-navigation"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="遍历 DOM"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="遍历 DOM"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/dom-nodes"><link rel="next" href="/searching-elements-dom"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><link rel='stylesheet' href="../zh.js.cx/libs/domtree.css" tppabs="https://zh.js.cx/libs/domtree.css">
+<script src="../cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" tppabs="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="../zh.js.cx/libs/domtree.js" tppabs="https://zh.js.cx/libs/domtree.js"></script>
+<style>
+#travel-dom-comment {
+  font-style: italic;
+}
+#travel-dom-control ul {
+  margin: 6px 0;
+}
+</style><meta property="og:title" content="遍历 DOM"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/dom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/dom-navigation'" tppabs="https://javascript.info/dom-navigation"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="dom-navigation.htm" tppabs="https://zh.javascript.info/dom-navigation"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/dom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/dom-navigation'" tppabs="https://ja.javascript.info/dom-navigation"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/dom-navigation">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/dom-navigation" selected>简体中文</option><option value="https://ja.javascript.info/dom-navigation">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="27" data-tooltip="第 27 章，第 3 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">遍历 DOM</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="遍历 DOM"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>DOM 让我们可以对元素和它们其中的内容做任何事，但是首先我们需要获取到对应的 DOM 对象，把这个对象赋予一个变量，然后我们才能修改这个对象。</p>
+<p>对 DOM 的所有操作都是从 <code>document</code> 对象开始的。从这个对象我们可以到达任何节点。</p>
+<p>这里是一张描述对象间链接的图片，通过这些链接我们可以在 DOM 节点之间遍历。</p>
+<figure><div class="image" style="width:415px">
+      <div class="image__ratio" style="padding-top:86.98795180722891%"></div>
+      <img src="article/dom-navigation/dom-links.png" tppabs="https://zh.javascript.info/article/dom-navigation/dom-links.png" alt="" width="415" height="361" class="image__image">
+      </div></figure><p>让我们更详细地讨论这些。</p>
+<h2><a class="main__anchor" name="zai-zui-ding-shang-de-documentelement-he-body" href="#zai-zui-ding-shang-de-documentelement-he-body">在最顶上的：documentElement 和 body</a></h2><p>最上面的树节点可以直接通过 <code>document</code> 属性来使用：</p>
+<dl>
+<dt><code>&lt;html&gt;</code> = <code>document.documentElement</code></dt>
+<dd>最上面的 document 节点是  <code>document.documentElement</code>。这是对应 <code>&lt;html&gt;</code> 标签的 DOM 节点。</dd>
+<dt><code>&lt;body&gt;</code> = <code>document.body</code></dt>
+<dd>另一个被广泛使用的 DOM 节点是 <code>&lt;body&gt;</code> 元素 — <code>document.body</code>。</dd>
+<dt><code>&lt;head&gt;</code> = <code>document.head</code></dt>
+<dd><code>&lt;head&gt;</code> 标签可以通过 <code>document.head</code> 访问。</dd>
+</dl>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">这里有个问题：<code>document.body</code> 的值可能是 <code>null</code></span></div>
+            <div class="important__content"><p>脚本无法访问在运行时不存在的元素。</p>
+<p>特别要注意的是，如果一个脚本是在 <code>&lt;head&gt;</code> 标签中，那么脚本中是访问不到 <code>document.body</code> 元素的，因为浏览器还没有读到其中的内容。</p>
+<p>所以在下面的例子中第一个 <code>alert</code> 函数显示的是 <code>null</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;
+
+&lt;head&gt;
+  &lt;script&gt;
+    alert( &quot;From HEAD: &quot; + document.body ); // null, there's no &lt;body&gt; yet
+  &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;script&gt;
+    alert( &quot;From BODY: &quot; + document.body ); // HTMLBodyElement, now it exists
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">在 DOM 世界中 <code>null</code> 就意味着“不存在”</span></div>
+            <div class="important__content"><p>在 DOM 中，<code>null</code> 值就意味着“不存在”或者“没有这样的节点”。</p>
+</div></div>
+<h2><a class="main__anchor" name="zi-yuan-su-childnodesfirstchildlastchild" href="#zi-yuan-su-childnodesfirstchildlastchild">子元素：childNodes, firstChild, lastChild</a></h2><p>从现在开始，我们将使用下面这两个术语：</p>
+<ul>
+<li><strong>子节点（或者叫做子）</strong> —— 对应的是直系的子元素。换句话说它们会完全嵌套在指定的一个元素中。举个例子，<code>&lt;head&gt;</code> 和 <code>&lt;body&gt;</code> 就是 <code>&lt;html&gt;</code> 元素的子元素。</li>
+<li><strong>子系元素</strong> —— 对应的是所有嵌套在一个指定元素中的元素，包括这些元素的子元素，以此类推得到的所有元素。</li>
+</ul>
+<p>比如说，在这里 <code>&lt;body&gt;</code> 有子元素 <code>&lt;div&gt;</code> 和 <code>&lt;ul&gt;</code>（以及一些空白的文本节点）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;b&gt;Information&lt;/b&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…如果我们要找的是 <code>&lt;body&gt;</code> 的子系元素，那我们可以先得到它直系子元素 <code>&lt;div&gt;</code>，<code>&lt;ul&gt;</code> 以及像 <code>&lt;li&gt;</code>（<code>&lt;ul&gt;</code> 的子元素）和 <code>&lt;b&gt;</code>（<code>&lt;li&gt;</code> 的子元素）这样嵌套更深的元素 — 这就是 <code>&lt;body&gt;</code> 元素包含的整个子树。</p>
+<p><strong><code>childNodes</code> 集合提供了对所有子节点包括其中文本节点的访问。</strong></p>
+<p>下面的例子显示了 <code>document.body</code> 的子元素：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Information&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div&gt;End&lt;/div&gt;
+
+  &lt;script&gt;
+    for (let i = 0; i &lt; document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+    }
+  &lt;/script&gt;
+  ...more stuff...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意在这边有一个有趣的细节。如果我们运行上面的例子，所展示代码中最后的元素是 <code>&lt;script&gt;</code>。实际上，文档下面还有很多东西，但是在这个脚本执行的时候，浏览器还没有读到下面的内容，所以这个脚本并不能看到它们。</p>
+<p><strong><code>firstChild</code> 和 <code>lastChild</code> 属性是访问第一个和最后一个子元素的快捷方式</strong></p>
+<p>它们只是简写。如果元素存在子节点，那么下面的脚本运行结果一直都是 true：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">elem.childNodes[0] === elem.firstChild
+elem.childNodes[elem.childNodes.length - 1] === elem.lastChild</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里还有一个特别的函数 <code>elem.hasChildNodes()</code> 用于检测节点是否有子节点。</p>
+<h3><a class="main__anchor" name="dom-ji-he" href="#dom-ji-he">DOM 集合</a></h3><p>正如我们看到的那样，<code>childNodes</code> 看起来就像一个数组。但是它实际上并不是一个数组，而是一个<strong>集合</strong> —— 一个类似数组的可迭代对象。</p>
+<p>这个性质会导致两个重要的结果：</p>
+<ol>
+<li>我们可以使用 <code>for..of</code> 语法来迭代它：</li>
+</ol>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let node of document.body.childNodes) {
+  alert(node); // shows all nodes from the collection
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是因为集合是可迭代的（提供了所需要的 <code>Symbol.iterator</code> 属性）。</p>
+<ol start="2">
+<li>并不能使用数组的方法，因为它并不是一个数组：</li>
+</ol>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert(document.body.childNodes.filter); // undefined (there's no filter method!)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>因为集合性质所得到的第一个结果很不错。第二个结果也还可以忍受，因为如果我们想调用数组的方法的话可以通过 <code>Array.from</code> 方法来从集合中创建一个“真”的数组：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Array.from(document.body.childNodes).filter ); // now it's there</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">DOM 集合是只读的</span></div>
+            <div class="important__content"><p>DOM 集合甚至可以说本章中列出的<strong>所有</strong>导航属性都是只读的。</p>
+<p>我们不能通过类似 <code>childNodes[i] = ...</code> 的操作来替换一个子节点。</p>
+<p>修改子节点需要使用其它的方法，我们将会在下一章中看到它们。</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">DOM 集合是实时的</span></div>
+            <div class="important__content"><p>除小部分例外之外几乎所有的 DOM 集合都是<strong>实时</strong>的。换句话说，它们都反映的是 DOM 的实时状态。</p>
+<p>如果我们保留一个对 <code>elem.childNodes</code> 的引用，然后在 DOM 中添加/移除节点，那么这些新加的节点就会自动出现在这个集合中。</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">不要使用 <code>for..in</code> 来循环遍历集合</span></div>
+            <div class="important__content"><p>在使用 <code>for..of</code> 的情况下集合是可迭代的。但是有时候人们会尝试使用 <code>for..in</code> 来迭代集合。</p>
+<p>请不要这么做。<code>for..in</code> 循环遍历的是所有列举的属性。集合会有一些“额外”很少用到的属性，这些属性我们通常不会获取到：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body&gt;
+&lt;script&gt;
+  // 显示 0、1、length、item、values 以及其它值。
+  for (let prop in document.body.childNodes) alert(prop);
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="xiong-di-jie-dian-he-fu-jie-dian" href="#xiong-di-jie-dian-he-fu-jie-dian">兄弟节点和父节点</a></h2><p><strong>兄弟节点</strong>是指有同一个父节点的节点。比如说 <code>&lt;head&gt;</code> 和 <code>&lt;body&gt;</code> 就是兄弟节点：</p>
+<ul>
+<li><code>&lt;body&gt;</code> 可以说是 <code>&lt;head&gt;</code> 的“下一个”或者“右边”兄弟节点。</li>
+<li><code>&lt;head&gt;</code> 可以说是 <code>&lt;body&gt;</code> 的“前一个”或者“左边”兄弟节点。</li>
+</ul>
+<p>父节点可以通过 <code>parentNode</code> 访问。</p>
+<p>在同一个父节点中一个节点的下一个节点（下一个兄弟节点）可以通过 <code>nextSibling</code> 访问，上一个节点可以通过 <code>previousSibling</code> 访问。</p>
+<p>比如说：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;script&gt;
+  //  HTML 代码是“密集”的用来避免额外的“空白”文本节点。
+  HTML is &quot;dense&quot; to evade extra &quot;blank&quot; text nodes.
+
+  // &lt;body&gt; 的父节点是 &lt;html&gt;
+  alert( document.body.parentNode === document.documentElement ); // true
+
+  // &lt;head&gt; 的下一个兄弟节点是  &lt;body&gt;
+  alert( document.head.nextSibling ); // HTMLBodyElement
+
+  // &lt;body&gt; 的上一个兄弟节点是  &lt;head&gt;
+  alert( document.body.previousSibling ); // HTMLHeadElement
+&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zhi-zai-yuan-su-zhong-dao-hang" href="#zhi-zai-yuan-su-zhong-dao-hang">只在元素中导航</a></h2><p>上面列出的导航属性涉及到<strong>所有</strong>节点。比如说，在 <code>childNodes</code> 中我们可以看到文本节点，元素节点，甚至如果存在评论节点的话，也能访问到。</p>
+<p>但是对于很多任务来说，我们并不想要文本或者评论节点。我们希望可以操纵代表标签的元素节点以及构建整个页面的结构。</p>
+<p>所以让我们看看当只考虑<strong>元素节点</strong>时更多的导航链接：</p>
+<figure><div class="image" style="width:427px">
+      <div class="image__ratio" style="padding-top:70.02341920374707%"></div>
+      <img src="article/dom-navigation/dom-links-elements.png" tppabs="https://zh.javascript.info/article/dom-navigation/dom-links-elements.png" alt="" width="427" height="299" class="image__image">
+      </div></figure><p>这些链接和之前上面的相似，只是在词中间加了 <code>Element</code>：</p>
+<ul>
+<li><code>children</code> —— 只获取类型为元素节点的子节点。</li>
+<li><code>firstElementChild</code>，<code>lastElementChild</code> —— 第一个和最后一个子元素。</li>
+<li><code>previousElementSibling</code>，<code>nextElementSibling</code> —— 兄弟元素。</li>
+<li><code>parentElement</code> —— 父元素。</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">为什么是 <code>parentElement</code>? 父节点可以不是一个元素吗？</span></div>
+            <div class="important__content"><p><code>parentElement</code> 属性返回的是“元素”父节点，而 <code>parentNode</code> 返回的是“任何类型”的父节点。这些属性通常来说是一样的：它们都获取父节点。</p>
+<p>除了有一个例外就是 <code>document.documentElement</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( document.documentElement.parentNode ); // document
+alert( document.documentElement.parentElement ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换句话说，<code>documentElement</code>（对应 <code>&lt;html&gt;</code> 标签）是根节点。形式上来讲，它有 <code>document</code> 作为它的父节点。但是 <code>document</code> 并不是一个元素节点，所以 <code>parentNode</code> 返回了 <code>document</code> 而 <code>parentElement</code> 却没有。</p>
+<p>有时候，当我们要遍历父节点并且在每个遍历的节点调用方法时这很重要，但是 <code>document</code> 并没有父元素节点，所以我们要将它排除在外。</p>
+</div></div>
+<p>让我们修改上面的其中一个例子：用 <code>children</code> 来替换 <code>childNodes</code>。现在它就只显示元素：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Information&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div&gt;End&lt;/div&gt;
+
+  &lt;script&gt;
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+  &lt;/script&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="dom-navigation-tables" href="#dom-navigation-tables">更多链接：表</a></h2><p>到现在为止我们描述了基本的导航属性。</p>
+<p>为了方便起见，某些类型的 DOM 元素会提供特定于其类型的额外属性。</p>
+<p>Tables 是其中一个很好也是很重要的例子。</p>
+<p><strong><code>&lt;table&gt;</code></strong> 元素支持 (除了上面给出的之外) 以下这些属性:</p>
+<ul>
+<li><code>table.rows</code> — 用于表示表中 <code>&lt;tr&gt;</code> 元素的集合。</li>
+<li><code>table.caption/tHead/tFoot</code> — 用于访问元素 <code>&lt;caption&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>。</li>
+<li><code>table.tBodies</code> — <code>&lt;tbody&gt;</code> 元素的集合（根据标准该元素数量可以很多）。</li>
+</ul>
+<p><strong><code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>、<code>&lt;tbody&gt;</code></strong> 元素提供了 <code>rows</code> 属性：</p>
+<ul>
+<li><code>tbody.rows</code> — 表内部 <code>&lt;tr&gt;</code> 元素的集合。</li>
+</ul>
+<p><strong><code>&lt;tr&gt;</code>：</strong></p>
+<ul>
+<li><code>tr.cells</code> — 在给定 <code>&lt;tr&gt;</code> 元素下 <code>&lt;td&gt;</code> 和 <code>&lt;th&gt;</code> 单元格的集合。</li>
+<li><code>tr.sectionRowIndex</code> — 在封闭的 <code>&lt;thead&gt;/&lt;tbody&gt;</code> 中 <code>&lt;tr&gt;</code> 的编号。</li>
+<li><code>tr.rowIndex</code> — 在表中 <code>&lt;tr&gt;</code> 元素的编号。</li>
+</ul>
+<p><strong><code>&lt;td&gt;</code> 和 <code>&lt;th&gt;</code>：</strong></p>
+<ul>
+<li><code>td.cellIndex</code> — 在封闭的 <code>&lt;tr&gt;</code> 中单元格的编号。</li>
+</ul>
+<p>下面是使用这些属性的例子：</p>
+<div data-trusted="1" class="code-example" data-demo-height="100" data-highlight="[{&quot;start&quot;:11,&quot;cols&quot;:[{&quot;start&quot;:15,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;table id=&quot;table&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;one&lt;/td&gt;&lt;td&gt;two&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;three&lt;/td&gt;&lt;td&gt;four&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  // 获取第一行中第二个单元格的内容
+  alert( table.rows[0].cells[1].innerHTML ) // &quot;two&quot;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>规范：<a href="javascript:if(confirm('https://html.spec.whatwg.org/multipage/tables.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://html.spec.whatwg.org/multipage/tables.html'" tppabs="https://html.spec.whatwg.org/multipage/tables.html">tabular data</a>。</p>
+<p>HTML 表单还有其它额外的导航属性。我们稍后会在开始使用表单时看到它们。</p>
+<h1><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h1><p>给一个 DOM 节点，我们可以使用导航属性来立即访问和它直接相邻的节点。</p>
+<p>这些属性主要分两组：</p>
+<ul>
+<li>对于所有的节点：<code>parentNode</code>、<code>childNodes</code>、<code>firstChild</code>、<code>lastChild</code>、<code>previousSibling</code> 和 <code>nextSibling</code>。</li>
+<li>仅用于元素节点：<code>parentElement</code>、<code>children</code>、<code>firstElementChild</code>、<code>lastElementChild</code>、<code>previousElementSibling</code> 和 <code>nextElementSibling</code>。</li>
+</ul>
+<p>某些类型的 DOM 元素，比如说像 tables，提供了额外的属性和集合用于访问其内容。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dom-zi-jie-dian" name="dom-zi-jie-dian">DOM 子节点</a></h3><a class="task__open-link" href="task/dom-children.htm" tppabs="https://zh.javascript.info/task/dom-children" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>对于这个页面：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Users:&lt;/div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;John&lt;/li&gt;
+    &lt;li&gt;Pete&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如何能访问到以下内容：</p>
+<ul>
+<li><code>&lt;div&gt;</code> DOM 节点？</li>
+<li><code>&lt;ul&gt;</code> DOM 节点？</li>
+<li>第二个 <code>&lt;li&gt;</code> 节点（即包含 Pete 的节点）？</li>
+</ul>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>这里有很多方法，比方说：</p>
+<p>获取 <code>&lt;div&gt;</code> DOM 节点：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.firstElementChild
+// 或者
+document.body.children[0]
+// 或者（第一个节点是空格，所有我们拿第二个）
+document.body.childNodes[1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>获取 <code>&lt;ul&gt;</code> DOM 节点：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.lastElementChild
+// 或者
+document.body.children[1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>获取第二个 <code>&lt;li&gt;</code>（即包含 Pete 的节点）</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 获取 &lt;ul&gt;, 然后拿它的最后一个子元素
+document.body.lastElementChild.lastElementChild</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#xiong-di-jie-dian-wen-ti" name="xiong-di-jie-dian-wen-ti">兄弟节点问题</a></h3><a class="task__open-link" href="task/navigation-links-which-null.htm" tppabs="https://zh.javascript.info/task/navigation-links-which-null" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>如果 <code>elem</code> 是任意一个 DOM 元素节点……</p>
+<ul>
+<li><code>elem.lastChild.nextSibling</code> 值一直都是 <code>null</code> 这个判定是不是真的？</li>
+<li><code>elem.children[0].previousSibling</code> 值一直都是 <code>null</code> 这个判定是不是真的？</li>
+</ul>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li>是的，这是真的。<code>elem.lastChild</code> 一直是最后一个元素，它就没有 <code>nextSibling</code> ，所有如果存在子节点，这个问题的答案就是正确。</li>
+<li>不，这是错的，因为  <code>elem.children[0]</code> 是元素中的第一个子元素。但是或许有非元素的节点在它之前。所以 <code>previousSibling</code> 或许是一个文本节点。</li>
+</ol>
+<p>请注意，对于这两种情况，如果没有子节点就会出现错误。比如说如果 <code>elem.lastChild</code> 是 <code>null</code>，我们就访问不到 <code>elem.lastChild.nextSibling</code>。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#xuan-ze-suo-you-dui-jiao-xian-dan-yuan-ge" name="xuan-ze-suo-you-dui-jiao-xian-dan-yuan-ge">选择所有对角线单元格</a></h3><a class="task__open-link" href="task/select-diagonal-cells.htm" tppabs="https://zh.javascript.info/task/select-diagonal-cells" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写代码来把表中的对角单元格都绘制成红色。</p>
+<p>你需要用代码从 <code>&lt;table&gt;</code> 中获取到所有的对角线 <code>&lt;td&gt;</code>，然后绘制它们：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// td 表示的是对单元格的引用
+td.style.backgroundColor = 'red';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果应该如下所示：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="../zh.js.cx/task/select-diagonal-cells/solution/index.htm" tppabs="https://zh.js.cx/task/select-diagonal-cells/solution/"></iframe>
+  </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/xstMIURRxaEGkQICRWZZ?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xstMIURRxaEGkQICRWZZ?p=preview'" tppabs="http://plnkr.co/edit/xstMIURRxaEGkQICRWZZ?p=preview" target="_blank" data-plunk-id="xstMIURRxaEGkQICRWZZ">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们将使用 <code>rows</code> 和 <code>cells</code> 属性来获取表格中的对角单元格。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/15JeUP3UcTEiOGU8NKym?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/15JeUP3UcTEiOGU8NKym?p=preview'" tppabs="http://plnkr.co/edit/15JeUP3UcTEiOGU8NKym?p=preview" target="_blank" data-plunk-id="15JeUP3UcTEiOGU8NKym">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="dom-nodes.htm" tppabs="https://zh.javascript.info/dom-nodes" data-tooltip="DOM 树"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="searching-elements-dom.htm" tppabs="https://zh.javascript.info/searching-elements-dom" data-tooltip="搜索： getElement* 和 querySelector*"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/dom-navigation","identifier":"\/dom-navigation"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zai-zui-ding-shang-de-documentelement-he-body">在最顶上的：documentElement 和 body</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-yuan-su-childnodesfirstchildlastchild">子元素：childNodes, firstChild, lastChild</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#xiong-di-jie-dian-he-fu-jie-dian">兄弟节点和父节点</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zhi-zai-yuan-su-zhong-dao-hang">只在元素中导航</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dom-navigation-tables">更多链接：表</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-navigation"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/03-dom-navigation/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/03-dom-navigation/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/03-dom-navigation/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">RegExp 和 String 的方法</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/regexp-methods"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="RegExp 和 String 的方法"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="RegExp 和 String 的方法"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/regexp-introduction"><link rel="next" href="/regexp-character-classes"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="RegExp 和 String 的方法"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/regexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/regexp-methods'" tppabs="https://javascript.info/regexp-methods"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-methods.htm" tppabs="https://zh.javascript.info/regexp-methods"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/regexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/regexp-methods'" tppabs="https://ja.javascript.info/regexp-methods"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/regexp-methods">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/regexp-methods" selected>简体中文</option><option value="https://ja.javascript.info/regexp-methods">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="15" data-tooltip="第 15 章，第 2 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions" itemprop="url"><span itemprop="title">正则表达式</span></a></li></ol><h1 class="main__header-title">RegExp 和 String 的方法</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="RegExp 和 String 的方法"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>有两组方法可以处理正则表达式。</p>
+<ol>
+<li>首先，正则表达式是内置的 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp</a> 类的对象，它提供了许多方法。</li>
+<li>除此之外，正则字符串中的一些方法可以与regexp一起工作。</li>
+</ol>
+<p>为了避免结构混乱，我们首先会单独讨论一些方法，然后再讨论通用任务的使用方法。</p>
+<h2><a class="main__anchor" name="strsearchreg" href="#strsearchreg">str.search(reg)</a></h2><p>在上一章节中我们已经见过这个方法了。它返回第一个匹配项所在的位置，如果没有找到则返回 <code>-1</code>。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:19,&quot;end&quot;:23}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;A drop of ink may make a million think&quot;;
+
+alert( str.search( /a/i ) ); // 0（最开始的位置）</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>重要提示：<code>search</code> 总是查找第一个匹配项。</strong></p>
+<p>我们不能使用 <code>search</code> 来查找下一个匹配项的位置，没有这样的语法。但是还有其它方法可以做到。</p>
+<h2><a class="main__anchor" name="mei-yougxiu-shi-fu-qing-kuang-xia-de-strmatchreg" href="#mei-yougxiu-shi-fu-qing-kuang-xia-de-strmatchreg">没有“g”修饰符情况下的 str.match(reg)</a></h2><p><code>str.match</code> 方法的行为取决于是否有 <code>g</code> 修饰符。首先我们来看一下没有修饰符的情况。</p>
+<p><code>str.match(reg)</code> 只会查找第一个匹配项。</p>
+<p>结果是一个数组，里面有该匹配项和额外的属性：</p>
+<ul>
+<li><code>index</code> – 匹配项在字符串中所处在的位置，</li>
+<li><code>input</code> – 原始字符串。</li>
+</ul>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:24,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;Fame is the thirst of youth&quot;;
+
+let result = str.match( /fame/i );
+
+alert( result[0] );    // Fame（匹配项）
+alert( result.index ); // 0（在最开始的位置 0）
+alert( result.input ); // “Fame is the thirst of youth”（字符串本身）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>该数组可能有不止一项元素。</p>
+<p><strong>如果模式的一部分被括号 <code>(...)</code> 括起来了，那么这部分将会独占数组的一个元素。</strong></p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:24,&quot;end&quot;:39}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;JavaScript is a programming language&quot;;
+
+let result = str.match( /JAVA(SCRIPT)/i );
+
+alert( result[0] ); // JavaScript（整个匹配项）
+alert( result[1] ); // script（对应括号里的匹配项）
+alert( result.index ); // 0
+alert( result.input ); // JavaScript is a programming language</code></pre>
+        </div>
+      </div>
+      
+      </div><p>由于 <code>i</code> 修饰符，搜索不区分大小写，因此它会找到 <code class="match">JavaScript</code>。与 <code class="pattern">SCRIPT</code> 相对应的匹配部分独占数组中的一项。</p>
+<p>稍后我们会在 <a href="regexp-groups.htm" tppabs="https://zh.javascript.info/regexp-groups">捕获组</a> 章节继续讲述圆括号这部分。圆括号非常适合搜索和替换。</p>
+<h2><a class="main__anchor" name="shi-yonggxiu-shi-fu-de-strmatchreg" href="#shi-yonggxiu-shi-fu-de-strmatchreg">使用“g”修饰符的 str.match(reg)</a></h2><p>当使用 <code>&quot;g&quot;</code> 修饰符的时候，<code>str.match</code> 就会返回由所有匹配项组成的数组。在数组中没有额外的属性，而且圆括号也不会创建任何元素。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:24,&quot;end&quot;:30}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;HO-Ho-ho!&quot;;
+
+let result = str.match( /ho/ig );
+
+alert( result ); // HO, Ho, ho（所有的匹配项，大小写不敏感）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用括号也不会有什么改变：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:24,&quot;end&quot;:32}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;HO-Ho-ho!&quot;;
+
+let result = str.match( /h(o)/ig );
+
+alert( result ); // HO, Ho, ho</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以，使用 <code>g</code> 修饰符，<code>result</code> 就仅仅是一个由匹配项组成的数组。没有额外的属性。</p>
+<p>如果我们想获取匹配项位置的更多信息，并且使用括号，那么我们应该使用下面将要提到的 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec">RegExp#exec</a> 方法。</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">如果没有匹配项，那么调用 <code>match</code> 会返回 <code>null</code></span></div>
+            <div class="important__content"><p>请注意，这很重要。如果没有匹配项，结果不是一个空数组，而是 <code>null</code>。</p>
+<p>记住这一点，避免发生下面的错误：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;Hey-hey-hey!&quot;;
+
+alert( str.match(/ho/gi).length ); // error! there's no length of null</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="strsplitregexpsubstrlimit" href="#strsplitregexpsubstrlimit">str.split(regexp|substr, limit)</a></h2><p>使用 regexp（或子字符串）作为分隔符分隔字符串。</p>
+<p>我们之前已经使用过 <code>split</code> 的字符串形式，像下面这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert('12-34-56'.split('-')) // [12, 34, 56]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是我们也可以传入一个正则表达式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert('12-34-56'.split(/-/)) // [12, 34, 56]</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="strreplacestrregstrfunc" href="#strreplacestrregstrfunc">str.replace(str|reg, str|func)</a></h2><p>这简直是搜索和替换字符串的利器。</p>
+<p>最简单的用处 — 搜索和替换子字符串，就像下面这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 把横线替换成冒号
+alert('12-34-56'.replace(&quot;-&quot;, &quot;:&quot;)) // 12:34-56</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当 <code>replace</code> 的第一个参数是字符串时，它只会查找第一个匹配项。</p>
+<p>如果要找到所有的横线，我们不能使用字符串 <code>&quot;-&quot;</code>，而是 regexp <code class="pattern">/-/g</code>，带上 <code>g</code> 修饰符。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 用冒号替换所有的横线
+alert( '12-34-56'.replace( /-/g, &quot;:&quot; ) )  // 12:34:56</code></pre>
+        </div>
+      </div>
+      
+      </div><p>第二个参数是要替换的字符串。</p>
+<p>我们可以在里面使用特殊符号：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>插入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$$</code></td>
+<td><code>&quot;$&quot;</code></td>
+</tr>
+<tr>
+<td><code>$&amp;</code></td>
+<td>整个匹配项</td>
+</tr>
+<tr>
+<td><code>$`</code></td>
+<td>匹配项前面的字符串部分</td>
+</tr>
+<tr>
+<td><code>$'</code></td>
+<td>匹配项后面的字符串部分</td>
+</tr>
+<tr>
+<td><code>$n</code></td>
+<td>如果 <code>n</code> 是一个 1-2 位的数字，那么这表示从左到右数第 n 个括号的内容</td>
+</tr>
+</tbody>
+</table>
+<p>在下面的例子中，使用 <code>$&amp;</code> 将所有的 <code>&quot;John&quot;</code> 替换成 <code>&quot;Mr.John&quot;</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;John Doe, John Smith and John Bull.&quot;;
+
+// 对于每个 John — 替换成 Mr.John
+alert(str.replace(/John/g, 'Mr.$&amp;'));
+// &quot;Mr.John Doe, Mr.John Smith and Mr.John Bull.&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>圆括号通常与 <code>$1</code>，<code>$2</code> 一起使用，就像下面的例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;John Smith&quot;;
+
+alert(str.replace(/(John) (Smith)/, '$2, $1')) // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>对于那些需要“智能”替换的场景，第二个参数可以是函数。</strong></p>
+<p>它会在每次匹配时被调用，并且其返回值会替换掉匹配项。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+// 将每个“ho”都替换成函数所返回的结果
+alert(&quot;HO-Ho-ho&quot;.replace(/ho/gi, function() {
+  return ++i;
+})); // 1-2-3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在上面的示例中，函数每次只返回下一个数字，但通常结果是基于匹配的。</p>
+<p>调用该函数 <code>func(str, p1, p2, ..., pn, offset, s)</code> 的参数是：</p>
+<ol>
+<li><code>str</code> — 匹配项，</li>
+<li><code>p1, p2, ..., pn</code> — 圆括号里的内容（如果有的话），</li>
+<li><code>offset</code> — 匹配项所在的位置，</li>
+<li><code>s</code> — 源字符串。</li>
+</ol>
+<p>如果在 regexp 中没有圆括号，那么该函数总是有 3 个参数：<code>func(str, offset, s)</code>。</p>
+<p>下面的代码展示了匹配的所有信息：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 显示并且替换所有的匹配项
+function replacer(str, offset, s) {
+  alert(`Found ${str} at position ${offset} in string ${s}`);
+  return str.toLowerCase();
+}
+
+let result = &quot;HO-Ho-ho&quot;.replace(/ho/gi, replacer);
+alert( 'Result: ' + result ); // Result: ho-ho-ho
+
+// shows each match:
+// Found HO at position 0 in string HO-Ho-ho
+// Found Ho at position 3 in string HO-Ho-ho
+// Found ho at position 6 in string HO-Ho-ho</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在下面的例子中，有两个圆括号，所以 <code>replacer</code> 有 5 个参数：<code>str</code> 是完全匹配项，然后是圆括号，然后是 <code>offset</code> 和 <code>s</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function replacer(str, name, surname, offset, s) {
+  // name is the first parentheses, surname is the second one
+  return surname + &quot;, &quot; + name;
+}
+
+let str = &quot;John Smith&quot;;
+
+alert(str.replace(/(John) (Smith)/, replacer)) // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用函数赋予了我们终极替换大招，因为这能获取所有的匹配信息，并且能够访问外部变量，可以做任何事情。</p>
+<h2><a class="main__anchor" name="regexpteststr" href="#regexpteststr">regexp.test(str)</a></h2><p>让我们继续研究 <code>RegExp</code> 类的方法，它们可以被 regexp 自身调用。</p>
+<p><code>test</code> 方法查找任何符合的匹配，无论是否找到，都会返回 <code>true/false</code>。</p>
+<p>所以这基本上和 <code>str.search(reg) != -1</code> 一样，例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:25}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:14}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;I love JavaScript&quot;;
+
+// 这两条语句是一样的
+alert( /love/i.test(str) ); // true
+alert( str.search(/love/i) != -1 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果是 false 的例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:25}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:14}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;Bla-bla-bla&quot;;
+
+alert( /love/i.test(str) ); // false
+alert( str.search(/love/i) != -1 ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="regexpexecstr" href="#regexpexecstr">regexp.exec(str)</a></h2><p>我们已经见过这些搜索的方法：</p>
+<ul>
+<li><code>search</code> — 查找匹配项所在的位置，</li>
+<li><code>match</code> — 如果没有 <code>g</code> 修饰符，返回圆括号的第一个匹配项，</li>
+<li><code>match</code> — 如果有 <code>g</code> 修饰符，返回所有匹配项，圆括号在此不生效。</li>
+</ul>
+<p><code>regexp.exec</code> 方法有点难用，但是它允许搜索所有的匹配项，包括圆括号和位置。</p>
+<p>它的行为取决于 regexp 是否具有“g”修饰符。</p>
+<ul>
+<li>如果没有 <code>g</code>，那么 <code>regexp.exec(str)</code> 返回第一个匹配项，也就是 <code>str.match(reg)</code>。</li>
+<li>如果有 <code>g</code>，那么 <code>regexp.exec(str)</code> 返回第一个匹配项，然后在 <code>regexp.lastIndex</code> 里 <strong>记住</strong> 该匹配项结束的的位置。下一次调用从 <code>regexp.lastIndex</code> 开始搜索，并且返回下一个匹配项。如果再没有匹配项了，则 <code>regexp.exec</code> 返回 <code>null</code>，<code>regexp.lastIndex</code> 置为 <code>0</code>。</li>
+</ul>
+<p>正如我们所见的，如果不使用 <code>g</code> 修饰符，则与 <code>str.match</code> 没有什么区别。</p>
+<p>但是使用 <code>g</code> 修饰符，就能够获取所有的匹配项，以及其位置和圆括号组的信息。</p>
+<p>下面的代码展示了 <code>regexp.exec</code> 是如何一个接一个进行调用的：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:22,&quot;end&quot;:22},{&quot;start&quot;:13,&quot;end&quot;:13},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;A lot about JavaScript at https://javascript.info&quot;;
+
+let regexp = /JAVA(SCRIPT)/ig;
+
+// 查找第一个匹配项
+let matchOne = regexp.exec(str);
+alert( matchOne[0] ); // JavaScript
+alert( matchOne[1] ); // script
+alert( matchOne.index ); // 12（匹配项所在的位置）
+alert( matchOne.input ); // 和 str 一样
+
+alert( regexp.lastIndex ); // 22（匹配项结束的位置）
+
+// 查找第二个匹配项
+let matchTwo = regexp.exec(str); // 继续从 regexp.lastIndex 开始搜索
+alert( matchTwo[0] ); // javascript
+alert( matchTwo[1] ); // script
+alert( matchTwo.index ); // 34（匹配项所在的位置）
+alert( matchTwo.input ); // 和 str 一样
+
+alert( regexp.lastIndex ); // 44（匹配项结束的位置）
+
+// 查找第三个匹配项
+let matchThree = regexp.exec(str); // 继续从 regexp.lastIndex 开始搜索
+alert( matchThree ); // null（没有匹配项）
+
+alert( regexp.lastIndex ); // 0（重置）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>可见，每个 <code>regexp.exec</code> 调用都以”完整的格式“返回匹配项：一个由圆括号、<code>index</code> 和 <code>input</code> 属性组成的数组。</p>
+<p><code>regexp.exec</code> 的主要用例就是在循环中查找所有的匹配：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = 'A lot about JavaScript at https://javascript.info';
+
+let regexp = /javascript/ig;
+
+let result;
+
+while (result = regexp.exec(str)) {
+  alert( `Found ${result[0]} at ${result.index}` );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>循环直到 <code>regexp.exec</code> 返回 <code>null</code> 时结束，也就意味着“没有更多的匹配项了”。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">从指定位置开始搜索</span></div>
+            <div class="important__content"><p>我们可以强制 <code>regexp.exec</code> 从给定的位置开始搜索，只需要手动设置 <code>lastIndex</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = 'A lot about JavaScript at https://javascript.info';
+
+let regexp = /javascript/ig;
+regexp.lastIndex = 30;
+
+alert( regexp.exec(str).index ); // 34，搜索从位置 30 开始</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="y-flag" href="#y-flag">“y”修饰符</a></h2><p><code>y</code> 修饰符意味着搜索应该并且只能在属性 <code>regexp.lastIndex</code> 指定的位置查找匹配项。</p>
+<p>也就是说，通常搜索是在整个字符串里搜索字符串 <code class="pattern">/javascript/</code> 的。</p>
+<p>但是当有了 <code>y</code> 修饰符，则只会在 <code>regexp.lastIndex</code>（默认是 <code>0</code>）指定的位置开始查找。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;I love JavaScript!&quot;;
+
+let reg = /javascript/iy;
+
+alert( reg.lastIndex ); // 0（默认）
+alert( str.match(reg) ); // null, 没有在位置 0 上找到匹配项
+
+reg.lastIndex = 7;
+alert( str.match(reg) ); // JavaScript（搜索正确，该单词确实在位置 7）
+
+// 对于其它 reg.lastIndex，结果都为 null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>regexp <code class="pattern">/javascript/iy</code> 只有在我们设置 <code>reg.lastIndex=7</code> 的时候被找到，因为由于 <code>y</code> 修饰符，引擎只会尝试在 <code>reg.lastIndex</code> 这个特定的位置开始查找。</p>
+<p>所以，这样做有何意义？我们在什么情况下会用到呢？</p>
+<p>答案就是性能。</p>
+<p><code>y</code> 修饰符非常适合解析器 — 一种需要“读取”文本、构建内存语法结构或者从中执行操作的程序。为此，我们沿着文本移动，应用正则表达式，来看下一个是字符串、数字还是其它。</p>
+<p><code>y</code> 修饰符在给定位置应用一个正则表达式（或者会有很多，逐个进行），当我们理解了其中的内容后，就可以继续一步步检查文本。</p>
+<p>在没有该修饰符的情况下，引擎总是会检查到文本的末尾，这需要花费时间，尤其是当文本很大的时候，解析器将会很慢。<code>y</code> 修饰符在这里使用则恰到好处。</p>
+<h2><a class="main__anchor" name="zong-jie-fang-fa" href="#zong-jie-fang-fa">总结，方法</a></h2><p>如果我们按照这些方法在实际任务中的用途进行划分，则会更容易理解。</p>
+<dl>
+<dt>只查找第一个匹配项的：</dt>
+<dd>
+<ul>
+<li>找到第一个匹配项的位置 — <code>str.search(reg)</code>。</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li>找到完全匹配 — <code>str.match(reg)</code>。</li>
+<li>检查是否有符合条件的匹配 — <code>regexp.test(str)</code>。</li>
+<li>从指定位置查找匹配 — <code>regexp.exec(str)</code>，设置 <code>regexp.lastIndex</code> 位置。</li>
+</ul>
+<dl>
+<dt>查找全匹配：</dt>
+<dd>
+<ul>
+<li>由匹配项组成的数组 — <code>str.match(reg)</code>, 使用 <code>g</code> 修饰符。</li>
+</ul>
+</dd>
+</dl>
+<ul>
+<li>获取所有匹配项的完整信息 — <code>regexp.exec(str)</code>，在循环中使用 <code>g</code> 修饰符。</li>
+</ul>
+<dl>
+<dt>搜索然后替换：</dt>
+<dd>
+<ul>
+<li>替换成另一个字符串或者函数返回的结果 — <code>str.replace(reg, str|func)</code></li>
+</ul>
+</dd>
+<dt>拆分字符串：</dt>
+<dd>
+<ul>
+<li><code>str.split(str|reg)</code></li>
+</ul>
+</dd>
+</dl>
+<p>我们还讨论了两个修饰符：</p>
+<ul>
+<li><code>g</code> 修饰符查找所有的匹配项（全局搜索），</li>
+<li><code>y</code> 修饰符在文本中的指定位置查找。</li>
+</ul>
+<p>现在我们知道了这些方法，并且可以使用正则表达式了。但是我们需要学习它们的语法，所以我们继续下一章节。</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-introduction.htm" tppabs="https://zh.javascript.info/regexp-introduction" data-tooltip="模式（Patterns）和修饰符（flags）"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="regexp-character-classes.htm" tppabs="https://zh.javascript.info/regexp-character-classes" data-tooltip="字符集合"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/regexp-methods","identifier":"\/regexp-methods"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions">正则表达式</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#strsearchreg">str.search(reg)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mei-yougxiu-shi-fu-qing-kuang-xia-de-strmatchreg">没有“g”修饰符情况下的 str.match(reg)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-yonggxiu-shi-fu-de-strmatchreg">使用“g”修饰符的 str.match(reg)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#strsplitregexpsubstrlimit">str.split(regexp|substr, limit)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#strreplacestrregstrfunc">str.replace(str|reg, str|func)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#regexpteststr">regexp.test(str)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#regexpexecstr">regexp.exec(str)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#y-flag">“y”修饰符</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie-fang-fa">总结，方法</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-methods"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/02-regexp-methods/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/02-regexp-methods/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/02-regexp-methods/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

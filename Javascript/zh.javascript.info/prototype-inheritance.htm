@@ -1,0 +1,555 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">原型继承</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/prototype-inheritance"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="原型继承"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="原型继承"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/property-accessors"><link rel="next" href="/function-prototype"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="原型继承"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/prototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/prototype-inheritance'" tppabs="https://javascript.info/prototype-inheritance"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="prototype-inheritance.htm" tppabs="https://zh.javascript.info/prototype-inheritance"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/prototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/prototype-inheritance'" tppabs="https://ja.javascript.info/prototype-inheritance"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/prototype-inheritance">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/prototype-inheritance" selected>简体中文</option><option value="https://ja.javascript.info/prototype-inheritance">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="57" max="67" data-tooltip="第 67 章，第 57 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming" itemprop="url"><span itemprop="title">对象、类和继承</span></a></li></ol><h1 class="main__header-title">原型继承</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="原型继承"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>在编程中，我们经常想要获取并扩展一些事情。</p>
+<p>例如，我们有一个 <code>user</code> 对象及其属性和方法。而且希望将 <code>admin</code> 和 <code>guest</code> 作为它稍加修改的变体。我们希望重用 <code>user</code> 所拥有的内容，而不是复制/实现它的方法，只需要在其上创建一个新的对象。</p>
+<p><strong>原型继承</strong>的语言特性可以帮助我们实现这一需求。</p>
+<h2><a class="main__anchor" name="prototype" href="#prototype">[[Prototype]]</a></h2><p>在 JavaScript 中， 对象有一个特殊的隐藏属性 <code>[[Prototype]]</code>（如规范中说描述的），即 <code>null</code> 或者是另一个引用对象。该对象叫作 “a prototype”：</p>
+<figure><div class="image" style="width:170px">
+      <div class="image__ratio" style="padding-top:79.41176470588235%"></div>
+      <img src="article/prototype-inheritance/object-prototype-empty.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/object-prototype-empty.png" alt="" width="170" height="135" class="image__image">
+      </div></figure><p><code>[[Prototype]]</code> 有一个“神奇”的意义。当我们想要从 <code>object</code> 中读取一个属性时，它就丢失了。JavaScript 会自动从原型中获取它。在编程中，这样的事情称为“原型继承”。许多很酷的语言特性和编程技巧都是基于它的。</p>
+<p>属性 <code>[[Prototype]]</code> 是内部的而且隐藏的，但是设置它的方法却有很多种。</p>
+<p>其中之一是使用 <code>__proto__</code>，就像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true
+};
+let rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意 <code>__proto__</code> 与 <code>[[Prototype]]</code> <strong>不一样</strong>。这是一个 getter/setter。我们之后会讨论如何设置它，但是现在 <code>__proto__</code> 工作的很好。</p>
+<p>如果我们在 <code>rabbit</code> 中查找一个属性，而且它丢失了，JavaScript 会自动从 <code>animal</code> 中获取它。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10},{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true
+};
+let rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal; // (*)
+
+// we can find both properties in rabbit now:
+alert( rabbit.eats ); // true (**)
+alert( rabbit.jumps ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里的 <code>(*)</code> 行将 <code>animal</code> 设置为 <code>rabbit</code> 的原型。</p>
+<p>当 <code>alert</code> 试图读取 <code>rabbit.eats</code> <code>(**)</code> 时，因为它不存在于 <code>rabbit</code>，JavaScript 会遵循 <code>[[Prototype]]</code> 引用，并在 <code>animal</code> 中查找（自顶向下）：</p>
+<figure><div class="image" style="width:168px">
+      <div class="image__ratio" style="padding-top:80.35714285714286%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/proto-animal-rabbit.png" alt="" width="168" height="135" class="image__image">
+      </div></figure><p>我们可以说 &quot;<code>animal</code> 是 <code>rabbit</code>&quot; 的原型或者说 &quot;<code>rabbit</code> 的原型继承自 <code>animal</code>&quot;。</p>
+<p>因此如果 <code>animal</code> 有许多有用的属性和方法，那么它们在 <code>rabbit</code> 中会自动变为可用的。这种属性行为称为“继承”。</p>
+<p>如果我们在 <code>animal</code> 中有一种方法，它可以在 <code>rabbit</code> 中被调用：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:13,&quot;end&quot;:13},{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    alert(&quot;Animal walk&quot;);
+  }
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+// walk is taken from the prototype
+rabbit.walk(); // Animal walk</code></pre>
+        </div>
+      </div>
+      
+      </div><p>该方法自动从原型中提取，如下所示：</p>
+<figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:91.90751445086705%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/proto-animal-rabbit-walk.png" alt="" width="173" height="159" class="image__image">
+      </div></figure><p>原型链可以很长：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    alert(&quot;Animal walk&quot;);
+  }
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit
+}
+
+// walk is taken from the prototype chain
+longEar.walk(); // Animal walk
+alert(longEar.jumps); // true (from rabbit)</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:145.08670520231215%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-chain.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/proto-animal-rabbit-chain.png" alt="" width="173" height="251" class="image__image">
+      </div></figure><p>实际上只有两个限制：</p>
+<ol>
+<li>引用不能形成闭环。如果我们试图在一个闭环中分配 <code>__proto__</code>，JavaScript 会抛出异常。</li>
+<li><code>__proto__</code> 的值可以是对象，也可以是 <code>null</code>。所有其他的值（例如原语）都会被忽略。</li>
+</ol>
+<p>这也可能是显而易见的，即：只能有一个 <code>[[Prototype]]</code>。对象不能继承自其他两个对象。</p>
+<h2><a class="main__anchor" name="du-xie-gui-ze" href="#du-xie-gui-ze">读写规则</a></h2><p>原型仅用于读取属性。</p>
+<p>对于数据属性（不是 getters/setters）写/删除操作直接在对象上进行操作。</p>
+<p>在以下示例中，我们将 <code>walk</code> 方法分配给 <code>rabbit</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eats: true,
+  walk() {
+    /* this method won't be used by rabbit */
+  }
+};
+
+let rabbit = {
+  __proto__: animal
+}
+
+rabbit.walk = function() {
+  alert(&quot;Rabbit! Bounce-bounce!&quot;);
+};
+
+rabbit.walk(); // Rabbit! Bounce-bounce!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>从现在开始，<code>rabbit.walk()</code> 调用将立即在对象中找到方法并执行它，而不是使用原型：</p>
+<figure><div class="image" style="width:173px">
+      <div class="image__ratio" style="padding-top:91.32947976878613%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk-2.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/proto-animal-rabbit-walk-2.png" alt="" width="173" height="158" class="image__image">
+      </div></figure><p>对于 getters/setters —— 如果我们读写一个属性，就会在原型中查找并调用它们。</p>
+<p>例如，在以下代码中检查出 <code>admin.fullName</code> 属性：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  surname: &quot;Smith&quot;,
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(&quot; &quot;);
+  },
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  }
+};
+
+let admin = {
+  __proto__: user,
+  isAdmin: true
+};
+
+alert(admin.fullName); // John Smith (*)
+
+// setter triggers!
+admin.fullName = &quot;Alice Cooper&quot;; // (**)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里的 <code>(*)</code> 属性 <code>admin.fullName</code> 在原型 <code>user</code> 中有一个 getter，因此它会被调用。在 <code>(**)</code> 中，属性在原型中有一个 setter，因此它会被调用。</p>
+<h2><a class="main__anchor" name="this-de-zhi" href="#this-de-zhi">“this” 的值</a></h2><p>在上面的例子中可能会出现一个有趣的现象：在 <code>set fullName(value)</code> 中 <code>this</code> 的值是什么？属性 <code>this.name</code> 和 <code>this.surname</code> 写在哪里： <code>user</code> 还是 <code>admin</code>？</p>
+<p>答案很简单：<code>this</code> 根本不受原型的影响。</p>
+<p><strong>无论在哪里找到方法：在对象或者原型中。调用方法时，<code>this</code> 始终是点之前的对象。</strong></p>
+<p>因此，实际上 setter 使用 <code>admin</code> 作为 <code>this</code>，而不是 <code>user</code>。</p>
+<p>这是一件非常重要的事情，因为我们可能有一个有很多方法而且继承它的大对象。然后我们可以在继承的对象上运行它的方法，它们将修改这些对象的状态，而不是大对象的。</p>
+<p>例如，这里的 <code>animal</code> 代表“方法存储”，而且 <code>rabbit</code> 在使用它。</p>
+<p>调用 <code>rabbit.sleep()</code>，在 <code>rabbit</code> 对象上设置 <code>this.isSleeping</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// animal has methods
+let animal = {
+  walk() {
+    if (!this.isSleeping) {
+      alert(`I walk`);
+    }
+  },
+  sleep() {
+    this.isSleeping = true;
+  }
+};
+
+let rabbit = {
+  name: &quot;White Rabbit&quot;,
+  __proto__: animal
+};
+
+// modifies rabbit.isSleeping
+rabbit.sleep();
+
+alert(rabbit.isSleeping); // true
+alert(animal.isSleeping); // undefined (no such property in the prototype)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果：</p>
+<figure><div class="image" style="width:180px">
+      <div class="image__ratio" style="padding-top:101.11111111111111%"></div>
+      <img src="article/prototype-inheritance/proto-animal-rabbit-walk-3.png" tppabs="https://zh.javascript.info/article/prototype-inheritance/proto-animal-rabbit-walk-3.png" alt="" width="180" height="182" class="image__image">
+      </div></figure><p>如果我们从 <code>animal</code> 继承像 <code>bird</code>、<code>snake</code> 等其他对象，他们也将获取 <code>animal</code> 的方法。但是每个方法 <code>this</code> 都是相应的对象，而不是 <code>animal</code>，在调用时（在点之前）确定。因此当我们将数据写入 <code>this</code> 时，它会被存储进这些对象中。</p>
+<p>因此，方法是共享的，但对象状态不是。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>JavaScript 中，所有的对象都有一个隐藏的 <code>[[Prototype]]</code> 属性，它可以是另一个对象或者 <code>null</code>。</li>
+<li>我们可以使用 <code>obj.__proto__</code> 进行访问（还有其他方法，但很快就会被覆盖）。</li>
+<li><code>[[Prototype]]</code> 引用的对象称为“原型”。</li>
+<li>如果我们想要读取 <code>obj</code> 属性或者调用一个方法，而且它不存在，那么 JavaScript 就会尝试在原型中查找它。写/删除直接在对象上进行操作，它们不使用原型（除非属性实际上是一个 setter）。</li>
+<li>如果我们调用 <code>obj.method()</code>，而且 <code>method</code> 是从原型中获取的，<code>this</code> 仍然会引用 <code>obj</code>。因此方法重视与当前对象一起工作，即使它们是继承的。</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#yu-yuan-xing-yi-qi-gong-zuo" name="yu-yuan-xing-yi-qi-gong-zuo">与原型一起工作</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/property-after-delete  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/property-after-delete'" tppabs="https://zh.javascript.info/task/property-after-delete" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>如下创建一对对象的代码，然后对它们进行修改。</p>
+<p>过程中显示了哪些值？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  jumps: null
+};
+let rabbit = {
+  __proto__: animal,
+  jumps: true
+};
+
+alert( rabbit.jumps ); // ? (1)
+
+delete rabbit.jumps;
+
+alert( rabbit.jumps ); // ? (2)
+
+delete animal.jumps;
+
+alert( rabbit.jumps ); // ? (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>应该有 3 个答案。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li><code>true</code>，来自于 <code>rabbit</code>。</li>
+<li><code>null</code>，来自于 <code>animal</code>。</li>
+<li><code>undefined</code>,不再有这样的属性存在。</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#sou-suo-suan-fa" name="sou-suo-suan-fa">搜索算法</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/search-algorithm  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/search-algorithm'" tppabs="https://zh.javascript.info/task/search-algorithm" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>任务有两部分。</p>
+<p>我们有一个对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let head = {
+  glasses: 1
+};
+
+let table = {
+  pen: 3
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2
+};
+
+let pockets = {
+  money: 2000
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>使用 <code>__proto__</code> 来分配原型的方式，任何查找都会遵循路径：<code>pockets</code> → <code>bed</code> → <code>table</code> → <code>head</code>。例如，<code>pockets.pen</code> 应该是 <code>3</code>（在 <code>table</code> 中找到）， <code>bed.glasses</code> 应该是 <code>1</code> （在 <code>head</code> 中找到）。</li>
+<li>回答问题：如果需要检测的话，将 <code>glasses</code> 作为 <code>pockets.glasses</code> 更快还是作为 <code>head.glasses</code> 更快？</li>
+</ol>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li>
+<p>让我们添加 <code>__proto__</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let head = {
+  glasses: 1
+};
+
+let table = {
+  pen: 3,
+  __proto__: head
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table
+};
+
+let pockets = {
+  money: 2000,
+  __proto__: bed
+};
+
+alert( pockets.pen ); // 3
+alert( bed.glasses ); // 1
+alert( table.money ); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>在现代引擎的性能方面，无法是从对象中还是从它的原型中获取一个属性，都是没有区别的。它们会记住在哪里找到该属性的，然后下一次请求到来时，重用它。</p>
+<p>例如，对于 <code>pockets.glasses</code> 来说，它们会记得找到 <code>glasses</code>（在 <code>head</code> 中）的地方，这样下次就会直接在之前的地方搜索。一旦有内容更改，它们也会自动更新内容缓存，因此这样的优化是安全的。</p>
+</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#xie-zai-na-li" name="xie-zai-na-li">写在哪里？</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/proto-and-this  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/proto-and-this'" tppabs="https://zh.javascript.info/task/proto-and-this" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p><code>rabbit</code> 继承自 <code>animal</code>。</p>
+<p>如果我们调用 <code>rabbit.eat()</code>，哪一个对象会接收到 <code>full</code> 属性：<code>animal</code> 还是 <code>rabbit</code>？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eat() {
+    this.full = true;
+  }
+};
+
+let rabbit = {
+  __proto__: animal
+};
+
+rabbit.eat();</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><strong>答案：<code>rabbit</code>。</strong></p>
+<p>这是因为 <code>this</code> 是“点”之前对象，因此 <code>rabbit.eat()</code> 修改了 <code>rabbit</code>。</p>
+<p>属性查找和执行是两件不同的事情。
+<code>rabbit.eat</code> 方法在原型中被第一个找到，然后执行 <code>this=rabbit</code>。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#wei-shi-mo-liang-zhi-cang-shu-du-bao-liao" name="wei-shi-mo-liang-zhi-cang-shu-du-bao-liao">为什么两只仓鼠都饱了？</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/hamster-proto  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/hamster-proto'" tppabs="https://zh.javascript.info/task/hamster-proto" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>我们有两只仓鼠：<code>speedy</code> 和 <code>lazy</code> 都继承自普通的 <code>hamster</code> 对象。</p>
+<p>当我们喂一只的同时，另一只也吃饱了。为什么？如何修复这件事？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+// This one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// This one also has it, why? fix please.
+alert( lazy.stomach ); // apple</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们仔细研究一下在调用 <code>speedy.eat(&quot;apple&quot;)</code> 的时候，发生了什么。</p>
+<ol>
+<li>
+<p><code>speedy.eat</code> 方法在原型（<code>=hamster</code>）中被发现，然后执行 <code>this=speedy</code>（在点之前的对象）。</p>
+</li>
+<li>
+<p><code>this.stomach.push()</code> 需要查找到 <code>stomach</code> 属性，然后调用 <code>push</code> 来处理。它在 <code>this</code> (<code>=speedy</code>) 中查找 <code>stomach</code>，但并没有找到。</p>
+</li>
+<li>
+<p>然后它顺着原型链，在 <code>hamster</code> 中找到 <code>stomach</code>。</p>
+</li>
+<li>
+<p>然后它调用 <code>push</code> ，将食物添加到<strong>胃的原型链</strong>中。</p>
+</li>
+</ol>
+<p>因此所有的仓鼠都有共享一个胃！</p>
+<p>每次 <code>stomach</code> 从原型中获取，然后 <code>stomach.push</code> 修改它的“位置”。</p>
+<p>请注意，这种情况在 <code>this.stomach=</code> 进行简单的赋值情况下不会发生：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    // assign to this.stomach instead of this.stomach.push
+    this.stomach = [food];
+  }
+};
+
+let speedy = {
+   __proto__: hamster
+};
+
+let lazy = {
+  __proto__: hamster
+};
+
+// Speedy one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// Lazy one's stomach is empty
+alert( lazy.stomach ); // &lt;nothing&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，所有的都在正常运行，因为 <code>this.stomach=</code> 不会在 <code>stomach</code> 中执行查找。该值会被直接写入 <code>this</code> 对象。</p>
+<p>此外，我们还可以通过确保每只仓鼠都有自己的胃来完全回避这个问题：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15},{&quot;start&quot;:10,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+  __proto__: hamster,
+  stomach: []
+};
+
+let lazy = {
+  __proto__: hamster,
+  stomach: []
+};
+
+// Speedy one found the food
+speedy.eat(&quot;apple&quot;);
+alert( speedy.stomach ); // apple
+
+// Lazy one's stomach is empty
+alert( lazy.stomach ); // &lt;nothing&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>作为一种常见的解决方案，描述特定对象状态的所有属性，如上述的 <code>stomach</code>，通常都被写入到该对象中。这防止了类似问题的出现。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="property-accessors.htm" tppabs="https://zh.javascript.info/property-accessors" data-tooltip="属性的 getter 和 setter"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="function-prototype.htm" tppabs="https://zh.javascript.info/function-prototype" data-tooltip="函数原型"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/prototype-inheritance","identifier":"\/prototype-inheritance"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming">对象、类和继承</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#prototype">[[Prototype]]</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#du-xie-gui-ze">读写规则</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#this-de-zhi">“this” 的值</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fprototype-inheritance"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/03-prototype-inheritance/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/03-prototype-inheritance/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/03-prototype-inheritance/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

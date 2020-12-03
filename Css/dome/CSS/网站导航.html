@@ -1,0 +1,107 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+
+		<title>网站导航</title>
+		
+		<style type="text/css">
+			*{
+				margin: 0px ;
+				padding: 0px ;
+			}
+			
+			a{
+				text-decoration: none ;
+			}
+
+
+			.nav-header
+			{
+				width: 100% ;
+				height:85px ;
+				background: rgba(0,0,0,0.7);
+			}
+			
+			.head-contain
+			{
+				width: 700px ;
+				height: 85px ;
+				margin:0 auto ;
+				text-align:center ;
+			}
+			
+			.top-logo,.top-nav,.top-nav li,.top-right
+			{
+				display: inline-block ;
+				vertical-align:top ;
+				margin-top: 15px ;
+			}
+			
+			.top-nav li
+			{
+				width: 90px ;
+			}
+			
+			.top-nav li a
+			{
+				font-size: 17px ;
+				color: #fff ;
+				
+			}
+			
+			.top-nav li a:hover
+			{
+
+				color: blue ;			
+			}
+			
+			.top-right a
+			{
+				display:inline-block ;/*将内敛元素 转为 块级元素，使之遵循盒子模型*/
+				font-size: 17px ;
+				margin-top: 10px ;
+				border-radius:30px ;
+			}
+			
+			.top-right a:first-of-type
+			{
+				width:75px ;
+				height: 35px ;
+				border:1px orange solid ;
+				line-height:35px ;
+			}
+			
+			.top-right a:first-of-type:hover
+			{
+				color:red ;
+				background: orange;
+			}
+			
+		</style>	
+
+	</head>
+	<body> 
+		<header class="nav-header">
+			<div class="head-contain">
+				<a href="#" class="top-logo"><img src="imgs/fd1.png" height="50px" width="50px"/></a>
+				<nav class="top-nav">
+					<ul>
+						<li><a href="#">旅游天地</a></li>
+						<li><a href="#">美食城</a></li>
+						<li><a href="#">成长体系</a></li>
+						<li><a href="#">当地特色</a></li>
+						<li><a href="#">重点推荐</a></li>
+
+					</ul>
+				</nav>
+				<div class="top-right">
+					<a href="#">登录</a>
+					<a href="#">开通会员</a>
+				</div>
+			</div>
+		</header>
+	</body>
+</html>
+

@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">èšç„¦ï¼šfocus/blur</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/focus-blur"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="èšç„¦ï¼šfocus/blur"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="èšç„¦ï¼šfocus/blur"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/form-elements"><link rel="next" href="/events-change-input"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="èšç„¦ï¼šfocus/blur"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/focus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/focus-blur'" tppabs="https://javascript.info/focus-blur"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/focus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/focus-blur'" tppabs="https://learn.javascript.ru/focus-blur"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="focus-blur.htm" tppabs="https://zh.javascript.info/focus-blur"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/focus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/focus-blur'" tppabs="https://ja.javascript.info/focus-blur"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/focus-blur">English</option><option value="https://learn.javascript.ru/focus-blur">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/focus-blur" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/focus-blur">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="25" max="27" data-tooltip="ç¬¬ 27 ç« ï¼Œç¬¬ 25 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">æµè§ˆå™¨ï¼šæ–‡æ¡£ã€äº‹ä»¶å’Œæ¥å£</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="forms-controls.htm" tppabs="https://zh.javascript.info/forms-controls" itemprop="url"><span itemprop="title">è¡¨å•ï¼Œæ§ä»¶</span></a></li></ol><h1 class="main__header-title">èšç„¦ï¼šfocus/blur</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="èšç„¦ï¼šfocus/blur"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>å½“ä¸€ä¸ªå…ƒç´ è¢«ç”¨æˆ·ç‚¹å‡»æˆ–ä½¿ç”¨é”®ç›˜ä¸Šçš„ <kbd class="shortcut">Tab</kbd> é€‰ä¸­æ—¶ï¼Œè¯¥å…ƒç´ ä¼šè¢«èšç„¦ã€‚å½“ç½‘é¡µåŠ è½½æ—¶ HTML <code>autofocus</code> å±æ€§ä¹Ÿå¯ä»¥è®©ä¸€ä¸ªç„¦ç‚¹è½åœ¨å…ƒç´ ä¸Šï¼Œä¸ä»…å¦‚æ­¤ï¼Œè¿˜æœ‰å…¶å®ƒé€”å¾„å¯ä»¥è·å–ç„¦ç‚¹ã€‚</p>
+<p>èšç„¦é€šå¸¸è¡¨ç¤ºï¼šâ€œè¿™é‡Œå‡†å¤‡å¥½æ¥å—æ•°æ®äº†â€ï¼Œè€Œè¿™ä¹Ÿæ­£æ˜¯æˆ‘ä»¬è¿è¡Œä»£ç å»åˆå§‹åŒ–æˆ–åŠ è½½ä¸€äº›ä¸œè¥¿çš„æ—¶å€™ã€‚</p>
+<p>å¤±å»ç„¦ç‚¹çš„æ—¶åˆ»å¯èƒ½æ›´ä¸ºé‡è¦ã€‚å®ƒå¯èƒ½å‘ç”Ÿåœ¨ç”¨æˆ·ç‚¹å‡»ç½‘é¡µå…¶å®ƒåœ°æ–¹æˆ–è€…ç‚¹å‡» <kbd class="shortcut">Tab</kbd> è·³è½¬åˆ°ä¸‹ä¸€ä¸ªè¡¨å•åŸŸï¼Œäº¦æˆ–æ˜¯å…¶å®ƒé€”å¾„çš„æ—¶å€™ã€‚</p>
+<p>å¤±å»ç„¦ç‚¹é€šå¸¸è¡¨ç¤ºï¼šâ€œæ•°æ®å·²ç»å®Œæˆè¾“å…¥äº†â€ï¼Œæ‰€ä»¥æˆ‘ä»¬å¯ä»¥è¿è¡Œä»£ç æ¥æ£€æŸ¥å®ƒï¼Œç”šè‡³å¯ä»¥æ˜¯ä¿å­˜åˆ°æœåŠ¡å™¨ä¸Šã€‚</p>
+<p>å½“æ“ä½œèšç„¦äº‹ä»¶çš„æ—¶å€™æœ‰ä¸€äº›é‡è¦çš„ç‰¹æ€§éœ€è¦æ³¨æ„ã€‚æˆ‘ä»¬ä¼šå°½é‡åœ¨è¿™é‡Œä»‹ç»ã€‚</p>
+<h2><a class="main__anchor" name="focusblur-shi-jian" href="#focusblur-shi-jian">focus/blur äº‹ä»¶</a></h2><p>å½“å…ƒç´ èšç„¦æ—¶å®ƒçš„ <code>focus</code> äº‹ä»¶è¢«è§¦å‘ï¼Œè¿˜æœ‰å½“å…ƒç´ å¤±å»ç„¦ç‚¹çš„æ—¶å€™å®ƒçš„ <code>blur</code> äº‹ä»¶è¢«è§¦å‘ã€‚</p>
+<p>è®©æˆ‘ä»¬ä½¿ç”¨å®ƒä»¬å»æ ¡éªŒä¸€ä¸ªè¾“å…¥å­—æ®µã€‚</p>
+<p>åœ¨ä¸‹é¢çš„ä¾‹å­ä¸­ï¼š</p>
+<ul>
+<li><code>blur</code> äº‹ä»¶å¤„ç†å™¨ä¼šæ£€æŸ¥è¿™ä¸ªåŸŸæœ‰æ²¡æœ‰è¾“å…¥é‚®ç®±ï¼Œå¦‚æœæ²¡æœ‰çš„è¯å±•ç¤ºä¸€ä¸ªé”™è¯¯ä¿¡æ¯ã€‚</li>
+<li><code>focus</code> äº‹ä»¶å¤„ç†å™¨éšè—é”™è¯¯ä¿¡æ¯ï¼ˆå½“å¤±å»ç„¦ç‚¹çš„æ—¶å€™ <code>blur</code> äº‹ä»¶å¤„ç†å™¨è¿˜ä¼šå†æ£€æŸ¥ä¸€éï¼‰ï¼š</li>
+</ul>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:17,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:13}]},{&quot;start&quot;:10,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:12}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .invalid { border-color: red; }
+  #error { color: red }
+&lt;/style&gt;
+
+Your email please: &lt;input type=&quot;email&quot; id=&quot;input&quot;&gt;
+
+&lt;div id=&quot;error&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+input.onblur = function() {
+  if (!input.value.includes('@')) { // not email
+    input.classList.add('invalid');
+    error.innerHTML = 'Please enter a correct email.'
+  }
+};
+
+input.onfocus = function() {
+  if (this.classList.contains('invalid')) {
+    // remove the &quot;error&quot; indication, because the user wants to re-enter something
+    this.classList.remove('invalid');
+    error.innerHTML = &quot;&quot;;
+  }
+};
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-1hkjsn"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>åœ¨ç°ä»£çš„ HTML ä¸­ï¼Œå¯ä»¥ä½¿ç”¨ <code>required</code>ã€<code>pattern</code> ç­‰è¯¸å¤šè¾“å…¥å±æ€§æ ¡éªŒè¡¨å•è¾“å…¥å†…å®¹ï¼Œå¹¶ä¸”è¿™äº›å±æ€§åœ¨å¾ˆå¤šæ—¶å€™æ»¡è¶³äº†æˆ‘ä»¬çš„ä½¿ç”¨éœ€æ±‚ã€‚JavaScript å¯ä»¥è®©æˆ‘ä»¬ä»¥æ›´çµæ´»çš„æ–¹å¼å»å®ç°ã€‚å¦‚æœæ•°æ®æ˜¯æ­£ç¡®çš„ï¼Œæˆ‘ä»¬å¯ä»¥æŠŠå®ƒè‡ªåŠ¨å‘é€åˆ°æœåŠ¡å™¨ä¸Šã€‚</p>
+<h2><a class="main__anchor" name="focusblur-fang-fa" href="#focusblur-fang-fa">focus/blur æ–¹æ³•</a></h2><p>æ–¹æ³• <code>elem.focus()</code> å’Œ <code>elem.blur()</code> å¯ä»¥è®¾ç½®å’Œç§»é™¤å…ƒç´ ä¸Šçš„ç„¦ç‚¹ã€‚</p>
+<p>ä¸¾ä¸ªä¾‹å­ï¼Œå¦‚æœè¾“å…¥å€¼æ— æ•ˆï¼Œæˆ‘ä»¬å¯ä»¥è®©ç„¦ç‚¹ä¸€ç›´ä¿ç•™åœ¨è¿™ä¸ªè¾“å…¥åŸŸä¸Šï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:15}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .error {
+    background: red;
+  }
+&lt;/style&gt;
+
+Your email please: &lt;input type=&quot;email&quot; id=&quot;input&quot;&gt;
+&lt;input type=&quot;text&quot; style=&quot;width:220px&quot; placeholder=&quot;make email invalid and try to focus here&quot;&gt;
+
+&lt;script&gt;
+  input.onblur = function() {
+    if (!this.value.includes('@')) { // not email
+      // show the error
+      this.classList.add(&quot;error&quot;);
+      // ...and put the focus back
+      input.focus();
+    } else {
+      this.classList.remove(&quot;error&quot;);
+    }
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-5fxcy7"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>è¿™åœ¨é™¤äº†ç«ç‹ï¼ˆ<a href="javascript:if(confirm('https://bugzilla.mozilla.org/show_bug.cgi?id=53579  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://bugzilla.mozilla.org/show_bug.cgi?id=53579'" tppabs="https://bugzilla.mozilla.org/show_bug.cgi?id=53579">bug</a>ï¼‰ä¹‹å¤–çš„å…¶å®ƒæµè§ˆå™¨éƒ½å¯ä»¥æ­£å¸¸å·¥ä½œã€‚</p>
+<p>å¦‚æœæˆ‘ä»¬è¾“å…¥ä¸€äº›æ— æ•ˆæ•°æ®åˆ°è¿™ä¸ªè¾“å…¥åŸŸé‡Œï¼Œæˆ–è€…å½“æˆ‘ä»¬å°è¯•ä½¿ç”¨ <kbd class="shortcut">Tab</kbd> å’Œç‚¹å‡»å…¶å®ƒè¿œç¦» <code>&lt;input&gt;</code> çš„åœ°æ–¹ï¼Œé‚£ä¹ˆ <code>onblur</code> äº‹ä»¶å¤„ç†å™¨ä¼šæŠŠç„¦ç‚¹é‡æ–°è®¾ç½®åˆ°è¿™ä¸ªè¾“å…¥åŸŸé‡Œã€‚</p>
+<p>è¯·æ³¨æ„ï¼Œæˆ‘ä»¬ä¸å¯ä»¥é€šè¿‡åœ¨ <code>onblur</code> äº‹ä»¶å¤„ç†å™¨é‡Œè°ƒç”¨ <code>event.preventDefault()</code> æ¥â€œé˜»æ­¢å¤±å»ç„¦ç‚¹â€ï¼Œå› ä¸º <code>onblur</code> äº‹ä»¶å¤„ç†å™¨æ˜¯åœ¨å…ƒç´ å¤±å»ç„¦ç‚¹çš„<strong>ä¹‹å</strong>è¿è¡Œçš„ã€‚</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">JavaScript å¯¼è‡´çš„ç„¦ç‚¹ä¸¢å¤±</span></div>
+            <div class="important__content"><p>å¾ˆå¤šç§åŸå› å¯ä»¥å¯¼è‡´å¤±å»ç„¦ç‚¹ã€‚</p>
+<p>å…¶ä¸­ä¹‹ä¸€æ˜¯ç”¨æˆ·ç‚¹å‡»äº†å…¶å®ƒçš„åœ°æ–¹ã€‚å½“ç„¶ JavaScript æœ¬èº«ä¹Ÿä¼šå¯¼è‡´è¿™ç§äº‹æƒ…å‘ç”Ÿï¼Œä¸¾ä¸ªä¾‹å­ï¼š</p>
+<ul>
+<li>ä¸€ä¸ª <code>alert</code> å¯¹è¯æ¡†ä¼šäº‰å¤ºç„¦ç‚¹ï¼Œæ‰€ä»¥è¿™ä¼šå¯¼è‡´å…ƒç´ å¤±å»ç„¦ç‚¹ï¼ˆè§¦å‘ <code>blur</code> äº‹ä»¶ï¼‰ï¼Œè¿˜æœ‰å½“è¿™ä¸ª <code>alert</code> å¯¹è¯æ¡†æ¶ˆå¤±çš„æ—¶å€™ï¼Œç„¦ç‚¹é‡æ–°å›åˆ°åŸå…ƒç´ ä¸Šï¼ˆè§¦å‘<code>focus</code>äº‹ä»¶ï¼‰ã€‚</li>
+<li>å¦‚æœä¸€ä¸ªå…ƒç´ è¢«ç§»å‡º DOMï¼Œé‚£ä¹ˆå®ƒä¼šå¯¼è‡´ç„¦ç‚¹ä¸¢å¤±ã€‚å°±ç®—å®ƒè¢«é‡æ–°æ·»åŠ åˆ° DOMï¼Œç„¦ç‚¹ä¹Ÿä¸ä¼šå›åˆ°å®ƒèº«ä¸Šã€‚</li>
+</ul>
+<p>æœ‰æ—¶å€™è¿™äº›ç‰¹æ€§å¯¼è‡´å‘ç”Ÿçš„ <code>focus/blur</code> äº‹ä»¶å¤„ç†å™¨ä¼šè®©äººè‹¦æ¼ â€” å®ƒä»¬åœ¨ä¸è¢«éœ€è¦çš„æ—¶å€™å‘ç”Ÿã€‚</p>
+<p>æœ€å¥½çš„ç§˜è¯€å°±æ˜¯å½“ä½¿ç”¨è¿™äº›äº‹ä»¶çš„æ—¶å€™å°å¿ƒç‚¹ã€‚å¦‚æœæˆ‘ä»¬æƒ³è¦è¿½è¸ªç”¨æˆ·å‘èµ·çš„å»ç„¦äº‹ä»¶ï¼Œé‚£ä¹ˆæˆ‘ä»¬è‡ªå·±åº”è¯¥é¿å…å»è§¦å‘å®ƒä»¬ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="yun-xu-zai-ren-he-yuan-su-shang-ju-jiao-tabindex" href="#yun-xu-zai-ren-he-yuan-su-shang-ju-jiao-tabindex">å…è®¸åœ¨ä»»ä½•å…ƒç´ ä¸Šèšç„¦ï¼štabindex</a></h2><p>é»˜è®¤æƒ…å†µä¸‹ï¼Œå¾ˆå¤šå…ƒç´ ä¸æ”¯æŒè·å–ç„¦ç‚¹ã€‚</p>
+<p>list æ ‡ç­¾åœ¨ä¸åŒçš„æµè§ˆå™¨è¡¨ç°ä¸åŒï¼Œä½†æœ‰ä¸€ä»¶äº‹æ€»æ˜¯æ­£ç¡®çš„ï¼š<code>focus/blur</code> ä¿è¯æ”¯æŒé‚£äº›ç”¨æˆ·å¯ä»¥äº¤äº’çš„å…ƒç´ ï¼šæ¯”å¦‚ <code>&lt;button&gt;</code>ã€<code>&lt;input&gt;</code>ã€<code>&lt;select&gt;</code> å’Œ <code>&lt;a&gt;</code> ç­‰ç­‰ã€‚</p>
+<p>ä»å¦ä¸€æ–¹é¢è¯´ï¼Œä¸ºäº†æ ¼å¼åŒ–æŸäº›ä¸œè¥¿è€Œå­˜åœ¨çš„å…ƒç´ åƒ <code>&lt;div&gt;</code>ã€<code>&lt;span&gt;</code> å’Œ <code>&lt;table&gt;</code> â€” é»˜è®¤æ˜¯ä¸èƒ½è¢«èšç„¦çš„ã€‚<code>elem.focus()</code> æ–¹æ³•ä¸èƒ½ä½œç”¨äºå®ƒä»¬ï¼Œè€Œä¸” <code>focus/blur</code> äº‹ä»¶ä¹Ÿç»ä¸ä¼šè¢«è§¦å‘ã€‚</p>
+<p>ä½¿ç”¨ HTML å±æ€§ <code>tabindex</code> å¯ä»¥æ”¹å˜è¿™ç§é»˜è®¤æƒ…å†µã€‚</p>
+<p>è¿™ä¸ªå±æ€§çš„ç›®çš„æ˜¯å½“ä½¿ç”¨ <kbd class="shortcut">Tab</kbd> åœ¨å…ƒç´ ä¹‹é—´åˆ‡æ¢çš„æ—¶å€™æŒ‡å®šå®ƒä»¬çš„æ’åˆ—é¡ºåºã€‚</p>
+<p>ä¹Ÿå°±æ˜¯è¯´ï¼šå¦‚æœæˆ‘ä»¬æœ‰ä¸¤ä¸ªå…ƒç´ ï¼Œç¬¬ä¸€ä¸ªæœ‰å±æ€§ <code>tabindex=&quot;1&quot;</code>ï¼Œç¬¬äºŒä¸ªæœ‰ <code>tabindex=&quot;2&quot;</code>ï¼Œç„¶åå½“ç„¦ç‚¹åœ¨ç¬¬ä¸€ä¸ªå…ƒç´ çš„æ—¶å€™ï¼ŒæŒ‰ä¸‹ <kbd class="shortcut">Tab</kbd> é”®ï¼Œä¼šè®©ç„¦ç‚¹ç§»åŠ¨åˆ°ç¬¬äºŒä¸ªå…ƒç´ èº«ä¸Šã€‚</p>
+<p>è¿™é‡Œæœ‰ä¸¤ä¸ªç‰¹åˆ«çš„å€¼ï¼š</p>
+<ul>
+<li><code>tabindex=&quot;0&quot;</code> è®©å…ƒç´ æˆä¸ºæœ€åä¸€ä¸ªã€‚</li>
+<li><code>tabindex=&quot;-1&quot;</code> æ„å‘³ç€ <kbd class="shortcut">Tab</kbd> åº”è¯¥å¿½ç•¥è¿™ä¸ªå…ƒç´ ã€‚</li>
+</ul>
+<p><strong>ä»»ä½•å…ƒç´ å¦‚æœæœ‰å±æ€§ <code>tabindex</code>ï¼Œå®ƒå°†ä¼šæ”¯æŒèšç„¦ã€‚</strong></p>
+<p>ä¸¾ä¸ªä¾‹å­ï¼Œè¿™é‡Œæœ‰ä¸ªåˆ—è¡¨ã€‚ç‚¹å‡»ç¬¬ä¸€ä¸ªé¡¹ç›®ç„¶åæŒ‰ä¸‹ <kbd class="shortcut">Tab</kbd>ï¼š</p>
+<div data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">Click the first item and press Tab. Keep track of the order. Please note that many subsequent Tabs can move the focus out of the iframe with the example.
+&lt;ul&gt;
+  &lt;li tabindex=&quot;1&quot;&gt;One&lt;/li&gt;
+  &lt;li tabindex=&quot;0&quot;&gt;Zero&lt;/li&gt;
+  &lt;li tabindex=&quot;2&quot;&gt;Two&lt;/li&gt;
+  &lt;li tabindex=&quot;-1&quot;&gt;Minus one&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;style&gt;
+  li { cursor: pointer; }
+  :focus { outline: 1px dashed green; }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-apd7ph"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>é¡ºåºå°±åƒè¿™æ ·ï¼š<code>1 - 2 - 0</code>ï¼ˆ0 æ€»æ˜¯æœ€åä¸€ä¸ªï¼‰ã€‚æ­£å¸¸æƒ…å†µä¸‹ï¼Œ<code>&lt;li&gt;</code> å…ƒç´ ä¸æ”¯æŒè¢«èšç„¦ï¼Œä½† <code>tabindex</code> ä½¿è¿™æˆä¸ºå¯èƒ½ï¼Œé¡ºå¸¦è¿˜ä¼šè§¦å‘äº‹ä»¶å’Œä½¿ <code>:focus</code> æ ·å¼ç”Ÿæ•ˆã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>elem.tabIndex</code> ä¹Ÿä¸€æ ·æœ‰æ•ˆ</span></div>
+            <div class="important__content"><p>æˆ‘ä»¬å¯ä»¥é€šè¿‡ JavaScript ä½¿ç”¨ <code>elem.tabIndex</code> æ¥æ·»åŠ  <code>tabindex</code> å±æ€§ã€‚æ•ˆæœæ˜¯ä¸€æ ·çš„ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="focusblur-wei-tuo" href="#focusblur-wei-tuo">focus/blur å§”æ‰˜</a></h2><p><code>focus</code> å’Œ <code>blur</code> äº‹ä»¶æ˜¯ä¸ä¼šå‘ä¸Šå†’æ³¡çš„ã€‚</p>
+<p>ä¸¾ä¸ªä¾‹å­ï¼Œæˆ‘ä»¬ä¸å¯ä»¥ä¸ºäº†é«˜äº® <code>&lt;form&gt;</code> è€ŒæŠŠ <code>onfocus</code> äº‹ä»¶å¤„ç†å™¨æ”¾åœ¨å®ƒèº«ä¸Šï¼Œåƒè¿™æ ·ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:6,&quot;end&quot;:40}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!-- on focusing in the form -- add the class --&gt;
+&lt;form onfocus=&quot;this.className='focused'&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-fzjwsd"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>ä¸Šé¢çš„ä¾‹å­å¹¶ä¸ä¼šå¦‚æˆ‘ä»¬æ‰€æ„¿ï¼Œå› ä¸ºå½“ç”¨æˆ·ä½¿ <code>&lt;input&gt;</code> å…ƒç´ èšç„¦çš„æ—¶å€™ï¼Œè¿™ä¸ª <code>focus</code> äº‹ä»¶åªä¼šåœ¨è¿™ä¸ª input å…ƒç´ ä¸Šè§¦å‘ã€‚å®ƒä¸ä¼šå‘ä¸Šå†’æ³¡ã€‚æ‰€ä»¥ <code>form.onfocus</code> æ°¸è¿œä¸ä¼šè§¦å‘ã€‚</p>
+<p>æœ‰ä¸¤ä¸ªè§£å†³æ–¹æ¡ˆã€‚</p>
+<p>é¦–å…ˆï¼Œæœ‰ä¸€ä¸ªé—ç•™ä¸‹æ¥çš„æœ‰è¶£çš„ç‰¹æ€§ï¼š<code>focus/blur</code> ä¸ä¼šå‘ä¸Šå†’æ³¡ï¼Œä½†æ˜¯åœ¨æ•è·é˜¶æ®µä¼šå‘ä¸‹ä¼ æ’­ã€‚</p>
+<p>è¿™æ ·å¯ä»¥ç”Ÿæ•ˆï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:10}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;
+
+&lt;script&gt;
+  // put the handler on capturing phase (last argument true)
+  form.addEventListener(&quot;focus&quot;, () =&gt; form.classList.add('focused'), true);
+  form.addEventListener(&quot;blur&quot;, () =&gt; form.classList.remove('focused'), true);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-cw4zrp"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>å…¶æ¬¡ï¼Œæœ‰ <code>focusin</code> å’Œ <code>focusout</code> äº‹ä»¶å¯ä»¥ä½¿ç”¨ â€” æ°å¥½å’Œ <code>focus/blur</code> äº‹ä»¶å¾ˆåƒï¼Œåªä¸è¿‡å®ƒä»¬ä¼šå‘ä¸Šå†’æ³¡ã€‚</p>
+<p>å€¼å¾—æ³¨æ„çš„æ˜¯å®ƒä»¬å¿…é¡»ä½¿ç”¨ <code>elem.addEventListener</code> æ¥æŒ‡å®šï¼Œè€Œä¸æ˜¯ <code>on&lt;event&gt;</code>ã€‚</p>
+<p>æ‰€ä»¥è¿™é‡Œæœ‰å¦ä¸€ä¸ªå¯ä»¥å·¥ä½œçš„ç‰ˆæœ¬ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:10}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;Name&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;surname&quot; value=&quot;Surname&quot;&gt;
+&lt;/form&gt;
+
+&lt;style&gt; .focused { outline: 1px solid red; } &lt;/style&gt;
+
+&lt;script&gt;
+  // put the handler on capturing phase (last argument true)
+  form.addEventListener(&quot;focusin&quot;, () =&gt; form.classList.add('focused'));
+  form.addEventListener(&quot;focusout&quot;, () =&gt; form.classList.remove('focused'));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-6ki578"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p>å…ƒç´ è·å¾—/å¤±å»ç„¦ç‚¹ä¼šè§¦å‘ <code>focus</code> å’Œ <code>blur</code> äº‹ä»¶ã€‚</p>
+<p>å®ƒä»¬çš„ç‰¹æ€§æ˜¯ï¼š</p>
+<ul>
+<li>å®ƒä»¬ä¸å‘ä¸Šå†’æ³¡ã€‚ä½†æ˜¯å¯ä»¥åœ¨æ•è·é˜¶æ®µè§¦å‘æˆ–è€…ä½¿ç”¨ <code>focusin/focusout</code>ã€‚</li>
+<li>å¤§å¤šæ•°å…ƒç´ é»˜è®¤ä¸æ”¯æŒèšç„¦ã€‚ä½¿ç”¨ <code>tabindex</code> å¯ä»¥è®©å®ƒä»¬å˜æˆå¯èšç„¦çš„ã€‚</li>
+</ul>
+<p>å¯ä»¥é€šè¿‡ <code>document.activeElement</code> æ¥è®¿é—®æ­£åœ¨è¢«èšç„¦çš„å…ƒç´ ã€‚</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">ä»»åŠ¡</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ke-bian-ji-div" name="ke-bian-ji-div">å¯ç¼–è¾‘ div</a></h3><a class="task__open-link" href="task/editable-div.htm" tppabs="https://zh.javascript.info/task/editable-div" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>æ–°å»ºä¸€ä¸ª <code>&lt;div&gt;</code>ï¼Œå¹¶åœ¨å®ƒè¢«ç‚¹å‡»åå˜æˆ <code>&lt;textarea&gt;</code>ã€‚</p>
+<p>è¿™ä¸ª textareaï¼ˆæ–‡æœ¬åŸŸï¼‰å…è®¸æˆ‘ä»¬ç¼–è¾‘ <code>&lt;div&gt;</code> é‡Œçš„ HTML å†…å®¹ã€‚</p>
+<p>å½“ç”¨æˆ·æŒ‰ä¸‹ <kbd class="shortcut">Enter</kbd> é”®æˆ–è€… <code>&lt;textarea&gt;</code> å¤±å»ç„¦ç‚¹çš„æ—¶å€™ï¼Œç„¦ç‚¹ä¼šå›åˆ° <code>&lt;div&gt;</code>ï¼Œå¹¶ä¸” <code>&lt;textarea&gt;</code> é‡Œçš„å†…å®¹ä¼šæˆä¸º <code>&lt;div&gt;</code> é‡Œçš„ HTML å†…å®¹ã€‚</p>
+<a href="javascript:if(confirm('https://zh.js.cx/task/editable-div/solution/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://zh.js.cx/task/editable-div/solution/'" tppabs="https://zh.js.cx/task/editable-div/solution/" target="blank">åœ¨æ–°çª—å£ä¸­æ¼”ç¤º</a><p><a href="javascript:if(confirm('http://plnkr.co/edit/kW8NlHzsAtBmRyD7tQfn?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/kW8NlHzsAtBmRyD7tQfn?p=preview'" tppabs="http://plnkr.co/edit/kW8NlHzsAtBmRyD7tQfn?p=preview" target="_blank" data-plunk-id="kW8NlHzsAtBmRyD7tQfn">æ‰“å¼€ä¸€ä¸ªä»»åŠ¡æ²™ç®±ã€‚</a></p><button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/RQ5u9HhwOyLZhuVg4Kzu?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/RQ5u9HhwOyLZhuVg4Kzu?p=preview'" tppabs="http://plnkr.co/edit/RQ5u9HhwOyLZhuVg4Kzu?p=preview" target="_blank" data-plunk-id="RQ5u9HhwOyLZhuVg4Kzu">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dian-ji-shi-bian-ji-dan-yuan-ge" name="dian-ji-shi-bian-ji-dan-yuan-ge">ç‚¹å‡»æ—¶ç¼–è¾‘å•å…ƒæ ¼</a></h3><a class="task__open-link" href="task/edit-td-click.htm" tppabs="https://zh.javascript.info/task/edit-td-click" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>è®©å•å…ƒæ ¼åœ¨ç‚¹å‡»æ—¶å¯ç¼–è¾‘ã€‚</p>
+<ul>
+<li>ç‚¹å‡»çš„æ—¶å€™ â€” å•å…ƒæ ¼åº”è¯¥å˜æˆâ€œå¯ç¼–è¾‘çš„â€ï¼ˆæ–‡æœ¬åŸŸä¼šå‡ºç°ï¼‰ï¼Œäºæ˜¯æˆ‘ä»¬å¯ä»¥æ”¹å˜ HTMLã€‚ç°åœ¨ç½‘é¡µåº”è¯¥æ²¡æœ‰è°ƒæ•´å¤§å°ï¼Œæ‰€æœ‰æ ‡ç­¾çš„å‡ ä½•å¤§å°ä¾æ—§ä¿æŒä¸å˜ã€‚</li>
+<li>OK å’Œ CANCEL æŒ‰é’®å‡ºç°åœ¨å•å…ƒæ ¼çš„ä¸‹é¢ç”¨ä»¥å®Œæˆæˆ–å–æ¶ˆç¼–è¾‘ã€‚</li>
+<li>åŒä¸€æ—¶åˆ»åªæœ‰ä¸€ä¸ªå•å…ƒæ ¼å¯è¢«ç¼–è¾‘ã€‚å½“ä¸€ä¸ª <code>&lt;td&gt;</code> å¤„äºâ€œç¼–è¾‘æ¨¡å¼â€æ—¶ï¼Œåœ¨å…¶å®ƒçš„å•å…ƒæ ¼ä¸Šçš„ç‚¹å‡»å°†ä¼šè¢«å¿½ç•¥ã€‚</li>
+<li>ä¸€ä¸ªè¡¨æ ¼å¯èƒ½æœ‰å¾ˆå¤šçš„å•å…ƒæ ¼ã€‚å¯ä»¥ä½¿ç”¨äº‹ä»¶å§”æ‰˜å¤„ç†ã€‚</li>
+</ul>
+<p>æ¼”ç¤ºï¼š</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:400px" src="../zh.js.cx/task/edit-td-click/solution/index.htm" tppabs="https://zh.js.cx/task/edit-td-click/solution/"></iframe>
+  </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/wBef6KVmwUnB8Q79BQdJ?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/wBef6KVmwUnB8Q79BQdJ?p=preview'" tppabs="http://plnkr.co/edit/wBef6KVmwUnB8Q79BQdJ?p=preview" target="_blank" data-plunk-id="wBef6KVmwUnB8Q79BQdJ">æ‰“å¼€ä¸€ä¸ªä»»åŠ¡æ²™ç®±ã€‚</a></p><button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><ol>
+<li>åœ¨ç‚¹å‡»çš„æ—¶å€™ â€” ç”¨ç›¸åŒå°ºå¯¸å’Œæ— è¾¹æ¡†çš„ <code>&lt;textarea&gt;</code> æ›¿æ¢å•å…ƒæ ¼çš„ <code>innerHTML</code>ã€‚å¯ä»¥ä½¿ç”¨ JavaScript æˆ–è€… CSS è®¾ç½®æ­£ç¡®çš„å°ºå¯¸ã€‚</li>
+<li>è®¾ç½® <code>textarea.value</code> ä¸º <code>td.innerHTML</code>ã€‚</li>
+<li>èšç„¦åœ¨ textareaï¼ˆæ–‡æœ¬åŸŸï¼‰ã€‚</li>
+<li>åœ¨å•å…ƒæ ¼ä¸‹æ–¹æ˜¾ç¤º OK/CANCEL æŒ‰é’®ï¼Œå¹¶å¤„ç†å®ƒä»¬çš„ç‚¹å‡»äº‹ä»¶ã€‚</li>
+</ol>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/fUvnse4VfrNO8r1p251X?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/fUvnse4VfrNO8r1p251X?p=preview'" tppabs="http://plnkr.co/edit/fUvnse4VfrNO8r1p251X?p=preview" target="_blank" data-plunk-id="fUvnse4VfrNO8r1p251X">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jian-pan-yi-dong" name="jian-pan-yi-dong">é”®ç›˜ç§»åŠ¨</a></h3><a class="task__open-link" href="task/keyboard-mouse.htm" tppabs="https://zh.javascript.info/task/keyboard-mouse" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 4</span></div><div class="task__content"><p>èšç„¦åœ¨è€é¼ ä¸Šã€‚ç„¶åä½¿ç”¨æ–¹å‘é”®å»ç§»åŠ¨å®ƒï¼š</p>
+<a href="javascript:if(confirm('https://zh.js.cx/task/keyboard-mouse/solution/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://zh.js.cx/task/keyboard-mouse/solution/'" tppabs="https://zh.js.cx/task/keyboard-mouse/solution/" target="blank">åœ¨æ–°çª—å£ä¸­æ¼”ç¤º</a><p>å¦å¤–ä¸è¦æŠŠäº‹ä»¶å¤„ç†å™¨æ”¾åœ¨é™¤äº† <code>#mouse</code> å…ƒç´ å¤–çš„å…¶å®ƒä»»ä½•åœ°æ–¹ã€‚
+è¿˜æœ‰ä¸è¦ä¿®æ”¹ HTML/CSSï¼Œè¿™ä¸ªæ–¹æ³•åº”è¯¥æ˜¯é€šç”¨çš„ï¼Œå¯ä»¥ä½œç”¨åœ¨ä»»ä½•å…ƒç´ ä¸Šã€‚</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/BM8lv3qCvcLe3fuMjY9m?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/BM8lv3qCvcLe3fuMjY9m?p=preview'" tppabs="http://plnkr.co/edit/BM8lv3qCvcLe3fuMjY9m?p=preview" target="_blank" data-plunk-id="BM8lv3qCvcLe3fuMjY9m">æ‰“å¼€ä¸€ä¸ªä»»åŠ¡æ²™ç®±ã€‚</a></p><button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p>æˆ‘ä»¬å¯ä»¥ä½¿ç”¨ <code>mouse.onclick</code> æ¥å¤„ç†ç‚¹å‡»äº‹ä»¶ï¼Œå¹¶é€šè¿‡ <code>position:fixed</code> è®©å…ƒç´ â€œå¯ç§»åŠ¨â€ï¼Œç„¶åä½¿ç”¨ <code>mouse.onkeydown</code> å»å¤„ç†ç‚¹å‡»æ–¹å‘é”®äº‹ä»¶ã€‚</p>
+<p>å”¯ä¸€çš„ç¼ºé™·æ˜¯ <code>keydown</code> ä»…ä¼šè§¦å‘åœ¨èšç„¦çš„å…ƒç´ ä¸Šã€‚æ‰€ä»¥æˆ‘ä»¬éœ€è¦ä¸ºè¿™ä¸ªå…ƒç´ æ·»åŠ  <code>tabindex</code>ã€‚å› ä¸ºæˆ‘ä»¬ä¸å¯ä»¥æ”¹å˜ HTMLï¼Œæ‰€ä»¥æˆ‘ä»¬å¯ä»¥ä½¿ç”¨ <code>mouse.tabIndex</code> å±æ€§æ¥è¾¾åˆ°è¿™ä¸ªç›®çš„ã€‚</p>
+<p>å¦å¤–æˆ‘ä»¬ä¹Ÿå¯ä»¥ä½¿ç”¨ <code>mouse.onfocus</code> ä»£æ›¿ <code>mouse.onclick</code>ã€‚</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/DFSRjZbEVrV31Oi42OaE?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/DFSRjZbEVrV31Oi42OaE?p=preview'" tppabs="http://plnkr.co/edit/DFSRjZbEVrV31Oi42OaE?p=preview" target="_blank" data-plunk-id="DFSRjZbEVrV31Oi42OaE">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="form-elements.htm" tppabs="https://zh.javascript.info/form-elements" data-tooltip="è¡¨å•å±æ€§å’Œæ–¹æ³•"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="events-change-input.htm" tppabs="https://zh.javascript.info/events-change-input" data-tooltip="äº‹ä»¶ï¼šchangeã€inputã€cutã€copy å’Œ paste"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/focus-blur","identifier":"\/focus-blur"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="forms-controls.htm" tppabs="https://zh.javascript.info/forms-controls">è¡¨å•ï¼Œæ§ä»¶</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#focusblur-shi-jian">focus/blur äº‹ä»¶</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#focusblur-fang-fa">focus/blur æ–¹æ³•</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yun-xu-zai-ren-he-yuan-su-shang-ju-jiao-tabindex">å…è®¸åœ¨ä»»ä½•å…ƒç´ ä¸Šèšç„¦ï¼štabindex</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#focusblur-wei-tuo">focus/blur å§”æ‰˜</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">ä»»åŠ¡ (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffocus-blur"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/2-focus-blur/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/2-focus-blur/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/2-focus-blur/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

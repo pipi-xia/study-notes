@@ -1,0 +1,1118 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">递归和堆栈</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/recursion"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="递归和堆栈"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="递归和堆栈"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/advanced-functions"><link rel="next" href="/rest-parameters-spread-operator"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><style>
+.function-execution-context-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.function-execution-context {
+  border: 1px solid black;
+  font-family: 'DejaVu Sans Mono', 'Lucida Console', 'Menlo', 'Monaco', monospace;
+  padding: 4px 6px;
+  margin: 0 4px;
+}
+
+.function-execution-context-call {
+  color: gray;
+}
+
+.function-execution-context-call::before {
+  content: ' call: ';
+}
+
+.function-execution-context-list li:first-child {
+  font-weight: bold;
+}
+</style>
+<meta property="og:title" content="递归和堆栈"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/recursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/recursion'" tppabs="https://javascript.info/recursion"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="recursion.htm" tppabs="https://zh.javascript.info/recursion"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/recursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/recursion'" tppabs="https://ja.javascript.info/recursion"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/recursion">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/recursion" selected>简体中文</option><option value="https://ja.javascript.info/recursion">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="43" max="67" data-tooltip="第 67 章，第 43 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions" itemprop="url"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">递归和堆栈</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="递归和堆栈"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>我们回到函数，深入研究一下。</p>
+<p>我们的第一个主题是<strong>递归</strong>。</p>
+<p>如果你不是刚接触编程，那么你可能已经很熟悉它，可以跳过这一章了。</p>
+<p>递归是一种编程模式，用于一个任务可以被分割为多个相似的更简单的任务的场景。或者用于一个任务可以被简化为一个容易的行为加上更简单的任务变体。或者像我们随后会看到的，用来处理特定类型的数据结构。</p>
+<p>当一个函数解决一个任务时，在该过程中它可以调用很多其它函数。那么当一个函数调用<strong>自身</strong>时，就称其为<strong>递归</strong>。</p>
+<h2><a class="main__anchor" name="liang-zhong-si-kao-fang-shi" href="#liang-zhong-si-kao-fang-shi">两种思考方式</a></h2><p>简单起见，我们写一个函数 <code>pow(x, n)</code>，它可以计算 <code>x</code> 的 <code>n</code> 次方，即用 <code>x</code> 乘以自身 <code>n</code> 次。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">pow(2, 2) = 4
+pow(2, 3) = 8
+pow(2, 4) = 16</code></pre>
+        </div>
+      </div>
+      
+      </div><p>有两种实现方式。</p>
+<ol>
+<li>
+<p>迭代思路：<code>for</code> 循环：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+
+  // 在循环中用 x 乘以 result
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+alert( pow(2, 3) ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>递归思路：简化任务，调用自身：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}
+
+alert( pow(2, 3) ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>注意递归方式完全不相同。</p>
+<p>当 <code>pow(x, n)</code> 被调用时，执行分为两个分支：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">              if n==1  = x
+             /
+pow(x, n) =
+             \
+              else     = x * pow(x, n - 1)</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>如果 <code>n == 1</code>，所有事情都会很简单，这叫做递归的<strong>基础</strong>，因为它立即得到显而易见的结果：<code>pow(x, 1)</code> 等于 <code>x</code>。</li>
+<li>否则，我们可以用 <code>x * pow(x, n - 1)</code> 表示 <code>pow(x, n)</code>。在数学里，可能会这么写 <code>x<sup>n</sup> = x * x<sup>n-1</sup></code>。这叫做<strong>一个递归步骤</strong>：我们将任务转变为更简单的行为（<code>x</code> 的乘法）和更简单的同类任务调用（更小的 <code>n</code> 给 <code>pow</code>）。后面步骤继续简化直到 <code>n</code> 等于 <code>1</code>。</li>
+</ol>
+<p>我们也可以说 <code>pow</code> <strong>递归的调用自身</strong> 直到 <code>n == 1</code>。</p>
+<figure><div class="image" style="width:483px">
+      <div class="image__ratio" style="padding-top:45.54865424430642%"></div>
+      <img src="article/recursion/recursion-pow.png" tppabs="https://zh.javascript.info/article/recursion/recursion-pow.png" alt="" width="483" height="220" class="image__image">
+      </div></figure><p>比如，为了计算 <code>pow(2, 4)</code>，递归变体经过了下面几个步骤：</p>
+<ol>
+<li><code>pow(2, 4) = 2 * pow(2, 3)</code></li>
+<li><code>pow(2, 3) = 2 * pow(2, 2)</code></li>
+<li><code>pow(2, 2) = 2 * pow(2, 1)</code></li>
+<li><code>pow(2, 1) = 2</code></li>
+</ol>
+<p>所以，递归生成了更简单的函数调用，然后 —— 更加简单，继续，直到结果变得很明显。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">递归一般更简洁</span></div>
+            <div class="important__content"><p>递归解决方案一般比迭代更简洁。</p>
+<p>这里我们可以使用三元运算符 <code>?</code> 来替换 <code>if</code> 语句，从而让 <code>pow(x, n)</code> 更简洁并且可读性依然很高：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  return (n == 1) ? x : (x * pow(x, n - 1));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>最大的嵌套调用次数（包括首次）称为<strong>递归深度</strong>。在我们的例子中，它正好等于 <code>n</code>。</p>
+<p>最大递归深度受限于 JavaScript 引擎。我们可以确信基本是 10000，有些引擎可能允许更大，但是 100000 很可能就超过了限制。有一些自动优化能够缓解这个（「尾部调用优化」），但是它们还没有被完全支持，只能用于简单场景。</p>
+<p>这就限制了递归的应用，但是递归仍然被广泛使用。有很多任务使用递归思路会让代码更简单，更容易维护。</p>
+<h2><a class="main__anchor" name="zhi-hang-dui-zhan" href="#zhi-hang-dui-zhan">执行堆栈</a></h2><p>现在我们来研究下递归调用如何工作的。为此，我们会先看看函数底层工作原理。</p>
+<p>一个函数运行的信息被存储在它的<strong>执行上下文</strong>里。</p>
+<p><a href="javascript:if(confirm('https://tc39.github.io/ecma262/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://tc39.github.io/ecma262/#sec-execution-contexts'" tppabs="https://tc39.github.io/ecma262/#sec-execution-contexts">执行上下文</a>是一个内部数据结构，它包含一个函数执行时的细节：当前工作流在哪里，当前的变量，<code>this</code> 的值（这里我们不使用它），以及其它一些内部细节。</p>
+<p>每个函数调用都有与其相关联的执行上下文。</p>
+<p>当一个函数有嵌套调用时，下面的事情会发生：</p>
+<ul>
+<li>当前函数被暂停；</li>
+<li>与它关联的执行上下文被一个叫做<strong>执行上下文堆栈</strong>的特殊数据结构保存；</li>
+<li>执行嵌套调用；</li>
+<li>嵌套调用结束后，之前的执行上下文从堆栈中恢复，外部函数从停止的地方继续执行。</li>
+</ul>
+<p>我们看看调用 <code>pow(2, 3)</code> 都发生了什么。</p>
+<h3><a class="main__anchor" name="pow-2-3" href="#pow-2-3">pow(2, 3)</a></h3><p>在调用 <code>pow(2, 3)</code> 的开始，执行上下文会存储变量：<code>x = 2, n = 3</code>，执行流程在函数的第 <code>1</code> 行。</p>
+<p>我们将其描绘如下：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>这是函数开始执行的时候。条件 <code>n == 1</code> 结果为否，所以流程进入 <code>if</code> 的第二分支。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}
+
+alert( pow(2, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>变量相同，但是函数变化了，所以现在上下文是：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>为了计算 <code>x * pow(x, n - 1)</code>，我们需要用新的参数 <code>pow(2, 2)</code> 子调用 <code>pow</code>。</p>
+<h3><a class="main__anchor" name="pow-2-2" href="#pow-2-2">pow（2, 2)</a></h3><p>为了执行嵌套调用，JavaScript 会记住<strong>执行上下文堆栈</strong>中的当前执行上下文。</p>
+<p>这里我们调用相同的函数 <code>pow</code>，但是没关系。所有函数的处理都是一样的：</p>
+<ol>
+<li>当前上下文被「记录」在堆栈的顶部；</li>
+<li>为子调用创建新上下文；</li>
+<li>当子调用结束后 —— 前一上下文从堆栈弹出，继续执行。</li>
+</ol>
+<p>下面是进入子调用 <code>pow(2, 2)</code> 的上下文堆栈：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>新的当前执行上下文位于顶部（加粗），前面的在下方。</p>
+<p>当我们完成子调用后 —— 很容恢复前面的上下文，因为它保留这变量和代码停止时的准确位置。图中我们使用了单词「行」，但实际比这更精确。</p>
+<h3><a class="main__anchor" name="pow-2-1" href="#pow-2-1">pow(2, 1)</a></h3><p>重复该过程：在第 <code>5</code> 行生成新的子调用，现在使用参数 <code>x=2</code>，<code>n=1</code>。</p>
+<p>新的执行上下文被创建，前一个被压入堆栈顶部：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 1, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 1)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>此时，有 2 个旧的上下文和 1 个当前正在运行的给 <code>pow(2, 1)</code> 的上下文。</p>
+<h3><a class="main__anchor" name="chu-kou" href="#chu-kou">出口</a></h3><p>在 <code>pow(2, 1)</code> 时，不像之前，条件 <code>n == 1</code> 成了是，所以 <code>if</code> 的第一分支生效：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>此时不再有嵌套调用，所以函数结束，返回 <code>2</code>。</p>
+<p>函数结束后，它的执行上下文不再有用，会从内存中移除。前一上下文从栈顶恢复：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>恢复执行 <code>pow(2, 2)</code>，它有子调用 <code>pow(2, 1)</code> 的结果，所以它也可以结束 <code>x * pow(x, n - 1)</code> 的执行，返回 <code>4</code>。</p>
+<p>然后前一上下文被恢复：</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>当它结束后，我们得到结果 <code>pow(2, 3) = 8</code>。</p>
+<p>递归深度是：<strong>3</strong>。</p>
+<p>从上面的图解可以看到，递归深度等于堆栈中上下文的最大个数。</p>
+<p>注意内存要求。上下文消耗内存，在我们的例子中，求 <code>n</code> 次方需要存储 <code>n</code> 个上下文，以便减一后的 <code>n</code> 使用。</p>
+<p>而循环算法更省内存：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>迭代 <code>pow</code> 仅使用一个上下文，在处理中修改 <code>i</code> 和 <code>result</code>。它的内存要求比较小，且固定不依赖 <code>n</code>。</p>
+<p><strong>任何递归都可以用循环来重写。循环变体一般更加有效。</strong></p>
+<p>…但有时重写很难，尤其是函数根据条件使用不同的子调用，然后合并它们的结果，或者分支比较复杂。而且有些优化可能没有必要，完全不值得。</p>
+<p>递归能提供更简洁的代码，容易理解和维护。优化并不是处处需要，大多数时候我们需要一个好代码，这就是它被使用的原因。</p>
+<h2><a class="main__anchor" name="di-gui-bian-li" href="#di-gui-bian-li">递归遍历</a></h2><p>递归另一个重要应用就是递归遍历。</p>
+<p>设想，有一家公司。职员结构可以用这个对象描述：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let company = {
+  sales: [{
+    name: 'John',
+    salary: 1000
+  }, {
+    name: 'Alice',
+    salary: 600
+  }],
+
+  development: {
+    sites: [{
+      name: 'Peter',
+      salary: 2000
+    }, {
+      name: 'Alex',
+      salary: 1800
+    }],
+
+    internals: [{
+      name: 'Jack',
+      salary: 1300
+    }]
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>或者说，一家公司有很多部门。</p>
+<ul>
+<li>
+<p>一个部门有员工列表，比如，<code>销售</code>部有 2 名员工：John 和 Alice。</p>
+</li>
+<li>
+<p>或者一个部门可能划分为几个子部门，比如<code>开发</code>有两个分支：<code>网站</code>和<code>内部</code>，它们都有自己的员工。</p>
+</li>
+<li>
+<p>当一个子部门增长时，它可能会划分为子部门（或者团队）。</p>
+<p>比如，<code>网站</code>部门在未来可能会分为<code>网站 A</code> 和 <code>网站 B</code>。它们可能还会再分，没有图示，脑补一下吧。</p>
+</li>
+</ul>
+<p>现在，如果我们需要获得所有薪酬总数，我们该如何做？</p>
+<p>迭代方式并不容易，因为结构比较复杂。首先想到是使用 <code>for</code> 循环 <code>公司</code>，然后嵌套子循环第 1 层部门。然后我们需要更多嵌套子循环来迭代第 2 层部门，比如 <code>网站</code>。…然后另一个嵌套子循环给将来会有的第 3 层部门？我们应该在第 3 或第 4 层循环停止吗？如果我们将 3-4 嵌套子循环放到代码里来遍历单个对象，它会变得很丑。</p>
+<p>我们试试递归。</p>
+<p>可以看到，当函数计算一个部门的和时，有两种可能情况：</p>
+<ol>
+<li>这个部门是有<strong>一组人</strong>的『简单』部门 —— 这样我们就可以使用简单循环来求薪酬总额。</li>
+<li>或者它是<strong>一个有 <code>N</code> 个子部门的对象</strong> —— 这样我们可以用 <code>N</code> 个递归调用来求每一个子部门的总额然后合并它们。</li>
+</ol>
+<p>(1) 是递归的基础，简单的情况。</p>
+<p>(2) 是递归步骤。复杂的任务被划分为适于更小部门的子任务。它们可能还会在划分，但是最终都会在 (1) 那里完成。</p>
+<p>算法从代码来看会更简单些：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:19}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let company = { // 是同样的对象，简洁起见做了压缩
+  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+  development: {
+    sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
+    internals: [{name: 'Jack', salary: 1300}]
+  }
+};
+
+// 用来完成作业的函数
+function sumSalaries(department) {
+  if (Array.isArray(department)) { // 情况 (1)
+    return department.reduce((prev, current) =&gt; prev + current.salary, 0); // 求数组的和
+  } else { // 情况 (2)
+    let sum = 0;
+    for (let subdep of Object.values(department)) {
+      sum += sumSalaries(subdep); // 递归调用子部门，对结果求和
+    }
+    return sum;
+  }
+}
+
+alert(sumSalaries(company)); // 6700</code></pre>
+        </div>
+      </div>
+      
+      </div><p>代码很短也容易理解（希望是这样）。这就是递归的能力。它对任何层次的子部门嵌套都有效。</p>
+<p>以下是调用图：</p>
+<figure><div class="image" style="width:259px">
+      <div class="image__ratio" style="padding-top:161.003861003861%"></div>
+      <img src="article/recursion/recursive-salaries.png" tppabs="https://zh.javascript.info/article/recursion/recursive-salaries.png" alt="" width="259" height="417" class="image__image">
+      </div></figure><p>很容易可以看到原理：对对象 <code>{...}</code> 会生成子调用，而数组 <code>[...]</code> 因为是递归树的「叶子」，它们会立即得到结果。</p>
+<p>注意这段代码使用了我们之前讲过的便利特性：</p>
+<ul>
+<li>章节 <a href="array-methods.htm" tppabs="https://zh.javascript.info/array-methods">数组方法</a> 中的 <code>arr.reduce</code> 方法做数组求和。</li>
+<li>循环 <code>for(val of Object.values(obj))</code> 迭代对象的（属性）值：<code>Object.values</code> 返回它们组成的数组。</li>
+</ul>
+<h2><a class="main__anchor" name="di-gui-jie-gou" href="#di-gui-jie-gou">递归结构</a></h2><p>递归（递归定义的）数据结构是一种复制自身的结构。</p>
+<p>我们在上面公司结构的例子中已经见过。</p>
+<p>一个公司的<strong>部门</strong>是：</p>
+<ul>
+<li>不是一组人。</li>
+<li>就是一个<strong>部门</strong>对象。</li>
+</ul>
+<p>对 web 开发者而言，有更熟知的例子：HTML 和 XML 文档。</p>
+<p>在 HTML 文档中，一个 <strong>HTML 标签</strong>可能包括一组：</p>
+<ul>
+<li>文本片段。</li>
+<li>HTML 注释。</li>
+<li>其它 <strong>HTML 标签</strong>（它有可能又包括文本片段、注释或其它标签等等）</li>
+</ul>
+<p>那就是一个递归定义。</p>
+<p>为了更好的理解，我们会再讲一个递归结构的例子「链表」，在某些情况下，它是优于数组的选择。</p>
+<h3><a class="main__anchor" name="lian-biao" href="#lian-biao">链表</a></h3><p>想象一下，我们要存储一个有序的对象列表。</p>
+<p>自然选择将是一个数组：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [obj1, obj2, obj3];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…但是用数组有个问题。「删除元素」和「插入元素」操作代价非常大。例如，<code>arr.unshift(obj)</code> 操作必须对所有元素重新编号以便为新的元素 <code>obj</code> 腾出空间，而且如果数组很大，会很耗时。<code>arr.shift()</code> 同理。</p>
+<p>唯一对数组结构做修改而不需要大量重排的操作就是在数组的两端：<code>arr.push/pop</code>。所以对大队列来说，数组会很慢。</p>
+<p>如果我们真的需要快速插入、删除的话，我们可以选择另一种叫做<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Linked_list  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Linked_list'" tppabs="https://en.wikipedia.org/wiki/Linked_list">链表</a>的数据结构。</p>
+<p><strong>链表元素</strong>是一个被递归定义的对象，它有：</p>
+<ul>
+<li><code>value</code>。</li>
+<li><code>next</code> 属性引用下一个<strong>链表元素</strong>或者代表末尾的 <code>null</code>。</li>
+</ul>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>列表的图形表示：</p>
+<figure><div class="image" style="width:629px">
+      <div class="image__ratio" style="padding-top:8.426073131955485%"></div>
+      <img src="article/recursion/linked-list.png" tppabs="https://zh.javascript.info/article/recursion/linked-list.png" alt="" width="629" height="53" class="image__image">
+      </div></figure><p>一段用来创建的代码：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = { value: 1 };
+list.next = { value: 2 };
+list.next.next = { value: 3 };
+list.next.next.next = { value: 4 };</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里我们清楚的看到有很多个对象，每一个都有 <code>value</code> 和 指向邻居的 <code>next</code>。<code>list</code> 是链条的第一个对象，顺着 <code>next</code> 指针，我们可以抵达任何元素。</p>
+<p>列表可以很容易被分为几个部分，然后重新组装回去：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let secondList = list.next.next;
+list.next.next = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:396px">
+      <div class="image__ratio" style="padding-top:29.797979797979796%"></div>
+      <img src="article/recursion/linked-list-split.png" tppabs="https://zh.javascript.info/article/recursion/linked-list-split.png" alt="" width="396" height="118" class="image__image">
+      </div></figure><p>合并：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">list.next.next = secondList;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当然我们可以在任何位置插入或移除元素。</p>
+<p>比如，为了在前面增加一个新值，我们需要更新列表的头：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = { value: 1 };
+list.next = { value: 2 };
+list.next.next = { value: 3 };
+list.next.next.next = { value: 4 };
+
+// 将新值添加到列表头部
+list = { value: &quot;new item&quot;, next: list };</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:803px">
+      <div class="image__ratio" style="padding-top:6.60024906600249%"></div>
+      <img src="article/recursion/linked-list-0.png" tppabs="https://zh.javascript.info/article/recursion/linked-list-0.png" alt="" width="803" height="53" class="image__image">
+      </div></figure><p>为了移除中间的一个值，修改前一个元素的 <code>next</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">list.next = list.next.next;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:652px">
+      <div class="image__ratio" style="padding-top:19.478527607361965%"></div>
+      <img src="article/recursion/linked-list-remove-1.png" tppabs="https://zh.javascript.info/article/recursion/linked-list-remove-1.png" alt="" width="652" height="127" class="image__image">
+      </div></figure><p>我们让 <code>list.next</code> 从 <code>1</code> 跳到值 <code>2</code>。值 <code>1</code> 就从链上被去除。如果没有被存储在其它地方，那么它会自动的从内存中被移除。</p>
+<p>与数组不同，没有大规模重排，我们可以很容易的重新排列元素。</p>
+<p>当然，链表不总是优于数组。不然大家都去使用链表了。</p>
+<p>主要的不足就是我们无法轻易通过它的编号获取元素。在数组中却很容易：<code>arr[n]</code> 是一个直接引用。而在列表中，我们需要从起点元素顺着 <code>next</code> 找 <code>N</code> 次才能获取到第 N 个元素。</p>
+<p>…但是我们并不总需要这样的操作。比如，当我们需要一个队列或者甚至一个<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Double-ended_queue  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Double-ended_queue'" tppabs="https://en.wikipedia.org/wiki/Double-ended_queue">双向队列</a> —— 有序结构必须可以快速的从两端添加、移除元素。</p>
+<p>有时也值得添加一个名为 <code>tail</code> 的变量来跟踪列表的末尾元素（并且当从尾部添加、删除元素时更新它）。对大型数据集来说，它与数组的速度差异巨大。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>术语：</p>
+<ul>
+<li>
+<p><strong>递归</strong>是函数「自调用」的编程术语。这种函数可以被用来优雅解决特定的任务。</p>
+<p>当一个函数调用自身时，我们称其为<strong>递归步骤</strong>。递归<strong>基础</strong>是函数参数使得任务很简单，不需要其它更进一步调用。</p>
+</li>
+<li>
+<p>一个<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Recursive_data_type  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Recursive_data_type'" tppabs="https://en.wikipedia.org/wiki/Recursive_data_type">递归定义</a>的数据结构是指可以使用自身来定义的数据结构。</p>
+<p>比如，链表可以被定义为由对象引用一个列表（或 <code>null</code>）的组成的数据结构。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">list = { value, next -&gt; list }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>像 HTML 元素树或者本章的部门树等树结构本质上也是递归：它们有分支，而且分支又可以有分支。</p>
+<p>如我们在例子 <code>sumSalary</code> 中看到的，递归函数可以被用来遍历它们。</p>
+</li>
+</ul>
+<p>任何递归函数都可以被重写为迭代形式。这是优化时做的事情。对多数任务，递归解决方式足够快且容易编写和维护。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dui-shu-zi-qiu-he-dao-gei-ding-zhi" name="dui-shu-zi-qiu-he-dao-gei-ding-zhi">对数字求和到给定值</a></h3><a class="task__open-link" href="task/sum-to.htm" tppabs="https://zh.javascript.info/task/sum-to" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写一个函数 <code>sumTo(n)</code> 计算 <code>1 + 2 + ... + n</code> 的和。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">sumTo(1) = 1
+sumTo(2) = 2 + 1 = 3
+sumTo(3) = 3 + 2 + 1 = 6
+sumTo(4) = 4 + 3 + 2 + 1 = 10
+...
+sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050</code></pre>
+        </div>
+      </div>
+      
+      </div><p>用三种方式实现：</p>
+<ol>
+<li>使用循环。</li>
+<li>使用递归，对 <code>n &gt; 1</code> 执行 <code>sumTo(n) = n + sumTo(n-1)</code>。</li>
+<li>使用<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Arithmetic_progression  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Arithmetic_progression'" tppabs="https://en.wikipedia.org/wiki/Arithmetic_progression">等差数列</a>求和公式.</li>
+</ol>
+<p>结果示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sumTo(n) { /*... 你的代码 ... */ }
+
+alert( sumTo(100) ); // 5050</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. 哪种解决方式最快？哪种最慢？为什么？</p>
+<p>P.P.S. 我们可以使用递归来计算 <code>sumTo(100000)</code> 吗？</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>使用循环的解法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sumTo(n) {
+  let sum = 0;
+  for (let i = 1; i &lt;= n; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用递归的解法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sumTo(n) {
+  if (n == 1) return 1;
+  return n + sumTo(n - 1);
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用公式 <code>sumTo(n) = n*(n+1)/2</code> 的解法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sumTo(n) {
+  return n * (n + 1) / 2;
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. 当然是公式解法最快。对任何数字 <code>n</code>，只需要进行 3 次运算，数学大法好！</p>
+<p>循环的速度次之。在循环或递归方法里，我们对相同的数字求和，但是递归涉及嵌套调用和执行堆栈管理，这会消耗资源，所以它更慢一些。</p>
+<p>P.P.S. JS 标准描述了一个「尾递归」优化：如果递归调用是函数的最后一步（比如上面的 <code>sumTo</code>），那么外部的函数就不再需要恢复执行，我们也就不再需要记录它的执行上下文了。这样的话 <code>sumTo(100000)</code> 是可以求解的。但是如果你的 JavaScript 引擎不支持这个优化，就会报错：超出最大栈深度，因为一般堆栈的大小是有限制的。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ji-suan-jie-cheng" name="ji-suan-jie-cheng">计算阶乘</a></h3><a class="task__open-link" href="task/factorial.htm" tppabs="https://zh.javascript.info/task/factorial" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>自然数的<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Factorial  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Factorial'" tppabs="https://en.wikipedia.org/wiki/Factorial">阶乘</a>是指，一个数乘以 <code>它减去 1</code>，然后乘以 <code>它减去 2</code>，以此类推直到乘以 <code>1</code>。<code>n</code> 的阶乘被记作 <code>n!</code>。</p>
+<p>我们可以将阶乘的定义写成这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">n! = n * (n - 1) * (n - 2) * ...*1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>不同 <code>n</code> 的阶乘：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">1! = 1
+2! = 2 * 1 = 2
+3! = 3 * 2 * 1 = 6
+4! = 4 * 3 * 2 * 1 = 24
+5! = 5 * 4 * 3 * 2 * 1 = 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>任务是编写一个函数 <code>factorial(n)</code> 使用递归调用计算 <code>n!</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. 提示：<code>n!</code> 可以被写成 <code>n * (n-1)!</code>，比如 <code>3! = 3*2! = 3*2*1! = 6</code>。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>根据定义，一个阶乘 <code>n!</code> 可以被写成 <code>n * (n-1)!</code>。</p>
+<p>换句话说，<code>factorial(n)</code> 的结果可以用 <code>n</code> 乘以 <code>factorial(n-1)</code> 来获得。<code>n-1</code> 同理，直到 <code>1</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function factorial(n) {
+  return (n != 1) ? n * factorial(n - 1) : 1;
+}
+
+alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>递归的基础是 <code>1</code>。我们也可以用 <code>0</code> 作为基础，不影响，除了多一次递归步骤：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function factorial(n) {
+  return n ? n * factorial(n - 1) : 1;
+}
+
+alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#fei-bo-na-qi-shu" name="fei-bo-na-qi-shu">斐波那契数</a></h3><a class="task__open-link" href="task/fibonacci-numbers.htm" tppabs="https://zh.javascript.info/task/fibonacci-numbers" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p><a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Fibonacci_number  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Fibonacci_number'" tppabs="https://en.wikipedia.org/wiki/Fibonacci_number">斐波那契数</a>序列有这样的公式： <code>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub></code>。换句话说，下一个数字是前两个数字的总和。</p>
+<p>前两个数字是 <code>1</code>，然后 <code>2(1+1)</code>，然后 <code>3(1+2)</code>，<code>5(2+3)</code> 等：<code>1, 1, 2, 3, 5, 8, 13, 21...</code>。</p>
+<p>斐波那契数与<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Golden_ratio  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Golden_ratio'" tppabs="https://en.wikipedia.org/wiki/Golden_ratio">黄金比例</a>和我们周围的许多自然现象有关。</p>
+<p>编写一个 <code>fib(n)</code> 返回第 <code>n</code> 个斐波那契数的函数。</p>
+<p>一个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function fib(n) { /* 你的代码 */ }
+
+alert(fib(3)); // 2
+alert(fib(7)); // 13
+alert(fib(77)); // 5527939700884757</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.S. 函数运行速度要快，调用 <code>fib(77)</code> 不应该超过几分之一秒。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们可以尝试的第一种解法是递归。</p>
+<p>斐波那契数根据定义是递归的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function fib(n) {
+  return n &lt;= 1 ? n : fib(n - 1) + fib(n - 2);
+}
+
+alert( fib(3) ); // 2
+alert( fib(7) ); // 13
+// fib(77); // 超级慢！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…但是 <code>n</code> 比较大时会很慢。比如 <code>fib(77)</code> 会挂起引擎一段时间，并且消耗所有 CPU 资源。</p>
+<p>因为函数产生了太多的子调用。同样的值被一遍又一遍的计算。</p>
+<p>比如，我们看下计算 <code>fib(5)</code> 的片段：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">...
+fib(5) = fib(4) + fib(3)
+fib(4) = fib(3) + fib(2)
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>可以看到，<code>fib(5)</code> 和 <code>fib(4)</code> 都需要 <code>fib(3)</code> 的值，所以 <code>fib(3)</code> 被独立计算了两次。</p>
+<p>这是完整的递归树：</p>
+<figure><div class="image" style="width:619px">
+      <div class="image__ratio" style="padding-top:35.37964458804523%"></div>
+      <img src="task/fibonacci-numbers/fibonacci-recursion-tree.png" tppabs="https://zh.javascript.info/task/fibonacci-numbers/fibonacci-recursion-tree.png" alt="" width="619" height="219" class="image__image">
+      </div></figure><p>我们可以清楚的看到 <code>fib(3)</code> 被计算了两次，<code>fib(2)</code> 被计算了三次。总计算量远远超过了 <code>n</code>，这样对 <code>n=77</code> 来讲就是巨量的。</p>
+<p>我们可以通过记录已经计算过的值来优化：如果一个值比如 <code>fib(3)</code> 已经被计算过一次，那么我们可以在后面的计算中重复使用它。</p>
+<p>另一个选择就是不使用递归，而是用基于循环的算法。</p>
+<p>与从 <code>n</code> 到降到更小的值相反，我们可以使用循环从 <code>1</code> 和 <code>2</code> 开始，然后得到它们的和 <code>fib(3)</code>。在每一步，我们只需要记录前两个值就可以。</p>
+<p>下面是新算法的细节步骤：</p>
+<p>开始：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// a = fib(1), b = fib(2)，这些值是根据定义 1 得到的
+let a = 1, b = 1;
+
+// 求两者的和得到 c = fib(3)
+let c = a + b;
+
+/* 现在我们有 fib(1), fib(2), fib(3)
+a  b  c
+1, 1, 2
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在我们想要得到 <code>fib(4) = fib(2) + fib(3)</code>。</p>
+<p>我们移动变量：<code>a,b</code> 得到 <code>fib(2),fib(3)</code>，<code>c</code> 是两者的和。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">a = b; // 现在 a = fib(2)
+b = c; // 现在 b = fib(3)
+c = a + b; // c = fib(4)
+
+/* 现在我们有这样的序列
+   a  b  c
+1, 1, 2, 3
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>下一步得到另一个序列数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">a = b; // 现在 a = fib(3)
+b = c; // 现在 b = fib(4)
+c = a + b; // c = fib(5)
+
+/* 现在序列是（又加了一个数）：
+      a  b  c
+1, 1, 2, 3, 5
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…依次类推直到我们得到需要的值。这比递归快很多，而且没有重复计算。</p>
+<p>完整代码：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function fib(n) {
+  let a = 1;
+  let b = 1;
+  for (let i = 3; i &lt;= n; i++) {
+    let c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
+}
+
+alert( fib(3) ); // 2
+alert( fib(7) ); // 13
+alert( fib(77) ); // 5527939700884757</code></pre>
+        </div>
+      </div>
+      
+      </div><p>循环从 <code>i=3</code> 开始，因为前两个序列值被硬编码到变量 <code>a=1</code>，<code>b=1</code>。</p>
+<p>这种方式称为<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Dynamic_programming  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Dynamic_programming'" tppabs="https://en.wikipedia.org/wiki/Dynamic_programming">自下而上的动态规划</a>。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#shu-chu-yi-ge-dan-lian-biao" name="shu-chu-yi-ge-dan-lian-biao">输出一个单链表</a></h3><a class="task__open-link" href="task/output-single-linked-list.htm" tppabs="https://zh.javascript.info/task/output-single-linked-list" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>假设我们有一个单链表（在 <a href="recursion.htm" tppabs="https://zh.javascript.info/recursion">递归和堆栈</a> 那章有讲过）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>编写一个可以逐个输出链表元素的函数 <code>printList(list)</code>。</p>
+<p>使用两种方式实现：循环和递归。</p>
+<p>哪个更好：用递归还是不用递归的？</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">循环解法</button><div class="task__answer-content"><h4 class="task__step-title">循环解法</h4><p>基于循环的解法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printList(list) {
+  let tmp = list;
+
+  while (tmp) {
+    alert(tmp.value);
+    tmp = tmp.next;
+  }
+
+}
+
+printList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，我们使用了一个临时变量 <code>tmp</code> 来遍历链表，严格来讲，我们可以使用函数入参 <code>list</code> 来代替：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:12}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function printList(list) {
+
+  while(list) {
+    alert(list.value);
+    list = list.next;
+  }
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…但是这不够明智。未来我们可能想要扩展这个函数，使用这个链表做些事情，如果我们修改了 <code>list</code>，那么我们就失去这个能力。</p>
+<p>说到好的变量命名，<code>list</code> 在这里是链表本身。它的第一个元素。它应该保持原样，这是清晰可靠的。</p>
+<p>从另方面来说，<code>tmp</code> 是充当了完全遍历链表的角色，就像 <code>for</code> 循环中的 <code>i</code>。</p>
+</div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">递归解法</button><div class="task__answer-content"><h4 class="task__step-title">递归解法</h4><p><code>printList(list)</code> 的递归实现遵循一个简单的逻辑：为了输出链表，我们应该输出 <code>list</code> 的当前的元素，<code>list.next</code> 同理：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printList(list) {
+
+  alert(list.value); // 输出当前元素
+
+  if (list.next) {
+    printList(list.next); // 链表中其余部分同理
+  }
+
+}
+
+printList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>哪个更好呢？</p>
+<p>从技术上讲，循环更有效。这两个解法的做了同样的事情，但循环不会为嵌套函数调用消耗资源。</p>
+<p>另一方面，递归解法更简洁，有时更容易理解。</p>
+</div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#fan-xiang-shu-chu-dan-lian-biao" name="fan-xiang-shu-chu-dan-lian-biao">反向输出单链表</a></h3><a class="task__open-link" href="task/output-single-linked-list-reverse.htm" tppabs="https://zh.javascript.info/task/output-single-linked-list-reverse" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>反向输出前一个任务 <a href="task/output-single-linked-list.htm" tppabs="https://zh.javascript.info/task/output-single-linked-list">输出一个单链表</a> 中的单链表。</p>
+<p>使用两种解法：循环和递归。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">使用递归</button><div class="task__answer-content"><h4 class="task__step-title">使用递归</h4><p>递归逻辑稍微有点儿棘手。</p>
+<p>我们需要先输出列表的其它元素，<strong>然后</strong>输出当前的元素：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printReverseList(list) {
+
+  if (list.next) {
+    printReverseList(list.next);
+  }
+
+  alert(list.value);
+}
+
+printReverseList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">使用循环</button><div class="task__answer-content"><h4 class="task__step-title">使用循环</h4><p>循环解法也比直接输出稍微复杂点儿。</p>
+<p>没有方法来获取 <code>list</code> 中的最后一个值，我们也不能「回去」。</p>
+<p>所以我们能做的就是先直接按顺序遍历每个元素，并把它们存到一个数组里，然后反向输出存储的数组：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printReverseList(list) {
+  let arr = [];
+  let tmp = list;
+
+  while (tmp) {
+    arr.push(tmp.value);
+    tmp = tmp.next;
+  }
+
+  for (let i = arr.length - 1; i &gt;= 0; i--) {
+    alert( arr[i] );
+  }
+}
+
+printReverseList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，递归解法实际上也是这样做的：它顺着链表，记录每一个嵌套调用里链表上的元素（在执行上下文堆栈里），然后输出它们。</p>
+</div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions" data-tooltip="Advanced working with functions"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="rest-parameters-spread-operator.htm" tppabs="https://zh.javascript.info/rest-parameters-spread-operator" data-tooltip="Rest 参数与 Spread 操作符"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/recursion","identifier":"\/recursion"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#liang-zhong-si-kao-fang-shi">两种思考方式</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zhi-hang-dui-zhan">执行堆栈</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#di-gui-bian-li">递归遍历</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#di-gui-jie-gou">递归结构</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (5)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Frecursion"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/01-recursion/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/01-recursion/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/01-recursion/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

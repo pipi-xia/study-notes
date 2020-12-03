@@ -1,0 +1,56 @@
+<html>
+	<head>
+	<meta charset=utf-8/>
+	<title>绝对定位（有已经定位的祖先元素）</title>
+	<style  type="text/css" >
+		
+		#father
+		{
+			width:600px ;
+			height:600px ;
+			border:1px solid blue ; 
+			position: relative;
+			top :30px ;
+			left: 30px ;
+	 
+		}
+		
+		#father div
+		{
+			height:100px ;
+			width: 200px ;
+
+		}
+		.mydiv1
+		{
+			background-color: red ;
+		}
+		
+		.mydiv2
+		{
+			background-color: yellow ;
+			position: absolute ;
+			right: 100px ;
+		}
+		
+		.mydiv3
+		{
+			background-color: blue ;
+		}
+		
+	</style>
+	</head>
+	<body>
+	
+	
+	
+	  <div id="father">
+			<div class="mydiv1">red</div>
+			<div class="mydiv2">yellow</div>
+			<div class="mydiv3">blue</div>
+		
+	  </div>
+	  
+	  
+	</body>
+</html>

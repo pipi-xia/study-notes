@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">值的比较</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/comparison"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="值的比较"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="值的比较"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/operators"><link rel="next" href="/alert-prompt-confirm"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="值的比较"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/comparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/comparison'" tppabs="https://javascript.info/comparison"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="comparison.htm" tppabs="https://zh.javascript.info/comparison"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/comparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/comparison'" tppabs="https://ja.javascript.info/comparison"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/comparison">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/comparison" selected>简体中文</option><option value="https://ja.javascript.info/comparison">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="11" max="67" data-tooltip="第 67 章，第 11 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps" itemprop="url"><span itemprop="title">JavaScript 基础知识</span></a></li></ol><h1 class="main__header-title">值的比较</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="值的比较"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>在 JavaScript 中，我们可以使用一些熟知的数学符号进行值的比较：</p>
+<ul>
+<li>大于 / 小于：<code>a &gt; b</code>，<code>a &lt; b</code>。</li>
+<li>大于等于 / 小于等于：<code>a &gt;= b</code>，<code>a &lt;= b</code>。</li>
+<li>检测两个值的相等写为 <code>a == b</code>（注意表达式中是两个等号 <code>=</code>，若写为单个等号 <code>a = b</code> 则表示赋值）。</li>
+<li>检测两个值的不等，在数学中使用 <code>≠</code> 符号，而在 JavaScript 中则通过在赋值符号前增加叹号表示：<code>a != b</code>。</li>
+</ul>
+<h2><a class="main__anchor" name="bi-jiao-jie-guo-wei-boolean-lei-xing" href="#bi-jiao-jie-guo-wei-boolean-lei-xing">比较结果为 Boolean 类型</a></h2><p>和其他操作符一样，比较操作符也会有返回值，其类型为布尔值（Boolean）。</p>
+<ul>
+<li><code>true</code> —— 表示“yes（是）”，“correct（正确）”或“the truth（真理）”。</li>
+<li><code>false</code> ——  表示“no（否）”，“wrong（错误）”或“a lie（谎言）”。</li>
+</ul>
+<p>示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 2 &gt; 1 );  // true（正确）
+alert( 2 == 1 ); // false（错误）
+alert( 2 != 1 ); // true（正确）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>和其他类型的值一样，比较的结果可以被赋值给任意变量：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let result = 5 &gt; 4; // 把比较的结果赋值给 result
+alert( result ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zi-fu-chuan-jian-de-bi-jiao" href="#zi-fu-chuan-jian-de-bi-jiao">字符串间的比较</a></h2><p>在比较字符串的大小时，会使用“字典”或“词典”顺序进行判定。</p>
+<p>换言之，字符串是按字符（母）逐个进行比较的。</p>
+<p>示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 'Z' &gt; 'A' ); // true
+alert( 'Glow' &gt; 'Glee' ); // true
+alert( 'Bee' &gt; 'Be' ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>字符串间的比较算法非常简单：</p>
+<ol>
+<li>首先比较两个字符串的首位字符大小。</li>
+<li>如果一方字符较大（或较小），则该字符串大于（或小于）另一个字符串。算法结束。</li>
+<li>否则，两个字符串中的字符相等，继续取出各自的后一位字符进行比较。</li>
+<li>重复上述步骤进行比较，直到某字符串率先用完所有字符。</li>
+<li>如果两个字符串同时用完字符，那么它们被判定为相等，否则未结束（还有未比较的字符）的字符串更大。</li>
+</ol>
+<p>在上面的例子中，<code>'Z' &gt; 'A'</code> 在算法的第 1 步就得到了返回结果。</p>
+<p>字符串 <code>&quot;Glow&quot;</code> 和 <code>&quot;Glee&quot;</code> 会按字符逐个进行比较：</p>
+<ol>
+<li><code>G</code> 和 <code>G</code> 相等。</li>
+<li><code>l</code> 和 <code>l</code> 相等。</li>
+<li><code>o</code> 比 <code>e</code> 大，算法停止，第一个字符串大于第二个。</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">非真正的字典顺序，而是 Unicode 编码顺序</span></div>
+            <div class="important__content"><p>在上面的算法中，比较大小的逻辑与字典或电话簿中的排序很像，但也不完全相同。</p>
+<p>比如说，算法中的比较对大小写是敏感的。大写的 <code>&quot;A&quot;</code> 并不等于小写的 <code>&quot;a&quot;</code>。哪一个更大呢？实际上小写的 <code>&quot;a&quot;</code> 更大。至于原因嘛，这是因为在内部的编码表中（Unicode），小写字母的字符索引更大。我们会在 <a href="string.htm" tppabs="https://zh.javascript.info/string">字符串</a> 这章讨论更多关于字符串的细节。</p>
+</div></div>
+<h2><a class="main__anchor" name="bu-tong-lei-xing-jian-de-bi-jiao" href="#bu-tong-lei-xing-jian-de-bi-jiao">不同类型间的比较</a></h2><p>当不同类型的值进行比较时，它们会首先被转为数字（number）再判定大小。</p>
+<p>示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '2' &gt; 1 ); // true，字符串 '2' 会被转为数字 2
+alert( '01' == 1 ); // true，字符串 '01' 会被转为数字 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对于布尔类型，<code>true</code> 会被转为 <code>1</code>、<code>false</code> 转为 <code>0</code>，即有：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( true == 1 ); // true
+alert( false == 0 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">一个有趣的现象</span></div>
+            <div class="important__content"><p>有时候，以下两种情况会同时发生：</p>
+<ul>
+<li>若直接比较两个值，其结果是相等的。</li>
+<li>若把两个值转为布尔值，它们可能得出完全相反的结果，即 <code>true</code> 和 <code>false</code>。</li>
+</ul>
+<p>示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 0;
+alert( Boolean(a) ); // false
+
+let b = &quot;0&quot;;
+alert( Boolean(b) ); // true
+
+alert(a == b); // true!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对于 JavaScript 而言这种现象蛮正常的，因为它会把待比较的值转为数字后再做比较（因此 <code>&quot;0&quot;</code> 变成了 <code>0</code> ）。若只是将一个变量转为 <code>Boolean</code>，则会使用其他的类型转换规则。</p>
+</div></div>
+<h2><a class="main__anchor" name="yan-ge-xiang-deng" href="#yan-ge-xiang-deng">严格相等</a></h2><p>普通的相等性检查 <code>==</code> 存在一个问题，它不能区分出 <code>0</code> 和 <code>false</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0 == false ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>也同样无法区分空字符串和 <code>false</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '' == false ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是因为在比较不同类型的值时，处于相等判断符号 <code>==</code> 两侧的值会被转换为数字的原因。空字符串和 <code>false</code> 也是如此，转换后它们都等于 0。</p>
+<p>如果我们需要区分 <code>0</code> 和 <code>false</code>，该怎么做呢？</p>
+<p><strong>严格相等操作符 <code>===</code> 在进行比较时不会做任何的类型转换。</strong></p>
+<p>换句话说，如果 <code>a</code> 和 <code>b</code> 属于不同的数据类型，那么 <code>a === b</code> 不会做任何的类型转换而立刻返回 <code>false</code>。</p>
+<p>让我们试试：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0 === false ); // false，比较不同类型的值</code></pre>
+        </div>
+      </div>
+      
+      </div><p>同样的，与“不相等”符号 <code>!=</code> 类似，“严格不相等”表示为 <code>!==</code>。</p>
+<p>严格相等的操作符虽然略为冗长，但是它很清楚地显示了比较的意图，降低你犯错的可能性。</p>
+<h2><a class="main__anchor" name="she-ji-null-he-undefined-de-bi-jiao" href="#she-ji-null-he-undefined-de-bi-jiao">涉及 null 和 undefined 的比较</a></h2><p>让我们看看更多的边缘案例。</p>
+<p>当使用 <code>null</code> 或 <code>undefined</code> 与其他值进行比较时，其返回结果常常出乎你的意料。</p>
+<p>当使用严格相等 <code>===</code> 比较二者时：
+它们是不相等的，因为它们属于不同的类型。</p>
+<pre><code>```js run
+alert( null === undefined ); // false
+```
+</code></pre>
+<p>当使用非严格相等 <code>==</code> 比较二者时：
+JavaScript 存在一个专属的规则，会判定它们互等。而它们就像“一对恋人”，仅仅等于（非严格相等下）对方而不等于其他任何的值。</p>
+<pre><code>```js run
+alert( null == undefined ); // true
+```
+</code></pre>
+<p>当使用数学式或其他比较方法 <code>&lt; &gt; &lt;= &gt;=</code> 时：
+<code>null/undefined</code> 的值会被转换为数字：<code>null</code> 转为 <code>0</code>，<code>undefined</code> 转为 <code>NaN</code>。</p>
+<p>下面让我们看看，这些规则会带来什么有趣的现象。同时更重要的是，我们需要从中学会如何远离这些特性带来的“陷阱”。</p>
+<h3><a class="main__anchor" name="qi-guai-de-jie-guo-nullvs0" href="#qi-guai-de-jie-guo-nullvs0">奇怪的结果：null vs 0</a></h3><p>通过比较 <code>null</code> 和 0 可得：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( null &gt; 0 );  // (1) false
+alert( null == 0 ); // (2) false
+alert( null &gt;= 0 ); // (3) true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>是的，上面的结果完全打破了你对数学的认识。在最后一行代码显示“<code>null</code> 大于等于 0”的情况下，前两行代码中一定会有一个是正确的，然而事实表明它们的结果都是 false。</p>
+<p>为什么会出现这种反常结果，这是因为相等性检测 <code>==</code> 和普通比较符 <code>&gt; &lt; &gt;= &lt;=</code> 的代码逻辑是相互独立的。进行值的比较会把 <code>null</code> 转为数字，因此它被转为了 <code>0</code>。这就是为什么（3）中 <code>null &gt;= 0</code> 返回 true，（1）中 <code>null &gt; 0</code> 返回 false。</p>
+<p>另一方面，<code>undefined</code> 和 <code>null</code> 在相等性检测 <code>==</code> 中不会进行任何的类型转换，它们有自己独立的比较规则，所以除了它们之间互等外不会等于任何其他的值。这就解释了为什么（2）中 <code>null == 0</code> 会返回 false。</p>
+<p>###“拒不合作”的 undefined</p>
+<p><code>undefined</code> 不应该参与任何值的比较：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( undefined &gt; 0 ); // false (1)
+alert( undefined &lt; 0 ); // false (2)
+alert( undefined == 0 ); // false (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为何它看起来如此厌恶 0？无论怎么比较双方其结果总是返回 false！</p>
+<p>原因如下：</p>
+<ul>
+<li><code>(1)</code> 和 <code>(2)</code> 中返回 <code>false</code> 是因为 <code>undefined</code> 在比较中被转换为了 <code>NaN</code>，而 <code>NaN</code> 是一个特殊的数值型取值，它与任何值进行比较都会返回 <code>false</code>。</li>
+<li><code>(3)</code> 中返回 <code>false</code> 是因为这是一个相等性检测，而 <code>undefined</code> 只与 <code>null</code> 相等。</li>
+</ul>
+<h3><a class="main__anchor" name="gui-bi-cuo-wu" href="#gui-bi-cuo-wu">规避错误</a></h3><p>我们为何要研究以上示例？我们需要时刻记得这些古怪的规则吗？不，并不需要。虽然这些规则随着使用都会烂熟于胸，但是我们需要遵循更为可靠的方法来避免潜在的问题。</p>
+<p>除了严格相等 <code>===</code> 外，其他凡是有 <code>undefined/null</code> 参与的比较，我们都需要额外 “关照”。</p>
+<p>除非你非常清楚自己在做什么，否则永远不要使用 <code>&gt;= &gt; &lt; &lt;=</code> 去比较一个可能为 <code>null/undefined</code> 的变量。对于取值可能是 <code>null/undefined</code> 的变量，请按需要分别检查它的取值情况。</p>
+<h2><a class="main__anchor" name="xiao-jie" href="#xiao-jie">小结</a></h2><ul>
+<li>比较操作符始终返回逻辑值。</li>
+<li>字符串间按“词典”顺序逐字符比较大小。</li>
+<li>当待比较的值类型不同时，它们会被转为数字（不包括严格相等检测）进行比较。</li>
+<li>在非严格相等 <code>==</code> 下，<code>null</code> 和 <code>undefined</code> 相等且各自不等于任何其他的值。</li>
+<li>在使用 <code>&gt;</code> 或 <code>&lt;</code> 进行比较时，需要注意变量可能为 <code>null/undefined</code> 的情况。比较好的方法是单独检查变量是否等于 <code>null/undefined</code>。</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zhi-de-bi-jiao" name="zhi-de-bi-jiao">值的比较</a></h3><a class="task__open-link" href="task/comparison-questions.htm" tppabs="https://zh.javascript.info/task/comparison-questions" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>以下表达式的执行结果是？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">5 &gt; 4
+&quot;apple&quot; &gt; &quot;pineapple&quot;
+&quot;2&quot; &gt; &quot;12&quot;
+undefined == null
+undefined === null
+null == &quot;\n0\n&quot;
+null === +&quot;\n0\n&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">5 &gt; 4 → true
+&quot;apple&quot; &gt; &quot;pineapple&quot; → false
+&quot;2&quot; &gt; &quot;12&quot; → true
+undefined == null → true
+undefined === null → false
+null == &quot;\n0\n&quot; → false
+null === +&quot;\n0\n&quot; → false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>参考答案：</p>
+<ol>
+<li>数字间比较大小，显然得 true。</li>
+<li>按词典顺序比较，得 false。</li>
+<li>与第 2 题同理，首位字符 <code>&quot;2&quot;</code> 大于 <code>&quot;1&quot;</code>。</li>
+<li><code>null</code> 只与 <code>undefined</code> 互等。</li>
+<li>严格相等模式下，类型不同得 false。</li>
+<li>与第 4 题同理。</li>
+<li>与第 5 题同理。</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="operators.htm" tppabs="https://zh.javascript.info/operators" data-tooltip="运算符"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="alert-prompt-confirm.htm" tppabs="https://zh.javascript.info/alert-prompt-confirm" data-tooltip="交互：alert、prompt、confirm"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/comparison","identifier":"\/comparison"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps">JavaScript 基础知识</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bi-jiao-jie-guo-wei-boolean-lei-xing">比较结果为 Boolean 类型</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-fu-chuan-jian-de-bi-jiao">字符串间的比较</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bu-tong-lei-xing-jian-de-bi-jiao">不同类型间的比较</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yan-ge-xiang-deng">严格相等</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#she-ji-null-he-undefined-de-bi-jiao">涉及 null 和 undefined 的比较</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#xiao-jie">小结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcomparison"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/08-comparison/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/08-comparison/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/08-comparison/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

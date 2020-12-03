@@ -1,0 +1,123 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+
+		<title>CSS</title>
+		
+		<style type="text/css">
+			/* 层次
+			ul>li
+			{
+				color : red ;
+			}
+			h4+h1
+			{
+				color:blue ;
+			}
+			h4~h1
+			{
+				color:blue ;
+			}
+			*/
+			/* 伪类选择器 */
+			li:first-child
+			{
+				color :yellow ;
+			}
+			
+			li:last-child
+			{
+				color :red ;
+			}
+			
+			li:nth-child(3)
+			{
+				color: green ; 
+			}
+			
+			p:first-of-type{
+				background-color : purple ;
+			
+			}
+			
+			p:last-of-type{
+				background-color : pink ;
+			
+			}
+			
+			p:nth-of-type(2){
+				background-color : red ;
+			
+			}
+			/*选择有name属性，且标签是input的 
+			input[name]{
+				background-color: yellow ;
+			}*/
+			/*input，有name，且name的值是username
+			input[name="username"]{
+				background-color: yellow ;
+			}
+			*/
+			
+			/*name是以user开头的元素
+			input[name^=user]
+			{
+				background-color:green ;
+			}*/
+			/*以name结尾
+			input[name$=name]
+			{
+				background-color: purple;
+			}
+			*/
+			/*包含i的*/
+			input[name*=i]{
+				background-color: pink ; 
+			}
+		</style>	
+	</head>
+	<body>  
+	
+			<form>
+				id:<input type="text" name="uid" /><br/>
+				用户名:<input type="text" name="usernickname" /><br/>
+				真实名字:<input type="text" name="username" /><br/>
+				密码：<input type="password" name="pwd"/><br/>
+			
+			
+			
+			</form>
+	
+	
+			<p>p1p1</p>
+			<p>p2p2</p>
+			<p>p3p3</p>
+			<p>p4p4</p>
+	
+	
+			<ul>
+				<li>aaa</li>
+				<li>bbb</li>
+				<li>ccc</li>
+				<li>ddd</li>
+			</ul>
+	
+			<h1>1111</h1>
+			<h1>1111</h1>
+			<h4>h4h4h4</h4>
+			<h1>AAAA111</h1>
+			<h1>AAAA222</h1>
+			<h1>1111</h1>
+			
+			
+			<h4>h4h4h4</h4>
+			<h1>BBBB11</h1>
+			<h1>BBBB22</h1>
+
+
+	
+	</body>
+</html>
+

@@ -1,0 +1,701 @@
+<!DOCTYPE html><html lang="zh"><head><script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">CSS åŠ¨ç”»</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/css-animations"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="CSS åŠ¨ç”»"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="CSS åŠ¨ç”»"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/bezier-curve"><link rel="next" href="/js-animation"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="CSS åŠ¨ç”»"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/css-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/css-animations'" tppabs="https://javascript.info/css-animations"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="css-animations.htm" tppabs="https://zh.javascript.info/css-animations"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/css-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/css-animations'" tppabs="https://ja.javascript.info/css-animations"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/css-animations">English</option><option value="https://learn.javascript.ru/">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/css-animations" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/css-animations">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="3" data-tooltip="ç¬¬ 3 ç« ï¼Œç¬¬ 2 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="animation.htm" tppabs="https://zh.javascript.info/animation" itemprop="url"><span itemprop="title">åŠ¨ç”»</span></a></li></ol><h1 class="main__header-title">CSS åŠ¨ç”»</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="CSS åŠ¨ç”»"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>CSS åŠ¨ç”»å¯ä»¥åœ¨ä¸å€ŸåŠ© Javascript çš„æƒ…å†µä¸‹åšå‡ºä¸€äº›ç®€å•çš„åŠ¨ç”»æ•ˆæœã€‚</p>
+<p>ä½ ä¹Ÿå¯ä»¥é€šè¿‡ Javascript æ§åˆ¶ CSS åŠ¨ç”»ï¼Œä½¿ç”¨å°‘é‡çš„ä»£ç ï¼Œå°±èƒ½è®©åŠ¨ç”»è¡¨ç°æ›´åŠ å‡ºè‰²ã€‚</p>
+<h2><a class="main__anchor" name="css-guo-du-transitioncsstransition" href="#css-guo-du-transitioncsstransition">CSS è¿‡æ¸¡ï¼ˆtransitionï¼‰[#css-transition]</a></h2><p>CSS è¿‡æ¸¡çš„ç†å¿µéå¸¸ç®€å•ï¼Œæˆ‘ä»¬åªéœ€è¦å®šä¹‰æŸä¸€ä¸ªå±æ€§ä»¥åŠå¦‚ä½•åŠ¨æ€åœ°è¡¨ç°å…¶å˜åŒ–ã€‚å½“å±æ€§å˜åŒ–æ—¶ï¼Œæµè§ˆå™¨å°†ä¼šç»˜åˆ¶å‡ºç›¸åº”çš„è¿‡æ¸¡åŠ¨ç”»ã€‚</p>
+<p>ä¹Ÿå°±æ˜¯è¯´ï¼šæˆ‘ä»¬åªéœ€è¦æ”¹å˜æŸä¸ªå±æ€§ï¼Œç„¶åæ‰€æœ‰æµç•…çš„åŠ¨ç”»éƒ½ç”±æµè§ˆå™¨ç”Ÿæˆã€‚</p>
+<p>ä¸¾ä¸ªä¾‹å­ï¼Œä»¥ä¸‹ CSS ä¼šä¸º <code>backgroud-color</code> çš„å˜åŒ–ç”Ÿæˆä¸€ä¸ª 3 ç§’çš„è¿‡æ¸¡åŠ¨ç”»ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.animated {
+  transition-property: background-color;
+  transition-duration: 3s;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ç°åœ¨ï¼Œåªè¦ä¸€ä¸ªå…ƒç´ æ‹¥æœ‰åä¸º <code>.animated</code> çš„ç±»ï¼Œé‚£ä¹ˆä»»ä½•èƒŒæ™¯é¢œè‰²çš„å˜åŒ–éƒ½ä¼šè¢«æ¸²æŸ“ä¸º 3 ç§’é’Ÿçš„åŠ¨ç”»ã€‚</p>
+<p>å•å‡»ä»¥ä¸‹æŒ‰é’®ä»¥æ¼”ç¤ºåŠ¨ç”»ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;color&quot;&gt;Click me&lt;/button&gt;
+
+&lt;style&gt;
+  #color {
+    transition-property: background-color;
+    transition-duration: 3s;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  color.onclick = function() {
+    this.style.backgroundColor = 'red';
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-8l0f7j"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>CSS æä¾›äº†äº”ä¸ªå±æ€§æ¥æè¿°ä¸€ä¸ªè¿‡æ¸¡ï¼š</p>
+<ul>
+<li><code>transition-property</code></li>
+<li><code>transition-duration</code></li>
+<li><code>transition-timing-function</code></li>
+<li><code>transition-delay</code></li>
+</ul>
+<p>ä¹‹åæˆ‘ä»¬ä¼šè¯¦ç»†ä»‹ç»å®ƒä»¬ï¼Œç›®å‰æˆ‘ä»¬éœ€è¦çŸ¥é“ï¼Œæˆ‘ä»¬å¯ä»¥åœ¨ <code>transition</code> ä¸­ä»¥ <code>property duration timing-function delay</code> çš„é¡ºåºä¸€æ¬¡æ€§å®šä¹‰å®ƒä»¬ï¼Œå¹¶ä¸”å¯ä»¥åŒæ—¶ä¸ºå¤šä¸ªå±æ€§è®¾ç½®è¿‡æ¸¡åŠ¨ç”»ã€‚</p>
+<p>è¯·çœ‹ä»¥ä¸‹ä¾‹å­ï¼Œç‚¹å‡»æŒ‰é’®ç”Ÿæˆ <code>color</code> å’Œ <code>font-size</code> çš„è¿‡æ¸¡åŠ¨ç”»ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;growing&quot;&gt;Click me&lt;/button&gt;
+
+&lt;style&gt;
+#growing {
+  transition: font-size 3s, color 2s;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+growing.onclick = function() {
+  this.style.fontSize = '36px';
+  this.style.color = 'red';
+};
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-7xob1t"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>ç°åœ¨è®©æˆ‘ä»¬ä¸€ä¸ªä¸€ä¸ªå±•å¼€çœ‹è¿™äº›å±æ€§ã€‚</p>
+<h2><a class="main__anchor" name="transitionproperty" href="#transitionproperty">transition-property</a></h2><p>åœ¨ <code>transition-property</code> ä¸­æˆ‘ä»¬å¯ä»¥åˆ—ä¸¾è¦è®¾ç½®åŠ¨ç”»çš„æ‰€æœ‰å±æ€§ï¼Œå¦‚ï¼š<code>leftã€margin-leftã€height å’Œ color</code>ã€‚</p>
+<p>ä¸æ˜¯æ‰€æœ‰çš„ CSS å±æ€§éƒ½å¯ä»¥ä½¿ç”¨è¿‡æ¸¡åŠ¨ç”»ï¼Œä½†æ˜¯å®ƒä»¬ä¸­çš„<a href="javascript:if(confirm('http://www.w3.org/TR/css3-transitions/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.w3.org/TR/css3-transitions/#animatable-properties-'" tppabs="http://www.w3.org/TR/css3-transitions/#animatable-properties-">å¤§å¤šæ•°</a>éƒ½æ˜¯å¯ä»¥çš„ã€‚<code>all</code> è¡¨ç¤ºåº”ç”¨åœ¨æ‰€æœ‰å±æ€§ä¸Šã€‚</p>
+<h2><a class="main__anchor" name="transitionduration" href="#transitionduration">transition-duration</a></h2><p><code>transition-duration</code> å…è®¸æˆ‘ä»¬æŒ‡å®šåŠ¨ç”»æŒç»­çš„æ—¶é—´ã€‚æ—¶é—´çš„æ ¼å¼å‚ç…§ <a href="javascript:if(confirm('http://www.w3.org/TR/css3-values/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.w3.org/TR/css3-values/#time'" tppabs="http://www.w3.org/TR/css3-values/#time">CSS æ—¶é—´æ ¼å¼</a>ï¼šå•ä½ä¸ºç§’ <code>s</code> æˆ–è€…æ¯«ç§’ <code>ms</code>ã€‚</p>
+<h2><a class="main__anchor" name="transitiondelay" href="#transitiondelay">transition-delay</a></h2><p><code>transition-delay</code> å…è®¸æˆ‘ä»¬è®¾å®šåŠ¨ç”»<strong>å¼€å§‹å‰</strong>çš„å»¶è¿Ÿæ—¶é—´ã€‚ä¾‹å¦‚ï¼Œå¯¹äº <code>transition-delay: 1s</code>ï¼ŒåŠ¨ç”»å°†ä¼šåœ¨å±æ€§å˜åŒ–å‘ç”Ÿ 1 ç§’åå¼€å§‹æ¸²æŸ“ã€‚</p>
+<p>ä½ ä¹Ÿå¯ä»¥æä¾›ä¸€ä¸ªè´Ÿå€¼ã€‚é‚£ä¹ˆåŠ¨ç”»å°†ä¼šä»æ•´ä¸ªè¿‡æ¸¡çš„ä¸­é—´æ—¶åˆ»å¼€å§‹æ¸²æŸ“ã€‚ä¾‹å¦‚ï¼Œå¯¹äº <code>transition-duration: 2s</code>ï¼ŒåŒæ—¶æŠŠ <code>delay</code> è®¾ç½®ä¸º <code>-1s</code>ï¼Œé‚£ä¹ˆè¿™ä¸ªåŠ¨ç”»å°†ä¼šæŒç»­ 1 ç§’é’Ÿï¼Œå¹¶ä¸”ä»æ­£ä¸­é—´å¼€å§‹æ¸²æŸ“ã€‚</p>
+<p>è¿™é‡Œæ¼”ç¤ºäº†æ•°å­—ä» <code>0</code> åˆ° <code>9</code> çš„åŠ¨ç”»ï¼Œä½¿ç”¨äº† CSS <code>translate</code> æ–¹æ³•ï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/digits/index.htm" tppabs="https://zh.javascript.info/article/css-animations/digits/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/PFMk3kS7Q92CYgdjm3Jp?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/PFMk3kS7Q92CYgdjm3Jp?p=preview'" tppabs="http://plnkr.co/edit/PFMk3kS7Q92CYgdjm3Jp?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/digits/index.htm" tppabs="https://zh.javascript.info/article/css-animations/digits/"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>stripe.onclick = function() {
+  stripe.classList.add('animate');
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: linear;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=utf-8;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Click below to animate:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>å¦‚ä¸‹åœ¨ <code>tranform</code> å±æ€§ä¸Šåº”ç”¨åŠ¨ç”»ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>åœ¨ä»¥ä¸Šçš„ä¾‹å­ä¸­ï¼ŒJavaScript æŠŠ <code>.animate</code> ç±»æ·»åŠ åˆ°äº†å…ƒç´ ä¸Šï¼Œç”±æ­¤è§¦å‘äº†åŠ¨ç”»ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">stripe.classList.add('animate');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>æˆ‘ä»¬ä¹Ÿå¯ä»¥ã€ä»ä¸­é—´ã€å¼€å§‹ï¼Œä¹Ÿå°±æ˜¯è¯´ä»æŸä¸ªç‰¹å®šæ•°å­—å¼€å§‹ï¼Œæ¯”æ–¹è¯´ï¼Œä»å½“å‰çš„æ—¶é—´çš„ç§’æ•°å¼€å§‹ã€‚è¿™å°±è¦ç”¨åˆ°è´Ÿçš„ <code>transition-delay</code>ã€‚</p>
+<p>æ­¤å¤„ï¼Œå¦‚æœä½ å•å‡»è¿™ä¸ªæ•°å­—ï¼Œé‚£ä¹ˆå®ƒä¼šä»å½“å‰çš„ç§’æ•°å¼€å§‹æ¸²æŸ“ï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/digits-negative-delay/index.htm" tppabs="https://zh.javascript.info/article/css-animations/digits-negative-delay/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/H91WU8NURhn5GNQu990O?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/H91WU8NURhn5GNQu990O?p=preview'" tppabs="http://plnkr.co/edit/H91WU8NURhn5GNQu990O?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/digits-negative-delay/index.htm" tppabs="https://zh.javascript.info/article/css-animations/digits-negative-delay/"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>stripe.onclick = function() {
+  let sec = new Date().getSeconds() % 10;
+  stripe.style.transitionDelay = '-' + sec + 's';
+  stripe.classList.add('animate');
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: linear;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Click below to animate:
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><p>åªéœ€æ·»åŠ ä¸€è¡Œ JavaScript ä»£ç ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">stripe.onclick = function() {
+  let sec = new Date().getSeconds() % 10;
+  // for instance, -3s here starts the animation from the 3rd second
+  stripe.style.transitionDelay = '-' + sec + 's';
+  stripe.classList.add('animate');
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="transitiontimingfunction" href="#transitiontimingfunction">transition-timing-function</a></h2><p>æ—¶é—´å‡½æ•°æè¿°äº†åŠ¨ç”»è¿›ç¨‹åœ¨æ—¶é—´ä¸Šçš„åˆ†å¸ƒã€‚å®ƒæ˜¯å…ˆæ…¢åå¿«è¿˜æ˜¯å…ˆå¿«åæ…¢ï¼Ÿ</p>
+<p>ä¹ä¸€çœ‹ï¼Œè¿™å¯èƒ½æ˜¯æœ€å¤æ‚çš„å±æ€§äº†ï¼Œä½†æ˜¯ç¨å¾®èŠ±ç‚¹æ—¶é—´ï¼Œä½ å°±ä¼šå‘ç°å…¶å®ä¹Ÿå¾ˆç®€å•ã€‚</p>
+<p>è¿™ä¸ªå±æ€§æ¥å—ä¸¤ç§å€¼ï¼šä¸€ä¸ªè´å¡å°”æ›²çº¿ï¼ˆBezier curveï¼‰æˆ–è€…é˜¶è·ƒå‡½æ•°ï¼ˆstepsï¼‰ã€‚æˆ‘ä»¬å…ˆä»è´å¡å°”æ›²çº¿å¼€å§‹ï¼Œè¿™ä¹Ÿæ˜¯è¾ƒä¸ºå¸¸ç”¨çš„ã€‚</p>
+<h3><a class="main__anchor" name="bei-sai-er-qu-xian-beziercurve" href="#bei-sai-er-qu-xian-beziercurve">è´å¡å°”æ›²çº¿ï¼ˆBezier curveï¼‰</a></h3><p>æ—¶é—´å‡½æ•°å¯ä»¥ç”¨<a href="bezier-curve.htm" tppabs="https://zh.javascript.info/bezier-curve">è´å¡å°”æ›²çº¿</a>æè¿°ï¼Œé€šè¿‡è®¾ç½®å››ä¸ªæ»¡è¶³ä»¥ä¸‹æ¡ä»¶çš„æ§åˆ¶ç‚¹ï¼š</p>
+<ol>
+<li>ç¬¬ä¸€ä¸ªåº”ä¸ºï¼š<code>(0,0)</code>ã€‚</li>
+<li>æœ€åä¸€ä¸ªåº”ä¸ºï¼š<code>(1,1)</code>ã€‚</li>
+<li>å¯¹äºä¸­é—´å€¼ï¼Œ<code>x</code> å¿…é¡»ä½äº <code>0..1</code> ä¹‹é—´ï¼Œ<code>y</code> å¯ä»¥ä¸ºä»»æ„å€¼ã€‚</li>
+</ol>
+<p>CSS ä¸­è®¾ç½®ä¸€è´å¡å°”æ›²çº¿çš„è¯­æ³•ä¸ºï¼š<code>cubic-bezier(x2, y2, x3, y3)</code>ã€‚è¿™é‡Œæˆ‘ä»¬åªéœ€è¦è®¾ç½®ç¬¬äºŒä¸ªå’Œç¬¬ä¸‰ä¸ªå€¼ï¼Œå› ä¸ºç¬¬ä¸€ä¸ªç‚¹å›ºå®šä¸º <code>(0,0)</code>ï¼Œç¬¬å››ä¸ªç‚¹å›ºå®šä¸º <code>(1,1)</code>ã€‚</p>
+<p>æ—¶é—´å‡½æ•°æè¿°äº†åŠ¨ç”»è¿›è¡Œçš„å¿«æ…¢ã€‚</p>
+<ul>
+<li><code>x</code> è½´è¡¨ç¤ºæ—¶é—´ï¼š<code>0</code> â€”â€” å¼€å§‹æ—¶åˆ»ï¼Œ<code>1</code> â€”â€” <code>transition-duration</code>çš„ç»“æŸæ—¶åˆ»ã€‚</li>
+<li><code>y</code> è½´è¡¨ç¤ºè¿‡ç¨‹çš„å®Œæˆåº¦ï¼š<code>0</code> â€”â€” å±æ€§çš„èµ·å§‹å€¼ï¼Œ<code>1</code> â€”â€” å±æ€§çš„æœ€ç»ˆå€¼ã€‚</li>
+</ul>
+<p>æœ€ç®€å•çš„ä¸€ç§æƒ…å†µå°±æ˜¯åŠ¨ç”»åŒ€é€Ÿè¿›è¡Œï¼Œå¯ä»¥é€šè¿‡è®¾ç½®æ›²çº¿ä¸º <code>cubic-bezier(0, 0, 1, 1)</code> æ¥å®ç°ã€‚</p>
+<p>çœ‹ä¸Šå»å°±åƒè¿™æ ·ï¼š</p>
+<figure><div class="image" style="width:110px">
+      <div class="image__ratio" style="padding-top:114.54545454545455%"></div>
+      <img src="article/css-animations/bezier-linear.png" tppabs="https://zh.javascript.info/article/css-animations/bezier-linear.png" alt="" width="110" height="126" class="image__image">
+      </div></figure><p>â€¦æ­£å¦‚æˆ‘ä»¬æ‰€è§ï¼Œè¿™å°±æ˜¯æ¡ç›´çº¿ã€‚éšç€æ—¶é—´ <code>x</code> æ¨ç§»ï¼Œå®Œæˆåº¦ <code>y</code> ç¨³æ­¥ä» <code>0</code> å¢é•¿åˆ° <code>1</code>ã€‚</p>
+<p>ä¾‹å­ä¸­çš„åˆ—è½¦åŒ€é€Ÿåœ°ä»å·¦ä¾§ç§»åŠ¨åˆ°å³ä¾§ï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/train-linear/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train-linear/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/6MHl1m0FLs8YBKAzJ5Px?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/6MHl1m0FLs8YBKAzJ5Px?p=preview'" tppabs="http://plnkr.co/edit/6MHl1m0FLs8YBKAzJ5Px?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train-linear/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train-linear/"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 0;
+  transition: left 5s cubic-bezier(0, 0, 1, 1);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='450px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>è¿™ä¸ªé‡Œé¢çš„ CSS å°±æ˜¯åŸºäºåˆšæ‰é‚£æ¡æ›²çº¿çš„ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.train {
+  left: 0;
+  transition: left 5s cubic-bezier(0, 0, 1, 1);
+  /* JavaScript sets left to 450px */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>â€¦é‚£ä¹ˆï¼Œæˆ‘ä»¬å¦‚æœè¡¨ç°å‡ºå‡é€Ÿè¡Œé©¶çš„åˆ—è½¦å‘¢ï¼Ÿ</p>
+<p>æˆ‘ä»¬å¯ä»¥ä½¿ç”¨å¦ä¸€æ¡è´å¡å°”æ›²çº¿ï¼š<code>cubic-bezier(0.0, 0.5, 0.5 ,1.0)</code>ã€‚</p>
+<p>å›¾åƒå¦‚ä¸‹ï¼š</p>
+<figure><div class="image" style="width:110px">
+      <div class="image__ratio" style="padding-top:127.27272727272727%"></div>
+      <img src="article/css-animations/train-curve.png" tppabs="https://zh.javascript.info/article/css-animations/train-curve.png" alt="" width="110" height="140" class="image__image">
+      </div></figure><p>æ­£å¦‚æˆ‘ä»¬æ‰€è§ï¼Œè¿™ä¸ªè¿‡ç¨‹èµ·åˆå¾ˆå¿«ï¼šæ›²çº¿å¼€å§‹è¿…é€Ÿå‡é«˜ï¼Œç„¶åè¶Šæ¥è¶Šæ…¢ã€‚</p>
+<p>è¿™æ˜¯å®é™…çš„æ•ˆæœæ¼”ç¤ºï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/train/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/xlWGiWzz6ioomVH62w1E?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/xlWGiWzz6ioomVH62w1E?p=preview'" tppabs="http://plnkr.co/edit/xlWGiWzz6ioomVH62w1E?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train/"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 0px;
+  transition: left 5s cubic-bezier(0.0, 0.5, 0.5, 1.0);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='450px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>CSSï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.train {
+  left: 0;
+  transition: left 5s cubic-bezier(0, .5, .5, 1);
+  /* JavaScript sets left to 450px */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>CSS æä¾›å‡ æ¡å†…ç½®çš„æ›²çº¿ï¼š<code>linear</code>ã€<code>ease</code>ã€<code>ease-in</code>ã€<code>ease-out</code> å’Œ <code>ease-in-out</code>ã€‚</p>
+<p><code>linear</code> å…¶å®å°±æ˜¯ <code>cubic-bezier(0, 0, 1, 1)</code> çš„ç®€å†™ â€”â€” ä¸€æ¡ç›´çº¿ï¼Œåˆšåˆšæˆ‘ä»¬å·²ç»çœ‹è¿‡äº†ã€‚</p>
+<p>å…¶å®ƒçš„åç§°æ˜¯ä»¥ä¸‹è´å¡å°”æ›²çº¿çš„ç®€å†™ï¼š</p>
+<table>
+<thead>
+<tr>
+<th><code>ease</code><sup>*</sup></th>
+<th><code>ease-in</code></th>
+<th><code>ease-out</code></th>
+<th><code>ease-in-out</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(0.25, 0.1, 0.25, 1.0)</code></td>
+<td><code>(0.42, 0, 1.0, 1.0)</code></td>
+<td><code>(0, 0, 0.58, 1.0)</code></td>
+<td><code>(0.42, 0, 0.58, 1.0)</code></td>
+</tr>
+<tr>
+<td><figure><div class="image" style="width:110px">
+      <div class="image__ratio" style="padding-top:128.1818181818182%"></div>
+      <img src="article/css-animations/ease.png" tppabs="https://zh.javascript.info/article/css-animations/ease.png" alt="" width="110" height="141" class="image__image">
+      </div></figure></td>
+<td><figure><div class="image" style="width:116px">
+      <div class="image__ratio" style="padding-top:121.55172413793103%"></div>
+      <img src="article/css-animations/ease-in.png" tppabs="https://zh.javascript.info/article/css-animations/ease-in.png" alt="" width="116" height="141" class="image__image">
+      </div></figure></td>
+<td><figure><div class="image" style="width:115px">
+      <div class="image__ratio" style="padding-top:122.60869565217392%"></div>
+      <img src="article/css-animations/ease-out.png" tppabs="https://zh.javascript.info/article/css-animations/ease-out.png" alt="" width="115" height="141" class="image__image">
+      </div></figure></td>
+<td><figure><div class="image" style="width:110px">
+      <div class="image__ratio" style="padding-top:128.1818181818182%"></div>
+      <img src="article/css-animations/ease-in-out.png" tppabs="https://zh.javascript.info/article/css-animations/ease-in-out.png" alt="" width="110" height="141" class="image__image">
+      </div></figure></td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code> â€”â€” é»˜è®¤å€¼ï¼Œå¦‚æœæ²¡æœ‰æŒ‡å®šæ—¶é—´å‡½æ•°ï¼Œé‚£ä¹ˆå°†ä½¿ç”¨ <code>ease</code> ä½œä¸ºé»˜è®¤å€¼ã€‚</p>
+<p>æ‰€ä»¥ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨ <code>ease-out</code> æ¥è¡¨ç°å‡é€Ÿè¡Œé©¶çš„åˆ—è½¦ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.train {
+  left: 0;
+  transition: left 5s ease-out;
+  /* transition: left 5s cubic-bezier(0, .5, .5, 1); */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ä½†æ˜¯è¿™çœ‹èµ·æ¥æœ‰ç‚¹æ€ªæ€ªçš„ã€‚</p>
+<p><strong>è´å¡å°”æ›²çº¿å¯ä»¥ä½¿åŠ¨ç”»ã€è¶…å‡ºã€å…¶åŸæœ¬çš„èŒƒå›´ã€‚</strong></p>
+<p>æ›²çº¿ä¸Šçš„æ§åˆ¶ç‚¹çš„ <code>y</code> å€¼å¯ä»¥ä½¿ä»»æ„çš„ï¼šä¸ç®¡æ˜¯è´Ÿå€¼è¿˜æ˜¯ä¸€ä¸ªå¾ˆå¤§çš„å€¼ã€‚å¦‚æ­¤ï¼Œè´å¡å°”æ›²çº¿å°±ä¼šå˜å¾—å¾ˆä½æˆ–è€…å¾ˆé«˜ï¼Œè®©åŠ¨ç”»è¶…å‡ºå…¶æ­£å¸¸çš„èŒƒå›´ã€‚</p>
+<p>åœ¨ä¸€ä¸‹çš„ä¾‹å­ä¸­ä½¿ç”¨çš„ä»£ç ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">.train {
+  left: 100px;
+  transition: left 5s cubic-bezier(.5, -1, .5, 2);
+  /* JavaScript sets left to 400px */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>left</code> æœ¬è¯¥åœ¨ <code>100px</code> åˆ° <code>400px</code> ä¹‹é—´å˜åŒ–ã€‚</p>
+<p>ä½†æ˜¯å¦‚æœä½ ç‚¹å‡»åˆ—è½¦ï¼Œä½ ä¼šå‘ç°ï¼š</p>
+<ul>
+<li>èµ·åˆï¼Œåˆ—è½¦ä¼š<strong>åå‘</strong>è¿åŠ¨ï¼š<code>left</code> ä¼šå˜å¾—å°äº <code>100px</code>ã€‚</li>
+<li>ç„¶åï¼Œå®ƒä¼šå˜å›å¾€å‰è¿åŠ¨ï¼Œå¹¶ä¸”è¶…è¿‡ <code>400px</code>ã€‚</li>
+<li>æœ€åå†è¿”å› â€”â€” å›åˆ° <code>400px</code>ã€‚</li>
+</ul>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/train-over/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train-over/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/f5c4UGfohwwAZwM8KLgF?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/f5c4UGfohwwAZwM8KLgF?p=preview'" tppabs="http://plnkr.co/edit/f5c4UGfohwwAZwM8KLgF?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train-over/index.htm" tppabs="https://zh.javascript.info/article/css-animations/train-over/"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 100px;
+  transition: left 5s cubic-bezier(.5, -1, .5, 2);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='400px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>ä¸ºä»€ä¹ˆä¼šè¿™æ ·ï¼Ÿçœ‹ä¸€çœ¼ç»™å®šçš„è´å¡å°”æ›²çº¿çš„å›¾åƒä½ å°±ä¼šæ˜ç™½äº†ã€‚</p>
+<figure><div class="image" style="width:220px">
+      <div class="image__ratio" style="padding-top:141.36363636363635%"></div>
+      <img src="article/css-animations/bezier-train-over.png" tppabs="https://zh.javascript.info/article/css-animations/bezier-train-over.png" alt="" width="220" height="311" class="image__image">
+      </div></figure><p>æˆ‘ä»¬æŠŠç¬¬äºŒä¸ªç‚¹çš„ <code>y</code> åæ ‡ç§»åŠ¨åˆ°äº†å°äº <code>0</code> çš„ä½ç½®ï¼ŒåŒæ—¶æŠŠç¬¬ä¸‰ä¸ªç‚¹çš„ <code>y</code> åæ ‡ç§»åŠ¨åˆ°äº†å¤§äº <code>1</code> çš„ä½ç½®ï¼Œå› æ­¤æ›²çº¿å·²ç»ä¸å†åƒä¸€ä¸ªå››åˆ†ä¹‹ä¸€åœ†äº†ã€‚<code>y</code> åæ ‡è¶…å‡ºäº†å¸¸è§„çš„ <code>0..1</code> çš„èŒƒå›´ã€‚</p>
+<p>æ­£å¦‚æˆ‘ä»¬æ‰€çŸ¥ï¼Œ<code>y</code> è¡¨ç¤ºã€åŠ¨ç”»è¿›ç¨‹çš„å®Œæˆåº¦ã€ã€‚<code>y = 0</code> è¡¨ç¤ºå±æ€§çš„åˆå§‹å€¼ï¼Œ<code>y = 1</code> åˆ™è¡¨ç¤ºå±æ€§çš„æœ€ç»ˆå€¼ã€‚å› æ­¤ï¼Œ<code>y &lt; 0</code> æ„å‘³ç€å±æ€§å€¼è¦æ¯”åˆå§‹å€¼å°ï¼Œè€Œ <code>y &gt; 1</code> åˆ™è¡¨æ˜å±æ€§å€¼è¦æ¯”æœ€ç»ˆå€¼å¤§ã€‚</p>
+<p>å½“ç„¶äº†ï¼Œ<code>-1</code> å’Œ <code>2</code> è¿˜æ˜¯æ¯”è¾ƒç¼“å’Œçš„å€¼ã€‚å¦‚æœæˆ‘ä»¬æŠŠ <code>y</code> è®¾ä¸º <code>-99</code> å’Œ <code>99</code>ï¼Œé‚£ä¹ˆåˆ—è½¦å°†ä¼šåç¦»åœ°æ›´è¿œã€‚</p>
+<p>ä½†æ˜¯ï¼Œå¦‚ä½•é’ˆå¯¹ç‰¹å®šçš„ä»»åŠ¡å¯»æ‰¾åˆ°åˆé€‚çš„è´å¡å°”æ›²çº¿å‘¢ï¼Ÿäº‹å®ä¸Šï¼Œæœ‰å¾ˆå¤šå·¥å…·å¯ä»¥å¸®åˆ°ä½ ã€‚æ¯”æ–¹è¯´ï¼Œæˆ‘ä»¬å¯ä»¥åˆ©ç”¨è¿™ä¸ªç½‘ç«™ï¼š<a href="javascript:if(confirm('http://cubic-bezier.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://cubic-bezier.com/'" tppabs="http://cubic-bezier.com/">http://cubic-bezier.com/</a>ã€‚</p>
+<h3><a class="main__anchor" name="jie-yue-han-shu-steps" href="#jie-yue-han-shu-steps">é˜¶è·ƒå‡½æ•°ï¼ˆStepsï¼‰</a></h3><p>æ—¶é—´å‡½æ•° <code>steps(number of steps[, start/end])</code> å…è®¸ä½ è®©åŠ¨ç”»åˆ†æ®µè¿›è¡Œï¼Œ<code>number of steps</code> è¡¨ç¤ºéœ€è¦æ‹†åˆ†ä¸ºå¤šå°‘æ®µã€‚</p>
+<p>è®©æˆ‘ä»¬é€šè¿‡ä¸€ä¸ªæ•°å­—çš„ä¾‹å­æ¥æ¼”ç¤ºä¸€ä¸‹ã€‚æˆ‘ä»¬å°†ä¼šè®©æ•°å­—ä»¥ç¦»æ•£çš„æ–¹å¼å˜åŒ–ï¼Œè€Œä¸æ˜¯ä»¥è¿ç»­çš„æ–¹å¼ã€‚</p>
+<p>ä¸ºäº†è¾¾åˆ°æ•ˆæœï¼Œæˆ‘ä»¬æŠŠåŠ¨ç”»æ‹†åˆ†ä¸º 9 æ®µï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:42}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#stripe.animate  {
+  transform: translate(-90%);
+  transition: transform 9s steps(9, start);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>step(9, start)</code> ç”Ÿæ•ˆæ—¶ï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/step/index.htm" tppabs="https://zh.javascript.info/article/css-animations/step/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/h42O4it1nSkkIzxiiBpj?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/h42O4it1nSkkIzxiiBpj?p=preview'" tppabs="http://plnkr.co/edit/h42O4it1nSkkIzxiiBpj?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/step/index.htm" tppabs="https://zh.javascript.info/article/css-animations/step/"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: steps(9, start);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Click below to animate:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    digit.onclick = function() {
+      stripe.classList.add('animate');
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p><code>steps</code> çš„ç¬¬ä¸€ä¸ªå‚æ•°è¡¨ç¤ºæ®µæ•°ã€‚è¿™ä¸ªè¿‡æ¸¡åŠ¨ç”»å°†ä¼šè¢«æ‹†åˆ†ä¸º 9 ä¸ªéƒ¨åˆ†ï¼ˆæ¯ä¸ªå  10%ï¼‰ã€‚æ—¶é—´é—´éš”ä¹Ÿä¼šä»¥åŒæ ·çš„æ–¹å¼è¢«æ‹†åˆ†ï¼š9 ç§’ä¼šè¢«åˆ†å‰²ä¸ºå¤šä¸ªæ—¶é•¿ 1 ç§’çš„é—´éš”ã€‚</p>
+<p>ç¬¬äºŒä¸ªå‚æ•°å¯ä»¥å– <code>start</code> æˆ– <code>end</code> ä¸¤è€…å…¶ä¸€ã€‚</p>
+<p><code>start</code> è¡¨ç¤ºåœ¨åŠ¨ç”»å¼€å§‹æ—¶ï¼Œæˆ‘ä»¬éœ€è¦ç«‹å³å¼€å§‹ç¬¬ä¸€æ®µçš„åŠ¨ç”»ã€‚</p>
+<p>å¯ä»¥è§‚å¯Ÿåˆ°ï¼Œåœ¨åŠ¨ç”»è¿‡ç¨‹ä¸­ï¼šå½“æˆ‘ä»¬å•å‡»æ•°å­—ä¹‹åï¼Œå®ƒä¼šç«‹é©¬å˜ä¸º <code>1</code>ï¼ˆå³ç¬¬ä¸€æ®µï¼‰ï¼Œç„¶ååœ¨ä¸‹ä¸€ç§’å¼€å§‹çš„æ—¶å€™ç»§ç»­å˜åŒ–ã€‚</p>
+<p>å…·ä½“çš„æµç¨‹å¦‚ä¸‹ï¼š</p>
+<ul>
+<li><code>0s</code> â€”â€” <code>-10%</code>ï¼ˆåœ¨ç¬¬ä¸€ç§’å¼€å§‹çš„æ—¶å€™ç«‹å³å˜åŒ–ï¼‰</li>
+<li><code>1s</code> â€”â€” <code>-20%</code></li>
+<li>â€¦</li>
+<li><code>8s</code> â€“ <code>-80%</code></li>
+<li>ï¼ˆæœ€åä¸€ç§’ï¼Œæ˜¾ç¤ºæœ€ç»ˆå€¼ï¼‰</li>
+</ul>
+<p>å¦ä¸€ä¸ªå€¼ <code>end</code> è¡¨ç¤ºï¼šæ”¹å˜ä¸åº”è¯¥åœ¨æœ€å¼€å§‹çš„æ—¶å€™å‘ç”Ÿï¼Œè€Œæ˜¯å‘ç”Ÿåœ¨æ¯ä¸€æ®µçš„æœ€åæ—¶åˆ»ã€‚</p>
+<p>å…¶æµç¨‹å¦‚ä¸‹ï¼š</p>
+<ul>
+<li><code>0s</code> â€”â€” <code>0</code></li>
+<li><code>1s</code> â€”â€” <code>-10%</code>ï¼ˆåœ¨ç¬¬ä¸€ç§’ç»“æŸæ—¶ç¬¬ä¸€æ¬¡å˜åŒ–ï¼‰</li>
+<li><code>2s</code> â€”â€” <code>-20%</code></li>
+<li>â€¦</li>
+<li><code>9s</code> â€”â€” <code>-90%</code></li>
+</ul>
+<p><code>step(9, end)</code> ç”Ÿæ•ˆæ—¶ï¼š</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">ç»“æœ</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" href="article/css-animations/step-end/index.htm" tppabs="https://zh.javascript.info/article/css-animations/step-end/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="åœ¨æ²™ç®±ä¸­ç¼–è¾‘" href="javascript:if(confirm('http://plnkr.co/edit/H9n7Qkynw8XAoqqc4ugW?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/H9n7Qkynw8XAoqqc4ugW?p=preview'" tppabs="http://plnkr.co/edit/H9n7Qkynw8XAoqqc4ugW?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/step-end/index.htm" tppabs="https://zh.javascript.info/article/css-animations/step-end/"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: steps(9, end);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Click below to animate:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    digit.onclick = function() {
+      stripe.classList.add('animate');
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>å¦å¤–è¿˜æœ‰ä¸€äº›ç®€å†™å€¼ï¼š</p>
+<ul>
+<li><code>step-start</code> â€”â€” ç­‰åŒäº <code>steps(1, start)</code>ã€‚å³ï¼šåŠ¨ç”»ç«‹åˆ»å¼€å§‹ï¼Œå¹¶ä¸”åªæœ‰ä¸€æ®µã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œä¼šç«‹åˆ»å¼€å§‹ï¼Œç´§æ¥ç€å°±ç»“æŸäº†ï¼Œå®›å¦‚æ²¡æœ‰åŠ¨ç”»ä¸€æ ·ã€‚</li>
+<li><code>step-end</code> â€”â€” ç­‰åŒäº <code>steps(1, end)</code>ã€‚å³ï¼šåœ¨ <code>transition-duration</code> ç»“æŸæ—¶ç”Ÿæˆä¸€æ®µåŠ¨ç”»ã€‚</li>
+</ul>
+<p>è¿™äº›å€¼å¾ˆå°‘ä¼šè¢«ç”¨åˆ°ï¼Œå› ä¸ºå®ƒä»¬å¹¶ä¸ç®—æ˜¯çœŸæ­£çš„åŠ¨ç”»ï¼Œè€Œæ˜¯å•æ­¥çš„å˜åŒ–ã€‚</p>
+<h2><a class="main__anchor" name="transitionend-shi-jian" href="#transitionend-shi-jian">transitionend äº‹ä»¶</a></h2><p>CSS åŠ¨ç”»å®Œæˆåï¼Œä¼šè§¦å‘ <code>transitionend</code> äº‹ä»¶ã€‚</p>
+<p>è¿™è¢«å¹¿æ³›ç”¨äºåœ¨åŠ¨ç”»ç»“æŸåæ‰§è¡ŒæŸç§æ“ä½œã€‚æˆ‘ä»¬ä¹Ÿå¯ä»¥ç”¨å®ƒæ¥ä¸²è”åŠ¨ç”»ã€‚</p>
+<p>ä¸¾ä¾‹æ¥è¯´ï¼Œä¸‹é¢çš„å°èˆ¹ä¼šåœ¨ç‚¹å‡»åå‘å³æµ®åŠ¨ï¼Œç„¶åå†å›æ¥ã€‚è€Œä¸”ï¼Œæ¯ä¸€æ¬¡éƒ½ä¼šå‘å³ç§»åŠ¨åœ°æ›´è¿œä¸€ç‚¹ï¼š</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/article/css-animations/boat/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://zh.js.cx/article/css-animations/boat/'" tppabs="https://zh.js.cx/article/css-animations/boat/" target="_blank" title="åœ¨æ–°çª—å£ä¸­æ‰“å¼€" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="javascript:if(confirm('http://plnkr.co/edit/b49gQApt3N9vnmQZAMg6?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/b49gQApt3N9vnmQZAMg6?p=preview'" tppabs="http://plnkr.co/edit/b49gQApt3N9vnmQZAMg6?p=preview" target="_blank" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€"
+        data-plunk-id="b49gQApt3N9vnmQZAMg6" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="javascript:if(confirm('https://zh.js.cx/article/css-animations/boat/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://zh.js.cx/article/css-animations/boat/'" tppabs="https://zh.js.cx/article/css-animations/boat/"></iframe>
+  </div><p>è¿™ä¸ªåŠ¨ç”»é€šè¿‡ <code>go</code> å‡½æ•°åˆå§‹åŒ–ï¼Œå¹¶ä¸”åœ¨æ¯æ¬¡åŠ¨ç”»å®Œæˆåéƒ½ä¼šé‡å¤æ‰§è¡Œï¼Œå¹¶è½¬å˜æ–¹å‘ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">boat.onclick = function() {
+  //...
+  let times = 1;
+
+  function go() {
+    if (times % 2) {
+      // å‘å³ç§»åŠ¨
+      boat.classList.remove('back');
+      boat.style.marginLeft = 100 * times + 200 + 'px';
+    } else {
+      // å‘å·¦ç§»åŠ¨
+      boat.classList.add('back');
+      boat.style.marginLeft = 100 * times - 200 + 'px';
+    }
+
+  }
+
+  go();
+
+  boat.addEventListener('transitionend', function() {
+    times++;
+    go();
+  });
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>transitionend</code> çš„äº‹ä»¶å¯¹è±¡æœ‰å‡ ä¸ªç‰¹å®šçš„å±æ€§ï¼š</p>
+<p><code>event.propertyName</code>
+ï¼šå½“å‰å®ŒæˆåŠ¨ç”»çš„å±æ€§ï¼Œè¿™åœ¨æˆ‘ä»¬åŒæ—¶ä¸ºå¤šä¸ªå±æ€§åŠ ä¸ŠåŠ¨ç”»æ—¶ä¼šå¾ˆæœ‰ç”¨ã€‚</p>
+<p><code>event.elapsedTime</code>
+ï¼šåŠ¨ç”»å®Œæˆçš„æ—¶é—´ï¼ˆæŒ‰ç§’è®¡ç®—ï¼‰ï¼Œä¸åŒ…æ‹¬ <code>transition-delay</code>ã€‚</p>
+<h2><a class="main__anchor" name="guan-jian-zhen-dong-hua-keyframes" href="#guan-jian-zhen-dong-hua-keyframes">å…³é”®å¸§åŠ¨ç”»ï¼ˆKeyframesï¼‰</a></h2><p>æˆ‘ä»¬å¯ä»¥é€šè¿‡ CSS æä¾›çš„ <code>@keyframes</code> è§„åˆ™æ•´åˆå¤šä¸ªç®€å•çš„åŠ¨ç”»ã€‚</p>
+<p>å®ƒä¼šæŒ‡å®šæŸä¸ªåŠ¨ç”»çš„åç§°ä»¥åŠç›¸åº”çš„è§„åˆ™ï¼šå“ªä¸ªå±æ€§ï¼Œä½•æ—¶ä»¥åŠä½•åœ°æ¸²æŸ“åŠ¨ç”»ã€‚ç„¶åä½¿ç”¨ <code>animation</code> å±æ€§æŠŠåŠ¨ç”»ç»‘å®šåˆ°ç›¸åº”çš„å…ƒç´ ä¸Šï¼Œå¹¶ä¸ºå…¶æ·»åŠ é¢å¤–çš„å‚æ•°ã€‚</p>
+<p>è¿™é‡Œæœ‰ä¸ªè¯¦ç»†çš„ä¾‹å­ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:14},{&quot;start&quot;:3,&quot;end&quot;:6}]" data-autorun="no-epub">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div class=&quot;progress&quot;&gt;&lt;/div&gt;
+
+&lt;style&gt;
+  @keyframes go-left-right {        /* æŒ‡å®šä¸€ä¸ªåå­—ï¼š&quot;go-left-right&quot; */
+    from { left: 0px; }             /* ä» left: 0px å¼€å§‹ */
+    to { left: calc(100% - 50px); } /* ç§»åŠ¨è‡³ left: 100%-50px */
+  }
+
+  .progress {
+    animation: go-left-right 3s infinite alternate;
+    /* æŠŠåŠ¨ç”» &quot;go-left-right&quot; åº”ç”¨åˆ°å…ƒç´ ä¸Š
+       æŒç»­ 3 ç§’
+       æŒç»­æ¬¡æ•°ï¼šinfinite
+       æ¯æ¬¡éƒ½æ”¹å˜æ–¹å‘
+    */
+
+    position: relative;
+    border: 2px solid green;
+    width: 50px;
+    height: 20px;
+    background: lime;
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-afp99r"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>æœ‰è®¸å¤šå…³äº <code>@keyframes</code> çš„æ–‡ç« ä»¥åŠä¸€ä¸ª<a href="javascript:if(confirm('https://drafts.csswg.org/css-animations/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://drafts.csswg.org/css-animations/'" tppabs="https://drafts.csswg.org/css-animations/">è¯¦ç»†çš„è§„èŒƒè¯´æ˜</a>ã€‚</p>
+<p>å¾ˆå¯èƒ½ä½ å¹¶ä¸éœ€è¦ç»å¸¸ç”¨åˆ° <code>@keyframes</code>ï¼Œé™¤éä½ çš„ç½‘ç«™ä¸Šæœ‰ä¸€ç›´åœ¨è¿åŠ¨çš„å…ƒç´ ã€‚</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p>CSS åŠ¨ç”»å…è®¸ä½ ä¸ºä¸€ä¸ªæˆ–è€…å¤šä¸ªå±æ€§çš„å˜åŒ–åˆ›å»ºä¸æ»‘æµç•…ï¼ˆä¹Ÿå¯èƒ½ä¸æ˜¯ï¼‰çš„è¿‡æ¸¡åŠ¨ç”»ã€‚</p>
+<p>å®ƒä»¬é€‚ç”¨äºå¤§å¤šæ•°çš„åŠ¨ç”»éœ€æ±‚ã€‚æˆ‘ä»¬ä¹Ÿå¯ä»¥ä½¿ç”¨ JavaScript åˆ›å»ºåŠ¨ç”»ï¼Œä¸‹ä¸€ç« å°†ä¼šè¯¦ç»†è®²è§£ç›¸å…³å†…å®¹ã€‚</p>
+<p>ç›¸å¯¹äº JavaScript åŠ¨ç”»ï¼ŒCSS åŠ¨ç”»å­˜åœ¨çš„ç‰¹ç‚¹å¦‚ä¸‹ï¼š</p>
+<div class="balance"><div class="balance__pluses">
+      <div class="balance__content">
+      <div class="balance__title">ä¼˜ç‚¹</div><ul class="balance__list"><li>ç®€å•çš„äº‹ï¼Œç®€å•åœ°åšã€‚</li>
+<li>å¿«é€Ÿï¼Œè€Œä¸”å¯¹ CPU é€ æˆçš„å‹åŠ›å¾ˆå°ã€‚</li>
+</ul></div></div><div class="balance__minuses">
+      <div class="balance__content">
+      <div class="balance__title">ä¸è¶³</div><ul class="balance__list"><li>JavaScript åŠ¨ç”»æ›´åŠ çµæ´»ã€‚å®ƒä»¬å¯ä»¥å®ç°ä»»ä½•åŠ¨ç”»é€»è¾‘ï¼Œæ¯”å¦‚æŸä¸ªå…ƒç´ çš„çˆ†ç‚¸æ•ˆæœã€‚</li>
+<li>ä¸ä»…ä»…åªæ˜¯å±æ€§çš„å˜åŒ–ã€‚æˆ‘ä»¬è¿˜å¯ä»¥åœ¨ JavaScript ä¸­ç”Ÿæˆæ–°å…ƒç´ ç”¨äºåŠ¨ç”»ã€‚</li>
+</ul></div></div></div><p>æœ¬èŠ‚å·²ç»ä»‹ç»äº†å¯ä»¥ä½¿ç”¨ CSS å®ç°çš„ä¸»è¦åŠ¨ç”»ç±»å‹ï¼Œè€Œä¸” <code>transitionend</code> è¿˜å…è®¸åœ¨åŠ¨ç”»ç»“æŸåæ‰§è¡Œ JavaScript ä»£ç ï¼Œå› æ­¤å®ƒå¯ä»¥æ–¹ä¾¿å¾—ä¸ä»£ç ç»“åˆèµ·æ¥ã€‚</p>
+<p>ä½†æ˜¯åœ¨ä¸‹ä¸€èŠ‚ï¼Œæˆ‘ä»¬å°†ä¼šå­¦ä¹ ä¸€äº› JavaScript åŠ¨ç”»æ¥å®ç°æ›´åŠ å¤æ‚çš„æ•ˆæœã€‚</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">ä»»åŠ¡</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#rang-fei-ji-dong-qi-lai-css" name="rang-fei-ji-dong-qi-lai-css">è®©é£æœºåŠ¨èµ·æ¥ï¼ˆCSSï¼‰</a></h3><a class="task__open-link" href="task/animate-logo-css.htm" tppabs="https://zh.javascript.info/task/animate-logo-css" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>ç”Ÿæˆå¦‚ä¸‹å›¾çš„åŠ¨ç”»ï¼ˆç‚¹å‡»æ˜¾ç¤ºï¼‰ï¼š</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="../zh.js.cx/task/animate-logo-css/solution/index.htm" tppabs="https://zh.js.cx/task/animate-logo-css/solution/"></iframe>
+  </div><ul>
+<li>ç‚¹å‡»åï¼Œå›¾ç‰‡ä¼šä» <code>40x24px</code> å˜ä¸º <code>400x240px</code> ï¼ˆå˜å¤§åå€ï¼‰ã€‚</li>
+<li>åŠ¨ç”»æŒç»­ä¸‰ç§’ã€‚</li>
+<li>åœ¨åŠ¨ç”»ç»“æŸåï¼Œè¾“å‡ºï¼šâ€œDone!â€ã€‚</li>
+<li>åŠ¨ç”»è¿‡ç¨‹ä¸­ï¼Œå¦‚æœé£æœºè¢«ç‚¹å‡»ï¼Œè¿™äº›æ“ä½œä¸åº”è¯¥æ‰“æ–­åŠ¨ç”»ã€‚</li>
+</ul>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/RpEui0L2Fi2T8DvZla0Q?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/RpEui0L2Fi2T8DvZla0Q?p=preview'" tppabs="http://plnkr.co/edit/RpEui0L2Fi2T8DvZla0Q?p=preview" target="_blank" data-plunk-id="RpEui0L2Fi2T8DvZla0Q">æ‰“å¼€ä¸€ä¸ªä»»åŠ¡æ²™ç®±ã€‚</a></p><button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p>ä½¿ç”¨ CSS ä¸º <code>width</code> å’Œ <code>height</code> å±æ€§ç”ŸæˆåŠ¨æ•ˆï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">/* åŸå§‹ç±» */
+
+#flyjet {
+  transition: all 3s;
+}
+
+/* JS æ·»åŠ çš„ .growing */
+#flyjet.growing {
+  width: 400px;
+  height: 240px;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¯·æ³¨æ„ï¼Œ<code>transitionend</code> ä¼šè¢«è§¦å‘ä¸¤æ¬¡ â€”â€” æ¯ä¸ªå±æ€§è§¦å‘ä¸€æ¬¡ã€‚å› æ­¤ï¼Œå¦‚æœæˆ‘ä»¬ä¸è¿›è¡Œé¢å¤–æ£€æŸ¥çš„è¯ï¼Œè¿™æ¡ä¿¡æ¯ä¼šæ˜¾ç¤ºä¸¤æ¬¡ã€‚</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/ZaHPnukSNlzW5VqtIV5U?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/ZaHPnukSNlzW5VqtIV5U?p=preview'" tppabs="http://plnkr.co/edit/ZaHPnukSNlzW5VqtIV5U?p=preview" target="_blank" data-plunk-id="ZaHPnukSNlzW5VqtIV5U">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#wei-fei-ji-sheng-cheng-dong-hua-css" name="wei-fei-ji-sheng-cheng-dong-hua-css">ä¸ºé£æœºç”ŸæˆåŠ¨ç”»ï¼ˆCSSï¼‰</a></h3><a class="task__open-link" href="task/animate-logo-bezier-css.htm" tppabs="https://zh.javascript.info/task/animate-logo-bezier-css" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>ä¿®æ”¹å‰ä¸€ä¸ªçš„ä»»åŠ¡ <a href="task/animate-logo-css.htm" tppabs="https://zh.javascript.info/task/animate-logo-css">è®©é£æœºåŠ¨èµ·æ¥ï¼ˆCSSï¼‰</a> çš„è§£å†³æ–¹æ¡ˆï¼Œè®©é£æœºè¶…è¿‡åŸæœ‰çš„å¤§å° <code>400x240px</code>ï¼ˆè·³è„±å‡ºæ¥ï¼‰ï¼Œç„¶åå†å›åˆ°ä¹‹å‰çš„å¤§å°ã€‚</p>
+<p>è¿™é‡Œæ˜¯æ•ˆæœæ¼”ç¤ºï¼ˆç‚¹å‡»é£æœºï¼‰ï¼š</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:350px" src="../zh.js.cx/task/animate-logo-bezier-css/solution/index.htm" tppabs="https://zh.js.cx/task/animate-logo-bezier-css/solution/"></iframe>
+  </div><p>åœ¨å‰ä¸€ä¸ªè§£å†³æ–¹æ¡ˆçš„åŸºç¡€ä¸Šåšä¿®æ”¹ã€‚</p>
+<button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p>æˆ‘ä»¬éœ€è¦ä¸ºæ­¤é€‰æ‹©åˆé€‚çš„è´å¡å°”æ›²çº¿ã€‚å®ƒåº”è¯¥åœ¨æŸä¸ªåœ°æ–¹æ‹¥æœ‰ <code>y &gt; 1</code>ï¼Œæ¥ä½¿å¾—é£æœºã€è·³å‡ºæ¥ã€ã€‚</p>
+<p>ä¸¾ä¾‹æ¥è¯´ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ä¸¤ä¸ªæ§åˆ¶ç‚¹çš„ <code>y</code> éƒ½å¤§äº <code>1</code>ï¼š<code>cubic-bezier(0.25, 1.5, 0.75, 1.5)</code>ã€‚</p>
+<p>å¦‚å›¾ï¼š</p>
+<figure><div class="image" style="width:124px">
+      <div class="image__ratio" style="padding-top:142.74193548387098%"></div>
+      <img src="task/animate-logo-bezier-css/bezier-up.png" tppabs="https://zh.javascript.info/task/animate-logo-bezier-css/bezier-up.png" alt="" width="124" height="177" class="image__image">
+      </div></figure><p><a href="javascript:if(confirm('http://plnkr.co/edit/t1OtqebdNVuHwg7AkwM3?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/t1OtqebdNVuHwg7AkwM3?p=preview'" tppabs="http://plnkr.co/edit/t1OtqebdNVuHwg7AkwM3?p=preview" target="_blank" data-plunk-id="t1OtqebdNVuHwg7AkwM3">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#yuan-quan-dong-hua" name="yuan-quan-dong-hua">åœ†åœˆåŠ¨ç”»</a></h3><a class="task__open-link" href="task/animate-circle.htm" tppabs="https://zh.javascript.info/task/animate-circle" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>åˆ›å»ºä¸€ä¸ªå‡½æ•°ï¼š<code>showCircle(cx, cy, radius)</code>ï¼Œæ¥æ˜¾ç¤ºä¸€ä¸ªä¸æ–­å˜å¤§çš„åœ†ã€‚</p>
+<ul>
+<li><code>cx,cy</code> ä¸ºåœ†å¿ƒç›¸å¯¹äºçª—å£çš„ä½ç½®ã€‚</li>
+<li><code>radius</code> ä¸ºåœ†çš„åŠå¾„ã€‚</li>
+</ul>
+<p>ç‚¹å‡»ä¸‹æ–¹çš„æŒ‰é’®ä»¥æ¼”ç¤ºæ•ˆæœï¼š</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:260px" src="../zh.js.cx/task/animate-circle/solution/index.htm" tppabs="https://zh.js.cx/task/animate-circle/solution/"></iframe>
+  </div><p>æºæ–‡ä»¶ä¸­æä¾›äº†ä¸€ä¸ªå…·æœ‰åˆé€‚æ ·å¼çš„åœ†æ ·ä¾‹ï¼Œå› æ­¤ä½ éœ€è¦åšçš„å°±æ˜¯åˆ›å»ºåˆé€‚çš„åŠ¨ç”»ã€‚</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/tc87PzvlIAeJ21wlUsR6?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/tc87PzvlIAeJ21wlUsR6?p=preview'" tppabs="http://plnkr.co/edit/tc87PzvlIAeJ21wlUsR6?p=preview" target="_blank" data-plunk-id="tc87PzvlIAeJ21wlUsR6">æ‰“å¼€ä¸€ä¸ªä»»åŠ¡æ²™ç®±ã€‚</a></p><button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/oXLaVY9UHCYROadHP827?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/oXLaVY9UHCYROadHP827?p=preview'" tppabs="http://plnkr.co/edit/oXLaVY9UHCYROadHP827?p=preview" target="_blank" data-plunk-id="oXLaVY9UHCYROadHP827">ä½¿ç”¨æ²™ç®±æ‰“å¼€è§£å†³æ–¹æ¡ˆã€‚</a></p></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="bezier-curve.htm" tppabs="https://zh.javascript.info/bezier-curve" data-tooltip="è´å¡å°”æ›²çº¿"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="js-animation.htm" tppabs="https://zh.javascript.info/js-animation" data-tooltip="JavaScript åŠ¨ç”»"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/css-animations","identifier":"\/css-animations"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="animation.htm" tppabs="https://zh.javascript.info/animation">åŠ¨ç”»</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#css-guo-du-transitioncsstransition">CSS è¿‡æ¸¡ï¼ˆtransitionï¼‰[#css-transition]</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transitionproperty">transition-property</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transitionduration">transition-duration</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transitiondelay">transition-delay</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transitiontimingfunction">transition-timing-function</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transitionend-shi-jian">transitionend äº‹ä»¶</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#guan-jian-zhen-dong-hua-keyframes">å…³é”®å¸§åŠ¨ç”»ï¼ˆKeyframesï¼‰</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">ä»»åŠ¡ (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcss-animations"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/3-animation/2-css-animations/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/3-animation/2-css-animations/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/3-animation/2-css-animations/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">特性和属性</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/dom-attributes-and-properties"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="特性和属性"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="特性和属性"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/basic-dom-node-properties"><link rel="next" href="/modifying-document"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="特性和属性"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/dom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/dom-attributes-and-properties'" tppabs="https://javascript.info/dom-attributes-and-properties"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="dom-attributes-and-properties.htm" tppabs="https://zh.javascript.info/dom-attributes-and-properties"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/dom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/dom-attributes-and-properties'" tppabs="https://ja.javascript.info/dom-attributes-and-properties"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/dom-attributes-and-properties">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/dom-attributes-and-properties" selected>简体中文</option><option value="https://ja.javascript.info/dom-attributes-and-properties">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="6" max="27" data-tooltip="第 27 章，第 6 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">特性和属性</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="特性和属性"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>当浏览器加载页面时，它会“读取”（或者称之为：“解析”）HTML 文本并生成 DOM 对象。对于元素节点，大多数 HTML 特性会自动变成 DOM 对象的属性。</p>
+<p>在这个例子中，如果标签是 <code>&lt;body id=&quot;page&quot;&gt;</code>，那么 DOM 对象会生成这样一个属性 <code>body.id=&quot;page&quot;</code>。</p>
+<p>但是特性 — 属性并不总是一一对应的！在这一篇文章中将带领你一起分清楚这两个概念，了解它们的具体作用，明白它们什么时候会相同什么时候会不同。</p>
+<h2><a class="main__anchor" name="dom-shu-xing" href="#dom-shu-xing">DOM 属性</a></h2><p>我们已经见过内置的 DOM 属性了。它的数量很庞大，但是 DOM 技术实现上没有限制我们对这个对象进行添加 —— 如果我们需要额外的属性的话。</p>
+<p>DOM 节点是一个标准的 JavaScript 对象。我们可以 alert 它。</p>
+<p>在这个例子中，让我们在 <code>document.body</code> 创建一个新的属性：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.myData = {
+  name: 'Caesar',
+  title: 'Imperator'
+};
+
+alert(document.body.myData.title); // Imperator</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们也能像下面这样添加一个方法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.body.sayTagName = function() {
+  alert(this.tagName);
+};
+
+document.body.sayTagName(); // BODY（这个方法中的 &quot;this&quot; 指 document.body）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们还可以修改内置属性的原型，比如修改 <code>Element.prototype</code> 会给所有元素添加一个方法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Element.prototype.sayHi = function() {
+  alert(`Hello, I'm ${this.tagName}`);
+};
+
+document.documentElement.sayHi(); // Hello, I'm HTML
+document.body.sayHi(); // Hello, I'm BODY</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以，DOM 上的属性和方法其实就像是一个标准的 Javascript 对象：</p>
+<ul>
+<li>它可以有很多值。</li>
+<li>它是大小写敏感的（要写成 <code>elem.nodeType</code>，而不是 <code>elem.NoDeTyPe</code>）。</li>
+</ul>
+<h2><a class="main__anchor" name="html-te-xing" href="#html-te-xing">HTML 特性</a></h2><p>在 HTML 语言中，标签可能拥有特性。当浏览器读取 HTML 文本并根据标签生成 DOM 对象，它会辨别<strong>标准化</strong>特性然后以此创建 DOM 属性。</p>
+<p>因此当一个元素有 <code>id</code> 或其他<strong>标准化</strong>特性，会生相应的 DOM 属性。但是非<strong>标准化</strong>的特性则会被忽略。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body id=&quot;test&quot; something=&quot;non-standard&quot;&gt;
+  &lt;script&gt;
+    alert(document.body.id); // test
+    // 非标准特性不会生成相应属性
+    alert(document.body.something); // undefined
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请留意不是每一个元素的标准化特性都是相同的，<code>&quot;type&quot;</code> 是 <code>&lt;input&gt;</code> 的一个标准化特性（<a href="javascript:if(confirm('https://html.spec.whatwg.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://html.spec.whatwg.org/#htmlinputelement'" tppabs="https://html.spec.whatwg.org/#htmlinputelement">HTMLInputElement</a>），但是 <code>&lt;body&gt;</code> 则没有（<a href="javascript:if(confirm('https://html.spec.whatwg.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://html.spec.whatwg.org/#htmlbodyelement'" tppabs="https://html.spec.whatwg.org/#htmlbodyelement">HTMLBodyElement</a>）。每一个元素的标准化特性都有确切的规范描述。</p>
+<p>以下我们可以看到：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body id=&quot;body&quot; type=&quot;...&quot;&gt;
+  &lt;input id=&quot;input&quot; type=&quot;text&quot;&gt;
+  &lt;script&gt;
+    alert(input.type); // text
+    alert(body.type); // undefined：DOM 属性不存在，因为这不是一个标准化的特性。
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果一个特性不是标准化的，DOM 属性就不存在这个特性。那我们有没办法获取到这个特性？</p>
+<p>答案是肯定的。以下几个方法是针对元素特性的操作：</p>
+<ul>
+<li><code>elem.hasAttribute(name)</code> —— 检验是否拥这个特性。</li>
+<li><code>elem.getAttribute(name)</code> —— 获取到这个特性值。</li>
+<li><code>elem.setAttribute(name, value)</code> —— 设置这个特性值。</li>
+<li><code>elem.removeAttribute(name)</code> —— 移除这个特性。</li>
+</ul>
+<p>以上的几个方法实际上也是 HTML 的原生方法。</p>
+<p>我们可以通过 <code>elem.attributes</code> 读取到该元素的所有特性：这些特性都被一个名为 <a href="javascript:if(confirm('https://dom.spec.whatwg.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://dom.spec.whatwg.org/#attr'" tppabs="https://dom.spec.whatwg.org/#attr">Attr</a> 的内置类以 <code>name</code> 和 <code>value</code> 这样的键-值对收集起来。</p>
+<p>下面是一个如何读取非标准化特性的 demo：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body something=&quot;non-standard&quot;&gt;
+  &lt;script&gt;
+    alert(document.body.getAttribute('something')); // non-standard
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>HTML 特性有几个特征：</p>
+<ul>
+<li>它们的书写是大小写不敏感的（<code>id</code> 也可以写作 <code>ID</code>）。</li>
+<li>他们的值只能是字符串。</li>
+</ul>
+<p>下面是一个延伸出来的 demo，它描述了 attributes 是怎么工作的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body&gt;
+  &lt;div id=&quot;elem&quot; about=&quot;Elephant&quot;&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    alert( elem.getAttribute('About') ); // (1) 'Elephant', reading
+
+    elem.setAttribute('Test', 123); // (2), writing
+
+    alert( elem.outerHTML ); // (3), see it's there
+
+    for (let attr of elem.attributes) { // (4) list all
+      alert( `${attr.name} = ${attr.value}` );
+    }
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意：</p>
+<ol>
+<li><code>getAttribute('About')</code> —— 这里的第一个字母是大写的，但是在 HTML 里是全小写表示。这也就说明：特性的键名是大小写不敏感的。</li>
+<li>我们可以赋予它任何值，这里我们把 <code>&quot;123&quot;</code> 作为它的值。</li>
+<li>所有 attributes 都有一个 <code>outerHTML</code> 给我们设置它在页面上的展示内容。</li>
+<li><code>attributes</code> 以 <code>name</code> 和 <code>value</code> 这样的键—值对收集在一个可迭代对象里。</li>
+</ol>
+<h2><a class="main__anchor" name="shu-xing-te-xing-de-tong-bu" href="#shu-xing-te-xing-de-tong-bu">属性—特性的同步</a></h2><p>当一个标准化的特性被改变，相应的属性随之改变（有极个别除外），反之亦然。</p>
+<p>下面这个例子中 <code>id</code> 这个特性被改变了，我们可以看到属性也被改变了。反过来也是同样的效果。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input&gt;
+
+&lt;script&gt;
+  let input = document.querySelector('input');
+
+  // 特性 =&gt; 属性
+  input.setAttribute('id', 'id');
+  alert(input.id); // id（更新了）
+
+  // 属性 =&gt; 特性
+  input.id = 'newId';
+  alert(input.getAttribute('id')); // newId（更新了）
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里有一些特殊情况下的例子，<code>input.value</code> 只能从特性同步到属性，反过来则不行：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:11}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input&gt;
+
+&lt;script&gt;
+  let input = document.querySelector('input');
+
+  // 特性 =&gt; 属性
+  input.setAttribute('value', 'text');
+  alert(input.value); // text
+
+  // 这操作无效 属性 =&gt; 特性
+  input.value = 'newValue';
+  alert(input.getAttribute('value')); // text（没有更新！）
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>通过这两个例子可以看出：</p>
+<ul>
+<li>改变特性值 <code>value</code> 会更新到属性上。</li>
+<li>但是直接改变属性的值却不会作用在特性的值上。</li>
+</ul>
+<p>这种“特征”是相当便利的，因为用户可能会经常修改 <code>value</code>，假设我们想要覆盖 HTML上“原始值”，只需要修改特性的值。</p>
+<h2><a class="main__anchor" name="dom-shu-xing-de-lei-xing" href="#dom-shu-xing-de-lei-xing">DOM 属性的类型</a></h2><p>DOM 并不总是字符串。例如 <code>input.checked</code> 属性（多选框）是一个布尔类型的值。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;input id=&quot;input&quot; type=&quot;checkbox&quot; checked&gt; checkbox
+
+&lt;script&gt;
+  alert(input.getAttribute('checked')); // 特性值是：空字符串
+  alert(input.checked); // 属性的值是：true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>类似的例子还有，<code>style</code> 特性值是一个字符串，但 <code>style</code> 属性是一个对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;div&quot; style=&quot;color:red;font-size:120%&quot;&gt;Hello&lt;/div&gt;
+
+&lt;script&gt;
+  // 字符串
+  alert(div.getAttribute('style')); // color:red;font-size:120%
+
+  // 对象
+  alert(div.style); // [object CSSStyleDeclaration]
+  alert(div.style.color); // red
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>还有一个非常重要的不同点。DOM 属性的字符串可能跟特性值的字符串所表示的不是同一个东西！</p>
+<p>例如 <code>href</code> DOM 属性总是一个绝对路径的，而特性值只包含相对路径或者只包含 <code>#hash</code> 这一部分。</p>
+<p>这里有一个例子：</p>
+<div data-trusted="1" class="code-example" data-demo-height="30">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;a id=&quot;a&quot; href=&quot;#hello&quot;&gt;link&lt;/a&gt;
+&lt;script&gt;
+  // 特性
+  alert(a.getAttribute('href')); // #hello
+
+  // 属性
+  alert(a.href ); // 绝对路径 http://site.com/page#hello
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们需要 HTML 中的 <code>href</code> 的值，可以用 <code>getAttribute</code> 获取到。</p>
+<h2><a class="main__anchor" name="fei-biao-zhun-hua-de-te-xing-dataset" href="#fei-biao-zhun-hua-de-te-xing-dataset">非标准化的特性，dataset</a></h2><p>当我们编写 HTML，会用到很多标准特性。但是哪些是标准化的哪些不是，怎么区分它们？首先，看看它们是否起作用？</p>
+<p>有时候非标准化特性常常用于在 HTML 中定义一些 JavaScript 数据，或者是给 HTML 元素打上“标记”。</p>
+<p>像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:5,&quot;end&quot;:20}]},{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:5,&quot;end&quot;:21}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!-- 标记这个 div 中要显示 &quot;name&quot; --&gt;
+&lt;div show-info=&quot;name&quot;&gt;&lt;/div&gt;
+&lt;!-- 这里要显示 &quot;age&quot; --&gt;
+&lt;div show-info=&quot;age&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  // 这段代码是找到该元素并且按照给定数据展示到页面上
+  let user = {
+    name: &quot;Pete&quot;,
+    age: 25
+  };
+
+  for(let div of document.querySelectorAll('[show-info]')) {
+    // 插入相应的数据
+    let field = div.getAttribute('show-info');
+    div.innerHTML = user[field]; // Pete，然后是年龄
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们还可以应用在元素的样式上。</p>
+<p>例如，我们通过 <code>order-state</code> 设置不同状态下的颜色：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  /* 按照 &quot;order-state&quot; 的设定产生对应样式 */
+  .order[order-state=&quot;new&quot;] {
+    color: green;
+  }
+
+  .order[order-state=&quot;pending&quot;] {
+    color: blue;
+  }
+
+  .order[order-state=&quot;canceled&quot;] {
+    color: red;
+  }
+&lt;/style&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;new&quot;&gt;
+  A new order.
+&lt;/div&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;pending&quot;&gt;
+  A pending order.
+&lt;/div&gt;
+
+&lt;div class=&quot;order&quot; order-state=&quot;canceled&quot;&gt;
+  A canceled order.
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为什么使用特性值比使用 <code>.order-state-new</code>，<code>.order-state-pending</code>，<code>order-state-canceled</code> 这些样式类要好？</p>
+<p>因为特性值更容易管理，我们可以轻易的通过特性值的改变切换样式，比如下面这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 可以轻易的移除或者添加一个新的类名。
+div.setAttribute('order-state', 'canceled');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是自定义的特性也存在问题。如果我们使用了一个非标准化的特性，之后却变成了一个标准化的值并用来做其他事情，HTML 语言一直在发展，越来越多的标准化特性解决了开发者的开发需求。这就是一个不可控的例子。</p>
+<p>为了解决这个冲突产生了 <a href="javascript:if(confirm('https://html.spec.whatwg.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes'" tppabs="https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes">data-*</a> 这个特性。</p>
+<p><strong>所有以 “data-” 开头的特性值可以给编程人员正常使用，同时它还是 <code>dataset</code> 合法值。</strong></p>
+<p>例如, 如果一个 <code>elem</code> 有一个键名是 <code>&quot;data-about&quot;</code> 的特性，那么可以通过 <code>elem.dataset.about</code> 取到这个合法值。</p>
+<p>像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body data-about=&quot;Elephants&quot;&gt;
+&lt;script&gt;
+  alert(document.body.dataset.about); // Elephants
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>像 <code>data-order-state</code> 的多字特性键名可以写成驼峰式 <code>dataset.orderState</code>。</p>
+<p>这里是一个 “order state” 重构版：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  .order[data-order-state=&quot;new&quot;] {
+    color: green;
+  }
+
+  .order[data-order-state=&quot;pending&quot;] {
+    color: blue;
+  }
+
+  .order[data-order-state=&quot;canceled&quot;] {
+    color: red;
+  }
+&lt;/style&gt;
+
+&lt;div id=&quot;order&quot; class=&quot;order&quot; data-order-state=&quot;new&quot;&gt;
+  A new order.
+&lt;/div&gt;
+
+&lt;script&gt;
+  // 读取
+  alert(order.dataset.orderState); // new
+
+  // 修改
+  order.dataset.orderState = &quot;pending&quot;; // (*)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用 <code>data-*</code> 的特性值是一个合法值，保存着自定义数据。</p>
+<p>请注意我们不但可以读取，还能修改 data-attributes。上面这个例子的最后一行：<code>(*)</code> 会变成蓝色。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>Attributes —— 写在 HTML 中。</li>
+<li>Properties —— 是一个 DOM 对象。</li>
+</ul>
+<p>简略的对比：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Properties</th>
+<th>Attributes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>一些值，标准化的属性值在规范中有类型描述</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>名字</td>
+<td>键名大小写敏感</td>
+<td>键名大小写不敏感</td>
+</tr>
+</tbody>
+</table>
+<p>attributes 的一些方法：</p>
+<ul>
+<li><code>elem.hasAttribute(name)</code> —— 检查是否存在这个特性</li>
+<li><code>elem.getAttribute(name)</code> —— 获取这个特性</li>
+<li><code>elem.setAttribute(name, value)</code> —— 把这个特性设置为 name 值</li>
+<li><code>elem.removeAttribute(name)</code> —— 移除这个特性</li>
+<li><code>elem.attributes</code> —— 所有特性的集合</li>
+</ul>
+<p>对于大多数需求，DOM 属性已经可以给予很好的支持。应当在 DOM 属性实在无法满足开发需求的情况下才使用特性，比如以下情况：</p>
+<ul>
+<li>我们需要一个非标准化的特性。但是如果我们用 <code>data-</code> 来设置特性值，那就要使用 <code>dataset</code> 来获取属性值。</li>
+<li>我们想要读取到 HTML 的展示内容。比如 <code>href</code> 属性总是一个绝对路径，但是我们只想要相对路径。</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#huo-qu-yi-ge-te-xing" name="huo-qu-yi-ge-te-xing">获取一个特性</a></h3><a class="task__open-link" href="task/get-user-attribute.htm" tppabs="https://zh.javascript.info/task/get-user-attribute" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写代码从文档中获取一个包含 <code>data-widget-name</code> 特性的元素，并且读取它的值。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+  &lt;div data-widget-name=&quot;menu&quot;&gt;Choose the genre&lt;/div&gt;
+
+  &lt;script&gt;
+    /* your code */
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+  &lt;div data-widget-name=&quot;menu&quot;&gt;Choose the genre&lt;/div&gt;
+
+  &lt;script&gt;
+    // getting it
+    let elem = document.querySelector('[data-widget-name]');
+
+    // reading the value
+    alert(elem.dataset.widgetName);
+    // or
+    alert(elem.getAttribute('data-widget-name'));
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#shi-wai-lai-lian-jie-bian-cheng-se" name="shi-wai-lai-lian-jie-bian-cheng-se">使外来链接变橙色</a></h3><a class="task__open-link" href="task/yellow-links.htm" tppabs="https://zh.javascript.info/task/yellow-links" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 3</span></div><div class="task__content"><p>改变所有外来链接的 <code>style</code> 属性，使链接变橙色。</p>
+<p>如果一个链接是外来的：</p>
+<ul>
+<li>这个 <code>href</code> 包含有 <code>://</code></li>
+<li>但不是以 <code>http://internal.com</code> 开头。</li>
+</ul>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;a name=&quot;list&quot;&gt;the list&lt;/a&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;http://google.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorial&quot;&gt;/tutorial.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;local/path&quot;&gt;local/path&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;ftp://ftp.com/my.zip&quot;&gt;ftp://ftp.com/my.zip&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nodejs.org&quot;&gt;http://nodejs.org&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://internal.com/test&quot;&gt;http://internal.com/test&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  // 简单地为这些链接设置样式
+  let link = document.querySelector('a');
+  link.style.color = 'orange';
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果应该是这样的：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="../zh.js.cx/task/yellow-links/solution/index.htm" tppabs="https://zh.js.cx/task/yellow-links/solution/"></iframe>
+  </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/Zm9hQH9PmZSUDzW8xDWl?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/Zm9hQH9PmZSUDzW8xDWl?p=preview'" tppabs="http://plnkr.co/edit/Zm9hQH9PmZSUDzW8xDWl?p=preview" target="_blank" data-plunk-id="Zm9hQH9PmZSUDzW8xDWl">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>首先，我们需要找到所有外部引用。</p>
+<p>这里有两种办法。</p>
+<p>第一种是使用 <code>document.querySelectorAll('a')</code> 然后过滤出我们需要的那部分：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let links = document.querySelectorAll('a');
+
+for (let link of links) {
+  let href = link.getAttribute('href');
+  if (!href) continue; // no attribute
+
+  if (!href.includes('://')) continue; // no protocol
+
+  if (href.startsWith('http://internal.com')) continue; // internal
+
+  link.style.color = 'orange';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意：我们用的是 <code>link.getAttribute('href')</code>。而不是 <code>link.href</code>，因为我们需要的是 HTML 上的值。</p>
+<p>……除此之外，有一个更简便的方式是利用 CSS 选择器的伪类选择器：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 查找所有 href 中包含：// 的链接
+// 但 href 不是以 http://internal.com 开头
+let selector = 'a[href*=&quot;://&quot;]:not([href^=&quot;http://internal.com&quot;])';
+let links = document.querySelectorAll(selector);
+
+links.forEach(link =&gt; link.style.color = 'orange');</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/zNHRq1IFzezrvR2zLkEh?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/zNHRq1IFzezrvR2zLkEh?p=preview'" tppabs="http://plnkr.co/edit/zNHRq1IFzezrvR2zLkEh?p=preview" target="_blank" data-plunk-id="zNHRq1IFzezrvR2zLkEh">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="basic-dom-node-properties.htm" tppabs="https://zh.javascript.info/basic-dom-node-properties" data-tooltip="节点属性：type、tag 和 contents"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="modifying-document.htm" tppabs="https://zh.javascript.info/modifying-document" data-tooltip="修改文档内容"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/dom-attributes-and-properties","identifier":"\/dom-attributes-and-properties"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dom-shu-xing">DOM 属性</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#html-te-xing">HTML 特性</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shu-xing-te-xing-de-tong-bu">属性—特性的同步</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dom-shu-xing-de-lei-xing">DOM 属性的类型</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fei-biao-zhun-hua-de-te-xing-dataset">非标准化的特性，dataset</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-attributes-and-properties"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/06-dom-attributes-and-properties/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/06-dom-attributes-and-properties/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/06-dom-attributes-and-properties/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

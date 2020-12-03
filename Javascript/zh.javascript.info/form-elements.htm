@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">è¡¨å•å±æ€§å’Œæ–¹æ³•</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/form-elements"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="è¡¨å•å±æ€§å’Œæ–¹æ³•"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="è¡¨å•å±æ€§å’Œæ–¹æ³•"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/forms-controls"><link rel="next" href="/focus-blur"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="è¡¨å•å±æ€§å’Œæ–¹æ³•"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/form-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/form-elements'" tppabs="https://javascript.info/form-elements"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/form-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/form-elements'" tppabs="https://learn.javascript.ru/form-elements"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="form-elements.htm" tppabs="https://zh.javascript.info/form-elements"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/form-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/form-elements'" tppabs="https://ja.javascript.info/form-elements"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/form-elements">English</option><option value="https://learn.javascript.ru/form-elements">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/form-elements" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/form-elements">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="24" max="27" data-tooltip="ç¬¬ 27 ç« ï¼Œç¬¬ 24 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">æµè§ˆå™¨ï¼šæ–‡æ¡£ã€äº‹ä»¶å’Œæ¥å£</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="forms-controls.htm" tppabs="https://zh.javascript.info/forms-controls" itemprop="url"><span itemprop="title">è¡¨å•ï¼Œæ§ä»¶</span></a></li></ol><h1 class="main__header-title">è¡¨å•å±æ€§å’Œæ–¹æ³•</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="è¡¨å•å±æ€§å’Œæ–¹æ³•"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>è¡¨å•ä»¥åŠä¾‹å¦‚ <code>&lt;input&gt;</code> çš„æ§åˆ¶å…ƒç´ æœ‰å¤§é‡ç‰¹æ®Šçš„å±æ€§å’Œäº‹ä»¶ã€‚</p>
+<p>å¦‚æœæˆ‘ä»¬çŸ¥é“è¿™äº›ï¼Œé‚£ä¹ˆå¤„ç†è¡¨å•å¯ä»¥å˜å¾—æ›´åŠ ç®€å•ã€‚</p>
+<h2><a class="main__anchor" name="dao-hang-biao-dan-he-yuan-su" href="#dao-hang-biao-dan-he-yuan-su">å¯¼èˆªï¼šè¡¨å•å’Œå…ƒç´ </a></h2><p>æ–‡æ¡£ä¸­çš„è¡¨å•æ˜¯ä¸€ä¸ªç‰¹æ®Šé›†åˆ <code>document.forms</code> ä¸­çš„æˆå‘˜ã€‚</p>
+<p><code>document.forms</code> æ˜¯ä¸€ä¸ª<strong>å‘½å</strong>é›†åˆï¼šæˆ‘ä»¬æ—¢å¯ä»¥ä½¿ç”¨åå­—ä¹Ÿå¯ä»¥ä½¿ç”¨ç´¢å¼•æ¥è·å–è¡¨å•ã€‚</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">document.forms.my - åŒ…å«äº† name=&quot;my&quot; çš„è¡¨å•
+document.forms[0] - æ–‡æ¡£ä¸­çš„ç¬¬ä¸€ä¸ªè¡¨å•</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å½“æˆ‘ä»¬æœ‰äº†ä¸€ä¸ªè¡¨å•ï¼Œå…¶ä¸­ä»»ä½•çš„å…ƒç´ éƒ½å¯ä»¥é€šè¿‡å‘½åé›†åˆ <code>form.elements</code> æ¥è·å–åˆ°ã€‚</p>
+<p>æ¯”å¦‚è¯´ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="40">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form name=&quot;my&quot;&gt;
+  &lt;input name=&quot;one&quot; value=&quot;1&quot;&gt;
+  &lt;input name=&quot;two&quot; value=&quot;2&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // è·å–è¡¨å•
+  let form = document.forms.my; // &lt;form name=&quot;my&quot;&gt; å…ƒç´ 
+
+  // è·å–è¡¨å•ä¸­çš„å…ƒç´ 
+  let elem = form.elements.one; // &lt;input name=&quot;one&quot;&gt; å…ƒç´ 
+
+  alert(elem.value); // 1
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å¯èƒ½ä¼šæœ‰å¤šä¸ªåç§°ç›¸åŒçš„å…ƒç´ ï¼Œè¿™ç§æƒ…å†µç»å¸¸åœ¨å¤„ç†å•é€‰æŒ‰é’®ä¸­å‡ºç°ã€‚</p>
+<p>åœ¨é‚£ç§æƒ…å†µä¸‹ <code>form.elements[name]</code> å°†ä¼šæ˜¯ä¸€ä¸ªé›†åˆï¼Œæ¯”å¦‚è¯´ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:22,&quot;end&quot;:32}]},{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:22,&quot;end&quot;:32}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;10&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;20&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+let form = document.forms[0];
+
+let ageElems = form.elements.age;
+
+alert(ageElems[0].value); // 10ï¼Œç¬¬ä¸€ä¸ªå•é€‰æŒ‰é’®çš„ value å€¼
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™äº›å¯¼èˆªå±æ€§å¹¶ä¸ä¾èµ–äºæ ‡ç­¾çš„ç»“æ„ã€‚æ‰€æœ‰çš„å…ƒç´ ï¼Œæ— è®ºå®ƒä»¬åœ¨è¡¨å•ä¸­åµŒå¥—çš„æœ‰å¤šä¹ˆæ·±ï¼Œéƒ½å¯ä»¥é€šè¿‡ <code>form.elements</code> è·å–åˆ°ã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Fieldsets æ¥ä½œä¸º â€œsubformsâ€</span></div>
+            <div class="important__content"><p>ä¸€ä¸ªè¡¨å•ä¼šåŒ…å«ä¸€ä¸ªæˆ–è€…å¤šä¸ª <code>&lt;fieldset&gt;</code> å…ƒç´ ã€‚å®ƒä»¬ä¹Ÿæ”¯æŒ <code>elements</code> å±æ€§ã€‚</p>
+<p>æ¯”å¦‚è¯´ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body&gt;
+  &lt;form id=&quot;form&quot;&gt;
+    &lt;fieldset name=&quot;userFields&quot;&gt;
+      &lt;legend&gt;info&lt;/legend&gt;
+      &lt;input name=&quot;login&quot; type=&quot;text&quot;&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    alert(form.elements.login); // &lt;input name=&quot;login&quot;&gt;
+
+    let fieldset = form.elements.userFields;
+    alert(fieldset); // HTMLFieldSetElement
+
+    // æˆ‘ä»¬å¯ä»¥ä» form æˆ–è€… fieldset ä¸­è·å–è¾“å…¥
+    alert(fieldset.elements.login == form.elements.login); // true
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">æ›´ç®€çŸ­çš„è¡¨ç¤ºæ–¹å¼ï¼š<code>form.name</code></span></div>
+            <div class="important__content"><p>è¿˜æœ‰ä¸€ä¸ªæ›´ç®€çŸ­çš„è¡¨ç¤ºæ–¹å¼ï¼šæˆ‘ä»¬å¯ä»¥é€šè¿‡ <code>form[index/name]</code> æ¥è®¿é—®å…ƒç´ ã€‚</p>
+<p>ä½¿ç”¨è¿™ç§è¡¨ç¤ºæ–¹å¼æˆ‘ä»¬å¯ä»¥å†™ <code>form.login</code> è€Œä¸æ˜¯ <code>form.elements.login</code> æ¥è®¿é—®è¾“å…¥å…ƒç´ ã€‚</p>
+<p>è¿™ä¹Ÿæœ‰æ•ˆï¼Œä½†æ˜¯ä¼šæœ‰ä¸€ä¸ªå°é—®é¢˜ï¼šå¦‚æœæˆ‘ä»¬è®¿é—®ä¸€ä¸ªå…ƒç´ ï¼Œç„¶åä¿®æ”¹å®ƒçš„ <code>name</code>ï¼Œå®ƒä»ç„¶å¯ä»¥é€šè¿‡æ—§çš„ name è®¿é—®åˆ°ï¼ˆå½“ç„¶ä¹Ÿèƒ½é€šè¿‡æ–°çš„ name è®¿é—®ï¼‰ã€‚</p>
+<p>æˆ‘ä»¬å¯ä»¥å¾ˆå®¹æ˜“åœ¨ä¸€ä¸ªä¾‹å­ä¸­çœ‹åˆ°è¿™ä¸ªæƒ…å†µï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  alert(form.elements.login == form.login); // true, the same &lt;input&gt;
+  alert(form.elements.login == form.login); // trueï¼ŒåŒæ ·çš„ &lt;input&gt;
+
+  form.login.name = &quot;username&quot;; // ä¿®æ”¹ input çš„ name å±æ€§
+
+  // form.elements æ›´æ–° name å±æ€§:
+  alert(form.elements.login); // undefined
+  alert(form.elements.username); // è¾“å…¥
+
+  // ç›´æ¥è®¿é—®å¯ä»¥åŒæ—¶ä½¿ç”¨ input çš„ä¸¤ä¸ª nameï¼šæ—§çš„ä»¥åŠæ–°çš„
+  alert(form.username == form.login); // true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™é€šå¸¸æ¥è¯´å¹¶ä¸æ˜¯ä¸€ä¸ªé—®é¢˜ï¼Œå› ä¸ºæˆ‘ä»¬å¾ˆå°‘ä¿®æ”¹è¡¨å•å…ƒç´ çš„ nameã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="fan-xiang-yin-yong-elementform" href="#fan-xiang-yin-yong-elementform">åå‘å¼•ç”¨ï¼šelement.form</a></h2><p>å¯¹äºä»»ä½•å…ƒç´ ï¼Œå…¶å¯¹åº”çš„è¡¨å•éƒ½å¯ä»¥é€šè¿‡ <code>element.form</code> è®¿é—®åˆ°ã€‚å› æ­¤ä¸ä»…è¡¨å•å¯ä»¥å¼•ç”¨æ‰€æœ‰å…ƒç´ ï¼Œå…ƒç´ ä¹Ÿå¯ä»¥å¼•ç”¨è¡¨å•ã€‚</p>
+<p>è¿™é‡Œæœ‰ä¸€ä¸ªè¡¨ç¤ºå…³ç³»çš„å›¾ç‰‡ï¼š</p>
+<figure><div class="image" style="width:413px">
+      <div class="image__ratio" style="padding-top:30.26634382566586%"></div>
+      <img src="article/form-elements/form-navigation.png" tppabs="https://zh.javascript.info/article/form-elements/form-navigation.png" alt="" width="413" height="125" class="image__image">
+      </div></figure><p>æ¯”å¦‚è¯´ï¼š</p>
+<div data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // form -&gt; element
+  let login = form.login;
+
+  // element -&gt; form
+  alert(login.form); // HTMLFormElement
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="biao-dan-yuan-su" href="#biao-dan-yuan-su">è¡¨å•å…ƒç´ </a></h2><p>è®©æˆ‘ä»¬æ¥è°ˆè°ˆè¡¨å•æ§ä»¶ï¼Œä¸»è¦å…³æ³¨äºå®ƒä»¬å…·ä½“çš„ç‰¹æ€§ã€‚</p>
+<h3><a class="main__anchor" name="input-he-textarea" href="#input-he-textarea">input å’Œ textarea</a></h3><p>é€šå¸¸æ¥è¯´ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨ <code>input.value</code> æˆ–è€… <code>input.checked</code> æ¥è®¿é—®å¤é€‰æ¡†çš„å€¼ã€‚</p>
+<p>å°±åƒä¸‹é¢è¿™æ ·ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">input.value = &quot;New value&quot;;
+textarea.value = &quot;New text&quot;;
+
+input.checked = true; // ç”¨äºå¤é€‰æ¡†æˆ–è€…å•é€‰æŒ‰é’®</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">ä½¿ç”¨ <code>textarea.value</code> è€Œä¸æ˜¯ <code>textarea.innerHTML</code></span></div>
+            <div class="important__content"><p>è¯·æ³¨æ„æˆ‘ä»¬æ°¸è¿œä¸åº”è¯¥ä½¿ç”¨ <code>textarea.innerHTML</code>ï¼šå®ƒåªå‚¨å­˜äº†æœ€åˆåœ¨é¡µé¢ä¸Šçš„ HTML å†…å®¹ï¼Œè€Œä¸æ˜¯å½“å‰çš„ã€‚</p>
+</div></div>
+<h3><a class="main__anchor" name="select-he-option" href="#select-he-option">select å’Œ option</a></h3><p>ä¸€ä¸ª <code>&lt;select&gt;</code> å…ƒç´ æœ‰ 3 ä¸ªé‡è¦çš„å±æ€§ï¼š</p>
+<ol>
+<li><code>select.options</code> â€”â€” <code>&lt;option&gt;</code> å…ƒç´ çš„é›†åˆï¼Œ</li>
+<li><code>select.value</code> â€”â€” æ‰€é€‰é€‰é¡¹çš„å€¼ï¼Œ</li>
+<li><code>select.selectedIndex</code> â€”â€” æ‰€é€‰é€‰é¡¹çš„ç´¢å¼•ã€‚</li>
+</ol>
+<p>æ‰€ä»¥æˆ‘ä»¬ä¼šæœ‰ä¸‰ç§æ–¹å¼æ¥è®¾ç½®ä¸€ä¸ª <code>&lt;select&gt;</code> å…ƒç´ çš„å€¼ï¼š</p>
+<ol>
+<li>æ‰¾åˆ°æ‰€éœ€è¦çš„ <code>&lt;option&gt;</code> å…ƒç´ ä¹‹åè®¾ç½® <code>option.selected</code> ä¸º <code>true</code>ã€‚</li>
+<li>è®¾ç½® <code>select.value</code> ä¸ºå¯¹åº”çš„å€¼ã€‚</li>
+<li>è®¾ç½® <code>select.selectedIndex</code> ä¸ºå¯¹åº”é€‰é¡¹çš„ç´¢å¼•ã€‚</li>
+</ol>
+<p>ç¬¬ä¸€ä¸ªæ–¹å¼æ˜¯æœ€æ˜¾è€Œæ˜“è§çš„ï¼Œä½†æ˜¯ <code>(2)</code> å’Œ <code>(3)</code> é€šå¸¸æ¥è¯´ä¼šæ›´ç®€ä¾¿ã€‚</p>
+<p>ä¸‹é¢æ˜¯ä¸€ä¸ªä¾‹å­ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;select&quot;&gt;
+  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;
+  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;
+  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // æ‰€æœ‰è¿™ä¸‰è¡Œåšçš„æ˜¯åŒä¸€ä»¶äº‹
+  select.options[2].selected = true;
+  select.selectedIndex = 2;
+  select.value = 'banana';
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å’Œå¤§å¤šæ•°å…¶å®ƒæ§ä»¶ä¸åŒï¼Œ<code>&lt;select multiple&gt;</code> å…è®¸å¤šé€‰ã€‚åœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œæˆ‘ä»¬éœ€è¦éå† <code>select.options</code> æ¥è·å–æ‰€æœ‰é€‰å®šçš„å€¼ã€‚</p>
+<p>å°±åƒä¸‹é¢è¿™æ ·ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:20,&quot;end&quot;:28}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;select&quot; multiple&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+  &lt;option value=&quot;rock&quot; selected&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // ä» multi-select ä¸­è·å–æ‰€æœ‰é€‰å®šçš„å€¼
+  let selected = Array.from(select.options)
+    .filter(option =&gt; option.selected)
+    .map(option =&gt; option.value);
+
+  alert(selected); // bluesï¼Œrock
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>&lt;select&gt;</code> å…ƒç´ å®Œæ•´çš„è§„èŒƒå¯ä»¥åœ¨ <a href="javascript:if(confirm('https://html.spec.whatwg.org/multipage/forms.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://html.spec.whatwg.org/multipage/forms.html#the-select-element'" tppabs="https://html.spec.whatwg.org/multipage/forms.html#the-select-element">https://html.spec.whatwg.org/multipage/forms.html#the-select-element</a> ä¸Šæ‰¾åˆ°ã€‚</p>
+<h3><a class="main__anchor" name="xin-de-xuan-xiang" href="#xin-de-xuan-xiang">æ–°çš„é€‰é¡¹</a></h3><p>åœ¨<a href="javascript:if(confirm('https://html.spec.whatwg.org/multipage/forms.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://html.spec.whatwg.org/multipage/forms.html#the-option-element'" tppabs="https://html.spec.whatwg.org/multipage/forms.html#the-option-element">é€‰é¡¹å…ƒç´ </a>çš„è§„èŒƒä¸­ï¼Œæœ‰ä¸€ä¸ªå¾ˆä¸é”™çš„ç®€çŸ­è¯­æ³•ç”¨æ¥åˆ›å»º <code>&lt;option&gt;</code> å…ƒç´ ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">option = new Option(text, value, defaultSelected, selected);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¯¥æ–¹æ³•è°ƒç”¨å‚æ•°å¦‚ä¸‹ï¼š</p>
+<ul>
+<li><code>text</code> â€”â€” é€‰é¡¹ä¸­çš„æ–‡æœ¬ï¼Œ</li>
+<li>`value â€”â€” é€‰é¡¹çš„é»˜è®¤å€¼,</li>
+<li><code>defaultSelected</code> â€”â€” å¦‚æœè¿™ä¸ªå€¼æ˜¯ <code>true</code>ï¼Œé‚£ä¹ˆ <code>selected</code> å±æ€§å°±ä¼šé»˜è®¤åˆ›å»ºï¼Œ</li>
+<li><code>selected â€”â€” å¦‚æœè¿™ä¸ªå€¼æ˜¯</code>true`ï¼Œé‚£ä¹ˆè¿™ä¸ªé€‰é¡¹å°±æ˜¯å·²ç»è¢«é€‰æ‹©äº†ã€‚</li>
+</ul>
+<p>æ¯”å¦‚è¯´ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let option = new Option(&quot;Text&quot;, &quot;value&quot;);
+// åˆ›å»º &lt;option value=&quot;value&quot;&gt;Text&lt;/option&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>é€‰æ‹©ç›¸åŒçš„å…ƒç´ ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let option = new Option(&quot;Text&quot;, &quot;value&quot;, true, true);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>&lt;option&gt;</code> çš„é¢å¤–å±æ€§</span></div>
+            <div class="important__content"><p>é€‰é¡¹å…ƒç´ å…·æœ‰å…¶å®ƒé¢å¤–çš„å±æ€§ï¼š</p>
+<dl>
+<dt><code>selected</code></dt>
+<dd>æ˜¯å¦é€‰æ‹©äº†è¯¥é€‰é¡¹ã€‚</dd>
+<dt><code>index</code></dt>
+<dd>åœ¨è¯¥ option æ‰€å±çš„ <code>&lt;select&gt;</code> å…¶æ‰€å¯¹åº”çš„ç´¢å¼•ã€‚</dd>
+<dt><code>text</code></dt>
+<dd>é€‰é¡¹çš„æ–‡æœ¬å†…å®¹ï¼ˆå¯ä»¥è¢«ä»»ä½•è®¿é—®è€…çœ‹åˆ°ï¼‰ã€‚</dd>
+</dl>
+</div></div>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p>è¡¨å•å¯¼èˆªï¼š</p>
+<dl>
+<dt><code>document.forms</code></dt>
+<dd>ä¸€ä¸ªè¡¨å•å…ƒç´ å¯ä»¥é€šè¿‡ <code>document.forms[name/index]</code> è®¿é—®åˆ°ã€‚</dd>
+<dt><code>form.elements</code></dt>
+<dd>è¡¨å•å…ƒç´ ä»¥é€šè¿‡ <code>form.elements[name/index]</code> çš„æ–¹å¼è®¿é—®ï¼Œæˆ–è€…ä¹Ÿå¯ä»¥ä½¿ç”¨ <code>form[name/index]</code>ã€‚<code>elements</code> å±æ€§ä¹Ÿé€‚ç”¨äº <code>&lt;fieldset&gt;</code>ã€‚</dd>
+<dt><code>element.form</code></dt>
+<dd>å…ƒç´ é€šè¿‡ <code>form</code> å±æ€§æ¥è®¿é—®å®ƒä»¬æ‰€å±çš„è¡¨å•ã€‚</dd>
+</dl>
+<p>å€¼å¯ä»¥é€šè¿‡ <code>input.value</code>ï¼Œ<code>textarea.value</code>ï¼Œ<code>select.value</code> ç­‰æ¥è·å–åˆ°ï¼Œå¯¹äºå•é€‰æ¡†å’Œå¤é€‰æ¡†æ¥è¯´è¿˜å¯ä»¥ä½¿ç”¨ <code>input.checked</code>ã€‚</p>
+<p>å¯¹äº <code>&lt;select&gt;</code> å…ƒç´ æˆ‘ä»¬å¯ä»¥é€šè¿‡ç´¢å¼• <code>select.selectedIndex</code> æ¥è·å–å®ƒçš„å€¼ï¼Œä¹Ÿå¯ä»¥ä½¿ç”¨é€‰é¡¹é›†åˆ <code>select.options</code>ã€‚è¯¥å…ƒç´ å’Œå…¶å®ƒå…ƒç´ çš„å®Œæ•´è§„èŒƒå¯ä»¥çœ‹ <a href="javascript:if(confirm('https://html.spec.whatwg.org/multipage/forms.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://html.spec.whatwg.org/multipage/forms.html'" tppabs="https://html.spec.whatwg.org/multipage/forms.html">https://html.spec.whatwg.org/multipage/forms.html</a>ã€‚</p>
+<p>è¿™äº›æ˜¯å¼€å§‹ä½¿ç”¨è¡¨å•çš„åŸºç¡€çŸ¥è¯†ã€‚åœ¨ä¸‹ä¸€ç« ä¸­ï¼Œæˆ‘ä»¬å°†ä¼šä»‹ç»å¯èƒ½åœ¨ä»»ä½•å…ƒç´ ä¸Šå‡ºç°çš„ <code>focus</code> å’Œ <code>blur</code> äº‹ä»¶ï¼Œä½†ä¸»è¦æ˜¯åœ¨è¡¨å•ä¸Šå¤„ç†è¿™äº›ã€‚</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">ä»»åŠ¡</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zai-select-yuan-su-zhong-zeng-jia-yi-ge-xuan-xiang" name="zai-select-yuan-su-zhong-zeng-jia-yi-ge-xuan-xiang">åœ¨ select å…ƒç´ ä¸­å¢åŠ ä¸€ä¸ªé€‰é¡¹</a></h3><a class="task__open-link" href="task/add-select-option.htm" tppabs="https://zh.javascript.info/task/add-select-option" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>ä¸‹é¢æ˜¯ä¸€ä¸ª <code>&lt;select&gt;</code> å…ƒç´ ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ä½¿ç”¨ JavaScript æ¥å®ç°ä»¥ä¸‹æ•ˆæœï¼š</p>
+<ol>
+<li>æ˜¾ç¤ºæ‰€é€‰é€‰é¡¹çš„å€¼å’Œæ–‡æœ¬ã€‚</li>
+<li>å¢åŠ ä¸€ä¸ªé€‰é¡¹ï¼š<code>&lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;</code>ã€‚</li>
+<li>ä½¿ä¹‹å˜ä¸ºå¯é€‰çš„ã€‚</li>
+</ol>
+<button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><p>è§£å†³æ–¹æ¡ˆï¼šé€æ­¥è§£å†³</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // 1)
+  let selectedOption = genres.options[select.selectedIndex];
+  alert( selectedOption.value );
+
+  // 2)
+  let newOption = new Option(&quot;classic&quot;, &quot;Classic&quot;);
+  select.append(newOption);
+
+  // 3)
+  newOption.selected = true;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="forms-controls.htm" tppabs="https://zh.javascript.info/forms-controls" data-tooltip="è¡¨å•ï¼Œæ§ä»¶"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="focus-blur.htm" tppabs="https://zh.javascript.info/focus-blur" data-tooltip="èšç„¦ï¼šfocus/blur"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/form-elements","identifier":"\/form-elements"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="forms-controls.htm" tppabs="https://zh.javascript.info/forms-controls">è¡¨å•ï¼Œæ§ä»¶</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dao-hang-biao-dan-he-yuan-su">å¯¼èˆªï¼šè¡¨å•å’Œå…ƒç´ </a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fan-xiang-yin-yong-elementform">åå‘å¼•ç”¨ï¼šelement.form</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#biao-dan-yuan-su">è¡¨å•å…ƒç´ </a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">ä»»åŠ¡ (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fform-elements"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/1-form-elements/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/1-form-elements/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/4-forms-controls/1-form-elements/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

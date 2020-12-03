@@ -1,0 +1,759 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">对象方法与 &quot;this&quot;</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/object-methods"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="对象方法与 &quot;this&quot;"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="对象方法与 &quot;this&quot;"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/symbol"><link rel="next" href="/object-toprimitive"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="对象方法与 &quot;this&quot;"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/object-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/object-methods'" tppabs="https://javascript.info/object-methods"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="object-methods.htm" tppabs="https://zh.javascript.info/object-methods"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/object-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/object-methods'" tppabs="https://ja.javascript.info/object-methods"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/object-methods">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/object-methods" selected>简体中文</option><option value="https://ja.javascript.info/object-methods">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="29" max="67" data-tooltip="第 67 章，第 29 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="object-basics.htm" tppabs="https://zh.javascript.info/object-basics" itemprop="url"><span itemprop="title">Objects（对象）：基础知识</span></a></li></ol><h1 class="main__header-title">对象方法与 &quot;this&quot;</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="对象方法与 &quot;this&quot;"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>对象通常被用来表示真实世界中的实体，比如用户、订单等等：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另外，在现实世界中，用户可以<strong>操作</strong>：从购物车中挑选某物、登录、注销等。</p>
+<p>在 JavaScript 中，操作通过属性中的函数来表示。</p>
+<h2><a class="main__anchor" name="fang-fa-shi-li" href="#fang-fa-shi-li">方法示例</a></h2><p>刚开始，我们来让 <code>user</code> 说 hello：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30
+};
+
+user.sayHi = function() {
+  alert(&quot;Hello!&quot;);
+};
+
+user.sayHi(); // Hello!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里我们使用函数表达式创建了函数，并将其指定给对象的 <code>user.sayHi</code> 属性。</p>
+<p>随后我们调用它。用户现在可以说话了！</p>
+<p>作为对象属性的函数称之为<strong>方法</strong>。</p>
+<p>那么，现在 <code>user</code> 对象有了一个 <code>sayHi</code> 方法。</p>
+<p>当然我们也可以使用预先定义的函数作为方法，就像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  // ...
+};
+
+// 首先声明
+function sayHi() {
+  alert(&quot;Hello!&quot;);
+};
+
+// 然后将其作为一个方法
+user.sayHi = sayHi;
+
+user.sayHi(); // Hello!</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Object-oriented programming</span></div>
+            <div class="important__content"><p>当我们在代码中用对象表示实体时，这就是所谓的<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Object-oriented_programming  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Object-oriented_programming'" tppabs="https://en.wikipedia.org/wiki/Object-oriented_programming">面向对象编程</a>，简称为 “OOP”。</p>
+<p>OOP 是一门很大的学问，也是一门有其本身乐趣的学问。怎样选择合适的实体？如何组织它们之间的交互？这就是架构，有很多关于此方面的书，例如 E.Gamma、R.Helm、R.Johnson 和 J.Vissides 所著的《设计模式：可复用面向对象软件的基础》、G.Booch 所著的《面向对象分析与设计》等等。在后面的 <a href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming">对象、类和继承</a> 一章中，我们将会触及这个主题的浅层内容。</p>
+</div></div>
+<h3><a class="main__anchor" name="fang-fa-jian-xie" href="#fang-fa-jian-xie">方法简写</a></h3><p>在对象字面量中，有一种更短的（声明）方法的语法：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 这些对象作用一样
+
+let user = {
+  sayHi: function() {
+    alert(&quot;Hello&quot;);
+  }
+};
+
+// 方法简写看起来更好，对吧？
+let user = {
+  sayHi() { // 与 &quot;sayHi: function()&quot; 一样
+    alert(&quot;Hello&quot;);
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如所示，我们可以省略 <code>&quot;function&quot;</code> 只写了 <code>sayHi()</code>。</p>
+<p>说实话，这种表示法还是有些不同。与对象集成有关的细微差别（稍后将会介绍），但现在它们无关紧要。在几乎所有的情况下，较短的语法是最好的。</p>
+<h2><a class="main__anchor" name="fang-fa-zhong-de-this" href="#fang-fa-zhong-de-this">方法中的 “this”</a></h2><p>对象方法需要访问对象中的存储的信息完成其工作是很常见的。</p>
+<p>举个例子，<code>user.sayHi()</code> 中的代码可能需要用到 <code>user</code> 的 name 属性。</p>
+<p><strong>为了访问该对象，方法中可以使用 <code>this</code> 关键字。</strong></p>
+<p><code>this</code> 的值就是在点之前的这个对象，即调用该方法的对象。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30,
+
+  sayHi() {
+    alert(this.name);
+  }
+
+};
+
+user.sayHi(); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这里 <code>user.sayHi()</code> 执行过程中，<code>this</code> 的值是 <code>user</code>。</p>
+<p>技术上讲，也可以在不使用 <code>this</code> 的情况下，通过外部变量名来引用它：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30,
+
+  sayHi() {
+    alert(user.name); // &quot;user&quot; 替代 &quot;this&quot;
+  }
+
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但这样的代码是不可靠的。如果我们将 <code>user</code> 复制给另一个变量。例如 <code>admin = user</code>，并赋另外的值给 <code>user</code>，那么它将访问到错误的对象。</p>
+<p>如下所示：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  age: 30,
+
+  sayHi() {
+    alert( user.name ); // 导致错误
+  }
+
+};
+
+
+let admin = user;
+user = null; // 覆盖让其更易懂
+
+admin.sayHi(); // 噢哟！在 sayHi() 使用了旧的变量名。错误！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果在 <code>alert</code> 中以 <code>this.name</code> 替换 <code>user.name</code>，那么代码就会正常运行。</p>
+<h2><a class="main__anchor" name="this-bu-shou-xian-zhi" href="#this-bu-shou-xian-zhi">“this” 不受限制</a></h2><p>在 JavaScript 中，“this” 关键字与大多数其他编程语言中的不同。首先，它可以用于任何函数。</p>
+<p>这样的代码没有语法错误：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:9,&quot;end&quot;:13}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert( this.name );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>this</code> 是在运行时求值的。它可以是任何值。</p>
+<p>例如，从不同的对象中调用同一个函数可能会有不同的 “this” 值：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { name: &quot;John&quot; };
+let admin = { name: &quot;Admin&quot; };
+
+function sayHi() {
+  alert( this.name );
+}
+
+// 在两个对象中使用的是相同的函数
+user.f = sayHi;
+admin.f = sayHi;
+
+// 它们调用时有不同的 this 值。
+// 函数内部的 &quot;this&quot; 是点之前的这个对象。
+user.f(); // John  (this == user)
+admin.f(); // Admin  (this == admin)
+
+admin['f'](); // Admin（使用点或方括号语法来访问这个方法，都没有关系。）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>实际上，我们可以在没有任何对象的情况下调用函数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert(this);
+}
+
+sayHi(); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这种情况下，严格模式下的 <code>this</code> 值为 <code>undefined</code>。如果我们尝试访问 <code>this.name</code>，将会出现错误。</p>
+<p>在非严格模式（没有使用 <code>use strict</code>）的情况下，<code>this</code> 将会是<strong>全局对象</strong>（浏览器中的 <code>window</code>，我们稍后会进行讨论）。<code>&quot;use strict&quot;</code> 可以修复这个历史行为。</p>
+<p>请注意，通常在没有对象的情况下使用 <code>this</code> 的函数调用是不常见的，会（导致）编程错误。如果函数中有 <code>this</code>，那么通常意味着它是在对象上下文环境中被调用的。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">The consequences of unbound <code>this</code></span></div>
+            <div class="important__content"><p>如果你来自其他的编程语言，那么你可能熟悉『绑定 <code>this</code>』的概念。在对象定义的方法中，<code>this</code> 总是指向该对象。</p>
+<p>在 JavaScript 中，<code>this</code> 是『自由』的，它的值是在调用时进行求值的，它的值并不取决于方法声明的位置，而是（取决）于在『点之前』的是什么对象。</p>
+<p>在运行时对 <code>this</code> 求值的这个想法有其优缺点。一方面，函数可以被重用于不同的对象。另一方面，更大的灵活性给错误留下了余地。</p>
+<p>这里我们的立场并不是要评判编程语言的这个想法的好坏，而是要了解怎样使用它，如何趋利避害。</p>
+</div></div>
+<h2><a class="main__anchor" name="nei-bu-yin-yong-lei-xing" href="#nei-bu-yin-yong-lei-xing">内部：引用类型</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">In-depth language feature</span></div>
+            <div class="important__content"><p>本文介绍一个进阶的主题，来更好地理解一些特殊情况。</p>
+<p>如果你想学得更快，这部分你可以跳过或过后来读。</p>
+</div></div>
+<p>『复杂』的方法调用可能会失去 <code>this</code>，比如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  hi() { alert(this.name); },
+  bye() { alert(&quot;Bye&quot;); }
+};
+
+user.hi(); // John (the simple call works)
+
+// 现在我们要判断 name 属性，来决定调用 user.hi 或是 user.bye。
+(user.name == &quot;John&quot; ? user.hi : user.bye)(); // Error!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>最后一行中有一个三元运算符，它要判断是 <code>user.hi</code> 或 <code>user.bye</code>。在这种情况下，结果会是 <code>user.hi</code>。</p>
+<p>该方法立即被括号 <code>()</code> 调用。但它无效。</p>
+<p>你可以看到该调用导致了错误，因为调用中的 <code>&quot;this&quot;</code> 为 <code>undefined</code>。</p>
+<p>这样是正确的（对象点方法）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">user.hi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这样没有效果（对方法求值）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">(user.name == &quot;John&quot; ? user.hi : user.bye)(); // 错误！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>原因是什么？如果我们想了解为什么会这样，那么我们要深入理解 <code>obj.method()</code> 调用的原理。</p>
+<p>仔细看，我们可能注意到 <code>obj.method()</code> 语句中有两个操作符。</p>
+<ol>
+<li>首先，点 <code>'.'</code> 取得这个 <code>obj.method</code> 属性。</li>
+<li>其后的括号 <code>()</code> 调用它。</li>
+</ol>
+<p>那么，<code>this</code> 是如何从第一部分传递到第二部分的呢？</p>
+<p>如果把这些操作分离开，那么 <code>this</code> 肯定会丢失：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  hi() { alert(this.name); }
+}
+
+// 将赋值与方法调用拆分为两行
+let hi = user.hi;
+hi(); // 错误，因为 this 未定义</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里 <code>hi = user.hi</code> 把函数赋值给变量，其后的最后一行是完全独立的，所以它没有 <code>this</code>。</p>
+<p><strong>为了让 <code>user.hi()</code> 有效，JavaScript 用一个技巧 —— 这个 <code>'.'</code> 点返回的不是一个函数, 而是一种特殊的[引用类型]的值(https://tc39.github.io/ecma262/#sec-reference-specification-type).</strong></p>
+<p>引用类型是一种『规范中有的类型』。我们不能明确地指定它，但是可以在语言内部使用。</p>
+<p>引用类型的值是三点的结合 <code>(base, name, strict)</code>，如下：</p>
+<ul>
+<li><code>base</code> 是对象。</li>
+<li><code>name</code> 是属性。</li>
+<li>当 <code>use strict</code> 生效，<code>strict</code> 为真。</li>
+</ul>
+<p><code>user.hi</code> 属性访问的值不是函数，而是引用类型的值。在严格模式下，<code>user.hi</code> 是：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 引用类型值
+(user, &quot;hi&quot;, true)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当在引用类型上用 <code>()</code> 调用时，它们接收到这个对象和它的方法的所有信息，并且设定正确的 <code>this</code> 值（这里等于 <code>user</code>）。</p>
+<p><code>hi = user.hi</code> 赋值等其他的操作，将引用类型作为一个整体丢弃，只获取 <code>user.hi</code>（一个函数）的值进行传递。因此，进一步操作『失去』了 <code>this</code>（值）。</p>
+<p>所以如果直接使用点 <code>obj.method()</code> 或方括号语法 <code>obj[method]()</code>（它们在这里并无差别）调用函数，那么作为结果，<code>this</code> 值会以正确的方式进行传递。</p>
+<h2><a class="main__anchor" name="jian-tou-han-shu-mei-you-zi-ji-de-this" href="#jian-tou-han-shu-mei-you-zi-ji-de-this">箭头函数没有自己的 “this”</a></h2><p>箭头函数有些特别：它们没有自己的 <code>this</code>。如果我们在这样的函数中引用 <code>this</code>，<code>this</code> 值取决于外部『正常的』函数。</p>
+<p>举个例子，这里的 <code>arrow()</code> 使用的 <code>this</code> 来自外部的 <code>user.sayHi()</code> 方法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  firstName: &quot;Ilya&quot;,
+  sayHi() {
+    let arrow = () =&gt; alert(this.firstName);
+    arrow();
+  }
+};
+
+user.sayHi(); // Ilya</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是箭头函数的一个特征，当我们并不想要一个独立的 <code>this</code> 值，反而想从外部上下文中获取时，它很有用。在后面的章节 <a href="arrow-functions.htm" tppabs="https://zh.javascript.info/arrow-functions">深入研究箭头函数</a> 中我们将更深入地介绍箭头函数。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>存储在对象中函数称之为『方法』。</li>
+<li>对象执行方法进行『操作』，比如 <code>object.doSomething()</code>。</li>
+<li>方法可以将该对象引用为 <code>this</code>。</li>
+</ul>
+<p><code>this</code> 的值是在运行时求值的。</p>
+<ul>
+<li>函数声明使用的 <code>this</code> 只有等到调用时才会有值。</li>
+<li>函数可以在对象之间进行共用。</li>
+<li>当函数使用『方法』语法 <code>object.method()</code> 调用时，调用过程中的 <code>this</code> 总是指向 <code>object</code>。</li>
+</ul>
+<p>请注意箭头函数有些特别：它们没有 <code>this</code>。在箭头函数内部访问的都是来自外部的 <code>this</code> 值。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jian-cha-yu-fa" name="jian-cha-yu-fa">检查语法</a></h3><a class="task__open-link" href="task/check-syntax.htm" tppabs="https://zh.javascript.info/task/check-syntax" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 2</span></div><div class="task__content"><p>这段代码的结果是什么？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  go: function() { alert(this.name) }
+}
+
+(user.go)()</code></pre>
+        </div>
+      </div>
+      
+      </div><p>提示：有一个陷阱哦 :)</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><strong>错误</strong>!</p>
+<p>试一下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  go: function() { alert(this.name) }
+}
+
+(user.go)() // error!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>大多数浏览器中的错误信息并不能说明出现了什么问题。</p>
+<p><strong>出现此错误是因为在 <code>user = {...}</code> 之后遗漏了一个分号。</strong></p>
+<p>JavaScript 不会在括号 <code>(user.go)()</code> 前自动插入分号，所以解析的代码如下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { go:... }(user.go)()</code></pre>
+        </div>
+      </div>
+      
+      </div><p>那么，我们可以看到这样一个连接的表达式，在语法构成上，把对象 <code>{ go: ... }</code> 作为一个方法调用，并且传递的参数为 <code>(user.go)</code>。并且让 <code>let user</code>在同一行赋值，因此 <code>user</code> 没被定义（之前）就会出现错误</p>
+<p>如果我们插入该分号，一切都会正常：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:1,&quot;end&quot;:2}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = {
+  name: &quot;John&quot;,
+  go: function() { alert(this.name) }
+};
+
+(user.go)() // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>要注意的是 <code>(user.go)</code> 内的括号没有什么意义。通常用它们来设置操作的顺序，但在这里点 <code>.</code> 总是会先执行，所以并没有什么影响。分号是唯一重要的。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jie-shi-this-de-zhi" name="jie-shi-this-de-zhi">解释 &quot;this&quot; 的值</a></h3><a class="task__open-link" href="task/why-this.htm" tppabs="https://zh.javascript.info/task/why-this" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 3</span></div><div class="task__content"><p>在下面的代码中，我们试图连续调用 4 次 <code>user.go()</code> 方法。</p>
+<p>但是 <code>(1)</code> 和 <code>(2)</code> 次 <code>(3)</code> 和 <code>(4)</code> 调用结果不同，为什么呢？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let obj, method;
+
+obj = {
+  go: function() { alert(this); }
+};
+
+obj.go();               // (1) [object Object]
+
+(obj.go)();             // (2) [object Object]
+
+(method = obj.go)();    // (3) undefined
+
+(obj.go || obj.stop)(); // (4) undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>这里是解释。</p>
+<ol>
+<li>
+<p>它是一个常规的方法调用。</p>
+</li>
+<li>
+<p>同样，括号没有改变执行的顺序，点总是首先执行。</p>
+</li>
+<li>
+<p>这里我们有一个更复杂的 <code>(expression).method()</code> 调用。这个调用就像被分成了两行（代码）一样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">f = obj.go; // calculate the expression
+f();        // call what we have</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>这里的 <code>f()</code> 是作为一个没有（设定）<code>this</code> 的函数执行的。</p>
+<ol start="4">
+<li>与 <code>(3)</code> 相类似，在点 <code>.</code> 的左边也有一个表达式。</li>
+</ol>
+<p>要解释 <code>(3)</code> 和 <code>(4)</code> 的原因，我们需要回顾一下属性访问器（点或方括号）返回的值是引用类型的。</p>
+<p>除了方法调用之外的任何操作（如赋值 <code>=</code> 或 <code>||</code> 等）把它变为了一个没有设定 <code>this</code> 信息的普通值。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zai-dui-xiang-zi-mian-liang-zhong-shi-yong-this" name="zai-dui-xiang-zi-mian-liang-zhong-shi-yong-this">在对象字面量中使用 &quot;this&quot;</a></h3><a class="task__open-link" href="task/object-property-this.htm" tppabs="https://zh.javascript.info/task/object-property-this" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这里 <code>makeUser</code> 函数返回了一个对象。</p>
+<p>访问 <code>ref</code> 的结果是什么？为什么？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeUser() {
+  return {
+    name: &quot;John&quot;,
+    ref: this
+  };
+};
+
+let user = makeUser();
+
+alert( user.ref.name ); // What's the result?</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><strong>答案：一个错误。</strong></p>
+<p>试一下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeUser() {
+  return {
+    name: &quot;John&quot;,
+    ref: this
+  };
+};
+
+let user = makeUser();
+
+alert( user.ref.name ); // Error: Cannot read property 'name' of undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是因为设置的 <code>this</code> 的规则并没有找到对象字面量。</p>
+<p>这里 <code>makeUser()</code> 中的 <code>this</code> 值是 <code>undefined</code>，因为它是被作为函数调用的，而不是方法调用。</p>
+<p>对象字面量本身对于 <code>this</code> 没有影响。<code>this</code> 的值是整个函数，代码段和对象字面量对它没有影响。</p>
+<p>所以，<code>ref: this</code> 实际上取的是该函数当前的 <code>this</code>。</p>
+<p>这里有个反例：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeUser() {
+  return {
+    name: &quot;John&quot;,
+    ref() {
+      return this;
+    }
+  };
+};
+
+let user = makeUser();
+
+alert( user.ref().name ); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在正常了，因为 <code>user.ref()</code> 是一个方法。<code>this</code> 的值设置为点 <code>.</code> 之前的这个对象。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#chuang-jian-yi-ge-ji-suan-qi-dui-xiang" name="chuang-jian-yi-ge-ji-suan-qi-dui-xiang">创建一个计算器（对象）</a></h3><a class="task__open-link" href="task/calculator.htm" tppabs="https://zh.javascript.info/task/calculator" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个有三个方法的 <code>calculator</code> 对象：</p>
+<ul>
+<li><code>read()</code> 提示输入两个值，将其保存为对象属性。</li>
+<li><code>sum()</code> 返回保存的值的和。</li>
+<li><code>mul()</code> 将保存的值相乘并返回其结果。</li>
+</ul>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let calculator = {
+  // ... your code ...
+};
+
+calculator.read();
+alert( calculator.sum() );
+alert( calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><a href="#" onclick="event.preventDefault(); runDemo(this)">运行 demo</a><p><a href="javascript:if(confirm('http://plnkr.co/edit/zaZGEWpYyPSrDILzp2OD?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/zaZGEWpYyPSrDILzp2OD?p=preview'" tppabs="http://plnkr.co/edit/zaZGEWpYyPSrDILzp2OD?p=preview" target="_blank" data-plunk-id="zaZGEWpYyPSrDILzp2OD">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+
+  read() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  }
+};
+
+calculator.read();
+alert( calculator.sum() );
+alert( calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/c51Ej54Ngo7uYTf05JQJ?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/c51Ej54Ngo7uYTf05JQJ?p=preview'" tppabs="http://plnkr.co/edit/c51Ej54Ngo7uYTf05JQJ?p=preview" target="_blank" data-plunk-id="c51Ej54Ngo7uYTf05JQJ">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#lian-shi-tiao-yong" name="lian-shi-tiao-yong">链式（调用）</a></h3><a class="task__open-link" href="task/chain-calls.htm" tppabs="https://zh.javascript.info/task/chain-calls" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 2</span></div><div class="task__content"><p>有一个可以上下移动的 <code>ladder</code> 对象：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+  },
+  down() {
+    this.step--;
+  },
+  showStep: function() { // shows the current step
+    alert( this.step );
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在如果我们要依次执行几次调用，可以这样做：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ladder.up();
+ladder.up();
+ladder.down();
+ladder.showStep(); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>修改 <code>up</code> 和 <code>down</code> 的代码让调用可以链接，就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ladder.up().up().down().showStep(); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>此种方法在 JavaScript 库中被广泛使用。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/DcHTS0DlFUKRrtBXClnL?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/DcHTS0DlFUKRrtBXClnL?p=preview'" tppabs="http://plnkr.co/edit/DcHTS0DlFUKRrtBXClnL?p=preview" target="_blank" data-plunk-id="DcHTS0DlFUKRrtBXClnL">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>解决方案就是在每次调用后返回这个对象本身。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:12},{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep() {
+    alert( this.step );
+    return this;
+  }
+}
+
+ladder.up().up().down().up().down().showStep(); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们也可以每行一个调用。对于长链接它更具可读性：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ladder
+  .up()
+  .up()
+  .down()
+  .up()
+  .down()
+  .showStep(); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/rcBeK3b9smZylAokNCiE?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/rcBeK3b9smZylAokNCiE?p=preview'" tppabs="http://plnkr.co/edit/rcBeK3b9smZylAokNCiE?p=preview" target="_blank" data-plunk-id="rcBeK3b9smZylAokNCiE">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="symbol.htm" tppabs="https://zh.javascript.info/symbol" data-tooltip="Symbol 类型"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="object-toprimitive.htm" tppabs="https://zh.javascript.info/object-toprimitive" data-tooltip="对象原始值转换"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/object-methods","identifier":"\/object-methods"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.htm" tppabs="https://zh.javascript.info/object-basics">Objects（对象）：基础知识</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fang-fa-shi-li">方法示例</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fang-fa-zhong-de-this">方法中的 “this”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#this-bu-shou-xian-zhi">“this” 不受限制</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#nei-bu-yin-yong-lei-xing">内部：引用类型</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#jian-tou-han-shu-mei-you-zi-ji-de-this">箭头函数没有自己的 “this”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (5)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fobject-methods"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/04-object-methods/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/04-object-methods/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/04-object-methods/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

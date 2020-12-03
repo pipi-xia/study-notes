@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">坐标</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/coordinates"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="坐标"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="坐标"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/size-and-scroll-window"><link rel="next" href="/events"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  let elem = document.getElementById('coords-show-mark');
+
+  elem && elem.getElementById('coords-show-mark').onclick = function() {
+
+    function createMessageUnder(elem, text) {
+      let coords = elem.getBoundingClientRect();
+      let message = document.createElement('div');
+      message.style.cssText = "position:fixed; color: red";
+
+      message.style.left = coords.left + "px";
+      message.style.top = coords.bottom + "px";
+
+      message.innerHTML = text;
+
+      return message;
+    }
+
+    let message = createMessageUnder(elem, 'Hello, world!');
+    document.body.append(message);
+    setTimeout(() => message.remove(), 5000);
+  }
+
+});
+
+</script>
+<meta property="og:title" content="坐标"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/coordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/coordinates'" tppabs="https://javascript.info/coordinates"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="coordinates.htm" tppabs="https://zh.javascript.info/coordinates"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/coordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/coordinates'" tppabs="https://ja.javascript.info/coordinates"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/coordinates">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/coordinates" selected>简体中文</option><option value="https://ja.javascript.info/coordinates">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="11" max="27" data-tooltip="第 27 章，第 11 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">坐标</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="坐标"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>要移动页面的元素，我们应该先熟悉坐标。</p>
+<p>大多数 JavaScript 方法处理的是以下两种坐标系中的一个：</p>
+<ol>
+<li>相对于窗口（或者另一个 viewport）顶部/左侧计算的坐标</li>
+<li>相对于文档顶部/左侧计算的坐标</li>
+</ol>
+<p>理解这两种方式的区别以及在哪里用哪种类型是很重要的。</p>
+<h2><a class="main__anchor" name="chuang-kou-zuo-biao-getboundingclientrect" href="#chuang-kou-zuo-biao-getboundingclientrect">窗口坐标：getBoundingClientRect</a></h2><p>窗口的坐标是从窗口的左上角开始计算的。</p>
+<p><code>elem.getBoundingClientRect()</code> 方法返回一个 <code>elem</code> 的窗口坐标对象，这个对象有以下这些属性：</p>
+<ul>
+<li><code>top</code> — 元素顶部边缘的 Y 坐标</li>
+<li><code>left</code> — 元素左边边缘的 X 坐标</li>
+<li><code>right</code> — 元素右边边缘的 X 坐标</li>
+<li><code>bottom</code> — 元素底部边缘的 Y 坐标</li>
+</ul>
+<p>如下所示：</p>
+<figure><div class="image" style="width:501px">
+      <div class="image__ratio" style="padding-top:77.04590818363273%"></div>
+      <img src="article/coordinates/coords.png" tppabs="https://zh.javascript.info/article/coordinates/coords.png" alt="" width="501" height="386" class="image__image">
+      </div></figure><p>窗口坐标并不会考虑到文档滚动，它们就是基于窗口的左上角计算出来的。</p>
+<p>换句话说，当我们滚动这个页面，这个元素就会上升或者下降，<strong>它的窗口坐标改变了</strong>。这很重要。</p>
+<p>点击按钮可以查看它的窗口坐标：</p>
+<input id="brTest" type="button" value="Show button.getBoundingClientRect() for this button" onclick='showRect(this)'/>
+<script>
+function showRect(elem) {
+  let r = elem.getBoundingClientRect();
+  alert("{top:"+r.top+", left:"+r.left+", right:"+r.right+", bottom:"+ r.bottom + "}");
+}
+</script>
+<p>如果你滚动这个页面，这个按钮的位置就会改变，同时窗口坐标也会改变。</p>
+<p>额外说明：</p>
+<ul>
+<li>坐标可以是十进制的分数。这很正常，浏览器内部也是使用十进制分数来计算坐标。当设置元素的 <code>style.position.left/top</code> 时我们不需要舍入它们，浏览器可以支持十进制分数。</li>
+<li>坐标也可以是负数的。例如当我们滚动页面向下在 <code>elem</code> 的顶部超过窗口的时候，这时候我们调用 <code>elem.getBoundingClientRect().top</code> 返回的就是负数。</li>
+<li>一些浏览器（像 Chrome）还会在 <code>getBoundingClientRect</code> 的返回中增加 <code>width</code> 和 <code>height</code> 属性。我们可以通过减法计算 <code>height=bottom-top</code>，<code>width=right-left</code> 来得到这两个属性。</li>
+</ul>
+<p>​```warn header=“坐标的右/底部和 CSS 中的属性是不同的”</p>
+<p>如果我们把窗口的坐标和 CSS 中的位置相对照，那么其和 <code>position:fixed</code> 有明显的相似之处 — 也是相对于 viewport 的位置。</p>
+<p>但是在 CSS 中 <code>right</code> 属性表示的是到右边界的距离，而且 <code>bottom</code> 是到底部边界的距离。</p>
+<p>如果我们只看下面的图片，我们可以看到在 JavaScript 中并非如此。所有窗口坐标都是从左上角开始计算的，包括这些坐标。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">## elementFromPoint(x, y) [#elementFromPoint]
+
+调用 `document.elementFromPoint(x, y)` 方法返回窗口坐标 `(x, y)` 中最顶层的元素。
+
+语法如下所示：
+
+```js
+let elem = document.elementFromPoint(x, y);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>比方说，下面的代码会高亮显示并输出现在位于窗口中间元素的标签：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let centerX = document.documentElement.clientWidth / 2;
+let centerY = document.documentElement.clientHeight / 2;
+
+let elem = document.elementFromPoint(centerX, centerY);
+
+elem.style.background = &quot;red&quot;;
+alert(elem.tagName);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>因为它使用的是窗口坐标，基于现在滚动的位置会显示不同的元素。</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">对于在窗口之外的坐标 <code>elementFromPoint</code> 返回 <code>null</code></span></div>
+            <div class="important__content"><p>方法 <code>document.elementFromPoint(x,y)</code> 只有在 <code>(x,y)</code> 坐标位于可是范围内才能正常调用。</p>
+<p>如果其中任何坐标是负数或者超过了窗口的宽/高，那么该函数就返回 <code>null</code>。</p>
+<p>在大多数情况下，这种行为并不是一个问题，但是我们应该记住这一点。</p>
+<p>这里就是一个典型的错误，如果我们不检查，它就可能会发生。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let elem = document.elementFromPoint(x, y);
+// 如果坐标正好是超过的窗口打下，那么 elem = null
+elem.style.background = ''; // Error!</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="shi-yong-wei-zhi-fixed" href="#shi-yong-wei-zhi-fixed">使用位置：fixed</a></h2><p>大多数时候我们需要使用坐标来定位。在 CSS 中，为了相对于 viewport 来定位元素，我们同时使用 <code>position:fixed</code> 和 <code>left/top</code>（或者是 <code>right/bottom</code>）。</p>
+<p>我们可以使用 <code>getBoundingClientRect</code> 来获取一个元素的坐标，并且之后可以在该元素附近显示一些东西。</p>
+<p>For instance, the function <code>createMessageUnder(elem, html)</code> below shows the message under <code>elem</code>:
+比如说，下面的 <code>createMessageUnder(elem, html)</code> 函数在 <code>elem</code> 元素下面显示了消息：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let elem = document.getElementById(&quot;coords-show-mark&quot;);
+
+function createMessageUnder(elem, html) {
+  // 创建 message 元素
+  let message = document.createElement('div');
+  // 在这里最好使用 css 来定义样式
+  message.style.cssText = &quot;position:fixed; color: red&quot;;
+
+  // 分配坐标，不要忘记 “px”！
+  let coords = elem.getBoundingClientRect();
+
+  message.style.left = coords.left + &quot;px&quot;;
+  message.style.top = coords.bottom + &quot;px&quot;;
+
+  message.innerHTML = html;
+
+  return message;
+}
+
+// 使用方式：
+// 在文档中添加 message 保持 5 秒
+let message = createMessageUnder(elem, 'Hello, world!');
+document.body.append(message);
+setTimeout(() =&gt; message.remove(), 5000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>按这个按钮来执行它：</p>
+<p><button id="coords-show-mark">Button with id=“coords-show-mark”, the message will appear under it</button></p>
+<p>我们可以修改代码从而在元素左边，右边或者下面显示消息，也可以应用 CSS 动画来营造“淡入淡出”效果等等。这很简单，因为我们有该元素所有的坐标和大小。</p>
+<p>但是请注意一个重要的细节：当这个页面被滚动时，消息就会从按钮下流离出去。</p>
+<p>原因显而易见：消息元素依赖于 <code>position:fixed</code>，所以当页面滚动时，它始终位于窗口的同一个位置。</p>
+<p>如果要改变这个状况，我们需要使用基于文档的坐标和 <code>position:absolute</code> 样式。</p>
+<h2><a class="main__anchor" name="wen-dang-zuo-biao" href="#wen-dang-zuo-biao">文档坐标</a></h2><p>文档相对坐标是从文档的左上角开始计算，而不是窗口。</p>
+<p>在 CSS 中，窗口坐标对应的是 <code>position:fixed</code>，而文档坐标则类似顶部的 position:absolute`。</p>
+<p>我们可以使用 <code>position:absolute</code> 和 <code>top/left</code> 来把一些东西放到文档中的固定位置，以便在页面滚动时元素仍能保留在那里。但是我们首先需要正确的坐标。</p>
+<p>为了清楚起见我们把窗口坐标叫做 <code>(clientX,clientY)</code> 把文档坐标叫做 <code>(pageX,pageY)</code>。</p>
+<p>当页面没有滚动时，窗口坐标和页面坐标实际上是相同的，它们的零点也匹配：</p>
+<figure><div class="image" style="width:694px">
+      <div class="image__ratio" style="padding-top:68.73198847262248%"></div>
+      <img src="article/coordinates/document-window-coordinates-zero.png" tppabs="https://zh.javascript.info/article/coordinates/document-window-coordinates-zero.png" alt="" width="694" height="477" class="image__image">
+      </div></figure><p>如果我们滚动页面，那么 <code>(clientX,clientY)</code> 就会改变，因为它们是相对于窗口计算的，但是 <code>(pageX,pageY)</code> 不会变。</p>
+<p>这里是垂直滚动后的同一页面：</p>
+<figure><div class="image" style="width:690px">
+      <div class="image__ratio" style="padding-top:69.27536231884058%"></div>
+      <img src="article/coordinates/document-window-coordinates-scroll.png" tppabs="https://zh.javascript.info/article/coordinates/document-window-coordinates-scroll.png" alt="" width="690" height="478" class="image__image">
+      </div></figure><ul>
+<li>包含 <code>&quot;From today's featured article&quot;</code> 的 header 元素 <code>clientY</code> 变成 0，因为这个元素现在在窗口的顶部。</li>
+<li><code>clientX</code> 并没有改变，因为我们没有水平滚动。</li>
+<li>元素的 <code>pageX</code> 和 <code>pageY</code> 坐标始终保持一致，因为它们是相对于文档计算的。</li>
+</ul>
+<h2><a class="main__anchor" name="getCoords" href="#getCoords">获取文档坐标</a></h2><p>现在 Javascript 中并没有获取一个元素文档坐标的标准方法。但是这个方法写起来很容易。</p>
+<p>两个坐标系可以通过由公式相连接：</p>
+<ul>
+<li><code>pageY</code> = <code>clientY</code> + 文档垂直部分滚动的高度。</li>
+<li><code>pageX</code> = <code>clientX</code> + 文档水平部分滚动的宽度。</li>
+</ul>
+<p>函数 <code>getCoords(elem)</code> 将从 <code>elem.getBoundingClientRect()</code> 获取到窗口坐标然后加上当前滚动的长度：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 获取元素的文档坐标
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset
+  };
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>页面上的任何点都有坐标：</p>
+<ol start="3">
+<li>相对于窗口的坐标 — <code>elem.getBoundingClientRect()</code>。</li>
+<li>相对于文档的坐标 — elem.getBoundingClientRect()` 加上当前页面滚动的长度。</li>
+</ol>
+<p>窗口坐标非常适合和 <code>position:fixed</code> 一起使用，文档坐标非常适合和 <code>position:absolute</code> 一起使用。</p>
+<p>这两个坐标系统有它们各自的“优点”和“缺点”，有些时候我们需要使用其中一个或另一个，就像 CSS <code>position</code> 中的 <code>absolute</code> 和 <code>fixed</code> 那样。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cha-zhao-field-de-chuang-kou-zuo-biao" name="cha-zhao-field-de-chuang-kou-zuo-biao">查找 field 的窗口坐标</a></h3><a class="task__open-link" href="task/find-point-coordinates.htm" tppabs="https://zh.javascript.info/task/find-point-coordinates" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>在下面的 iframe 中你可以看到一个带有绿色 ”field“ 元素的文档。</p>
+<p>使用 JavaScript 来找到箭头指向角落的坐标。</p>
+<p>为了方便起见，已经在文档中实现了一个小的功能。在任何地方点击都会显示那里的坐标。</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/task/find-point-coordinates/source/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/find-point-coordinates/source/'" tppabs="https://zh.js.cx/task/find-point-coordinates/source/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="javascript:if(confirm('http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview'" tppabs="http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview" target="_blank" title="在沙箱中打开"
+        data-plunk-id="7gMp5eW1kp8Fw4c1G5gw" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:360px" src="javascript:if(confirm('https://zh.js.cx/task/find-point-coordinates/source/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/find-point-coordinates/source/'" tppabs="https://zh.js.cx/task/find-point-coordinates/source/"></iframe>
+  </div><p>你的代码应该使用 DOM 来获取到以下窗口坐标：</p>
+<ol>
+<li>左上的外角（这很简单）。</li>
+<li>右下的外角（这也挺简单）。</li>
+<li>左上的内角（这有点难）。</li>
+<li>右下的内角（有几种方式，选择其中一种）。</li>
+</ol>
+<p>你计算得到的坐标应该和鼠标单击返回的坐标相同。</p>
+<p>附：如果元素有其他大小和边框，并且没有绑定到任何固定的值这代码也应该起作用。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview'" tppabs="http://plnkr.co/edit/7gMp5eW1kp8Fw4c1G5gw?p=preview" target="_blank" data-plunk-id="7gMp5eW1kp8Fw4c1G5gw">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">外角</button><div class="task__answer-content"><h4 class="task__step-title">外角</h4><p>外角坐标基本上就是我们从 <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/DOM/element.getBoundingClientRect  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en-US/docs/DOM/element.getBoundingClientRect'" tppabs="https://developer.mozilla.org/en-US/docs/DOM/element.getBoundingClientRect">elem.getBoundingClientRect()</a> 方法获取的值。</p>
+<p>Coordinates of the upper-left corner <code>answer1</code> and the bottom-right corner <code>answer2</code>:
+左上角坐标的答案是 <code>answer1</code>，右下角坐标的答案是 <code>answer2</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let coords = elem.getBoundingClientRect();
+
+let answer1 = [coords.left, coords.top];
+let answer2 = [coords.right, coords.bottom];</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">左上内角坐标</button><div class="task__answer-content"><h4 class="task__step-title">左上内角坐标</h4><p>内角与外角主要的不同在于边框的宽度。获取边框距离一个可靠的方法是 <code>clientLeft/clientTop</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let answer3 = [coords.left + field.clientLeft, coords.top + field.clientTop];</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">右下内角坐标</button><div class="task__answer-content"><h4 class="task__step-title">右下内角坐标</h4><p>在这个情况下我们需要把外部坐标减去边框大小。</p>
+<p>我们可以使用 CSS 的方式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let answer4 = [
+  coords.right - parseInt(getComputedStyle(field).borderRightWidth),
+  coords.bottom - parseInt(getComputedStyle(field).borderBottomWidth)
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另一种方式是把 <code>clientWidth/clientHeight</code> 和左上角的坐标相加。这个方式相较于上一个或许更好：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let answer4 = [
+  coords.left + elem.clientLeft + elem.clientWidth,
+  coords.top + elem.clientTop + elem.clientHeight
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/Hhan0sTUfEL3K4cFpu6q?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/Hhan0sTUfEL3K4cFpu6q?p=preview'" tppabs="http://plnkr.co/edit/Hhan0sTUfEL3K4cFpu6q?p=preview" target="_blank" data-plunk-id="Hhan0sTUfEL3K4cFpu6q">使用沙箱打开解决方案。</a></p></div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zai-yuan-su-pang-bian-xian-shi-yi-ge-zhu-shi" name="zai-yuan-su-pang-bian-xian-shi-yi-ge-zhu-shi">在元素旁边显示一个注释</a></h3><a class="task__open-link" href="task/position-at.htm" tppabs="https://zh.javascript.info/task/position-at" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>基于 <code>anchor</code> 元素的上边（<code>&quot;top&quot;</code>），右边（<code>&quot;right&quot;</code>）或者底部（<code>&quot;bottom&quot;</code>）的 <code>position</code>，创建一个 <code>positionAt(anchor, position, elem)</code> 函数来定位 <code>elem</code> 元素。</p>
+<p>使用这个函数构建一个 <code>showNote(anchor, position, html)</code> 函数，它使用类 <code>&quot;note&quot;</code> 和文本 <code>html</code> 标签在 anchor 位置旁边显示一个元素。</p>
+<p>注释像下面这样显示：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/task/position-at/solution/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/position-at/solution/'" tppabs="https://zh.js.cx/task/position-at/solution/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:350px" src="javascript:if(confirm('https://zh.js.cx/task/position-at/solution/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/position-at/solution/'" tppabs="https://zh.js.cx/task/position-at/solution/"></iframe>
+  </div><p>附：在这个任务中注释元素应该会有 <code>position:fixed</code> CSS 配置。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/5NZ2tCLMip7dM6rEU45b?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/5NZ2tCLMip7dM6rEU45b?p=preview'" tppabs="http://plnkr.co/edit/5NZ2tCLMip7dM6rEU45b?p=preview" target="_blank" data-plunk-id="5NZ2tCLMip7dM6rEU45b">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>在这个任务中我们只需要精确计算坐标。具体细节可以在代码中查看。</p>
+<p>请注意：元素必须位于在文档中才能读取 <code>offsetHeight</code> 和其它属性。
+一个元素如果有隐藏的（<code>display:none</code>）样式或者坐标范围超出文档是得不到大小的。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/3TWbY84W0K5yd9zPtBlE?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/3TWbY84W0K5yd9zPtBlE?p=preview'" tppabs="http://plnkr.co/edit/3TWbY84W0K5yd9zPtBlE?p=preview" target="_blank" data-plunk-id="3TWbY84W0K5yd9zPtBlE">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zai-yuan-su-pang-bian-xian-shi-yi-ge-zhu-shi-jue-dui-wei-zhi" name="zai-yuan-su-pang-bian-xian-shi-yi-ge-zhu-shi-jue-dui-wei-zhi">在元素旁边显示一个注释（绝对位置）</a></h3><a class="task__open-link" href="task/position-at-absolute.htm" tppabs="https://zh.javascript.info/task/position-at-absolute" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>修改<a href="task/position-at.htm" tppabs="https://zh.javascript.info/task/position-at">先前任务</a> 的解决方案，从而让注释元素使用 <code>position:absolute</code> 而不是  <code>position:fixed</code> 样式。</p>
+<p>当页面滚动时，这可以防止注释从元素旁边“逃离”。</p>
+<p>以之前任务的解决方案作为出发点。为了测试页面滚动，可以添加样式 <code>&lt;body style=&quot;height: 2000px&quot;&gt;</code>。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>解决方案实际上很简单：</p>
+<ul>
+<li>在 <code>.note</code> 的 CSS 中使用 <code>position:absolute</code> 样式而不是 <code>position:fixed</code>。</li>
+<li>使用在章节  <a href="coordinates.htm" tppabs="https://zh.javascript.info/coordinates">坐标</a> 中的 <a href="coordinates.htm#getCoords" tppabs="https://zh.javascript.info/coordinates#getCoords">getCoords()</a> 函数来获取基于文档的坐标。</li>
+</ul>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/nOcldIhG3wSY7531JjwG?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/nOcldIhG3wSY7531JjwG?p=preview'" tppabs="http://plnkr.co/edit/nOcldIhG3wSY7531JjwG?p=preview" target="_blank" data-plunk-id="nOcldIhG3wSY7531JjwG">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ba-zhu-shi-fang-zai-yuan-su-nei-bu-shi-yong-jue-dui-zuo-biao" name="ba-zhu-shi-fang-zai-yuan-su-nei-bu-shi-yong-jue-dui-zuo-biao">把注释放在元素内部（使用绝对坐标）</a></h3><a class="task__open-link" href="task/position-inside-absolute.htm" tppabs="https://zh.javascript.info/task/position-inside-absolute" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>扩展上一个任务 <a href="task/position-at-absolute.htm" tppabs="https://zh.javascript.info/task/position-at-absolute">在元素旁边显示一个注释（绝对位置）</a>：把函数 <code>positionAt(anchor, position, elem)</code> 改为在 <code>anchor</code> 内部插入 <code>elem</code> 元素。</p>
+<p><code>position</code> 的新值：</p>
+<ul>
+<li><code>top-out</code>，<code>right-out</code>，<code>bottom-out</code> — 和之前一样工作，它们把 <code>elem</code> 插入 <code>anchor</code> 的上/中/下。</li>
+<li><code>top-in</code>，<code>right-in</code>，<code>bottom-in</code> — 把 <code>elem</code> 插入 <code>anchor</code> 元素内部：将之放在内部的上/中/下边界。</li>
+</ul>
+<p>比如说：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 在 blockquote 上面显示注释
+positionAt(blockquote, &quot;top-out&quot;, note);
+
+// 在 blockquote 内部的上边界显示注释
+positionAt(blockquote, &quot;top-in&quot;, note);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>结果是：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/task/position-inside-absolute/solution/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/position-inside-absolute/solution/'" tppabs="https://zh.js.cx/task/position-inside-absolute/solution/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:310px" src="javascript:if(confirm('https://zh.js.cx/task/position-inside-absolute/solution/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/position-inside-absolute/solution/'" tppabs="https://zh.js.cx/task/position-inside-absolute/solution/"></iframe>
+  </div><p>可以使用任务 <a href="task/position-at-absolute.htm" tppabs="https://zh.javascript.info/task/position-at-absolute">在元素旁边显示一个注释（绝对位置）</a> 的解决方案作为源代码。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/fAHKJE11oh6P8EXfwWpT?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/fAHKJE11oh6P8EXfwWpT?p=preview'" tppabs="http://plnkr.co/edit/fAHKJE11oh6P8EXfwWpT?p=preview" target="_blank" data-plunk-id="fAHKJE11oh6P8EXfwWpT">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="size-and-scroll-window.htm" tppabs="https://zh.javascript.info/size-and-scroll-window" data-tooltip="Window 的尺寸和滚动"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="events.htm" tppabs="https://zh.javascript.info/events" data-tooltip="事件简介"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/coordinates","identifier":"\/coordinates"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#chuang-kou-zuo-biao-getboundingclientrect">窗口坐标：getBoundingClientRect</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-yong-wei-zhi-fixed">使用位置：fixed</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#wen-dang-zuo-biao">文档坐标</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#getCoords">获取文档坐标</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoordinates"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/11-coordinates/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/11-coordinates/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/11-coordinates/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

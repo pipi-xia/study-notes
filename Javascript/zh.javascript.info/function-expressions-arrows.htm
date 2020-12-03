@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">函数表达式和箭头函数</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/function-expressions-arrows"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="函数表达式和箭头函数"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="函数表达式和箭头函数"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/function-basics"><link rel="next" href="/javascript-specials"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="函数表达式和箭头函数"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/function-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/function-expressions-arrows'" tppabs="https://javascript.info/function-expressions-arrows"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="function-expressions-arrows.htm" tppabs="https://zh.javascript.info/function-expressions-arrows"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/function-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/function-expressions-arrows'" tppabs="https://ja.javascript.info/function-expressions-arrows"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/function-expressions-arrows">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/function-expressions-arrows" selected>简体中文</option><option value="https://ja.javascript.info/function-expressions-arrows">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="18" max="67" data-tooltip="第 67 章，第 18 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps" itemprop="url"><span itemprop="title">JavaScript 基础知识</span></a></li></ol><h1 class="main__header-title">函数表达式和箭头函数</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="函数表达式和箭头函数"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript 中，函数虽然不是万能的，它却是一个特殊的值。</p>
+<p>下面的语法我们通常叫<strong>函数声明</strong>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert( &quot;Hello&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>下面是另一种创建函数的方法叫<strong>函数表达式</strong>。</p>
+<p>通常会写成这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sayHi = function() {
+  alert( &quot;Hello&quot; );
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这里，函数被创建并像其他赋值一样，明确的分配给了一个变量。不管函数如何定义，它只是一个存储在变量中的值 <code>sayHi</code>。</p>
+<p>简单说就是 &quot;创建一个函数并放进变量 <code>sayHi</code>&quot;。</p>
+<p>我们还可以用 <code>alert</code> 打印值：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert( &quot;Hello&quot; );
+}
+
+alert( sayHi ); // 查看函数代码</code></pre>
+        </div>
+      </div>
+      
+      </div><p>注意，最后并没有运行函数。在其他语言中函数调用就执行。但 JavaScript 可不是这样。<code>sayHi</code> 后没有括号函数是不会运行的。</p>
+<p>JavaScript 中，函数是一个值，所以我们可以把它当成值对待。上面代码显示了一段字符串值，即函数的源码。</p>
+<p>虽然我们可以这样调用 <code>sayHi()</code>，但它依然是一个特殊值。</p>
+<p>所以我们可以像使用其他类型的值一样使用它。</p>
+<p>我们可以复制函数到其他变量</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {   // (1) create
+  alert( &quot;Hello&quot; );
+}
+
+let func = sayHi;    // (2) copy
+
+func(); // Hello     // (3) run the copy (it works)!
+sayHi(); // Hello    //     this still works too (why wouldn't it)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>上段代码发生的细节：</p>
+<ol>
+<li><code>(1)</code> 中声明创建了函数，并把它放入变量 <code>sayHi</code>。</li>
+<li><code>(2)</code> 复制进变量 <code>func</code>。</li>
+</ol>
+<p>请注意：<code>sayHi</code> 旁边没有括号。 如果有括号， <code>func = sayHi()</code> 会把 <code>sayHi()</code> 的调用结果写进<code>func</code>, 而不是 <code>sayHi</code> <strong>函数</strong>本身。
+3. 现在调用 <code>sayHi()</code> 和 <code>func()</code>。</p>
+<p>注意这里的第一行我们用函数表达式声明 <code>sayHi</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sayHi = function() { ... };
+
+let func = sayHi;
+// ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这两种声明的函数是一样的，那么他们有什么不同的地方呢？</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Why there’s a semicolon at the end?</span></div>
+            <div class="important__content"><p>这里可能有个疑问，为什么函数表达式结尾有一个 <code>;</code>，而函数声明没有：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;cols&quot;:[{&quot;start&quot;:1,&quot;end&quot;:2}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  // ...
+}
+
+let sayHi = function() {
+  // ...
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>答案很简单：</p>
+<ul>
+<li>在代码块的结尾是不需要 <code>;</code>，像 <code>if { ... }</code>，<code>for { }</code>，<code>function f { }</code> 等语法结构后面都不用加。</li>
+<li>函数表达式通常这样声明： <code>let sayHi = ...;</code>，作为一个变量。 而不是代码块。不管什么值，建议在语句结尾处建议使用分号 <code>;</code>。所以这里的分号与函数表达式本身没有任何关系，它只是终止了语句。</li>
+</ul>
+</div></div>
+<h2><a class="main__anchor" name="hui-tiao-han-shu" href="#hui-tiao-han-shu">回调函数</a></h2><p>我们看个例子，使用函数表达式传递函数。</p>
+<p>我们写一个包含三个参数的函数 <code>ask(question, yes, no)</code>：</p>
+<dl>
+<dt><code>question</code></dt>
+<dd>question 文本</dd>
+<dt><code>yes</code></dt>
+<dd>当回答 “Yes” 时候运行的脚本</dd>
+<dt><code>no</code></dt>
+<dd>当回答 “No” 时候运行的脚本</dd>
+</dl>
+<p>函数需要提出 <code>question</code>（问题），依赖用户的回答, 调用 <code>yes()</code> 或 <code>no()</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+function showOk() {
+  alert( &quot;You agreed.&quot; );
+}
+
+function showCancel() {
+  alert( &quot;You canceled the execution.&quot; );
+}
+
+// usage: functions showOk, showCancel are passed as arguments to ask
+ask(&quot;Do you agree?&quot;, showOk, showCancel);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在我们讨论如何简写之前，有一点需要注意，类似的函数在浏览器（有时候是服务端）是很常见的。现实生活中的实现与上述示例之间的主要区别在于，现实生活中的功能使用更复杂的方式与用户进行交互，而不是简单 <code>confirm</code>（确认）。在浏览器中，这样的功能通常会绘制一个漂亮的问题窗口。但这是另一回事。</p>
+<p><code>ask</code> 参数调用<strong>回调函数</strong>或只是<strong>回调</strong>。</p>
+<p>我们的想法是，我们传递一个函数，并希望稍后在必要时回调它。在我们的例子中，<code>showOk</code> 对应回答 “yes” 的回调，<code>showCancel</code> 对应回答“否”。</p>
+<p>我们可以用函数表达式简写：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+ask(
+  &quot;Do you agree?&quot;,
+  function() { alert(&quot;You agreed.&quot;); },
+  function() { alert(&quot;You canceled the execution.&quot;); }
+);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里函数直接写在 <code>ask(...)</code> 调用。他们没有名字，叫<strong>匿名函数</strong>。 在 <code>ask</code> 外无法访问（因为没有分配变量），不过我们就是想要这样。</p>
+<p>这样看起来舒服, 这就是 JavaScript 神奇的地方。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">A function is a value representing an “action”</span></div>
+            <div class="important__content"><p>字符串或数字等常规值视为 <em>data</em>。</p>
+<p>函数可以视为一个 <em>action</em>。</p>
+<p>我们可以在变量之间传递他们，并在需要时运行。</p>
+</div></div>
+<h2><a class="main__anchor" name="han-shu-biao-da-shi-vs-han-shu-sheng-ming" href="#han-shu-biao-da-shi-vs-han-shu-sheng-ming">函数表达式 vs 函数声明</a></h2><p>让我们来阐述函数声明和表达式之间的关键区别。</p>
+<p>首先是语法：看下面代码</p>
+<ul>
+<li>
+<p><strong>函数声明：</strong> 函数在主代码流中单独声明。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Function Declaration
+function sum(a, b) {
+  return a + b;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><strong>函数表达式：</strong> 一个函数，在一个表达式中或另一个语法结构中创建。这里，该函数由赋值表达式 <code>=</code> 右侧创建：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Function Expression
+let sum = function(a, b) {
+  return a + b;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>细微差别是在 JavaScript 引擎中在<strong>什么时候</strong>创建函数。</p>
+<p><strong>函数表达式在执行到达时创建并可用。</strong></p>
+<p>一旦执行到右侧分配 <code>let sum = function…</code>，就会创建并可以使用(复制，调用等)。</p>
+<p>函数声明则不同。</p>
+<p><strong>函数声明可用于整个脚本/代码块。</strong></p>
+<p>换句话说，当 JavaScript <strong>准备</strong>运行脚本或代码块时，它首先在其中查找函数声明并创建函数。我们可以将其视为“初始化阶段”。</p>
+<p>在处理完所有函数声明后，执行继续。</p>
+<p>因此，声明为函数声明的函数可以比定义的更早调用。</p>
+<p>例如下面的代码会正常工作：</p>
+<div data-trusted="0" class="code-example" data-refresh="1" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">sayHi(&quot;John&quot;); // Hello, John
+
+function sayHi(name) {
+  alert( `Hello, ${name}` );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>函数声明 <code>sayHi</code> 是在 JavaScript 准备启动脚本并在其中时创建的。</p>
+<p>…如果它是一个函数表达式，它就不会工作：</p>
+<div data-trusted="0" class="code-example" data-refresh="1" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">sayHi(&quot;John&quot;); // error!
+
+let sayHi = function(name) {  // (*) no magic any more
+  alert( `Hello, ${name}` );
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>函数表达式执行到时才会创建，在这里为时已晚。</p>
+<p><strong>当一个函数声明在一个代码块内运行时，它在该块内的任何地方都是可见的。</strong></p>
+<p>有时候只需要在该块中声明本地函数就可以方便地运行。但是这个函数也可能会导致问题。</p>
+<p>例如，让我们想象我们需要声明一个函数 <code>welcome()</code> 依赖 <code>age</code> 这个我们在运行时获得并在之后有可能用到的变量。</p>
+<p>以下代码不能工作：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = prompt(&quot;What is your age?&quot;, 18);
+
+// conditionally declare a function
+if (age &lt; 18) {
+
+  function welcome() {
+    alert(&quot;Hello!&quot;);
+  }
+
+} else {
+
+  function welcome() {
+    alert(&quot;Greetings!&quot;);
+  }
+
+}
+
+// ...use it later
+welcome(); // Error: welcome is not defined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是因为函数声明只在它所在的代码块中可见。</p>
+<p>又如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:21,&quot;end&quot;:21},{&quot;start&quot;:9,&quot;end&quot;:9},{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = 16; // take 16 as an example
+
+if (age &lt; 18) {
+  welcome();               // \   (runs)
+                           //  |
+  function welcome() {     //  |
+    alert(&quot;Hello!&quot;);       //  |  函数声明可以在块内任意位置声明
+  }                        //  |
+                           //  |
+  welcome();               // /   (runs)
+
+} else {
+
+  function welcome() {     //  for age = 16, this &quot;welcome&quot; is never created
+    alert(&quot;Greetings!&quot;);
+  }
+}
+
+// 在这里，我们在花括号外侧调用函数，
+// 所以我们看不到它们内部的函数声明。
+
+welcome(); // Error: welcome is not defined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>怎么样才能使 <code>welcome</code> 在 <code>if</code> 外可见？</p>
+<p>正确的做法是使用函数表达式并将 <code>welcome</code> 赋值给在 <code>if</code> 之外声明的变量，并具有正确的可见性.</p>
+<p>下面正常：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = prompt(&quot;What is your age?&quot;, 18);
+
+let welcome;
+
+if (age &lt; 18) {
+
+  welcome = function() {
+    alert(&quot;Hello!&quot;);
+  };
+
+} else {
+
+  welcome = function() {
+    alert(&quot;Greetings!&quot;);
+  };
+
+}
+
+welcome(); // ok now</code></pre>
+        </div>
+      </div>
+      
+      </div><p>或者我们可以使用问号运算符 <code>?</code> 来进一步简化它：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = prompt(&quot;What is your age?&quot;, 18);
+
+let welcome = (age &lt; 18) ?
+  function() { alert(&quot;Hello!&quot;); } :
+  function() { alert(&quot;Greetings!&quot;); };
+
+welcome(); // ok now</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">When to choose Function Declaration versus Function Expression?</span></div>
+            <div class="important__content"><p>作为一个经验，当我们需要声明一个函数时，首先要考虑的是函数声明语法，这是我们之前使用的语法。它给如何组织我们的代码提供了更多的自由，因为我们可以在声明它们之前调用这些函数。</p>
+<p>在代码中查找 <code>function f(…) {…}</code> 比 <code>let f = function(…) {…}</code> 更容易。</p>
+<p>…但是，如果函数声明由于某种原因不适合我们（我们已经看到上面的例子），那么应该使用函数表达式。</p>
+</div></div>
+<h2><a class="main__anchor" name="箭头函数" href="#箭头函数">箭头函数</a></h2><p>创建函数还有一个非常简单和简洁的语法，通常比函数表达式更好。它被称为箭头函数，因为它看起来像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let func = (arg1, arg2, ...argN) =&gt; expression</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…这样会创建一个函数 <code>func</code> 参数是 <code>arg1..argN</code>，运行右侧 <code>expression</code> 并返回结果。</p>
+<p>换句话说，它大致与以下相同：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let func = function(arg1, arg2, ...argN) {
+  return expression;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…精简下。</p>
+<p>例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sum = (a, b) =&gt; a + b;
+
+/* 箭头函数更短：
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+alert( sum(1, 2) ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们只有一个参数，那么括号可以省略，甚至更短：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// same as
+// let double = function(n) { return n * 2 }
+let double = n =&gt; n * 2;
+
+alert( double(3) ); // 6</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果没有参数，括号应该是空的（但它们应该存在）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sayHi = () =&gt; alert(&quot;Hello!&quot;);
+
+sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>箭头函数的使用方式与函数表达式相同。</p>
+<p>例如，这里是重写 <code>welcome()</code> 的例子:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = prompt(&quot;What is your age?&quot;, 18);
+
+let welcome = (age &lt; 18) ?
+  () =&gt; alert('Hello') :
+  () =&gt; alert(&quot;Greetings!&quot;);
+
+welcome(); // ok now</code></pre>
+        </div>
+      </div>
+      
+      </div><p>箭头函数在刚开始使用时可能不熟悉也不便于阅读，但是当我们习惯这种结构之后，情况会迅速改变。</p>
+<p>当我们懒得写很多单词时，它们对于简单的单行动作非常方便。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Multiline arrow functions</span></div>
+            <div class="important__content"><p>上面的例子是获取左边的参数 <code>=&gt;</code> 并用它们运行右边的表达式。</p>
+<p>有时我们需要一些更复杂的东西，比如多个表达式或语句。这也是可能的，但我们应该把它们装在花括号里。然后在他们内部使用正常的 <code>return</code>。</p>
+<p>像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sum = (a, b) =&gt; {  // 花括号打开多线功能
+  let result = a + b;
+  return result; // 如果我们使用花括号，使用返回来获得结果
+};
+
+alert( sum(1, 2) ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">More to come</span></div>
+            <div class="important__content"><p>我们在这里简短地称赞了箭头功能。但那不是全部！箭头功能还有其他有趣的功能。稍后我们将在 &lt;info：arrow-functions&gt; 一章中学习它们。</p>
+<p>目前，我们已经可以将它们用于单行动作和回调。</p>
+</div></div>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>函数是值。他们可以在代码的任何地方分配，复制或声明。</li>
+<li>如果函数在主代码流中声明为单独的语句，那就称为函数声明。</li>
+<li>如果该函数是作为表达式的一部分创建的，则称其为函数表达式。</li>
+<li>函数声明在代码块执行之前处理。它们在代码块中随处调用。</li>
+<li>函数表达式在执行流程到时创建。</li>
+</ul>
+<p>在大多数情况下，当我们需要声明一个函数时，函数声明是可取的，因为它在声明本身之前是可见的。这给了我们更多的代码组织的灵活性，并且通常更具可读性。</p>
+<p>所以我们应该只在函数声明不适合任务时才使用函数表达式。在本章中我们已经看到了几个例子，并且将来会看到更多的例子。</p>
+<p>箭头函数非常适合单行调用，以下是其两个特点。</p>
+<ol>
+<li>没有大括号：<code>(...args) =&gt; expression</code> — 右侧是一个表达式：该函数对其进行运行并返回结果。</li>
+<li>有大括号：<code>(...args) =&gt; { body }</code> — 括号允许我们在函数中写入多个语句，但是我们需要一个显式的 <code>return</code> 来返回一些东西。</li>
+</ol>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#yong-jian-tou-han-shu-zhong-xie" name="yong-jian-tou-han-shu-zhong-xie">用箭头函数重写</a></h3><a class="task__open-link" href="task/rewrite-arrow.htm" tppabs="https://zh.javascript.info/task/rewrite-arrow" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><p>用箭头函数重写下面的函数表达式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+ask(
+  &quot;Do you agree?&quot;,
+  function() { alert(&quot;You agreed.&quot;); },
+  function() { alert(&quot;You canceled the execution.&quot;); }
+);</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+ask(
+  &quot;Do you agree?&quot;,
+  () =&gt; alert(&quot;You agreed.&quot;),
+  () =&gt; alert(&quot;You canceled the execution.&quot;)
+);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>是不是看着精简多了？</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="function-basics.htm" tppabs="https://zh.javascript.info/function-basics" data-tooltip="函数"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="javascript-specials.htm" tppabs="https://zh.javascript.info/javascript-specials" data-tooltip="JavasScript 特性"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/function-expressions-arrows","identifier":"\/function-expressions-arrows"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps">JavaScript 基础知识</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#hui-tiao-han-shu">回调函数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#han-shu-biao-da-shi-vs-han-shu-sheng-ming">函数表达式 vs 函数声明</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#箭头函数">箭头函数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ffunction-expressions-arrows"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/15-function-expressions-arrows/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/15-function-expressions-arrows/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/15-function-expressions-arrows/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

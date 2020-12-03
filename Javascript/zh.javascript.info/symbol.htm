@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">Symbol ç±»å‹</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/symbol"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Symbol ç±»å‹"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Symbol ç±»å‹"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/garbage-collection"><link rel="next" href="/object-methods"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="Symbol ç±»å‹"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/symbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/symbol'" tppabs="https://javascript.info/symbol"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="symbol.htm" tppabs="https://zh.javascript.info/symbol"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/symbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/symbol'" tppabs="https://ja.javascript.info/symbol"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/symbol">English</option><option value="https://learn.javascript.ru/">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/symbol" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/symbol">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="28" max="67" data-tooltip="ç¬¬ 67 ç« ï¼Œç¬¬ 28 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript ç¼–ç¨‹è¯­è¨€</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="object-basics.htm" tppabs="https://zh.javascript.info/object-basics" itemprop="url"><span itemprop="title">Objectsï¼ˆå¯¹è±¡ï¼‰ï¼šåŸºç¡€çŸ¥è¯†</span></a></li></ol><h1 class="main__header-title">Symbol ç±»å‹</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Symbol ç±»å‹"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>æ ¹æ®è§„èŒƒï¼Œå¯¹è±¡çš„å±æ€§é”®åªèƒ½æ˜¯ String ç±»å‹æˆ–è€… Symbol ç±»å‹ã€‚ä¸æ˜¯ Numberï¼Œä¹Ÿä¸æ˜¯ Booleanï¼Œåªæœ‰ String æˆ– Symbol è¿™ä¸¤ç§ç±»å‹ã€‚</p>
+<p>åˆ°ç›®å‰ä¸ºæ­¢ï¼Œæˆ‘ä»¬åªè§è¿‡ Stringã€‚ç°åœ¨æˆ‘ä»¬æ¥çœ‹çœ‹ Symbol èƒ½ç»™æˆ‘ä»¬å¸¦æ¥ä»€ä¹ˆå¥½å¤„ã€‚</p>
+<h2><a class="main__anchor" name="symbol" href="#symbol">Symbol</a></h2><p>â€œSymbolâ€ å€¼è¡¨ç¤ºå”¯ä¸€çš„æ ‡è¯†ç¬¦ã€‚</p>
+<p>å¯ä»¥ä½¿ç”¨ <code>Symbol()</code> æ¥åˆ›å»ºè¿™ç§ç±»å‹çš„å€¼ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// id æ˜¯ symbol çš„ä¸€ä¸ªå®ä¾‹åŒ–å¯¹è±¡
+let id = Symbol();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>æˆ‘ä»¬å¯ä»¥ç»™ Symbol ä¸€ä¸ªæè¿°ï¼ˆä¹Ÿç§°ä¸º Symbol åï¼‰ï¼Œè¿™å¯¹äºè°ƒè¯•éå¸¸æœ‰ç”¨ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// id æ˜¯æè¿°ä¸º &quot;id&quot; çš„ Symbol
+let id = Symbol(&quot;id&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Symbol ä¿è¯æ˜¯å”¯ä¸€çš„ã€‚å³ä½¿æˆ‘ä»¬åˆ›å»ºäº†è®¸å¤šå…·æœ‰ç›¸åŒæè¿°çš„ Symbolï¼Œå®ƒä»¬çš„å€¼ä¹Ÿæ˜¯ä¸åŒã€‚æè¿°åªæ˜¯ä¸€ä¸ªä¸å½±å“ä»»ä½•ä¸œè¥¿çš„æ ‡ç­¾ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œè¿™é‡Œæœ‰ä¸¤ä¸ªæè¿°ç›¸åŒçš„ Symbol â€”â€” å®ƒä»¬ä¸ç›¸ç­‰ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id1 = Symbol(&quot;id&quot;);
+let id2 = Symbol(&quot;id&quot;);
+
+alert(id1 == id2); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å¦‚æœæ‚¨ç†Ÿæ‚‰ Ruby æˆ–è€…å…¶ä»–æœ‰ â€œSymbolâ€ çš„è¯­è¨€ â€”â€” åˆ«è¢«è¯¯å¯¼ã€‚JavaScript çš„ Symbol ä¸ä¼—ä¸åŒã€‚</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Symbols donâ€™t auto-convert to a string</span></div>
+            <div class="important__content"><p>JavaScript ä¸­çš„å¤§å¤šæ•°å€¼éƒ½æ”¯æŒ string çš„éšå¼è½¬æ¢ã€‚ä¾‹å¦‚ï¼Œæˆ‘ä»¬å¯ä»¥ <code>alert</code> ä»»ä½•å€¼ï¼Œè¿™ä¼šèµ·ä½œç”¨ã€‚Symbol æ˜¯ç‰¹åˆ«çš„ï¼Œå®ƒæ— æ³•è‡ªåŠ¨è½¬æ¢ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œè¿™ä¸ª <code>alert</code> å°†ä¼šæ˜¾ç¤ºé”™è¯¯ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id = Symbol(&quot;id&quot;);
+alert(id); // ç±»å‹é”™è¯¯ï¼šæ— æ³•å°† Symbol å€¼è½¬æ¢ä¸º Stringã€‚</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å¦‚æœæˆ‘ä»¬çœŸçš„æƒ³æ˜¾ç¤ºä¸€ä¸ª Symbolï¼Œæˆ‘ä»¬éœ€è¦åœ¨å®ƒä¸Šé¢è°ƒç”¨ <code>.toString()</code>ï¼Œå¦‚ä¸‹æ‰€ç¤ºï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id = Symbol(&quot;id&quot;);
+alert(id.toString()); // Symbol(id)ï¼Œç°åœ¨å®ƒèµ·ä½œç”¨äº†</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™æ˜¯ä¸€ç§é˜²æ­¢æ··ä¹±çš„â€œè¯­è¨€ä¿æŠ¤â€ï¼Œå› ä¸º String å’Œ Symbol æœ‰æœ¬è´¨ä¸Šçš„ä¸åŒï¼Œè€Œä¸”ä¸åº”è¯¥å¶å°”å°†å®ƒä»¬ç›¸äº’è½¬åŒ–ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="yin-cang-shu-xing" href="#yin-cang-shu-xing">â€œéšè—â€å±æ€§</a></h2><p>Symbol å…è®¸æˆ‘ä»¬åˆ›å»ºå¯¹è±¡çš„â€œéšè—â€å±æ€§ï¼Œä»£ç çš„ä»»ä½•å…¶ä»–éƒ¨åˆ†éƒ½ä¸èƒ½å¶å°”è®¿é—®æˆ–é‡å†™è¿™äº›å±æ€§ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œå¦‚æœæˆ‘ä»¬æƒ³å­˜å‚¨ object <code>user</code> çš„â€œæ ‡è¯†ç¬¦â€ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨ Symbol ä½œä¸ºå®ƒçš„é”®ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { name: &quot;John&quot; };
+let id = Symbol(&quot;id&quot;);
+
+user[id] = &quot;ID Value&quot;;
+alert( user[id] ); // æˆ‘ä»¬å¯ä»¥ä½¿ç”¨ Symbol ä½œä¸ºé”®æ¥è®¿é—®æ•°æ®ã€‚</code></pre>
+        </div>
+      </div>
+      
+      </div><p>åœ¨ string <code>&quot;id&quot;</code> ä¸Šä½¿ç”¨ <code>Symbol(&quot;id&quot;)</code> æœ‰ä»€ä¹ˆå¥½å¤„ï¼Ÿ</p>
+<p>æˆ‘ä»¬ç”¨æ›´æ·±å…¥ä¸€ç‚¹çš„ç¤ºä¾‹æ¥è¯´æ˜è¿™ä¸€ç‚¹ã€‚</p>
+<p>å‡è®¾å¦ä¸€ä¸ªè„šæœ¬å¸Œæœ› <code>user</code> ä¸­æœ‰å®ƒè‡ªå·±çš„ â€œidâ€ å±æ€§å¯ä»¥æ“ä½œã€‚è¿™å¯èƒ½æ˜¯å¦ä¸€ä¸ª JavaScript åº“ï¼Œæ‰€ä»¥è¿™äº›è„šæœ¬å®Œå…¨ä¸çŸ¥é“å¯¹æ–¹æ˜¯è°ã€‚</p>
+<p>ç„¶åè¯¥è„šæœ¬å¯ä»¥åˆ›å»ºè‡ªå·±çš„ <code>Symbol(&quot;id&quot;)</code>ï¼Œå¦‚ä¸‹æ‰€ç¤ºï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// ...
+let id = Symbol(&quot;id&quot;);
+
+user[id] = &quot;Their id value&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ä¸ä¼šå†²çªï¼Œå› ä¸º Symbol æ€»æ˜¯ä¸åŒçš„ï¼Œå³ä½¿å®ƒä»¬æœ‰ç›¸åŒçš„åç§°ã€‚</p>
+<p>ç°åœ¨è¯·æ³¨æ„ï¼Œå¦‚æœæˆ‘ä»¬ä½¿ç”¨ String <code>&quot;id&quot;</code> è€Œä¸æ˜¯ç”¨ symbolï¼Œé‚£ä¹ˆ<strong>å°±ä¼š</strong>å‡ºç°å†²çªï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = { name: &quot;John&quot; };
+
+//æˆ‘ä»¬çš„è„šæœ¬ä½¿ç”¨ &quot;id&quot; å±æ€§ã€‚
+user.id = &quot;ID Value&quot;;
+
+// ...å¦‚æœä¹‹åå¦ä¸€ä¸ªè„šæœ¬ä¸ºå…¶ç›®çš„ä½¿ç”¨ &quot;id&quot;...
+
+user.id = &quot;Their id value&quot;
+// ç °ï¼æ— æ„ä¸­é‡å†™äº† idï¼ä»–ä¸æ˜¯æ•…æ„ä¼¤å®³åŒäº‹çš„ï¼Œè€Œæ˜¯è¿™æ ·åšäº†ï¼</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="zi-mian-liang-zhong-de-symbol" href="#zi-mian-liang-zhong-de-symbol">å­—é¢é‡ä¸­çš„ Symbol</a></h3><p>å¦‚æœæˆ‘ä»¬è¦åœ¨ object å­—é¢é‡ä¸­ä½¿ç”¨ Symbolï¼Œåˆ™éœ€è¦æ–¹æ‹¬å·ã€‚</p>
+<p>å°±åƒè¿™æ ·ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id = Symbol(&quot;id&quot;);
+
+let user = {
+  name: &quot;John&quot;,
+  [id]: 123 // ä¸ä»…ä»…æ˜¯ &quot;idï¼š123&quot;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™æ˜¯å› ä¸ºæˆ‘ä»¬éœ€è¦å˜é‡ <code>id</code> çš„å€¼ä½œä¸ºé”®ï¼Œè€Œä¸æ˜¯ String â€œidâ€ã€‚</p>
+<h3><a class="main__anchor" name="symbol-zai-forin-zhong-bei-tiao-guo" href="#symbol-zai-forin-zhong-bei-tiao-guo">Symbol åœ¨ forâ€¦in ä¸­è¢«è·³è¿‡</a></h3><p>Symbolic å±æ€§ä¸å‚ä¸ <code>for..in</code> å¾ªç¯ã€‚</p>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id = Symbol(&quot;id&quot;);
+let user = {
+  name: &quot;John&quot;,
+  age: 30,
+  [id]: 123
+};
+
+for (let key in user) alert(key); // name, age (no symbols)
+
+// è¢« Symbol ä»»åŠ¡ç›´æ¥è®¿é—®
+alert( &quot;Direct: &quot; + user[id] );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™æ˜¯ä¸€èˆ¬â€œéšè—â€æ¦‚å¿µçš„ä¸€éƒ¨åˆ†ã€‚å¦‚æœå¦ä¸€ä¸ªè„šæœ¬æˆ–åº“åœ¨æˆ‘ä»¬çš„å¯¹è±¡ä¸Šå¾ªç¯ï¼Œå®ƒä¸ä¼šè®¿é—®ä¸€ä¸ª Symbol ç±»å‹çš„å±æ€§ã€‚</p>
+<p>ç›¸åï¼Œ<a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/assign  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/assign'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">Object.assign</a> åŒæ—¶å¤åˆ¶å­—ç¬¦ä¸²å’Œç¬¦å·å±æ€§ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let id = Symbol(&quot;id&quot;);
+let user = {
+  [id]: 123
+};
+
+let clone = Object.assign({}, user);
+
+alert( clone[id] ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™é‡Œå¹¶ä¸çŸ›ç›¾ï¼Œå°±æ˜¯è¿™æ ·è®¾è®¡çš„ã€‚æˆ‘ä»¬çš„æƒ³æ³•æ˜¯å½“æˆ‘ä»¬å…‹éš†ä¸€ä¸ª object æˆ–åˆå¹¶ object æ—¶ï¼Œé€šå¸¸å¸Œæœ›<strong>æ‰€æœ‰</strong>å±æ€§è¢«å¤åˆ¶ï¼ˆåŒ…æ‹¬åƒ <code>id</code> è¿™æ ·çš„ Symbolï¼‰ã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Property keys of other types are coerced to strings</span></div>
+            <div class="important__content"><p>æˆ‘ä»¬åªèƒ½åœ¨å¯¹è±¡ä¸­ä½¿ç”¨ string æˆ– symbol ä½œä¸ºé”®ï¼Œå…¶å®ƒç±»å‹è½¬æ¢ä¸º Stringã€‚</p>
+<p>ä¾‹å¦‚ï¼Œåœ¨ä½œä¸ºå±æ€§é”®ä½¿ç”¨æ—¶ï¼Œæ•°å­— <code>0</code>å˜æˆäº†å­—ç¬¦ä¸² <code>&quot;0&quot;</code>ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let obj = {
+  0: &quot;test&quot; // same as &quot;0&quot;: &quot;test&quot;
+};
+
+//ä¸¤ä¸ª alert éƒ½è®¿é—®ç›¸åŒçš„å±æ€§ï¼ˆNumber 0 è¢«è½¬æ¢ä¸º String &quot;0&quot;ï¼‰
+alert( obj[&quot;0&quot;] ); // test
+alert( obj[0] ); // test ï¼ˆç›¸åŒå±æ€§ï¼‰</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="quan-ju-symbol" href="#quan-ju-symbol">å…¨å±€ symbol</a></h2><p>æ­£å¦‚æˆ‘ä»¬æ‰€çœ‹åˆ°çš„ï¼Œé€šå¸¸æ‰€æœ‰çš„ Symbol éƒ½æ˜¯ä¸åŒçš„ï¼Œå³ä½¿å®ƒä»¬æœ‰ç›¸åŒçš„åå­—ã€‚ä½†æœ‰æ—¶æˆ‘ä»¬æƒ³è¦åŒä¸€ä¸ªåå­—çš„ Symbol æ˜¯ç›¸åŒçš„å®ä½“ã€‚</p>
+<p>æ¯”å¦‚ï¼Œæˆ‘ä»¬å¸Œæœ›åœ¨åº”ç”¨ç¨‹åºçš„ä¸åŒéƒ¨åˆ†è®¿é—®ç›¸åŒçš„ Symbol <code>&quot;id&quot;</code> å±æ€§ã€‚</p>
+<p>ä¸ºæ­¤ï¼Œå­˜åœ¨ä¸€ä¸ª<strong>å…¨å±€ symbol æ³¨å†Œè¡¨</strong>ã€‚æˆ‘ä»¬å¯ä»¥åœ¨å…¶ä¸­åˆ›å»º Symbol å¹¶åœ¨ç¨åè®¿é—®å®ƒä»¬ï¼Œå®ƒå¯ä»¥ç¡®ä¿æ¯æ¬¡è®¿é—®ç›¸åŒåç§°éƒ½ä¼šè¿”å›ç›¸åŒçš„ Symbolã€‚</p>
+<p>ä¸ºäº†åœ¨æ³¨å†Œè¡¨ä¸­åˆ›å»ºæˆ–è¯»å– Symbolï¼Œè¯·ä½¿ç”¨ <code>Symbol.for(key)</code>ã€‚</p>
+<p>è¯¥è°ƒç”¨ä¼šæ£€æŸ¥å…¨å±€æ³¨å†Œè¡¨ï¼Œå¦‚æœæœ‰ä¸€ä¸ªæè¿°ä¸º <code>key</code> çš„ Symbolï¼Œåˆ™è¿”å›è¯¥ Symbolï¼Œå¦åˆ™å°†åˆ›å»ºä¸€ä¸ªæ–° Symbolï¼ˆ<code>Symbol(key)</code>ï¼‰ï¼Œå¹¶é€šè¿‡ç»™å®šçš„ <code>key</code> å°†å…¶å­˜å‚¨åœ¨æ³¨å†Œè¡¨ä¸­ã€‚</p>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// ä»å…¨å±€æ³¨å†Œè¡¨ä¸­è¯»å–
+let id = Symbol.for(&quot;id&quot;); // å¦‚æœè¯¥ Symbol ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºå®ƒ
+
+// å†æ¬¡è¯»å–
+let idAgain = Symbol.for(&quot;id&quot;);
+
+// ç›¸åŒçš„ Symbol
+alert( id === idAgain ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>æ³¨å†Œè¡¨å†…çš„ Symbol ç§°ä¸º<strong>å…¨å±€ Symbol</strong>ã€‚å¦‚æœæˆ‘ä»¬æƒ³è¦ä¸€ä¸ªåº”ç”¨ç¨‹åºèŒƒå›´å†…çš„ Symbolï¼Œå¯ä»¥åœ¨ä»£ç ä¸­éšå¤„è®¿é—® â€”â€” è¿™å°±æ˜¯å®ƒä»¬çš„ç”¨é€”ã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">That sounds like Ruby</span></div>
+            <div class="important__content"><p>åœ¨ä¸€äº›ç¼–ç¨‹è¯­è¨€ä¸­ï¼Œä¾‹å¦‚ Rubyï¼Œæ¯ä¸ªåç§°éƒ½æœ‰ä¸€ä¸ª symbolã€‚</p>
+<p>åœ¨ JavaScript ä¸­ï¼Œæˆ‘ä»¬åº”è¯¥ç”¨å…¨å±€ symbolã€‚</p>
+</div></div>
+<h3><a class="main__anchor" name="symbolkeyfor" href="#symbolkeyfor">Symbol.keyFor</a></h3><p>å¯¹äºå…¨å±€ symbolï¼Œ<code>Symbol.for(key)</code> ä¸ä»…æŒ‰åç§°è¿”å›ä¸€ä¸ª symbolï¼Œè€Œä¸”è¿˜æœ‰ä¸€ä¸ªåå‘è°ƒç”¨ï¼š<code>Symbol.keyFor(sym)</code>ï¼Œåè¿‡æ¥ï¼šé€šè¿‡å…¨å±€ symbol è¿”å›ä¸€ä¸ªåç§°ã€‚</p>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sym = Symbol.for(&quot;name&quot;);
+let sym2 = Symbol.for(&quot;id&quot;);
+
+// ä» symbol ä¸­è·å– name
+alert( Symbol.keyFor(sym) ); // name
+alert( Symbol.keyFor(sym2) ); // id</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>Symbol.keyFor</code> åœ¨å†…éƒ¨ä½¿ç”¨å…¨å±€ symbol æ³¨å†Œè¡¨æ¥æŸ¥æ‰¾ symbol çš„é”®ã€‚æ‰€æœ‰å®ƒä¸é€‚ç”¨äºéå…¨å±€ symbolã€‚å¦‚æœ symbol ä¸æ˜¯å…¨å±€çš„ï¼Œå®ƒå°†æ— æ³•æ‰¾åˆ°å®ƒå¹¶è¿”å› <code>undefined</code>ã€‚</p>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Symbol.keyFor(Symbol.for(&quot;name&quot;)) ); // name, å…¨å±€ Symbol
+
+alert( Symbol.keyFor(Symbol(&quot;name2&quot;)) ); // undefined, å‚æ•°ä¸æ˜¯ä¸€ä¸ªå…¨å±€ Symbol</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="xi-tong-symbol" href="#xi-tong-symbol">ç³»ç»Ÿ Symbol</a></h2><p>JavaScript å†…éƒ¨å­˜åœ¨å¾ˆå¤šâ€œç³»ç»Ÿâ€ Symbolï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨å®ƒä»¬æ¥å¾®è°ƒå¯¹è±¡çš„å„ä¸ªæ–¹é¢ã€‚</p>
+<p>å®ƒä»¬åˆ—åœ¨<a href="javascript:if(confirm('https://tc39.github.io/ecma262/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://tc39.github.io/ecma262/#sec-well-known-symbols'" tppabs="https://tc39.github.io/ecma262/#sec-well-known-symbols">ç†Ÿæ‚‰çš„ Symbol</a> è¡¨çš„è§„èŒƒä¸­ï¼š</p>
+<ul>
+<li><code>Symbol.hasInstance</code></li>
+<li><code>Symbol.isConcatSpreadable</code></li>
+<li><code>Symbol.iterator</code></li>
+<li><code>Symbol.toPrimitive</code></li>
+<li>â€¦ç­‰ç­‰ã€‚</li>
+</ul>
+<p>ä¾‹å¦‚ï¼Œ<code>Symbol.toPrimitive</code> å…è®¸æˆ‘ä»¬å°†å¯¹è±¡æè¿°ä¸ºåŸå§‹å€¼è½¬æ¢ï¼Œæˆ‘ä»¬å¾ˆå¿«å°±ä¼šçœ‹åˆ°å®ƒçš„ä½¿ç”¨ã€‚</p>
+<p>å½“æˆ‘ä»¬ç ”ç©¶ç›¸åº”çš„è¯­è¨€ç‰¹å¾æ—¶ï¼Œå…¶ä»– Symbol ä¹Ÿä¼šå˜å¾—ç†Ÿæ‚‰èµ·æ¥ã€‚</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p><code>Symbol</code> æ˜¯å”¯ä¸€æ ‡è¯†ç¬¦çš„åŸºæœ¬ç±»å‹</p>
+<p>Symbol ä½¿ç”¨ <code>Symbol()</code> åˆ›å»ºçš„ï¼Œè°ƒç”¨å¸¦æœ‰ä¸€ä¸ªå¯é€‰çš„æè¿°ã€‚</p>
+<p>Symbol æ€»æ˜¯ä¸åŒçš„å€¼ï¼Œå³ä½¿å®ƒä»¬æœ‰ç›¸åŒçš„åç§°ã€‚å¦‚æœæˆ‘ä»¬å¸Œæœ›åŒå Symbol ç›¸ç­‰ï¼Œé‚£ä¹ˆæˆ‘ä»¬åº”è¯¥ä½¿ç”¨å…¨å±€æ³¨å†Œè¡¨ï¼š<code>Symbol.for(key)</code> è¿”å›ï¼ˆå¦‚æœéœ€è¦çš„è¯åˆ›å»ºï¼‰ä¸€ä¸ªä»¥ <code>key</code> ä½œä¸ºåç§°çš„å…¨å±€ Symbolã€‚<code>Symbol.for</code> çš„å¤šæ¬¡è°ƒç”¨å®Œå…¨è¿”å›ç›¸åŒçš„ Symbolã€‚</p>
+<p>Symbol æœ‰ä¸¤ä¸ªä¸»è¦çš„ä½¿ç”¨åœºæ™¯ï¼š</p>
+<ol>
+<li>
+<p>â€œéšè—â€ object å±æ€§ã€‚å¦‚æœéœ€è¦å°†å±æ€§æ·»åŠ åˆ° â€œå±äºâ€ å¦ä¸€ä¸ªè„šæœ¬æˆ–åº“çš„å¯¹è±¡ä¸­ï¼Œåˆ™å¯ä»¥åˆ›å»º Symbol å¹¶å°†å…¶ç”¨ä½œå±æ€§é”®ã€‚Symbol å±æ€§ä¸å‡ºç°åœ¨ <code>for..in</code>ä¸­ï¼Œå› æ­¤ä¸å›å¶å°”åˆ—å‡ºã€‚å¦å¤–ï¼Œå®ƒä¸ä¼šè¢«ç›´æ¥è®¿é—®ï¼Œå› ä¸ºå¦ä¸€ä¸ªè„šæœ¬æ²¡æœ‰æˆ‘ä»¬çš„ç¬¦å·ï¼Œæ‰€ä»¥å®ƒä¸ä¼šå¶å°”å¹²é¢„å®ƒçš„æ“ä½œã€‚</p>
+<p>å› æ­¤æˆ‘ä»¬å¯ä»¥ä½¿ç”¨ Symbol å±æ€§â€œç§˜å¯†åœ°â€å°†ä¸€äº›ä¸œè¥¿éšè—åˆ°æˆ‘ä»¬éœ€è¦çš„ object ä¸­ï¼Œä½†å…¶ä»–äººä¸åº”è¯¥çœ‹åˆ°ã€‚</p>
+</li>
+<li>
+<p>JavaScript ä½¿ç”¨äº†è®¸å¤šç³»ç»Ÿ Symbolï¼Œè¿™äº› Symbol å¯ä»¥ä½œä¸º <code>Symbol.*</code> è®¿é—®ã€‚æˆ‘ä»¬å¯ä»¥ä½¿ç”¨å®ƒä»¬æ¥æ”¹å˜ä¸€äº›å†…ç½®è¡Œä¸ºã€‚ä¾‹å¦‚ï¼Œåœ¨æœ¬æ•™ç¨‹çš„åé¢éƒ¨åˆ†ï¼Œæˆ‘ä»¬å°†ä½¿ç”¨ <code>Symbol.iterator</code> æ¥<a href="iterable.htm" tppabs="https://zh.javascript.info/iterable">è¿­ä»£</a>ï¼Œ<code>Symbol.toPrimitive</code> æ¥è®¾ç½®<a href="object-toprimitive.htm" tppabs="https://zh.javascript.info/object-toprimitive">å¯¹è±¡åŸå§‹å€¼çš„è½¬æ¢</a>ç­‰ç­‰ã€‚</p>
+</li>
+</ol>
+<p>ä»æŠ€æœ¯ä¸Šè¯´ï¼ŒSymbol ä¸æ˜¯ 100% éšè—çš„ã€‚æœ‰ä¸€ä¸ªå†…ç½®æ–¹æ³• <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols">Object.getOwnPropertySymbols(obj)</a> å…è®¸æˆ‘ä»¬è·å–æ‰€æœ‰çš„ Symbolã€‚è¿˜æœ‰ä¸€ä¸ªåä¸º <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys">Reflect.ownKeys(obj)</a> è¿”å›<strong>æ‰€æœ‰</strong>é”®ï¼ŒåŒ…æ‹¬ Symbolã€‚æ‰€ä»¥å®ƒä»¬ä¸æ˜¯çœŸæ­£çš„éšè—ã€‚ä½†æ˜¯å¤§å¤šæ•°åº“ã€å†…ç½®æ–¹æ³•å’Œè¯­æ³•ç»“æ„éƒ½éµå¾ªä¸€ä¸ªå…±åŒçš„åè®®ã€‚è€Œæ˜ç¡®è°ƒç”¨ä¸Šè¿°æ–¹æ³•çš„äººå¯èƒ½å¾ˆæ¸…æ¥šä»–åœ¨åšä»€ä¹ˆã€‚</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="garbage-collection.htm" tppabs="https://zh.javascript.info/garbage-collection" data-tooltip="åƒåœ¾å›æ”¶"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="object-methods.htm" tppabs="https://zh.javascript.info/object-methods" data-tooltip="å¯¹è±¡æ–¹æ³•ä¸ &quot;this&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/symbol","identifier":"\/symbol"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.htm" tppabs="https://zh.javascript.info/object-basics">Objectsï¼ˆå¯¹è±¡ï¼‰ï¼šåŸºç¡€çŸ¥è¯†</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#symbol">Symbol</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yin-cang-shu-xing">â€œéšè—â€å±æ€§</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#quan-ju-symbol">å…¨å±€ symbol</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#xi-tong-symbol">ç³»ç»Ÿ Symbol</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsymbol"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/03-symbol/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/03-symbol/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/04-object-basics/03-symbol/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

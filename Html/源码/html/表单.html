@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>表单</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+			<!--method:表单提交方式  get（地址栏显示参数值，默认） , post（不显示，推荐） 
+			
+				size: 文本框/密码显示的长度
+				maxlength:实际能够输入内容的长度
+				
+			文件：2个一起写，
+				input type="file"
+				enctype="multipart/form-data"
+				
+				
+				隐藏域：type="hidden"。前台不显示，但真实存在
+			-->
+			<form action="result.html" method="post" enctype="multipart/form-data">
+				<!--表单元素的标注 -->
+				<label for="xa">西安</label>
+				<br/>
+				<input type="checkbox" id="xa3"/>
+	
+				<!-- 语义化表单-->
+				<fieldset>
+					<legend>用户信息</legend>
+					Helo<input />
+					Helo<input />
+				</fieldset>
+				<br/>
+				<br/>
+				<br/>
+				
+				<input type="file" name="file1" />---
+				<input type="hidden" value="1" name="sdad">---
+		    	认证名:<input readonly="readonly" name="realname" value="颜群" type="text"/> <br/>
+				用户名:<input name="username" size="10" maxlength="4" value="张三" type="text"/> <br/>
+				密码:<input name="pwd" size="2"  type="password"/><br/>
+				
+				兴趣爱好：<br/>
+				足球<input checked="checked" name="hobby" type="checkbox">
+				篮球<input name="hobby" type="checkbox">
+				乒乓球<input name="hobby"  checked="checked" type="checkbox">
+				<br/>
+				计划旅游的城市<br/>
+				西安<input name="city" type="checkbox">
+				北京<input name="city"  checked="checked" type="checkbox">
+				上海<input name="city" type="checkbox">
+				<br/>
+				
+				性别：<br/>  
+				男<input name="sex"  checked="checked" type="radio" />
+				女<input name="sex"  type="radio" />
+				
+				<input value="注册" type="submit" />
+				<input value="恢复默认值" type="reset" /><br/>
+				<input type="button" value="按钮" disabled="disabled" />
+				
+				<select>
+						<option>西安</option>
+						<option selected="selected">成都</option>
+						<option>深圳</option>
+				</select>
+				
+				<br/>
+				个人说明:<br/>
+				<textarea cols="30" rows="5">
+					这是编写默认值的地方....
+				</textarea>
+				
+	
+			</form>
+		
+		
+	</body>
+</html>

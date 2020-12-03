@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/dispatch-events"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/default-browser-action"><link rel="next" href="/event-details"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/dispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/dispatch-events'" tppabs="https://javascript.info/dispatch-events"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="dispatch-events.htm" tppabs="https://zh.javascript.info/dispatch-events"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/dispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/dispatch-events'" tppabs="https://ja.javascript.info/dispatch-events"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/dispatch-events">English</option><option value="https://learn.javascript.ru/">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/dispatch-events" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/dispatch-events">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="16" max="27" data-tooltip="ç¬¬ 27 ç« ï¼Œç¬¬ 16 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">æµè§ˆå™¨ï¼šæ–‡æ¡£ã€äº‹ä»¶å’Œæ¥å£</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="events.htm" tppabs="https://zh.javascript.info/events" itemprop="url"><span itemprop="title">äº‹ä»¶ç®€ä»‹</span></a></li></ol><h1 class="main__header-title">ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="ç”Ÿæˆè‡ªå®šä¹‰äº‹ä»¶"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>æˆ‘ä»¬ä¸ä»…å¯ä»¥åˆ†å‘äº‹ä»¶ï¼Œè¿˜å¯ä»¥ä» JavaScript ä¸­ç”Ÿæˆäº‹ä»¶ã€‚</p>
+<p>è‡ªå®šä¹‰äº‹ä»¶å¯ä»¥ç”¨äºåˆ›å»ºâ€œå›¾å½¢ç»„ä»¶â€ã€‚ä¾‹å¦‚ï¼Œèœå•ç»„ä»¶çš„æ ¹å…ƒç´ å¯ä»¥é€šè¿‡è§¦å‘ <code>open</code>ï¼ˆæ‰“å¼€èœå•ï¼‰ã€<code>select</code>ï¼ˆæœ‰ä¸€é¡¹è¢«é€‰ä¸­ï¼‰ç­‰äº‹ä»¶å‘Šè¯‰èœå•å‘ç”Ÿäº†ä»€ä¹ˆã€‚</p>
+<p>æˆ‘ä»¬ä¹Ÿå¯ä»¥ç”Ÿæˆä¸€äº›åƒ <code>click</code>ã€<code>mousedown</code> æ­¤ç±»çš„å†…ç½®äº‹ä»¶ï¼Œè¿™äº›éƒ½æœ‰åˆ©äºæµ‹è¯•ã€‚</p>
+<h2><a class="main__anchor" name="shi-jian-gou-zao-qi" href="#shi-jian-gou-zao-qi">äº‹ä»¶æ„é€ å™¨</a></h2><p>äº‹ä»¶ä¼šåƒ DOM å…ƒç´ ç±»ä¸€æ ·å½¢æˆå±‚æ¬¡ç»“æ„ã€‚äº‹ä»¶çš„åº•å±‚æ˜¯å†…ç½®çš„ <a href="javascript:if(confirm('http://www.w3.org/TR/dom/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.w3.org/TR/dom/#event'" tppabs="http://www.w3.org/TR/dom/#event">Event</a> ç±»ã€‚</p>
+<p>æˆ‘ä»¬å¯ä»¥åƒè¿™æ ·åˆ›å»º <code>Event</code> å¯¹è±¡ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let event = new Event(event type[, options]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å‚æ•°ï¼š</p>
+<ul>
+<li>
+<p><strong>event type</strong> â€”â€” å¯ä»¥æ˜¯ä»»ä½•å­—ç¬¦ä¸²ï¼Œæ¯”å¦‚ <code>&quot;click&quot;</code> æˆ–è€…æˆ‘ä»¬è‡ªå·±å–œæ¬¢çš„ <code>&quot;hey-ho!&quot;</code>ã€‚</p>
+</li>
+<li>
+<p><strong>options</strong> â€”â€” å…·æœ‰ä¸¤ä¸ªå¯é€‰å±æ€§çš„å¯¹è±¡ï¼š</p>
+<ul>
+<li><code>bubbles: true/false</code> â€”â€” å¦‚æœæ˜¯ <code>true</code>ï¼Œé‚£ä¹ˆäº‹ä»¶å†’æ³¡ã€‚</li>
+<li><code>cancelable: true/false</code> â€”â€” å¦‚æœ <code>true</code>ï¼Œé‚£ä¹ˆâ€œé»˜è®¤åŠ¨ä½œâ€å°±ä¼šè¢«é˜»æ­¢ã€‚ä¹‹åæˆ‘ä»¬ä¼šçœ‹åˆ°å¯¹äºè‡ªå®šä¹‰äº‹ä»¶ï¼Œè¿™äº›æ„å‘³ç€ä»€ä¹ˆã€‚</li>
+</ul>
+<p>é»˜è®¤æƒ…å†µä¸‹ï¼Œå®ƒä»¬éƒ½æ˜¯ falseï¼š<code>{bubbles: false, cancelable: false}</code>ã€‚</p>
+</li>
+</ul>
+<h2><a class="main__anchor" name="dispatchevent" href="#dispatchevent">dispatchEvent</a></h2><p>äº‹ä»¶å¯¹è±¡è¢«åˆ›å»ºåï¼Œæˆ‘ä»¬åº”è¯¥è°ƒç”¨ <code>elem.dispatchEvent(event)</code> åœ¨å…ƒç´ ä¸Šâ€œè¿è¡Œâ€å®ƒã€‚</p>
+<p>ç„¶åå¤„ç†å™¨å¯¹å…¶ä½œå‡ºååº”ï¼Œå°±å¥½åƒå®ƒæ˜¯ä¸€ä¸ªæ­£å¸¸çš„å†…ç½®äº‹ä»¶ã€‚å¦‚æœäº‹ä»¶æ˜¯ä½¿ç”¨ <code>bubbles</code> æ ‡å¿—åˆ›å»ºçš„ï¼Œé‚£ä¹ˆå®ƒå°±ä¼šå†’æ³¡ã€‚</p>
+<p>åœ¨ä¸‹é¢ç¤ºä¾‹ä¸­ï¼Œ<code>click</code> äº‹ä»¶æ˜¯ç”¨ JavaScript åˆå§‹åŒ–ç”Ÿæˆçš„ã€‚å¤„ç†å™¨æ‰§è¡Œæ•ˆæœå’Œå•å‡»æŒ‰é’®çš„æ•ˆæœä¸€æ ·ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;elem&quot; onclick=&quot;alert('Click!');&quot;&gt;Autoclick&lt;/button&gt;
+
+&lt;script&gt;
+  let event = new Event(&quot;click&quot;);
+  elem.dispatchEvent(event);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">event.isTrusted</span></div>
+            <div class="important__content"><p>æœ‰ä¸€ä¸ªå¯ä»¥åŒºåˆ† â€œçœŸå®â€ç”¨æˆ·äº‹ä»¶å’Œ script ç”Ÿæˆäº‹ä»¶çš„æ–¹æ³•ã€‚</p>
+<p><code>event.isTrusted</code> å±æ€§ä¸º <code>true</code>ï¼Œåˆ™äº‹ä»¶æ¥è‡ªçœŸå®ç”¨æˆ·çš„åŠ¨ä½œï¼Œä¸º <code>false</code> ï¼Œåˆ™è¯´æ˜äº‹ä»¶ç”±è„šæœ¬ç”Ÿæˆã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="mao-pao-shi-li" href="#mao-pao-shi-li">å†’æ³¡ç¤ºä¾‹</a></h2><p>æˆ‘ä»¬å¯ä»¥åˆ›å»ºä¸€ä¸ªåä¸º <code>&quot;hello&quot;</code> çš„å†’æ³¡äº‹ä»¶ï¼Œå¹¶åœ¨ <code>document</code> ä¸Šæ•è·å®ƒã€‚</p>
+<p>æˆ‘ä»¬éœ€è¦åšçš„å°±æ˜¯å°† <code>bubbles</code> è®¾ç½®ä¸º <code>true</code>ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;h1 id=&quot;elem&quot;&gt;Hello from the script!&lt;/h1&gt;
+
+&lt;script&gt;
+  // catch on document...
+  document.addEventListener(&quot;hello&quot;, function(event) { // (1)
+    alert(&quot;Hello from &quot; + event.target.tagName); // Hello from H1
+  });
+
+  // ...dispatch on elem!
+  let event = new Event(&quot;hello&quot;, {bubbles: true}); // (2)
+  elem.dispatchEvent(event);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>æ³¨æ„ï¼š</p>
+<ol>
+<li>æˆ‘ä»¬åº”è¯¥ä½¿ç”¨ <code>addEventListener</code> å®šä¹‰æˆ‘ä»¬çš„äº‹ä»¶ï¼Œå› ä¸º <code>on&lt;event&gt;</code> ä»…å­˜åœ¨äºå†…ç½®äº‹ä»¶ä¸­ï¼Œ<code>document.onhello</code> åˆ™æ— æ³•è¿è¡Œã€‚</li>
+<li>å¿…é¡»è®¾ç½® <code>bubbles:true</code>ï¼Œå¦åˆ™äº‹ä»¶ä¸ä¼šå‘ä¸Šå†’æ³¡ã€‚</li>
+</ol>
+<p>å¯¹äºå†…ç½® (<code>click</code>) å’Œè‡ªå®šä¹‰ (<code>hello</code>) çš„äº‹ä»¶ï¼Œå†’æ³¡æœºåˆ¶æ˜¯ä¸€æ ·çš„ã€‚ä¹Ÿæœ‰æ•è·å’Œå†’æ³¡é˜¶æ®µã€‚</p>
+<h2><a class="main__anchor" name="shu-biao-shi-jian-jian-pan-shi-jian-he-qi-ta" href="#shu-biao-shi-jian-jian-pan-shi-jian-he-qi-ta">é¼ æ ‡äº‹ä»¶ï¼Œé”®ç›˜äº‹ä»¶å’Œå…¶ä»–</a></h2><p>è¿™é‡Œæœ‰ä¸€ä¸ªåœ¨ <a href="javascript:if(confirm('https://www.w3.org/TR/uievents  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.w3.org/TR/uievents'" tppabs="https://www.w3.org/TR/uievents">UI Event specification</a> ä¸Šçš„ UI äº‹ä»¶ç±»çŸ­åˆ—è¡¨ï¼š</p>
+<ul>
+<li><code>UIEvent</code>ï¼ˆUI äº‹ä»¶ï¼‰</li>
+<li><code>FocusEvent</code>ï¼ˆç„¦ç‚¹äº‹ä»¶ï¼‰</li>
+<li><code>MouseEvent</code>ï¼ˆé¼ æ ‡äº‹ä»¶ï¼‰</li>
+<li><code>WheelEvent</code>ï¼ˆæ»šè½®äº‹ä»¶ï¼‰</li>
+<li><code>KeyboardEvent</code>ï¼ˆé”®ç›˜äº‹ä»¶ï¼‰</li>
+<li>â€¦</li>
+</ul>
+<p>å¦‚æœæˆ‘ä»¬æƒ³è¦åˆ›å»ºè¿™æ ·çš„äº‹ä»¶ï¼Œæˆ‘ä»¬åº”è¯¥ä½¿ç”¨å®ƒä»¬è€Œä¸æ˜¯â€œæ–°äº‹ä»¶â€ã€‚ä¾‹å¦‚ï¼Œ<code>new MouseEvent(&quot;click&quot;)</code>ã€‚</p>
+<p>æ­£ç¡®çš„æ„é€ å‡½æ•°å…è®¸ä¸ºè¯¥ç±»å‹çš„äº‹ä»¶æŒ‡å®šæ ‡å‡†å±æ€§ã€‚</p>
+<p>å°±åƒé¼ æ ‡äº‹ä»¶ <code>clientX/clientY</code> ä¸€æ ·ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let event = new MouseEvent(&quot;click&quot;, {
+  bubbles: true,
+  cancelable: true,
+  clientX: 100,
+  clientY: 100
+});
+
+alert(event.clientX); // 100</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¯·æ³¨æ„ï¼šé€šç”¨ <code>Event</code> æ„é€ å™¨ä¸å…è®¸è¿™æ ·åšã€‚</p>
+<p>è®©æˆ‘ä»¬è¯•è¯•ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let event = new Event(&quot;click&quot;, {
+  bubbles: true, // only bubbles and cancelable
+  cancelable: true, // work in the Event constructor
+  clientX: 100,
+  clientY: 100
+});
+
+alert(event.clientX); // undefined, the unknown property is ignored!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ä»æŠ€æœ¯ä¸Šè®²ï¼Œæˆ‘ä»¬å¯ä»¥é€šè¿‡åœ¨åˆ›å»ºåç›´æ¥åˆ†å‘ <code>event.clientX=100</code> æ¥è§£å†³è¿™ä¸ªé—®é¢˜ã€‚æ‰€ä»¥è¿™æ˜¯ä¸€ä¸ªæ–¹ä¾¿å’Œéµå®ˆè§„åˆ™çš„é—®é¢˜ã€‚æµè§ˆå™¨ç”Ÿæˆçš„äº‹ä»¶æ€»æ˜¯å…·æœ‰æ­£ç¡®çš„ç±»å‹ã€‚</p>
+<p>ä¸åŒ UI äº‹ä»¶çš„æ‰€æœ‰å±æ€§åˆ—è¡¨åœ¨è¯´æ˜ä¹¦ä¸­ï¼Œä¾‹å¦‚ <a href="javascript:if(confirm('https://www.w3.org/TR/uievents/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.w3.org/TR/uievents/#mouseevent'" tppabs="https://www.w3.org/TR/uievents/#mouseevent">MouseEvent</a>ã€‚</p>
+<h2><a class="main__anchor" name="zi-ding-yi-shi-jian" href="#zi-ding-yi-shi-jian">è‡ªå®šä¹‰äº‹ä»¶</a></h2><p>å¯¹äºæˆ‘ä»¬è‡ªå·±çš„è‡ªå®šä¹‰äº‹ä»¶ï¼Œåƒ <code>&quot;hello&quot;</code>ï¼Œæˆ‘ä»¬åº”è¯¥ä½¿ç”¨ <code>new CustomEvent</code>ã€‚ä»æŠ€æœ¯ä¸Šæ¥è¯´ï¼Œ<a href="javascript:if(confirm('https://dom.spec.whatwg.org/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://dom.spec.whatwg.org/#customevent'" tppabs="https://dom.spec.whatwg.org/#customevent">CustomEvent</a> å’Œ <code>Event</code> ä¸€æ ·ã€‚é™¤äº†ä¸€ç‚¹ä¸åŒä¹‹å¤–ã€‚</p>
+<p>åœ¨ç¬¬äºŒä¸ªå‚æ•°ï¼ˆå¯¹è±¡ï¼‰ä¸­ï¼Œæˆ‘ä»¬å¯ä»¥åœ¨äº‹ä»¶ä¸­ä¸ºæˆ‘ä»¬æƒ³è¦ä¼ é€’çš„ä»»ä½•è‡ªå®šä¹‰ä¿¡æ¯æ·»åŠ ä¸€ä¸ªé™„åŠ çš„å±æ€§ <code>detail</code>ã€‚</p>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example" data-refresh="1" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:9},{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:10,&quot;end&quot;:27}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;h1 id=&quot;elem&quot;&gt;Hello for John!&lt;/h1&gt;
+
+&lt;script&gt;
+  // additional details come with the event to the handler
+  elem.addEventListener(&quot;hello&quot;, function(event) {
+    alert(event.detail.name);
+  });
+
+  elem.dispatchEvent(new CustomEvent(&quot;hello&quot;, {
+    detail: { name: &quot;John&quot; }
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>detail</code> å±æ€§å¯ä»¥æœ‰ä»»ä½•æ•°æ®ã€‚ä»æŠ€æœ¯ä¸Šè®²ï¼Œæˆ‘ä»¬å¯ä»¥ä¸ç”¨ï¼Œå› ä¸ºæˆ‘ä»¬å¯ä»¥åœ¨åˆ›å»ºåå°†ä»»ä½•å±æ€§åˆ†é…åˆ°å¸¸è§„çš„ <code>new Event</code> å¯¹è±¡ä¸­ã€‚ä½†æ˜¯ <code>CustomEvent</code> ä¸ºå®ƒæä¾›äº†ç‰¹æ®Šçš„ <code>detail</code> å­—æ®µï¼Œä»¥é¿å…ä¸å…¶ä»–äº‹ä»¶å±æ€§çš„å†²çªã€‚</p>
+<p>äº‹ä»¶ç±»å‘Šè¯‰ä¸€äº›å…³äºâ€œæ˜¯ä»€ä¹ˆç±»å‹çš„äº‹ä»¶â€çš„ä¿¡æ¯ï¼Œå¦‚æœäº‹ä»¶æ˜¯è‡ªå®šä¹‰çš„ï¼Œé‚£ä¹ˆæˆ‘ä»¬åº”è¯¥ä½¿ç”¨ <code>CustomEvent</code> æ¥æ˜ç¡®å®ƒæ˜¯ä»€ä¹ˆã€‚</p>
+<h2><a class="main__anchor" name="eventpreventdefault" href="#eventpreventdefault">event.preventDefault()</a></h2><p>å¦‚æœ <code>cancelable:true</code> è¢«æŒ‡å®šï¼Œé‚£ä¹ˆæˆ‘ä»¬å¯ä»¥åœ¨è„šæœ¬ç”Ÿæˆçš„äº‹ä»¶ä¸Šè°ƒç”¨ <code>event.preventDefault()</code>ã€‚</p>
+<p>å½“ç„¶ï¼Œå¦‚æœäº‹ä»¶æœ‰ä¸€ä¸ªéæ ‡å‡†çš„åç§°ï¼Œé‚£ä¹ˆæµè§ˆå™¨å°±ä¸çŸ¥é“å®ƒï¼Œè€Œä¸”å®ƒä¹Ÿæ²¡æœ‰â€œé»˜è®¤æµè§ˆå™¨åŠ¨ä½œâ€ã€‚</p>
+<p>ä½†æ˜¯äº‹ä»¶ç”Ÿæˆä»£ç å¯èƒ½ä¼šåœ¨ <code>dispatchEvent</code> ä¹‹åå®‰æ’ä¸€äº›åŠ¨ä½œã€‚</p>
+<p>è°ƒç”¨ <code>event.preventDefault()</code> æ˜¯å¤„ç†å™¨å‘é€ä¸åº”è¯¥æ‰§è¡Œè¿™äº›æ“ä½œçš„ä¿¡å·çš„ä¸€ç§æ–¹æ³•ã€‚</p>
+<p>åœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œ<code>elem.dispatchEvent(event)</code> ä¼šè¿”å› <code>false</code>ã€‚è€Œä¸”äº‹ä»¶ç”Ÿæˆä»£ç çŸ¥é“å¤„ç†å™¨ä¸åº”è¯¥ç»§ç»­ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œåœ¨ä¸‹é¢çš„ç¤ºä¾‹ä¸­æœ‰ä¸€ä¸ª <code>hide()</code> å‡½æ•°ã€‚å®ƒåœ¨å…ƒç´  <code>#rabbit</code> ä¸Šç”Ÿæˆ <code>&quot;hide&quot;</code> äº‹ä»¶ã€‚é€šçŸ¥æ‰€æœ‰ç›¸å…³è”éƒ¨åˆ†å…”å­å°†è¦éšè—èµ·æ¥äº†ã€‚</p>
+<p>ç”± <code>rabbit.addEventListener('hide',...)</code> è®¾ç½®çš„å¤„ç†å™¨å°†ä¼šçŸ¥é“è¿™äº›ï¼Œå¹¶ä¸”å¦‚æœéœ€è¦ï¼Œå¯ä»¥é€šè¿‡è°ƒç”¨ <code>event.preventDefault()</code> æ¥é˜»æ­¢è¯¥æ“ä½œã€‚ç„¶åå…”å­å°±ä¸ä¼šéšè—äº†ï¼š</p>
+<div data-trusted="1" class="code-example" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;pre id=&quot;rabbit&quot;&gt;
+  |\   /|
+   \|_|/
+   /. .\
+  =\_Y_/=
+   {&gt;o&lt;}
+&lt;/pre&gt;
+
+&lt;script&gt;
+  // hide() will be called automatically in 2 seconds
+  function hide() {
+    let event = new CustomEvent(&quot;hide&quot;, {
+      cancelable: true // without that flag preventDefault doesn't work
+    });
+    if (!rabbit.dispatchEvent(event)) {
+      alert('the action was prevented by a handler');
+    } else {
+      rabbit.hidden = true;
+    }
+  }
+
+  rabbit.addEventListener('hide', function(event) {
+    if (confirm(&quot;Call preventDefault?&quot;)) {
+      event.preventDefault();
+    }
+  });
+
+  // hide in 2 seconds
+  setTimeout(hide, 2000);
+
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="eventsinevents-tong-bu" href="#eventsinevents-tong-bu">Events-in-events åŒæ­¥</a></h2><p>äº‹ä»¶é€šå¸¸éƒ½æ˜¯åŒæ­¥å¤„ç†çš„ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼šå¦‚æœæµè§ˆå™¨æ­£åœ¨å¤„ç† <code>onclick</code>ï¼Œè€Œä¸”åœ¨å¤„ç†è¿‡ç¨‹ä¸­å‘ç”Ÿäº†ä¸€ä¸ªæ–°çš„äº‹ä»¶ï¼Œé‚£ä¹ˆå®ƒå°†ç­‰å¾…ï¼Œç›´åˆ° <code>onclick</code> å¤„ç†å®Œæˆã€‚</p>
+<p>å¼‚å¸¸æƒ…å†µæ˜¯ä¸€ä¸ªäº‹ä»¶ä»å¦ä¸€ä¸ªäº‹ä»¶ä¸­å¯åŠ¨ã€‚</p>
+<p>ç„¶åæ§åˆ¶å™¨ä¼šè·³åˆ°åµŒå¥—äº‹ä»¶å¤„ç†å™¨ä¸­ï¼Œå¹¶ä¸”ï¼ˆæ‰§è¡Œå®Œæˆï¼‰ä¹‹åè¿”å›ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œè¿™é‡Œçš„ <code>menu-open</code> åµŒå¥—äº‹ä»¶åœ¨ <code>onclick</code> æœŸé—´è¢«åŒæ­¥å¤„ç†ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;menu&quot;&gt;Menu (click me)&lt;/button&gt;
+
+&lt;script&gt;
+  // 1 -&gt; nested -&gt; 2
+  menu.onclick = function() {
+    alert(1);
+
+    // alert(&quot;nested&quot;)
+    menu.dispatchEvent(new CustomEvent(&quot;menu-open&quot;, {
+      bubbles: true
+    }));
+
+    alert(2);
+  };
+
+  document.addEventListener('menu-open', () =&gt; alert('nested'))
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¯·æ³¨æ„ <code>menu-open</code> åµŒå¥—äº‹ä»¶ä¼šå†’æ³¡ï¼Œè€Œä¸”æ˜¯åœ¨ <code>document</code> è¢«å¤„ç†ã€‚åµŒå¥—äº‹ä»¶çš„ä¼ æ’­æ˜¯åœ¨å¤„ç†è¿”å›åˆ°å¤–éƒ¨ä»£ç  (<code>onclick</code>) ä¹‹å‰å°±å·²ç»å…¨éƒ¨å®Œæˆçš„ã€‚</p>
+<p>è¿™ä¸ä»…ä»…æ˜¯ <code>dispatchEvent</code>ï¼Œè¿˜æœ‰å…¶ä»–æ¡ˆä¾‹ã€‚JavaScript åœ¨äº‹ä»¶å¤„ç†æ—¶å¯ä»¥è°ƒç”¨å¯¼è‡´å…¶ä»–äº‹ä»¶çš„æ–¹æ³• â€”â€” å®ƒä»¬ä¹Ÿæ˜¯è¢«åŒæ­¥å¤„ç†çš„ã€‚</p>
+<p>å¦‚æœæˆ‘ä»¬ä¸å–œæ¬¢ï¼Œå¯ä»¥å°† <code>dispatchEvent</code>ï¼ˆæˆ–è€…å…¶ä»–äº‹ä»¶è§¦å‘å™¨è°ƒç”¨ï¼‰æ”¾åœ¨ <code>onclick</code> ç»“æŸï¼Œæˆ–è€…å¦‚æœä¸æ–¹ä¾¿ï¼Œå¯ä»¥å°†å…¶åŒ…è£…åœ¨ <code>setTimeout(...,0)</code> ä¸­ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="å±•ç¤º" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;button id=&quot;menu&quot;&gt;Menu (click me)&lt;/button&gt;
+
+&lt;script&gt;
+  // 1 -&gt; 2 -&gt; nested
+  menu.onclick = function() {
+    alert(1);
+
+    // alert(2)
+    setTimeout(() =&gt; menu.dispatchEvent(new CustomEvent(&quot;menu-open&quot;, {
+      bubbles: true
+    })), 0);
+
+    alert(2);
+  };
+
+  document.addEventListener('menu-open', () =&gt; alert('nested'))
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p>è¦ç”Ÿæˆä¸€ä¸ªäº‹ä»¶ï¼Œæˆ‘ä»¬é¦–å…ˆéœ€è¦åˆ›å»ºä¸€ä¸ªäº‹ä»¶å¯¹è±¡ã€‚</p>
+<p>æ³›å‹ <code>Event(name, options)</code> æ„é€ å™¨æ¥å—ä»»æ„äº‹ä»¶åï¼Œ<code>options</code> å¯¹è±¡å…·æœ‰ä¸¤ä¸ªå±æ€§ï¼š</p>
+<ul>
+<li><code>bubbles: true</code> ï¼Œå¦‚æœäº‹ä»¶åº”è¯¥å†’æ³¡çš„è¯ã€‚</li>
+<li><code>cancelable: true</code> åˆ™ <code>event.preventDefault()</code> åº”è¯¥æœ‰æ•ˆã€‚</li>
+</ul>
+<p>å…¶ä»–åƒ <code>MouseEvent</code>ã€<code>KeyboardEvent</code> è¿™æ ·çš„åŸç”Ÿäº‹ä»¶æ„é€ å™¨ï¼Œæ¥å—ç‰¹å®šäºè¯¥äº‹ä»¶ç±»å‹çš„å±æ€§ã€‚ä¾‹å¦‚ï¼Œé¼ æ ‡äº‹ä»¶çš„ <code>clientX</code>ã€‚</p>
+<p>å¯¹äºè‡ªå®šä¹‰äº‹ä»¶æˆ‘ä»¬åº”è¯¥ä½¿ç”¨ <code>CustomEvent</code> æ„é€ å™¨ã€‚å®ƒæœ‰ä¸€ä¸ªåä¸º <code>detail</code> çš„é™„åŠ é€‰é¡¹ï¼Œæˆ‘ä»¬åº”è¯¥å°†ç‰¹å®šäº‹ä»¶çš„æ•°æ®æŒ‡æ´¾ç»™å®ƒã€‚ç„¶åå¤„ç†å™¨å¯ä»¥ä»¥ <code>event.detail</code> çš„å½¢å¼è®¿é—®å®ƒã€‚</p>
+<p>å°½ç®¡æŠ€æœ¯ä¸Šæœ‰å¯èƒ½äº§ç”Ÿåƒ <code>click</code> æˆ–è€… <code>keydown</code> è¿™æ ·çš„æµè§ˆå™¨äº‹ä»¶ï¼Œä½†æˆ‘ä»¬è¿˜æ˜¯è¯¥è°¨æ…ä½¿ç”¨ã€‚</p>
+<p>æˆ‘ä»¬ä¸åº”è¯¥ç”Ÿæˆæµè§ˆå™¨äº‹ä»¶ï¼Œå› ä¸ºè¿™æ˜¯è¿è¡Œå¤„ç†å™¨çš„ä¸€ç§ hacky æ–¹å¼ã€‚å¤§å¤šæ•°æ¥è¯´ï¼Œè¿™éƒ½æ˜¯ä¸€ç§ç³Ÿç³•çš„æ¶æ„ã€‚</p>
+<p>å¯ä»¥ç”ŸæˆåŸç”Ÿäº‹ä»¶ï¼š</p>
+<ul>
+<li>å¦‚æœä»–ä»¬ä¸æä¾›å…¶ä»–çš„äº¤äº’æ–¹å¼ï¼Œè„é»‘å®¢è¡Œä¸ºå¯ä»¥åˆ¶ä½œç¬¬ä¸‰æ–¹åº“æ“ä½œæ‰€éœ€çš„æ–¹å¼ã€‚</li>
+<li>å¯¹äºè‡ªåŠ¨åŒ–æµ‹è¯•ï¼Œè¦åœ¨è„šæœ¬ä¸­â€œå•å‡»æŒ‰é’®â€å¹¶æŸ¥çœ‹æ¥å£æ˜¯å¦æ­£ç¡®ååº”ã€‚</li>
+</ul>
+<p>ä½¿ç”¨æˆ‘ä»¬è‡ªå·±çš„åå­—æ¥è‡ªå®šä¹‰çš„äº‹ä»¶é€šå¸¸æ˜¯ä¸ºæ¶æ„ç›®çš„äº§ç”Ÿçš„ï¼Œç”¨æ¥æŒ‡ç¤ºèœå•ã€æ»‘å—ã€è½®æ’­ç­‰å†…éƒ¨å‘ç”Ÿä»€ä¹ˆã€‚</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="default-browser-action.htm" tppabs="https://zh.javascript.info/default-browser-action" data-tooltip="æµè§ˆå™¨é»˜è®¤åŠ¨ä½œ"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="event-details.htm" tppabs="https://zh.javascript.info/event-details" data-tooltip="äº‹ä»¶ç»†èŠ‚"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/dispatch-events","identifier":"\/dispatch-events"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="events.htm" tppabs="https://zh.javascript.info/events">äº‹ä»¶ç®€ä»‹</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-jian-gou-zao-qi">äº‹ä»¶æ„é€ å™¨</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dispatchevent">dispatchEvent</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mao-pao-shi-li">å†’æ³¡ç¤ºä¾‹</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shu-biao-shi-jian-jian-pan-shi-jian-he-qi-ta">é¼ æ ‡äº‹ä»¶ï¼Œé”®ç›˜äº‹ä»¶å’Œå…¶ä»–</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-ding-yi-shi-jian">è‡ªå®šä¹‰äº‹ä»¶</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#eventpreventdefault">event.preventDefault()</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#eventsinevents-tong-bu">Events-in-events åŒæ­¥</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdispatch-events"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/05-dispatch-events/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/05-dispatch-events/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/05-dispatch-events/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

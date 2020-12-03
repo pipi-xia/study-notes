@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">字符集合</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/regexp-character-classes"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="字符集合"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="字符集合"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/regexp-methods"><link rel="next" href="/regexp-escaping"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="字符集合"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/regexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/regexp-character-classes'" tppabs="https://javascript.info/regexp-character-classes"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-character-classes.htm" tppabs="https://zh.javascript.info/regexp-character-classes"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/regexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/regexp-character-classes'" tppabs="https://ja.javascript.info/regexp-character-classes"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/regexp-character-classes">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/regexp-character-classes" selected>简体中文</option><option value="https://ja.javascript.info/regexp-character-classes">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="15" data-tooltip="第 15 章，第 3 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions" itemprop="url"><span itemprop="title">正则表达式</span></a></li></ol><h1 class="main__header-title">字符集合</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="字符集合"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>考虑一个实际的任务 —— 我们有一个电话号码 <code>&quot;+7(903)-123-45-67&quot;</code>，并且我们需要在这个字符串中找到所有的数字。其他的字符我们都不关心。</p>
+<p>字符类是一种特殊符号，它匹配集合中的任何符号。</p>
+<p>举个例子，有一个 “数字” 类。它写作 <code>\d</code>。我们把它放进模式里，可以在搜索过程中匹配任何数字。</p>
+<p>例如，正则表达式 <code class="pattern">/\d/</code> 搜索单个数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+let reg = /\d/;
+
+alert( str.match(reg) ); // 7</code></pre>
+        </div>
+      </div>
+      
+      </div><p>上面的正则表达式例子没有指定全局属性，所以它只会搜索返回第一个匹配。</p>
+<p>我们添加一个 <code>g</code> 标记来搜索所有数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+let reg = /\d/g;
+
+alert( str.match(reg) ); // 匹配出的数组：7,9,0,3,1,2,3,4,5,6,7</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zui-chang-shi-yong-de-ji-he-dsw" href="#zui-chang-shi-yong-de-ji-he-dsw">最常使用的集合：\d \s \w</a></h2><p>刚才是数字的字符类。也有其他的字符类。</p>
+<p>最常使用的有：</p>
+<dl>
+<dt><code>\d</code>（“d” 来源于 “digit”）</dt>
+<dd>一个数字：<code>0</code> 到 <code>9</code> 的一个字符。</dd>
+<dt><code>\s</code>（“s” 来源于 “space”）</dt>
+<dd>一个空格符：包括空格，制表符和换行符。</dd>
+<dt><code>\w</code>（“w” 来源于 “word”）</dt>
+<dd>一个单字字符：英语字母表中的一个字母或者一个数字或一个下划线。非英语字母（像西里尔字母或者印地语）不包含在 <code>\w</code> 里面。</dd>
+</dl>
+<p>举例来说，<code class="pattern">\d\s\w</code> 是指一个数字后面跟着一个空格字符然后跟着一个语义字符，如 <code>&quot;1 Z&quot;</code>。</p>
+<p>一个正则表达式可以同时包含普通字符和字符类。</p>
+<p>举个例子，<code class="pattern">CSS\d</code> 匹配一个含有 <code class="match">CSS</code> 且后面跟着一个数字的字符串。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;CSS4 is cool&quot;;
+let reg = /CSS\d/
+
+alert( str.match(reg) ); // CSS4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们也可以使用多个字符类。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;I love HTML5!&quot;.match(/\s\w\w\w\w\d/) ); // 'HTML5'</code></pre>
+        </div>
+      </div>
+      
+      </div><p>该匹配为（每个字符类匹配出一个相应的结果字符）：</p>
+<figure><div class="image" style="width:211px">
+      <div class="image__ratio" style="padding-top:16.113744075829384%"></div>
+      <img src="article/regexp-character-classes/love-html5-classes.png" tppabs="https://zh.javascript.info/article/regexp-character-classes/love-html5-classes.png" alt="" width="211" height="34" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="dan-ci-bian-jie-b" href="#dan-ci-bian-jie-b">单词边界：\b</a></h2><p>单词边界 <code class="pattern">\b</code> —— 是一个特殊的字符类。</p>
+<p>它表示的不是一个字符，而是字符间的边界。</p>
+<p>举个例子，<code class="pattern">\bJava\b</code> 能在字符串 <code class="subject">Hello, Java!</code> 中匹配上 <code class="match">Java</code>，但不能在 <code class="subject">Hello, JavaScript!</code> 里匹配上。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Hello, Java!&quot;.match(/\bJava\b/) ); // Java
+alert( &quot;Hello, JavaScript!&quot;.match(/\bJava\b/) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>某种意义上来说，边界具有“零宽度”，通常一个字符类表示结果中的一个字符（如一个字或一个数字），但在这个例子中不是。</p>
+<p>边界是一个检测。</p>
+<p>当正则表达式引擎在做搜索时，它会沿着字符串向前尝试找到匹配内容。在字符串的每个位置它（搜索引擎）都会尝试做匹配。</p>
+<p>当一个模式中包含 <code class="pattern">\b</code>，它检测字符串中的位置是否满足下面条件之一：</p>
+<ul>
+<li>字符串开头，并且第一个字符串字符是 <code>\w</code>。</li>
+<li>字符串结尾，并且最后一个字符串字符是 <code>\w</code>。</li>
+<li>字符串内部：一边是 <code>\w</code>，另一边 —— 不是 <code>\w</code>。</li>
+</ul>
+<p>举个例子，在字符串 <code class="subject">Hello, Java!</code> 中下面这些位置符合 <code>\b</code> 规则：</p>
+<figure><div class="image" style="width:218px">
+      <div class="image__ratio" style="padding-top:26.146788990825687%"></div>
+      <img src="article/regexp-character-classes/hello-java-boundaries.png" tppabs="https://zh.javascript.info/article/regexp-character-classes/hello-java-boundaries.png" alt="" width="218" height="57" class="image__image">
+      </div></figure><p>所以它将匹配 <code class="pattern">\bHello\b</code> 和 <code class="pattern">\bJava\b</code>，但不匹配 <code class="pattern">\bHell\b</code>（因为 <code>l</code> 后面没有字边界）也不匹配 <code>Java!\b</code>（因为感叹号标识不是一个“字”字符，所以它后面也没有字边界）。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Hello, Java!&quot;.match(/\bHello\b/) ); // Hello
+alert( &quot;Hello, Java!&quot;.match(/\bJava\b/) );  // Java
+alert( &quot;Hello, Java!&quot;.match(/\bHell\b/) );  // null
+alert( &quot;Hello, Java!&quot;.match(/\bJava!\b/) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们再一次查看发现 <code class="pattern">\b</code> 会触发搜索引擎检查边界，所以 <code class="pattern">Java\b</code> 仅在跟有一个字边界时找到 <code class="match">Java</code>，并且不会在结果中添加一个字母。</p>
+<p>通常我们使用 <code>\b</code> 寻找一个独立的英文字符。所以如果我们想要得到 <code>&quot;Java&quot;</code> 语言那么 <code class="pattern">\bJava\b</code> 可以准确找到一个独立的单词，但作为<code>&quot;JavaScript&quot;</code> 的一部分时则会被忽略。</p>
+<p>另一个例子：一个正则 <code class="pattern">\b\d\d\b</code> 寻找单独的两位数字。换而言之，它要求在 <code class="pattern">\d\d</code> 前后必须是一个不同于 <code>\w</code> 的标识（或者在字符串开头或结尾）。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 23 456 78&quot;.match(/\b\d\d\b/g) ); // 23,78</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">字符边界不适用于非英文字母</span></div>
+            <div class="important__content"><p>字符边界校验 <code>\b</code> 用来检测 <code>\w</code> 和其他东西之间的一个边界。因为 <code>\w</code> 意味着一个英文单词（或一个数字或者一个下划线），所以这个检测对其他字符（像斯拉夫字母或者象形文字）不起作用。</p>
+</div></div>
+<h2><a class="main__anchor" name="fan-yi-ji-he" href="#fan-yi-ji-he">反义集合</a></h2><p>对于每一个字符类来说都存在其对应的“反义类”，用同样的单词表示，只不过是大写的。</p>
+<p>“反义”意味着它匹配所有其他字符，举例来说：</p>
+<dl>
+<dt><code>\D</code></dt>
+<dd>非数字：除了 <code>\d</code> 的任何字符，例如一个字母。</dd>
+<dt><code>\S</code></dt>
+<dd>非空格：除了 <code>\s</code> 的任何字符，例如一个字母。</dd>
+<dt><code>\W</code></dt>
+<dd>非“字”字符：除了 <code>\w</code> 的任何东西。</dd>
+<dt><code>\B</code></dt>
+<dd>非边界：<code>\b</code> 的反向检测。</dd>
+</dl>
+<p>在章节的开头我们看到如何从电话 <code class="subject">+7(903)-123-45-67</code> 中获取所有数字。让我们从字符串中获取一个“纯” 电话号码。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+alert( str.match(/\d/g).join('') ); // 79031234567</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另一个可选的方法是寻找所有非数字并且把他们从字符串中移除：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;+7(903)-123-45-67&quot;;
+
+alert( str.replace(/\D/g, &quot;&quot;) ); // 79031234567</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="kong-ge-shi-zheng-ze-zi-fu" href="#kong-ge-shi-zheng-ze-zi-fu">空格是正则字符</a></h2><p>请注意正则表达式可以包含空格。他们被看作正则字符。</p>
+<p>通常我们不怎么注意空格。对于我们来说字符串 <code class="subject">1-5</code> 和 <code class="subject">1 - 5</code> 是几乎一样的。</p>
+<p>但如果正则表达式不把空格纳入考量，它就不能工作了。</p>
+<p>让我们尝试查找被一个连接符分割的数字。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 - 5&quot;.match(/\d-\d/) ); // null，不匹配！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们在正则中加入空格修复它：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1 - 5&quot;.match(/\d - \d/) ); // 1 - 5，现在生效了</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当然，只有在需要匹配空格的时候才会用到它。多余的空格（就像任何多余的字符）会阻止匹配：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;1-5&quot;.match(/\d - \d/) ); // null, 因为字符串 1-5 没有空格</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换而言之，正则表达式中所有字符都是有效的。空格也是。</p>
+<h2><a class="main__anchor" name="yi-ge-dian-hao-shi-ren-yi-zi-fu" href="#yi-ge-dian-hao-shi-ren-yi-zi-fu">一个点号是任意字符</a></h2><p>点号 <code>&quot;.&quot;</code> 是一个特殊的字符类，可以匹配<strong>换行符外的任意字符</strong>。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Z&quot;.match(/./) ); // Z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>或者在正则的中间：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /CS.4/;
+
+alert( &quot;CSS4&quot;.match(reg) ); // CSS4
+alert( &quot;CS-4&quot;.match(reg) ); // CS-4
+alert( &quot;CS 4&quot;.match(reg) ); // CS 4（空格也是一个字符）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意点号意味着“任何字符”，但不是“不存在的一个字符”。必须要有一个可以匹配的字符：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;CS4&quot;.match(/CS.4/) ); // null，无匹配因为没有可供点号匹配的字符（译者注：“.”实际匹配了数字 “4”，正则最后的一个 “4” 才是无匹配项）</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>我们谈及的字符集合有：</p>
+<ul>
+<li><code>\d</code> — 数字。</li>
+<li><code>\D</code> — 非数字。</li>
+<li><code>\s</code> — 空格标识，制表符，换行符。</li>
+<li><code>\S</code> — 除了 <code>\s</code> 的所有。</li>
+<li><code>\w</code> — 英文单词，数字，下划线 <code>'_'</code>。</li>
+<li><code>\W</code> — 除了 <code>\w</code> 的所有。</li>
+<li><code>'.'</code> — 除了一个换行符的任何字符。</li>
+</ul>
+<p>如果我们想要检索一个像反斜杠或者一个点这样有特殊意义的字符，那么我们需要使用一个反斜杠 <code class="pattern">\.</code> 进行转义。</p>
+<p>请注意一个正则也可以包含像换行符 <code>\n</code> 这样特殊字符的字符串。这和字符类是没有冲突的，因为字符类是由其他字母组成的。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cha-zhao-shi-jian" name="cha-zhao-shi-jian">查找时间</a></h3><a class="task__open-link" href="task/find-time-hh-mm.htm" tppabs="https://zh.javascript.info/task/find-time-hh-mm" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><p>时间的格式是：<code>hours:minutes</code>。小时和分钟都是两位数，如 <code>09:00</code>。</p>
+<p>编写正则表达式在字符串 <code class="subject">Breakfast at 09:00 in the room 123:456.</code> 中查找时间。</p>
+<p>P.S. 在这个任务里没有必要校验时间的正确性，所以 <code>25:99</code> 也可算做有效的结果。
+P.P.S. 正则表达式不能匹配 <code>123:456</code>。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>答案是：<code class="pattern">\b\d\d:\d\d\b</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;Breakfast at 09:00 in the room 123:456.&quot;.match( /\b\d\d:\d\d\b/ ) ); // 09:00</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-methods.htm" tppabs="https://zh.javascript.info/regexp-methods" data-tooltip="RegExp 和 String 的方法"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="regexp-escaping.htm" tppabs="https://zh.javascript.info/regexp-escaping" data-tooltip="转义，特殊字符"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/regexp-character-classes","identifier":"\/regexp-character-classes"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions">正则表达式</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zui-chang-shi-yong-de-ji-he-dsw">最常使用的集合：\d \s \w</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dan-ci-bian-jie-b">单词边界：\b</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fan-yi-ji-he">反义集合</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#kong-ge-shi-zheng-ze-zi-fu">空格是正则字符</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yi-ge-dian-hao-shi-ren-yi-zi-fu">一个点号是任意字符</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fregexp-character-classes"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/03-regexp-character-classes/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/03-regexp-character-classes/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/03-regexp-character-classes/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,168 @@
+《基础事件》------------------
+bind() 绑定多个事件 语法:$("H1").bind('click mouseover',function(){....
+unbind() 删除事件  语法:$("H1").unbind() 	   删除当前元素的所有事件
+			$("H1").unbind('click')	   删除所有的点击事件
+		        $("H1").unbind('click'type)   删除所有的点击事件里的type函数
+text() 获取或者改名元素的文本，而不是value 。比如:p span等等...
+location.assign() 在当前页面方法加载新的文档
+
+replace(/\s+/g,"") 去掉所有空格
+requestAnimationFrame(function())  //H5动画函数 类似以前的定时函数。每次触发时间是浏览器的
+
+=============代码小常识
+判断{}对象是否为空  if(Object.keys(判断对象).lenght === 1)
+数值属性后面加2位小数。 比如: var moeny = 10;   moeny.toFixed(2)
+a标签   target="_blank" 点击链接新开一个窗口显示
+e.stopProppagetion()   原生阻止事件冒泡。父元素或祖元素不会被音响
+
+
+==========》数组
+concat(array1,array2...) 多个数组想加 返回一个自己内容+括号里的内容集合
+unshift（内容...） 添加值  在原有的数组开头下标0添加元素 如果有第二个参数 下标将为1
+push(内容...)      添加值  在原有的数组末尾添加一个或多个元素
+splice(index(整数),sum（整数）)  删除对应下标元素 sum 删除集合 0则表示不删
+replace(‘原字符串’，‘要替换字符串’) 方法在字符串中用某些字符替换另一些字符替换
+slice()  2个参数 开始位置，结束位置， 返回的数组里截取出来的新数组 。不影响本身数组
+splice   如果选择位置范围不在本数据的索引中那么则为添加操作。在则为修改操作。操作对象是本身数据
+join(',')   将数组按 , 拆分成字符串
+
+==========》字符串
+split(',')   讲字符串按 , 号拆掉成数组
+
+
+==========》时间函数 new Date
+toLocaleDateString()   返回年月日 2018/8/17
+toLocaleTimeString() //返回下午或下午时间 比如:下午10:23:23
+toLocaleString()     返回年月日加时间 2018/9/13 上午9:00:00
+
+
+onchange 事件会在域的内容改变时发生
+addClass() 
+removeClassO() 
+===========》关于鼠标
+1.click()    单击事件
+2.mouseover()   鼠标移入事件
+3.mouseout()    鼠标移出事件
+4.mouseup()     鼠标左键弹起事件
+5.dblclick()   双击事件
+6.submit()     表单提交事件
+7.scroll()	滑动条滚动事件
+8.hover()      	鼠标悬浮离开事件
+
+===========》定时函数
+setInterval()   参数:事件 时间  作用：每隔指定时间执行参数里的事情
+setTimeout()    参数:事件 时间  作用：指定时间执行参数里的事情执行一次
+clearTimeout()  清除执行一次的事件函数
+clearInterval()  清除执行多次次的事件函数
+
+===========》基础事件
+1.focus()  光标得到
+2.blur()   光标失去
+3.toggle()     鼠标连续点击事件
+4.scroll()     网页滚动条事件
+5.select()     文本被选定时事件
+6.trigger()    模拟事件。（不是人为的操作，只执行一次）         
+
+===========》常用操作事件对象
+e.stopPropagation() 阻止冒泡行为
+toggleClass()   切换样式 参数css类的样式 节省代码
+html()    对HTML代码操作   有参时：表示赋值  无参时：表示获取
+text()    对标签内容操作   有参时：表示赋值  无参时：表示获取
+val()     属性值操作    有参：赋值 无参：取值
+empty()   清空内容包括子元素
+remove()  清除节点元素
+clone()   克隆节点 参数：flase true 表示是否接受元素所以处理事件
+each()  数组遍历 参数：集合数组 function()函数
+
+---------1 插入节点:
+append()    示范:$(A).append(B) 表示将B元素插入到A元素中     |意思相反
+appendTo()  示范:$(A).appendTo(B) 表示将A元素插入到B元素中   |插入在末尾
+prepend()   示范:$(A).prepend(B) 表示将B元素插入到A元素中 |意思相反
+prependTo() 示范:$(A).prepend(B) 表示将A元素插入到B元素中 |插入在开头
+after()  表示将元素插入在指定元素之后
+insertAfter()
+before()    表示将元素插入在指定元素之前
+insertBefore()  
+attr()  元素属性操作 可以用来获取值和替换值 例如：获得元素的宽度:$("img").attr("width")。更改值：attr({"width":"500px"})
+
+===========》动画事件		   |			    //实现排列动画 递归自调用
+show("slow")       动画显示出来    |			    $(".test").first().fadeIn(200,function
+                                   |                               $(this).next ha(){					              	                                         
+hide("fast")	   动画隐藏了      |			    })
+toggle()  	  循环执行         |				().fadeIn(200,ha)		   
+fadeOut()         淡出             | 共同参数：指定时间 事件 
+fadeIn()          淡入	           |
+fadeToggle()  	  循环执行判断fade |__________________
+fadeTo()    改变颜色透明度 参数：时间，透明度（0.50）|
+slideDown()       改变元素高度重上往下显示           |
+slideUp()	  改变元素高度重下往上隐身           |
+slideToggle()     循环执行slide的事件		     |
+高级动画:
+animate() 自定义位移动画：参数可以放4个，当必须放一个改变属性的键值 2参数 动画时间 3参数：回调函数
+          配合css的定位配合使用
+stop()  停止动画 参数：1参数是true 表示该元素全部停止 2参数为true 表示快速停止动画到指定位置 防止连续动画排队效果
+dalay() 指定动画多少时间才开始执行 参数；时间
+:animated  查询正在动画的元素选择器
+argumets.callee  表示无限动画
+$.fx.interval=13 全局变量 表示所有动画的速度 越小越流畅 但耗性能
+$.fx.off = true 关闭所有动画 全局变量
+
+===========》高级事件（选择器）
+prevAll()    获得当前元素之前的所有同辈元素 
+parent()     获得父元素
+get()   获得指定位置的元素对象 参数：放角标
+size()   获得指定对象集合的个数   
+children() 方法返回被选元素的所有直接子元素
+last()    获得最后一个元素
+first()    获得第一个元素
+next()	   返回下一个兄弟节点，不是所有的兄弟节点
+siblings()  获得所以同辈元素
+jQuery获取：
+
+jQuery.parent(expr)，找父亲节点，可以传入expr进行过滤，比如$("span").parent()或者$("span").parent(".class")
+jQuery.parents(expr)，类似于jQuery.parents(expr),但是是查找所有祖先元素，不限于父元素
+jQuery.children(expr)，返回所有子节点，这个方法只会返回直接的孩子节点，不会返回所有的子孙节点
+jQuery.contents()，返回下面的所有内容，包括节点和文本。这个方法和children()的区别就在于，包括空白文本，也会被作为一个jQuery对象返回，children()则只会返回节点
+jQuery.prev()，返回上一个兄弟节点，不是所有的兄弟节点
+jQuery.prevAll()，返回所有之前的兄弟节点
+jQuery.next()，返回下一个兄弟节点，不是所有的兄弟节点
+jQuery.nextAll()，返回所有之后的兄弟节点
+jQuery.siblings()，返回兄弟姐妹节点，不分前后
+jQuery.find(expr)，跟jQuery.filter(expr)完全不一样：
+
+jQuery.filter()，是从初始的jQuery对象集合中筛选出一部分，而
+
+jQuery.find()，的返回结果，不会有初始集合中的内容，比如$("p").find("span")，是从<p>元素开始找<span>，等同于$("p span")
+
+==========================(选择器)=========================================
+使用text()与html()均能获取到元素中的文本，两者的区别在于前者仅获取文本，后者会连同标签一起获取，
+但不同的浏览器返回的值会有所差异，所以若果仅获取文本的话，建议使用text()，
+
+gt(index),lt(index),eq(index)都用于过滤元素，且三者的索引值index均从0开始，
+1.第一个选择器获取到的是大于索引值的元素，
+2.第二个选择器获取到的是小于索引值的元素，
+4.第三个选择器获取到的是等于索引值的元素
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+
+ children:[
+        {
+          path: '/Hot',
+          name: 'Hot',
+          component: Hot
+        }, {
+          path: '/New',
+          name: 'New',
+          component: New
+        }, {
+          path: '/Classic',
+          name: 'Classic',
+          component: Classic
+        },
+      ]
+
+
+

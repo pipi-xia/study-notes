@@ -1,0 +1,797 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">Map、Set、WeakMap 和 WeakSet</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/map-set-weakmap-weakset"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Map、Set、WeakMap 和 WeakSet"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Map、Set、WeakMap 和 WeakSet"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/iterable"><link rel="next" href="/keys-values-entries"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="Map、Set、WeakMap 和 WeakSet"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/map-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/map-set-weakmap-weakset'" tppabs="https://javascript.info/map-set-weakmap-weakset"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="map-set-weakmap-weakset.htm" tppabs="https://zh.javascript.info/map-set-weakmap-weakset"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/map-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/map-set-weakmap-weakset'" tppabs="https://ja.javascript.info/map-set-weakmap-weakset"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/map-set-weakmap-weakset">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/map-set-weakmap-weakset" selected>简体中文</option><option value="https://ja.javascript.info/map-set-weakmap-weakset">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="38" max="67" data-tooltip="第 67 章，第 38 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types" itemprop="url"><span itemprop="title">数据类型</span></a></li></ol><h1 class="main__header-title">Map、Set、WeakMap 和 WeakSet</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Map、Set、WeakMap 和 WeakSet"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>现在，我们已经学习了下面的比较复杂的数据结构：</p>
+<ul>
+<li>对象：存储键值对的集合。</li>
+<li>数组：存储有序集合。</li>
+</ul>
+<p>但是，实际应用时还是不够。这就是 <code>Map</code> 和 <code>Set</code> 存在的原因。</p>
+<h2><a class="main__anchor" name="map" href="#map">Map</a></h2><p><a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Map  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Map'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> 是一个键值对的集合，很像 <code>Object</code>。但主要的区别是，<code>Map</code> 允许所有数据类型作为键。</p>
+<p>主要的方法包括：</p>
+<ul>
+<li><code>new Map()</code> – 创建 map。</li>
+<li><code>map.set(key, value)</code> – 根据键（key）存储值（value）。</li>
+<li><code>map.get(key)</code> – 根据键返回值，如果 map 中该键不存在，返回 <code>undefined</code>。</li>
+<li><code>map.has(key)</code> – 如果键存在，返回 <code>true</code>，否则返回 <code>false</code>。</li>
+<li><code>map.delete(key)</code> – 移除该键的值。</li>
+<li><code>map.clear()</code> – 清空 map</li>
+<li><code>map.size</code> – 返回当前元素个数。</li>
+</ul>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set('1', 'str1');   // 字符串作为 key
+map.set(1, 'num1');     // 数字作为 key
+map.set(true, 'bool1'); // 布尔值作为 key
+
+// 还记得普通对象 Object 吗？它将会吧所有的键转化为字符串类型
+// 但是 Map 将会保留键的类型，所以下面这两个是不同的：
+alert( map.get(1)   ); // 'num1'
+alert( map.get('1') ); // 'str1'
+
+alert( map.size ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>正如我们所见，不像普通对象，键并没有被转化为字符串。任何类型的键都是可以的。</p>
+<p><strong>Map 可以使用对象作为键。</strong></p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// 存下每个用户的来访次数
+let visitsCountMap = new Map();
+
+// john 是 map 的键
+visitsCountMap.set(john, 123);
+
+alert( visitsCountMap.get(john) ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>可以将对象用作键是 <code>Map</code> 最显著最重要的特点。对于字符串类型的键，<code>Object</code> 可以适用，但是对于上面这个例子，把 <code>Map</code> 替换成普通的对象 <code>Object</code> 就很困难了。</p>
+<p>在 <code>Map</code> 类型存在之前的时候，人们将唯一标识加入对象来达成 <code>Map</code> 的功能：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:32}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 我们添加了一个 id 字段
+let john = { name: &quot;John&quot;, id: 1 };
+
+let visitsCounts = {};
+
+// 现在，通过 id 来保存值
+visitsCounts[john.id] = 123;
+
+alert( visitsCounts[john.id] ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…但是 <code>Map</code> 的写法更加优雅。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">How <code>Map</code> compares keys</span></div>
+            <div class="important__content"><p>为了检测值是否相等，<code>Map</code> 使用了算法 <a href="javascript:if(confirm('https://tc39.github.io/ecma262/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://tc39.github.io/ecma262/#sec-samevaluezero'" tppabs="https://tc39.github.io/ecma262/#sec-samevaluezero">SameValueZero</a>。它大概就和严格等于号 <code>===</code> 相同，但区别是 <code>NaN</code> 等于 <code>NaN</code>。所以 <code>NaN</code> 也可以作为键。</p>
+<p>该算法不能更改或用户定制。</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Chaining</span></div>
+            <div class="important__content"><p>每次 <code>map.set</code> 的调用将会返回 map 自身，所以可以链式调用：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">map.set('1', 'str1')
+  .set(1, 'num1')
+  .set(true, 'bool1');</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="jiang-object-zhuan-hua-wei-map" href="#jiang-object-zhuan-hua-wei-map">将 Object 转化为 Map</a></h2><p>当创建 <code>Map</code> 时，我们可以像这样传递一个数组（或其他可迭代对象）给构造函数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// [key, value] 键值对数组
+let map = new Map([
+  ['1',  'str1'],
+  [1,    'num1'],
+  [true, 'bool1']
+]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>有一个内建方法 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries(obj)</a>，它可以返回一个对象的键值对数组，格式就和上面一样。</p>
+<p>所以我们可以用一个对象来初始化一个 map，就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map(Object.entries({
+  name: &quot;John&quot;,
+  age: 30
+}));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里，<code>Object.entries</code> 返回了键值对数组：<code>[ [&quot;name&quot;,&quot;John&quot;], [&quot;age&quot;, 30] ]</code>。这正是 <code>Map</code> 需要的。</p>
+<h2><a class="main__anchor" name="bian-li-map" href="#bian-li-map">遍历 Map</a></h2><p>有三种方法可以循环遍历 <code>map</code>：</p>
+<ul>
+<li><code>map.keys()</code> – 返回键的迭代器，</li>
+<li><code>map.values()</code> – 返回值的迭代器，</li>
+<li><code>map.entries()</code> – 返回 <code>[key, value]</code> 迭代器入口，<code>for..of</code> 循环会默认使用它。</li>
+</ul>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let recipeMap = new Map([
+  ['cucumber', 500],
+  ['tomatoes', 350],
+  ['onion',    50]
+]);
+
+// 迭代键（vegetables）
+for (let vegetable of recipeMap.keys()) {
+  alert(vegetable); // cucumber, tomatoes, onion
+}
+
+// 迭代值（amounts）
+for (let amount of recipeMap.values()) {
+  alert(amount); // 500, 350, 50
+}
+
+// 迭代键值对 [key, value]
+for (let entry of recipeMap) { // 和 recipeMap.entries() 一样
+  alert(entry); // cucumber,500（等等）
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">The insertion order is used</span></div>
+            <div class="important__content"><p>和普通 <code>Object</code> 不同，迭代器的迭代顺序和值被插入的顺序一致，<code>Map</code> 会保留这个顺序。</p>
+</div></div>
+<p>另外，<code>Map</code> 有一个内建的 <code>forEach</code> 方法，和 <code>Array</code> 很像：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">recipeMap.forEach( (value, key, map) =&gt; {
+  alert(`${key}: ${value}`); // cucumber: 500 等等
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="set" href="#set">Set</a></h2><p><code>Set</code> 是一个值的集合，这个集合中所有的值仅出现一次。</p>
+<p>主要方法包括：</p>
+<ul>
+<li><code>new Set(iterable)</code> – 创建 set，利用数组来创建是可选的（任何可迭代对象都可以）。</li>
+<li><code>set.add(value)</code> – 添加值，返回 set 自身。</li>
+<li><code>set.delete(value)</code> – 删除值，如果该 <code>value</code> 在调用方法的时候存在则返回 <code>true</code> ，否则返回 <code>false</code>。</li>
+<li><code>set.has(value)</code> – 如果 set 中存在该值则返回 <code>true</code> ，否则返回 <code>false</code>。</li>
+<li><code>set.clear()</code> – 清空 set。</li>
+<li><code>set.size</code> – 元素个数。</li>
+</ul>
+<p>例如，我们有访客登门，我们希望记住所有人。但是重复来访者并不应该有两份记录。一个访客必须只记录一次。</p>
+<p><code>Set</code> 就恰好是可以做到这个的数据结构：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let set = new Set();
+
+let john = { name: &quot;John&quot; };
+let pete = { name: &quot;Pete&quot; };
+let mary = { name: &quot;Mary&quot; };
+
+// 访客，一些用户来了多次
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+// set 保证了值的唯一
+alert( set.size ); // 3
+
+for (let user of set) {
+  alert(user.name); // John（然后是 Pete 和 Mary）
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>Set</code> 的替换方案是使用用户数组，每次插入新元素时使用 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/find  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/find'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/find">arr.find</a> 方法检查用户编码是否重复。但是性能就会很差，因为这个方法会遍历整个数组，检查每个元素。而对于唯一性检查，<code>Set</code> 在内部优化得更好。</p>
+<h2><a class="main__anchor" name="set-die-dai" href="#set-die-dai">Set 迭代</a></h2><p>我们可以使用 <code>for..of</code> 或者 <code>forEach</code> 来循环查看 set：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let set = new Set([&quot;oranges&quot;, &quot;apples&quot;, &quot;bananas&quot;]);
+
+for (let value of set) alert(value);
+
+// 和 forEach 相同：
+set.forEach((value, valueAgain, set) =&gt; {
+  alert(value);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>注意到这里有个有趣得事情。<code>forEach</code> 函数用于 <code>Set</code> 时有三个参数：value，然后又一个 value，之后是目标对象。确实，相同值的 value 在参数中出现了两次。</p>
+<p>这是为了兼容 <code>Map</code>，它在使用 <code>forEach</code> 方法时也包括三个参数。</p>
+<p>适用于 <code>Map</code> 的迭代方法 set 也同样支持：</p>
+<ul>
+<li><code>set.keys()</code> – 返回 set 中值的迭代对象，</li>
+<li><code>set.values()</code> – 和 <code>set.keys</code> 一样，为了兼容 <code>Map</code>，</li>
+<li><code>set.entries()</code> – 返回形如 <code>[value, value]</code> 的迭代对象，为了兼容 <code>Map</code> 而存在。</li>
+</ul>
+<h2><a class="main__anchor" name="weakmap-he-weakset" href="#weakmap-he-weakset">WeakMap 和 WeakSet</a></h2><p><code>WeakSet</code> 是一种特殊的 <code>Set</code>，它不会阻止 JavaScript 将它的元素从内存中移除。<code>WeakMap</code> 和 <code>Map</code> 的区别也和上述一样。</p>
+<p>正如我们在章节 <a href="garbage-collection.htm" tppabs="https://zh.javascript.info/garbage-collection">垃圾回收</a> 中了解到的，当该值可用（或可能需要）时，JavaScript 引擎将会把值缓存在内存中。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// 对象可被获取，john 是它的引用
+
+// 覆盖引用
+john = null;
+
+// 对象将会从内存中移除</code></pre>
+        </div>
+      </div>
+      
+      </div><p>通常情况下，当某数据存在于内存中时，对象的属性或者数组的元素或其他的数据结构将被认为是可以获取的并留存于内存。</p>
+<p>在一个正常 <code>Map</code> 中，我们将某对象存储为键还是值并不重要。它将会被一直保留在内存中，就算已经没有指向它的引用。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let map = new Map();
+map.set(john, &quot;...&quot;);
+
+john = null; // 覆盖引用
+
+// john 被保存在 map 中
+// 我们可以通过 map.keys() 得到它</code></pre>
+        </div>
+      </div>
+      
+      </div><p>除了 <code>WeakMap/WeakSet</code>。</p>
+<p><strong><code>WeakMap/WeakSet</code> 不会阻止内存移除对象。</strong></p>
+<p>我们从 <code>WeakMap</code> 开始。</p>
+<p>它和 <code>Map</code> 的第一个区别是它的键必须是对象，不能是基础类型的值：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let weakMap = new WeakMap();
+
+let obj = {};
+
+weakMap.set(obj, &quot;ok&quot;); // 运行正常（对象作为键）
+
+weakMap.set(&quot;test&quot;, &quot;Whoops&quot;); // 错误，因为“test”是原始类型</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，如果我们使用对象作为它的键，并且没有任何引用指向这个对象 —— 它将会自动被从内存中移除（也会从 map 中移除）。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let weakMap = new WeakMap();
+weakMap.set(john, &quot;...&quot;);
+
+john = null; // 覆盖引用
+
+// john 从内存中移除了！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>把它和上面普通 <code>Map</code> 的例子对比一下。现在，如果 <code>john</code> 仅作为 <code>WeakMap</code> 的键 —— 它将会被自动删除。</p>
+<p>…并且 <code>WeakMap</code> 并不支持方法 <code>keys()</code>，<code>values()</code>，<code>entries()</code>，我们不能对它进行迭代。所以没有办法获取它的所有键值。</p>
+<p><code>WeakMap</code> 仅有如下方法：</p>
+<ul>
+<li><code>weakMap.get(key)</code></li>
+<li><code>weakMap.set(key, value)</code></li>
+<li><code>weakMap.delete(key, value)</code></li>
+<li><code>weakMap.has(key)</code></li>
+</ul>
+<p>为什么会有这些限制？这是处于一些技术原因。如果一个对象没有任何引用（就像上面代码中的 <code>john</code>），那么它将会被自动删除。但是从技术上讲，它没有完全指定<strong>什么时候清理会发生</strong>。</p>
+<p>JavaScript 引擎将会决定何时清理。它可能会选择马上清理内存或者等待：当更多需要删除操作发生的时候再删除。所以，技术上说，目前 <code>WeakMap</code> 中元素个数并不可知。引擎可能已经清理，也可能没有，也可能只进行了部分的清理。处于这个原因，允许访问 <code>WeakMap</code> 整体的方法并不支持。</p>
+<p>现在，我们在哪里需要这样的结构？</p>
+<p><code>WeakMap</code> 的目的是，我们可以当且仅当该对象存在时，为对象存储一些内容。但我们并不会因为存储了对象的一些内容，就强制对象一直保留在内存中。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">weakMap.put(john, &quot;secret documents&quot;);
+// 如果 john 不存在了，secret documents 也将会被销毁</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当我们对对象有个主存储区，并且需要保存仅当对象活跃时候才相关的附加信息时，这一点就很有用了。</p>
+<p>让我们看一个例子。</p>
+<p>例如，我们写了一段代码来保存每个用户的访问次数。信息保存在一个 map 中：用户是键，访问次数是值。当用户离开了，我们也就不再需要保存他的访问次数了。</p>
+<p>有一个方法可以追踪离开的游客并手动清理记录：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:11}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+// map: user =&gt; visits count
+let visitsCountMap = new Map();
+
+// john 是 map 的键
+visitsCountMap.set(john, 123);
+
+// 现在 john 离开了，我们不需要他了
+john = null;
+
+// 但是记录依旧在 map 中，我们需要清理它！
+alert( visitsCountMap.size ); // 1
+// 它还在内存中，因为 Map 将它作为键</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另一个方法是使用 <code>WeakMap</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let john = { name: &quot;John&quot; };
+
+let visitsCountMap = new WeakMap();
+
+visitsCountMap.set(john, 123);
+
+// 现在 john 离开了，我们不需要他了
+john = null;
+
+// 除了 WeakMap 没有其他引用了，
+// 所以这个对象会自动的从内存和 visitsCountMap 中删除</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用普通的 <code>Map</code>，用户离开后的数据清理是一很乏味的任务：我们不仅要从主存储区移除用户（可能是变量或者数组），还需要将附加的数据存储例如 <code>visitsCountMap</code> 也清除。当用户在代码的一个位置进行管理，而附加结构位于另一个位置，并且没有获取有关清除的信息这样的复杂的情况下，这种操作就很笨重。</p>
+<p><code>WeakMap</code> 能让事情简单很多，因为它能够自动清理。它里面诸如上面的例子中来访次数这样的信息，当且仅当对象键存在的时候才存在。</p>
+<p><code>WeakSet</code> 的行为类似：</p>
+<ul>
+<li>它和 <code>Set</code> 类似，但是我们仅能将对象添加进 <code>WeakSet</code>（不可以是基础类型）</li>
+<li>仅当对象存在其他位置的引用时它才存在于 set 中。</li>
+<li>就像 <code>Set</code> 一样，它支持 <code>add</code>，<code>has</code> 和 <code>delete</code>，不支持 <code>size</code>，<code>keys()</code> 也不支持迭代器。</li>
+</ul>
+<p>例如，我们可以用它来追踪一个项目是否被检查过：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+// 用数组的元素来填充（3 个元素）
+let unreadSet = new WeakSet(messages);
+
+// 我们可以使用 unreadSet 来看一个 message 是否未读
+alert(unreadSet.has(messages[1])); // true
+// 读过之后就讲它从 set 中移除
+unreadSet.delete(messages[1]); // true
+
+// 当我们对消息列表做 shift 操作，set 就会自动清理
+messages.shift();
+// 不需要清理 unreadSet，它现在还有两个元素
+// 可惜并没有方法可以获取元素数目，所以无法显示出来</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>WeakMap</code> 和 <code>WeakSet</code> 最显著的限制就是没有迭代器，也不能获取当前所有内容。这可能会有点不方便，但是实际上并不妨碍 <code>WeakMap/WeakSet</code> 的主要任务 —— 作为对象的附加存储，该对象在其他位置被保存或管理。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>
+<p><code>Map</code> —— 是一个键值对集合</p>
+<p>和普通 <code>Object</code> 的区别：</p>
+<ul>
+<li>对象可以作为键。</li>
+<li>迭代顺序是插入顺序。</li>
+<li>附加方便的方法，有 <code>size</code> 属性。</li>
+</ul>
+</li>
+<li>
+<p><code>Set</code> —— 是一个包含不重复值的集合。</p>
+<ul>
+<li>和 array 不同，set 不允许元素重新排序。</li>
+<li>保持插入的顺序。</li>
+</ul>
+</li>
+<li>
+<p><code>WeakMap</code> —— <code>Map</code> 的一个变体，仅允许对象作为键，并且当对象由于其他原因不可引用的时候将其删除。</p>
+<ul>
+<li>它不支持整体的操作：没有 <code>size</code> 属性，没有 <code>clear()</code> 方法，没有迭代器。</li>
+</ul>
+</li>
+<li>
+<p><code>WeakSet</code> —— 是 <code>Set</code> 的一个变体，仅存储对象，并且当对象由于其他原因不可引用的时候将其删除。</p>
+<ul>
+<li>同样不支持 <code>size/clear()</code> 和迭代器。</li>
+</ul>
+</li>
+</ul>
+<p><code>WeakMap</code> 和 <code>WeakSet</code> 被用作主要对象存储的次要数据结构补充。一旦对象从存储移除，那么存在于 <code>WeakMap/WeakSet</code> 的数据将会被自动清除。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#guo-lv-wei-yi-shu-zu-yuan-su" name="guo-lv-wei-yi-shu-zu-yuan-su">过滤唯一数组元素</a></h3><a class="task__open-link" href="task/array-unique-map.htm" tppabs="https://zh.javascript.info/task/array-unique-map" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>定义 <code>arr</code> 为一个数组。</p>
+<p>创建一个函数 <code>unique(arr)</code>，函数将返回一个数组，包含 <code>arr</code> 中所有元素且元素均唯一。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function unique(arr) {
+  /* 你的代码 */
+}
+
+let values = [&quot;Hare&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Krishna&quot;,
+  &quot;Krishna&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Hare&quot;, &quot;:-O&quot;
+];
+
+alert( unique(values) ); // Hare, Krishna, :-O</code></pre>
+        </div>
+      </div>
+      
+      </div><p>附：这里用到了 string 类型，但其实可以是任何类型的值。</p>
+<p>附：使用 <code>Set</code> 来存储唯一的数值。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/E66bW7lyNwNIG2LzAfK2?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/E66bW7lyNwNIG2LzAfK2?p=preview'" tppabs="http://plnkr.co/edit/E66bW7lyNwNIG2LzAfK2?p=preview" target="_blank" data-plunk-id="E66bW7lyNwNIG2LzAfK2">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/28jYbvbm2eoGP9W2DDYH?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/28jYbvbm2eoGP9W2DDYH?p=preview'" tppabs="http://plnkr.co/edit/28jYbvbm2eoGP9W2DDYH?p=preview" target="_blank" data-plunk-id="28jYbvbm2eoGP9W2DDYH">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#guo-lv-anagrams" name="guo-lv-anagrams">过滤 anagrams</a></h3><a class="task__open-link" href="task/filter-anagrams.htm" tppabs="https://zh.javascript.info/task/filter-anagrams" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p><a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Anagram  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Anagram'" tppabs="https://en.wikipedia.org/wiki/Anagram">Anagrams</a> 是有相同数量相同字母但是顺序不同的单词。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">nap - pan
+ear - are - era
+cheaters - hectares - teachers</code></pre>
+        </div>
+      </div>
+      
+      </div><p>写一个函数 <code>aclean(arr)</code>，它返回的数组中 anagrams 被删除。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) ); // &quot;nap,teachers,ear&quot; or &quot;PAN,cheaters,era&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对于所有的 anagram 组，需要保留任意一个单词。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/ume5RaeOOYKPE1y1jyTf?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/ume5RaeOOYKPE1y1jyTf?p=preview'" tppabs="http://plnkr.co/edit/ume5RaeOOYKPE1y1jyTf?p=preview" target="_blank" data-plunk-id="ume5RaeOOYKPE1y1jyTf">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>为了找到所有 anagrams，让我们把每个单词打散为字母并排序。当单词有序后，所有的 anagrams 都一样。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">nap, pan -&gt; anp
+ear, era, are -&gt; aer
+cheaters, hectares, teachers -&gt; aceehrst
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们将会使用排序后字母的变量作为 map 的键，为每一个键仅保存一个值：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function aclean(arr) {
+  let map = new Map();
+
+  for (let word of arr) {
+    // 将单词打散为字母，排序然后拼接回来
+    let sorted = word.toLowerCase().split('').sort().join(''); // (*)
+    map.set(sorted, word);
+  }
+
+  return Array.from(map.values());
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>字母排序在行 <code>(*)</code> 以链式调用的方式完成。</p>
+<p>为了方便，我们把它分解为多行：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sorted = arr[i] // PAN
+  .toLowerCase() // pan
+  .split('') // ['p','a','n']
+  .sort() // ['a','n','p']
+  .join(''); // anp</code></pre>
+        </div>
+      </div>
+      
+      </div><p>两个不同的单词 <code>'PAN'</code> 和 <code>'nap'</code> 得到了同样的字母排序格式 <code>'anp'</code>。</p>
+<p>下一行将单词放入 map：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">map.set(sorted, word);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们遇到了一个有相同字母排序格式的单词，那么他就会覆盖 map 中相同键的前一个值。所以我们将总会得到每个字母格式下最靠后的单词。</p>
+<p>最后 <code>Array.from(map.values())</code> 将 map 的值迭代（我们不需要结果的键）然后返回数组集合。</p>
+<p>这里我们也可以使用一般的对象而不用 <code>Map</code>，因为键就是字符串。</p>
+<p>这就是答案：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function aclean(arr) {
+  let obj = {};
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    let sorted = arr[i].toLowerCase().split(&quot;&quot;).sort().join(&quot;&quot;);
+    obj[sorted] = arr[i];
+  }
+
+  return Array.from(Object.values(obj));
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/xCIA0smSXghEVHECMDCl?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xCIA0smSXghEVHECMDCl?p=preview'" tppabs="http://plnkr.co/edit/xCIA0smSXghEVHECMDCl?p=preview" target="_blank" data-plunk-id="xCIA0smSXghEVHECMDCl">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#die-dai-jian" name="die-dai-jian">迭代键</a></h3><a class="task__open-link" href="task/iterable-keys.htm" tppabs="https://zh.javascript.info/task/iterable-keys" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>我们希望得到 <code>map.keys()</code> 的数组然后继续对它进行处理（脱离开 map 本身）。</p>
+<p>但是有这样一个问题：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = map.keys();
+
+// 错误：numbers.push 不是一个函数
+keys.push(&quot;more&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为什么？我们如何修改代码让 <code>keys.push</code> 正常工作？</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>这是因为 <code>map.keys()</code> 返回的是迭代器而非数组。</p>
+<p>我们可以使用方法 <code>Array.from</code> 来将它转化为数组：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = Array.from(map.keys());
+
+keys.push(&quot;more&quot;);
+
+alert(keys); // name, more</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cun-chu-unread-biao-shi" name="cun-chu-unread-biao-shi">存储 &quot;unread&quot; 标识</a></h3><a class="task__open-link" href="task/recipients-read.htm" tppabs="https://zh.javascript.info/task/recipients-read" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这里有一个 messages 数组：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>你的代码可以访问它，但是消息被其他代码管理。这段代码有规律的添加新消息，删除旧消息，而且你不知道这些操作发生的时间。</p>
+<p>现在，你应该是用什么数据结构来保存消息是否已读这个信息？这个结构必须很适合给出当前已知的消息对象是否已读的答案。</p>
+<p>附：当消息被从 <code>messages</code> 中移除的时候，它应该也从你的数据结构中消失。</p>
+<p>附：我们不能直接修改消息对象。如果它们被其他代码管理，那么给他们添加额外的属性可能导致不好的后果。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>明智的选择是 <code>WeakSet</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+let readMessages = new WeakSet();
+
+// 两个消息已读
+readMessages.add(messages[0]);
+readMessages.add(messages[1]);
+// readMessages 包含两个元素
+
+// ...让我们再读一遍第一条消息！
+readMessages.add(messages[0]);
+// readMessages 仍然有两个不重复的元素
+
+// 回答：message[0] 已读？
+alert(&quot;Read message 0: &quot; + readMessages.has(messages[0])); // true
+
+messages.shift();
+// 现在 readMessages 有一个元素（技术上来说内存可能稍后被清理）</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>WeakSet</code> 允许存储一系列的消息并且很容易就能检查它包含的消息是否还存在。</p>
+<p>它会自动清理自身。但是作为交换，我们不能对它进行迭代。我们不能直接获取所有已读消息。但是我们可以通过迭代所有消息然后找出存在于 set 的那些消息来完成这个功能。</p>
+<p>附：如果消息被其他代码管理，那么仅为了自己的功能给每个消息添加一个属性也许会很危险，但是我们可以将它改为 symbol 来规避冲突。</p>
+<p>像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// the symbolic property is only known to our code
+let isRead = Symbol(&quot;isRead&quot;);
+messages[0][isRead] = true;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在即使其他人的代码使用 <code>for..in</code> 循环消息的属性，我们的秘密标识也不会出现。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#bao-cun-yue-du-ri-qi" name="bao-cun-yue-du-ri-qi">保存阅读日期</a></h3><a class="task__open-link" href="task/recipients-when-read.htm" tppabs="https://zh.javascript.info/task/recipients-when-read" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这里有一个和<a href="task/recipients-read.htm" tppabs="https://zh.javascript.info/task/recipients-read">前一任务</a>相像的消息数组。情境相似。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在的问题是：你建议采用什么数据结构来保存信息：“消息是什么时候被阅读的？”。</p>
+<p>在前一个任务中我们只需要保存“是/否”。现在我们需要保存日期，并且它也应该在消息没有了就消失。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们使用 <code>WeakMap</code> 保存日期：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let messages = [
+    {text: &quot;Hello&quot;, from: &quot;John&quot;},
+    {text: &quot;How goes?&quot;, from: &quot;John&quot;},
+    {text: &quot;See you soon&quot;, from: &quot;Alice&quot;}
+];
+
+let readMap = new WeakMap();
+
+readMap.set(messages[0], new Date(2017, 1, 1));
+// Date 对象我们将会稍后学习</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="iterable.htm" tppabs="https://zh.javascript.info/iterable" data-tooltip="Iterables（可迭代对象）"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="keys-values-entries.htm" tppabs="https://zh.javascript.info/keys-values-entries" data-tooltip="对象的键、值、项"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/map-set-weakmap-weakset","identifier":"\/map-set-weakmap-weakset"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types">数据类型</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#map">Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#jiang-object-zhuan-hua-wei-map">将 Object 转化为 Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bian-li-map">遍历 Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#set">Set</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#set-die-dai">Set 迭代</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#weakmap-he-weakset">WeakMap 和 WeakSet</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (5)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fmap-set-weakmap-weakset"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/07-map-set-weakmap-weakset/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/07-map-set-weakmap-weakset/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/07-map-set-weakmap-weakset/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">变量</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/variables"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="变量"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="变量"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/strict-mode"><link rel="next" href="/types"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="变量"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/variables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/variables'" tppabs="https://javascript.info/variables"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="variables.htm" tppabs="https://zh.javascript.info/variables"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/variables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/variables'" tppabs="https://ja.javascript.info/variables"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/variables">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/variables" selected>简体中文</option><option value="https://ja.javascript.info/variables">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="7" max="67" data-tooltip="第 67 章，第 7 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps" itemprop="url"><span itemprop="title">JavaScript 基础知识</span></a></li></ol><h1 class="main__header-title">变量</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="变量"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>大多数情况下，脚本需要处理信息。这有两个例子：</p>
+<ol>
+<li>一个网上商店 —— 可能就会有正在售卖的商品和购物车相关信息</li>
+<li>一个聊天应用 —— 信息可能就包括有用户、消息等等。</li>
+</ol>
+<p>变量就是用来储存这些信息的。</p>
+<h2><a class="main__anchor" name="yi-ge-bian-liang" href="#yi-ge-bian-liang">一个变量</a></h2><p>一个 <a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Variable_(computer_science)  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Variable_(computer_science)'" tppabs="https://en.wikipedia.org/wiki/Variable_(computer_science)">变量</a> 是数据的“命名存储”。我们可以使用变量来保存商品、访客和其他信息。</p>
+<p>在 JavaScript 中创建一个变量，我们需要用到 <code>let</code> 关键字。</p>
+<p>下面的语句创建（换句话说，<strong>声明</strong>或者<strong>定义</strong>）了一个名称为 “message” 的变量：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，通过赋值操作符 <code>=</code> 为变量添加一些数据：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+
+message = 'Hello'; // 保存字符串</code></pre>
+        </div>
+      </div>
+      
+      </div><p>该字符串目前保存到与该变量相关联的内存区域，可以通过使用变量名称访问它：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+message = 'Hello!';
+
+alert(message); // 显示变量内容</code></pre>
+        </div>
+      </div>
+      
+      </div><p>简洁一点，我们将变量定义和赋值合并成一行：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message = 'Hello!'; // 定义变量，并且赋值
+
+alert(message); // Hello!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>也可以在一行中声明多个变量。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John', age = 25, message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>看上去代码长度更短，但并不推荐。为了更好的可读性，请一行声明一个变量。</p>
+<p>多行变量声明有点长，但更容易阅读：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John';
+let age = 25;
+let message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>一些程序员采用下面的形式书写多个变量：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John',
+  age = 25,
+  message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…甚至使用“逗号优先”的形式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = 'John'
+  , age = 25
+  , message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>技术上讲，这些变体都有一样的效果。所以，这是个个人品味和审美方面的问题。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>var</code> 而不是 <code>let</code></span></div>
+            <div class="important__content"><p>在较旧的脚本中，你也可能发现另一个关键字 <code>var</code>，而不是 <code>let</code>:</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:3}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">var message = 'Hello';</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>var</code> 关键字与 <code>let</code> <strong>大体</strong>相同，也用来声明变量，但稍微有些不同，也有点“老派”。</p>
+<p><code>let</code> 和 <code>var</code> 之间有些微妙的差别，但目前对于我们来说并不重要。我们将会在 <a href="var.htm" tppabs="https://zh.javascript.info/var">旧时的 &quot;var&quot;</a> 章节中介绍它们。</p>
+</div></div>
+<h2><a class="main__anchor" name="yi-ge-xian-shi-sheng-huo-de-lei-bi" href="#yi-ge-xian-shi-sheng-huo-de-lei-bi">一个现实生活的类比</a></h2><p>如果将变量想象成一个“数据”的盒子，盒子上有一个唯一的标注盒子名字的贴纸。这样我们能更轻松地掌握“变量”的概念。</p>
+<p>例如，变量 <code>message</code> 可以被想象成一个标有 <code>&quot;message&quot;</code> 的盒子，在盒子里面，有一个值为 <code>&quot;Hello!&quot;</code>。</p>
+<figure><div class="image" style="width:148px">
+      <div class="image__ratio" style="padding-top:86.48648648648648%"></div>
+      <img src="article/variables/variable.png" tppabs="https://zh.javascript.info/article/variables/variable.png" alt="" width="148" height="128" class="image__image">
+      </div></figure><p>我们可以在盒子内放入任何值。</p>
+<p>同样，我们也可以改变它。值可以根据需要多次改变。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let message;
+
+message = 'Hello!';
+
+message = 'World!'; // 值改变了
+
+alert(message);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当值改变的时候，先前的数据就从变量中删除了。</p>
+<figure><div class="image" style="width:379px">
+      <div class="image__ratio" style="padding-top:46.17414248021108%"></div>
+      <img src="article/variables/variable-change.png" tppabs="https://zh.javascript.info/article/variables/variable-change.png" alt="" width="379" height="175" class="image__image">
+      </div></figure><p>还可以声明两个变量，然后将其中一个变量的数据拷贝进另一个变量。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let hello = 'Hello world!';
+
+let message;
+
+// 将字符串 'Hello world' 从变量 hello 拷贝进 message
+message = hello;
+
+// 现在两个变量保存着相同的数据
+alert(hello); // Hello world!
+alert(message); // Hello world!</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">函数式语言</span></div>
+            <div class="important__content"><p>有趣的是，也存在禁止更改变量值的<a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Functional_programming  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Functional_programming'" tppabs="https://en.wikipedia.org/wiki/Functional_programming">函数式</a>编程语言。比如，<a href="javascript:if(confirm('http://www.scala-lang.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.scala-lang.org/'" tppabs="http://www.scala-lang.org/">Scala</a> 或者 <a href="javascript:if(confirm('http://www.erlang.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.erlang.org/'" tppabs="http://www.erlang.org/">Erlang</a>。</p>
+<p>在这种类型的语言中，一旦值保存在盒子中，就永远存在。如果你试图保存其他值，它会强制创建一个新盒子（声明一个新变量），无法重用先前的变量。</p>
+<p>虽然看上去有点奇怪，但是这些语言有很大的发展潜力。不仅如此，在某些领域，比如并行计算，这个限制有一定的好处。研究这样的一门语言（即使不打算很快就用上它）有助于开阔视野。</p>
+</div></div>
+<h2><a class="main__anchor" name="variable-naming" href="#variable-naming">变量命名</a></h2><p>JavaScript 的变量命名有两个限制：</p>
+<ol>
+<li>变量名称必须仅包含字母，数字，符号 <code>$</code> and <code>_</code>。</li>
+<li>首字符必须非数字。</li>
+</ol>
+<p>有效的命名，例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let userName;
+let test123;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果命名包括多个单词，通常采用 <a href="javascript:if(confirm('https://en.wikipedia.org/wiki/CamelCase  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/CamelCase'" tppabs="https://en.wikipedia.org/wiki/CamelCase">camelCase</a> 命名规则。也就是，单词一个接一个，每个单词以大写字母开头：<code>myVeryLongName</code>。</p>
+<p>有趣的是，美元符号 <code>'$'</code> 和下划线 <code>'_'</code> 也可以在命名中使用。它们是正常的符号，就跟字母一样，没有任何特殊的含义。</p>
+<p>下面的命名是有效的：</p>
+<div data-trusted="0" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let $ = 1; // 使用 &quot;$&quot; 来声明一个变量
+let _ = 2; // 现在是用 &quot;_&quot; 来声明一个变量
+
+alert($ + _); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>下面的变量命名不正确：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let 1a; // 不能以数字开始
+
+let my-name; // 连字符 '-' 不允许在命名中出现</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">大小写的影响</span></div>
+            <div class="important__content"><p>命名为 <code>apple</code> 和 <code>AppLE</code> 的变量是不同的两个变量。</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">允许非英文字母，但不推荐</span></div>
+            <div class="important__content"><p>可以使用任何语言，包括西里尔字母（cyrillic letters）甚至是象形文字，就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let имя = '...';
+let 我 = '...';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>技术上讲，完全没有错误，这样的命名是完全允许的，但是有一个国际传统：在变量命名中使用英文。哪怕我们正在写一个很小的脚本，它也有可能有很长的生命周期。某个时候，来自其他国家的人可能会阅读它。</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">保留字</span></div>
+            <div class="important__content"><p>有一长串的保留字无法用作变量命名，因为它们被语言本身采用了。</p>
+<p>比如，单词 <code>let</code>、<code>class</code>、<code>return</code>、<code>function</code> 被保留。</p>
+<p>下面的代码将会抛出一个语法错误：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let let = 5; // 不能用 &quot;let&quot; 来命名一个变量，错误！
+let return = 5; // 同样，不能使用 &quot;return&quot;，错误！</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">未采用 <code>use strict</code> 下的赋值</span></div>
+            <div class="important__content"><p>一般，需要在使用一个变量前定义它。但是在旧时代，可以简单地赋值来创建一个变量，而不需要 <code>let</code>。如果不使用 <code>use strict</code>，这仍然正常工作，这种行为是为了保持与旧脚本的兼容。</p>
+<div data-trusted="1" class="code-example" data-no-strict="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 注意：这个例子中没有 &quot;use strict&quot;
+
+num = 5; // 如果变量 &quot;num&quot; 不存在，就会被创建
+
+alert(num); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是个糟糕的做法，严格模式下会抛出错误。</p>
+<div data-trusted="0" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">&quot;use strict&quot;;
+
+num = 5; // error: num is not defined</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="chang-liang" href="#chang-liang">常量</a></h2><p>声明一个常数（不变）变量，可以使用 <code>const</code> 而非 <code>let</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const myBirthday = '18.04.1982';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用 <code>const</code> 声明的变量称为“常量”。它们不能被修改，尝试这样做就会造成错误：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const myBirthday = '18.04.1982';
+
+myBirthday = '01.01.2001'; // 错误，不能对常量重新赋值</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当程序员能确定这个变量永远不会改变的时候，就可以使用 <code>const</code> 来确保这种行为，并且清楚地向别人传递这一事实。</p>
+<h3><a class="main__anchor" name="da-xie-xing-shi-de-chang-shu" href="#da-xie-xing-shi-de-chang-shu">大写形式的常数</a></h3><p>一个普遍的做法是将常量用作别名，以便记住那些在执行之前就已知的难以记住的值。</p>
+<p>这些常量使用大写和下划线命名。</p>
+<p>就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const COLOR_RED = &quot;#F00&quot;;
+const COLOR_GREEN = &quot;#0F0&quot;;
+const COLOR_BLUE = &quot;#00F&quot;;
+const COLOR_ORANGE = &quot;#FF7F00&quot;;
+
+// ...当需要选择一个颜色
+let color = COLOR_ORANGE;
+alert(color); // #FF7F00</code></pre>
+        </div>
+      </div>
+      
+      </div><p>好处:</p>
+<ul>
+<li><code>COLOR_ORANGE</code> 比 <code>&quot;#FF7F00&quot;</code> 更容易记忆。</li>
+<li>比起 <code>COLOR_ORANGE</code> 而言，<code>&quot;#FF7F00&quot;</code> 更容易输错。</li>
+<li>阅读代码时，<code>COLOR_ORANGE</code> 比 <code>#FF7F00</code> 更有含义。</li>
+</ul>
+<p>什么时候该为常量使用大写命名，什么时候常规命名。让我们弄清楚一点：</p>
+<p>作为一个常数，意味着值永远不变。但是有些常量在执行之前就已知了（比如红色的十六进制值），还有些在执行期间实时“计算”，赋值之后才不会改变。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const pageLoadTime = /* time taken by a webpage to load */;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>pageLoadTime</code> 的值在页面加载之前是未知的，所以采用常规命名。但是它仍然是个常量，因为赋值之后不会改变。</p>
+<p>换句话说，大写命名的常量仅用作“硬编码”值的别名。</p>
+<h2><a class="main__anchor" name="ming-ming-zheng-que" href="#ming-ming-zheng-que">命名正确</a></h2><p>谈到变量，还有一件非常重要的事。</p>
+<p>请合理地命名变量。如果有需要，花时间思考一下。</p>
+<p>变量命名是编程过程中最重要和最复杂的技能之一。快速地浏览变量的命名就知道代码是一个初学者还是有经验的开发者书写的。</p>
+<p>在一个现实的项目中，大多数的时间用来修改和扩展现有的代码库，而不是从头开始写一些完全独立的代码。当一段时间后，我们做完其他事情，重返我们的代码，找到命名良好的信息要容易得多。换句话说，变量要有个好名字。</p>
+<p>声明变量之前，多花点时间思考它的良好命名。你会受益良多。</p>
+<p>一些很好遵循的规则是：</p>
+<ul>
+<li>使用人类可读的命名，比如 <code>userName</code> 或者 <code>shoppingCart</code>。</li>
+<li>诸如 <code>a</code>、<code>b</code>、<code>c</code> 的缩写和短名称，离它们远点，除非你真的知道你在干什么。</li>
+<li>名称最大限度地简洁描述。不好的例子就是 <code>data</code> 和 <code>value</code>，这样的名称等于什么都没说。如果能够非常明显地从上下文知道数据和值所表达的含义，这样使用它们也是可以的。</li>
+<li>脑海中的术语和团队保持一致。如果站点的访客称为“用户”，则我们采用相关的变量命名，比如 <code>currentUser</code> 或者 <code>newUser</code>，而不要 <code>currentVisitor</code> 或者一个 <code>newManInTown</code>。</li>
+</ul>
+<p>听上去很简单？确实如此，但是实践中创建一个简洁描述的名称并不并非如此。大胆试试吧。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">重用还是新建？</span></div>
+            <div class="important__content"><p>最后一点，有一些懒惰的程序员，倾向于重用现有的变量，而不是声明一个新的变量。</p>
+<p>结果是，这个变量就像是被扔进不同东西盒子，而没有改变它的贴纸。现在里面是什么？谁知道呢。我们需要靠近一点，然后检查它。</p>
+<p>这样的程序员节省了一点变量声明的时间，但却在调试代码的时候损失数十倍。</p>
+<p>一个额外的变量是好的，而不是邪恶的。</p>
+<p>目前的 JavaScript 压缩器和浏览器都很够很好地优化代码，所以不会产生性能问题。为不同的值使用不同的变量可以帮助引擎进行优化。</p>
+</div></div>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>我们可以声明变量来存储数据。可以通过使用 <code>var</code>、<code>let</code> 或者 <code>const</code> 来完成。</p>
+<ul>
+<li><code>let</code> – 新时代的变量声明方式。Chrome（V8）中代码必须开启严格模式以使用 <code>let</code>。</li>
+<li><code>var</code> – 旧时代的变量声明方式。一般情况下，我们不会使用它。但是，我们会在 <a href="var.htm" tppabs="https://zh.javascript.info/var">旧时的 &quot;var&quot;</a> 章节介绍 <code>var</code> 和 <code>let</code> 的微妙差别，以防你需要它们。</li>
+<li><code>const</code> – 类似于<code>let</code>，但是变量的值无法被修改。</li>
+</ul>
+<p>变量应当以一种容易理解变量内部是什么的方式进行命名。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#shi-yong-bian-liang" name="shi-yong-bian-liang">使用变量</a></h3><a class="task__open-link" href="task/hello-variables.htm" tppabs="https://zh.javascript.info/task/hello-variables" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 2</span></div><div class="task__content"><ol>
+<li>声明两个变量：<code>admin</code> 和 <code>name</code>。</li>
+<li>将值 <code>&quot;John&quot;</code> 赋给 <code>name</code>。</li>
+<li>从 <code>name</code> 变量中拷贝其值给 <code>admin</code>。</li>
+<li>使用 <code>alert</code> 显示 <code>admin</code> 的值（一定会输出 “John”）。</li>
+</ol>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>下面的代码，每一行都对应着任务列表中的对应项。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let admin, name; // 一次声明两个变量。
+
+name = &quot;John&quot;;
+
+admin = name;
+
+alert( admin ); // &quot;John&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#gei-chu-zheng-que-de-ming-zi" name="gei-chu-zheng-que-de-ming-zi">给出正确的名字</a></h3><a class="task__open-link" href="task/declare-variables.htm" tppabs="https://zh.javascript.info/task/declare-variables" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 3</span></div><div class="task__content"><ol>
+<li>使用我们的星球的名字创建一个变量。你会怎么命名这个变量？</li>
+<li>创建一个变量来存储当前浏览者的名字。你会怎么命名这个变量？</li>
+</ol>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>首先，声明变量代表我们星球的名字。</p>
+<p>这很简单：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ourPlanetName = &quot;Earth&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>注意，我们也可以用一个更短的名字 <code>planet</code>，但是它可能并不清楚它指的是什么行星。再啰嗦一点也是挺好的。至少直到这个变量“不太长”就行。</p>
+<p>第二，定义当前浏览者的名字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let currentUserName = &quot;John&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>还有，如果我们的确知道用户就是当前的用户的话，我们可以使用更短的 <code>userName</code>。</p>
+<p>现代编辑器的自动补全可以让长变量名变得容易书写。不要浪费这个特性。一个名字中包含三个词就挺好的。</p>
+<p>如果你的编辑器没有合适的自动补全，换<a href="code-editors.htm" tppabs="https://zh.javascript.info/code-editors">一个新的吧</a>。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#da-xie-de-chang-liang" name="da-xie-de-chang-liang">大写的常量？</a></h3><a class="task__open-link" href="task/uppercast-constant.htm" tppabs="https://zh.javascript.info/task/uppercast-constant" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>检查下面的代码：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const birthday = '18.04.1982';
+
+const age = someCode(birthday);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里我们有一个 <code>birthday</code> 日期常量和通过一些有用的代码（为了保持简短这里没有提供，并且细节也无关紧要）从 <code>birthday</code> 计算出的 <code>age</code> 常量。</p>
+<p>对于 <code>birthday</code> 使用大写方式正确吗？那么 <code>age</code> 呢？或者两者？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">const BIRTHDAY = '18.04.1982'; // 使用大写？
+
+const AGE = someCode(BIRTHDAY); // 使用大写？</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们通常用大写字母表示“硬编码”的常量。或者，换句话说，当值在执行之前被知道并直接写入代码中的时候。</p>
+<p>在这个代码中 <code>birthday</code> 确信是这样的。因此我们可以使用大写。</p>
+<p>在对照组中，<code>age</code> 是在运行时计算出的。今天我们有一个年龄，一年以后我们就会有另一个。它在某种意义上不会通过代码的执行而改变。但是相比 <code>birthday</code> 它是“少一些常量”的，它是计算出的，因此我们应该使用小写。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="strict-mode.htm" tppabs="https://zh.javascript.info/strict-mode" data-tooltip="新模式，&quot;use strict&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="types.htm" tppabs="https://zh.javascript.info/types" data-tooltip="数据类型"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/variables","identifier":"\/variables"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps">JavaScript 基础知识</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yi-ge-bian-liang">一个变量</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yi-ge-xian-shi-sheng-huo-de-lei-bi">一个现实生活的类比</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#variable-naming">变量命名</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#chang-liang">常量</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ming-ming-zheng-que">命名正确</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fvariables"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/04-variables/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/04-variables/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/04-variables/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

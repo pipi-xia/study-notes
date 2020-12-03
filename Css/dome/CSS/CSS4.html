@@ -1,0 +1,112 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+
+		<title>CSS</title>
+		
+		<style type="text/css">
+			body
+			{
+				/*
+					background:url(imgs/bg.png)  no-repeat ;
+					background-size:cover ;
+				
+				background-image: linear-gradient(to right, red,blue,yellow,green);
+				*/
+				background-image:  radial-gradient(circle,red 50%,blue 60% ,yellow 90%) ;
+			}
+		
+			span
+			{
+				color : rgba(1,27,182,1)  ;
+				font-size: 30px ;
+				/*如果字体商用，一定要注意版权问题 */ 
+				font-family:SimSun,SimHei, "楷体","PingFang SC" ;
+				/**/ 
+				font-style: normal ;
+				font-weight: 100 ;
+				
+				/*必须严格遵循顺序 
+				font:italic bold 40px Georgia,serif ;
+				*/
+				
+				text-shadow: red 30px 30px 5px;
+				
+	
+				
+			}
+			ul>li:first-child
+			{
+					background-color:yellow ;
+					text-indent:2em ;
+					line-height:100px ;
+					text-decoration: line-through ;
+					
+					/*color : rgb(11,192,15) ;*/
+				
+					
+					
+			}
+			
+			ul>li>a
+			{
+				color :#000 ;
+				text-decoration:none ;
+			}
+			
+			
+	
+			ul>li>a:link
+			{
+				color: red  ; 
+			}
+		
+					
+			ul>li>a:visited
+			{
+				color: green  ; 
+			}
+			
+			ul>li>a:hover
+			{
+				color: yellow ; 
+				/*cursor: wait ; */
+			}
+			
+						
+			ul>li>a:active
+			{
+				color: #FFF ; 
+				/*cursor: wait ; */
+			}
+			
+			ul li
+			{
+				/* list-style-type: none ;*/
+				list-style-image:url(imgs/ico.png) ;
+			
+				
+			}
+		</style>	
+	</head>
+	<body>  
+	
+		<ul>
+				<li><a href="#">aaaaaa</a></li>
+				<li><a href="#">aaaaaa</a></li>
+				<li><a href="#">aaaaaa</a></li>
+				<li><a href="#">aaaaaa</a></li>
+		</ul>
+		
+		
+	
+		<p>
+			ppppppppppppppppp<span>泸州职业技术学院</span>pppppppppppppppp
+		</p>
+	
+
+	</body>
+</html>
+

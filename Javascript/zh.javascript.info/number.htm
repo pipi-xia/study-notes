@@ -1,0 +1,1111 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">数字类型</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/number"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="数字类型"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="数字类型"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/primitives-methods"><link rel="next" href="/string"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="数字类型"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/number  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/number'" tppabs="https://javascript.info/number"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="number.htm" tppabs="https://zh.javascript.info/number"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/number  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/number'" tppabs="https://ja.javascript.info/number"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/number">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/number" selected>简体中文</option><option value="https://ja.javascript.info/number">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="33" max="67" data-tooltip="第 67 章，第 33 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types" itemprop="url"><span itemprop="title">数据类型</span></a></li></ol><h1 class="main__header-title">数字类型</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="数字类型"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript 中的所有数字都以 64 位格式 <a href="javascript:if(confirm('http://en.wikipedia.org/wiki/IEEE_754-1985  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://en.wikipedia.org/wiki/IEEE_754-1985'" tppabs="http://en.wikipedia.org/wiki/IEEE_754-1985">IEEE-754</a> 存储，也称为“双精度”。</p>
+<p>让我们回顾一下并展开我们目前了解的内容。</p>
+<h2><a class="main__anchor" name="bian-xie-shu-zi-de-geng-duo-fang-fa" href="#bian-xie-shu-zi-de-geng-duo-fang-fa">编写数字的更多方法</a></h2><p>想象一下，我们需要写 10 亿。显而易见的方法是：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let billion = 1000000000;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但在现实生活中，我们通常避免写一长串零，因为它很容易输入错误。另外，我们很懒。我们通常会为十亿或七十三亿写一些类似于 <code>1bn</code> 的数字，为 <code>7.3bn</code>。对于大多数人来说也是如此。</p>
+<p>在 JavaScript 中，我们通过在数字后附加字母 “e” 来缩短数字，并指定零的数量来计数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let billion = 1e9;  // 1 billion, literally: 1 and 9 zeroes
+
+alert( 7.3e9 );  // 7.3 billions (7,300,000,000)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换句话说，<code>&quot;e&quot;</code> 把数字乘以 <code>1</code> 后面跟着指定数量的 0。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">1e3 = 1 * 1000
+1.23e6 = 1.23 * 1000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在让我们写一些非常小的东西。例如：1 微秒（百万分之一秒）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ms = 0.000001;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>就像以前一样，使用 <code>&quot;e&quot;</code> 可以提供帮助。如果我们想避免明确地写零，我们可以说：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let ms = 1e-6; // six zeroes to the left from 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们计算 <code>0.000001</code> 中的零，则有 6 个。所以自然是 <code>1e-6</code>。</p>
+<p>换句话说，<code>e</code> 后面的负数表示除以 1 后面跟着给定数量的 0：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// -3 divides by 1 with 3 zeroes
+1e-3 = 1 / 1000 (=0.001)
+
+// -6 divides by 1 with 6 zeroes
+1.23e-6 = 1.23 / 1000000 (=0.00000123)</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="shi-liu-jin-zhi-er-jin-zhi-he-ba-jin-zhi-shu-zi" href="#shi-liu-jin-zhi-er-jin-zhi-he-ba-jin-zhi-shu-zi">十六进制，二进制和八进制数字</a></h3><p><a href="javascript:if(confirm('https://en.wikipedia.org/wiki/Hexadecimal  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://en.wikipedia.org/wiki/Hexadecimal'" tppabs="https://en.wikipedia.org/wiki/Hexadecimal">十六进制</a>数字在 JavaScript 中被广泛用于表示颜色，编码字符以及其他许多事物。所以很自然地，写一个更简短的方法：<code>0x</code> 然后是数字。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0xff ); // 255
+alert( 0xFF ); // 255 (the same, case doesn't matter)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>虽然二进制和八进制数字系统很少使用，但也支持使用 <code>0b</code> 和 <code>0o</code> 前缀：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = 0b11111111; // binary form of 255
+let b = 0o377; // octal form of 255
+
+alert( a == b ); // true, the same number 255 at both sides</code></pre>
+        </div>
+      </div>
+      
+      </div><p>只有这三种进制支持这种写法。对于其他进制，我们应该使用函数 <code>parseInt</code>（我们将在本章后面看到）。</p>
+<h2><a class="main__anchor" name="tostringbase" href="#tostringbase">toString(base)</a></h2><p>方法 <code>num.toString(base)</code> 返回带有给定 <code>base</code> 的进制中 <code>num</code> 的字符串表示。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = 255;
+
+alert( num.toString(16) );  // ff
+alert( num.toString(2) );   // 11111111</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>base</code> 可以从 <code>2</code> 变到 <code>36</code>。默认情况下它是 <code>10</code>。</p>
+<p>常见的用例如下：</p>
+<ul>
+<li>
+<p><strong>base=16</strong> 用于十六进制颜色，字符编码等，数字可以是 <code>0..9</code> 或 <code>A..F</code>。</p>
+</li>
+<li>
+<p><strong>base=2</strong> 主要用于调试按位操作，数字可以是 <code>0</code> 或 <code>1</code>。</p>
+</li>
+<li>
+<p><strong>base=36</strong> 是最大值，数字可以是 <code>0..9</code> 或 <code>A..Z</code>。整个拉丁字母用来表示一个数字。对于 <code>36</code> 来说，一个有趣而有用的例子是，当我们需要将一个较长的数字标识符变成较短的时候，例如做一个简短的URL。可以简单地用基数为 <code>36</code> 的数字系统表示：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 123456..toString(36) ); // 2n9c</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">调用方法的两个点</span></div>
+            <div class="important__content"><p>请注意 <code>123456..toString(36)</code> 中的两个点不是拼写错误。如果我们想直接在一个数字上调用一个方法，比如上面例子中的 <code>toString</code>，那么我们需要在它后面放置两个点 <code>..</code>。</p>
+<p>如果我们放置一个点：<code>123456.toString(36)</code>，那么会出现错误，因为 JavaScript 语法暗示了第一个点之后的小数部分。如果我们再放一个点，那么 JavaScript 知道小数部分是空的，现在进入方法。</p>
+<p>也可以写 <code>(123456).toString(36)</code>。</p>
+</div></div>
+<h2><a class="main__anchor" name="si-she-wu-ru" href="#si-she-wu-ru">四舍五入</a></h2><p>使用数字时最常用的操作之一是四舍五入。</p>
+<p>有几个内置函数用于舍入：</p>
+<dl>
+<dt><code>Math.floor</code></dt>
+<dd>向下舍入：<code>3.1</code> 变成 <code>3</code>，<code>-1.1</code> 变成 <code>-2</code>。</dd>
+<dt><code>Math.ceil</code></dt>
+<dd>向上舍入：<code>3.1</code> 变成 <code>4</code>，<code>-1.1</code> 变成 <code>-1</code>。</dd>
+<dt><code>Math.round</code></dt>
+<dd>向最近的整数舍入：<code>3.1</code> 变成 <code>3</code>, 3.6<code>变成</code>4<code>，</code>-1.1<code>变成</code>-1`。</dd>
+<dt><code>Math.trunc</code>（IE 浏览器不支持这个方法）</dt>
+<dd>删除小数点后的所有内容而不舍入：<code>3.1</code> 变成 <code>3</code>，<code>-1.1</code> 变成 <code>-1</code>。</dd>
+</dl>
+<p>以下是总结它们之间差异的表格：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Math.floor</code></th>
+<th><code>Math.ceil</code></th>
+<th><code>Math.round</code></th>
+<th><code>Math.trunc</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>3.1</code></td>
+<td><code>3</code></td>
+<td><code>4</code></td>
+<td><code>3</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>3.6</code></td>
+<td><code>3</code></td>
+<td><code>4</code></td>
+<td><code>4</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>-1.1</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+<td><code>-1</code></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>-1.6</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<p>这些函数涵盖处理数字小数部分的所有可能方法。但是如果我们想在十进制后将数字四舍五入到 <code>n</code> 位呢？</p>
+<p>例如，我们有 <code>1.2345</code>，并且想把它舍入到 2 位数，只得到 <code>1.23</code>。</p>
+<p>有两种方法可以这样做：</p>
+<ol>
+<li>
+<p>乘法和除法</p>
+<p>例如，要将数字四舍五入到小数点后的第二个数字，我们可以将数字乘以 100，调用舍入函数，然后再将其除回 100。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = 1.23456;
+
+alert( Math.floor(num * 100) / 100 ); // 1.23456 -&gt; 123.456 -&gt; 123 -&gt; 1.23</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>函数 <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed(n)</a> 将点数后的数字四舍五入到 <code>n</code> 个数字并返回结果的字符串表示。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = 12.34;
+alert( num.toFixed(1) ); // &quot;12.3&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这会向上或向下舍入到最接近的值，类似于 <code>Math.round</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = 12.36;
+alert( num.toFixed(1) ); // &quot;12.4&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意 <code>toFixed</code> 的结果是一个字符串。如果小数部分比所需要的短，则在结尾添加零：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = 12.34;
+alert( num.toFixed(5) ); // &quot;12.34000&quot;, added zeroes to make exactly 5 digits</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们可以使用一元加号或 <code>Number()</code> 调用将其转换为数字：<code>+ num.toFixed(5)</code>。</p>
+</li>
+</ol>
+<h2><a class="main__anchor" name="bu-jing-que-ji-suan" href="#bu-jing-que-ji-suan">不精确计算</a></h2><p>在 js 内部，一个数字以 64 位格式 <a href="javascript:if(confirm('http://en.wikipedia.org/wiki/IEEE_754-1985  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://en.wikipedia.org/wiki/IEEE_754-1985'" tppabs="http://en.wikipedia.org/wiki/IEEE_754-1985">IEEE-754</a> 表示，所以正好有 64 位可以存储一个数字：其中 52 个被使用存储这些数字，其中 11 个存储小数点的位置（它们对于整数为零），1 位用于符号。</p>
+<p>如果一个数字太大，它会溢出 64 位存储，可能会输出无穷大：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1e500 ); // Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div><p>可能不那么明显，但经常会发生精度的损失。</p>
+<p>考虑下这个（falsy！）测试：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:30,&quot;end&quot;:35}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0.1 + 0.2 == 0.3 ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>没错，如果我们检查 <code>0.1</code> 和 <code>0.2</code> 的总和是否为 <code>0.3</code>，们会得到 <code>false</code>。</p>
+<p>奇怪！那么如果不是 <code>0.3</code>，那么又是什么呢？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0.1 + 0.2 ); // 0.30000000000000004</code></pre>
+        </div>
+      </div>
+      
+      </div><p>哎哟!这里的错误有更大的误差。想象一下，你正在制作一个电子购物网站，访问者将 <code>0.10 美元</code> 和 <code>0.20 美元</code> 商品放入他的图表中。订单总额将是 <code>$ 0.30000000000000004</code>。这会让任何人感到惊讶。</p>
+<p>但为什么会发生这样的事呢？</p>
+<p>一个数字以二进制形式存储在内存中，一个 1 和 0 的序列。但是像十进制数字系统看起来很简单的 <code>0.1</code>，<code>0.2</code> 这样的分数实际上是二进制形式的无限分数。</p>
+<p>换句话说，什么是 <code>0.1</code>？十分之一除以十分之一，即十分之一。在十进制数字系统中，这些数字很容易表示。将它比作三分之一：<code>1/3</code>。它变成了无尽的分数 <code>0.33333(3)</code>。</p>
+<p>所以，按这种用 <code>10</code> 划分可以保证在十进制系统中运行良好，但用 <code>3</code> 划分不是。出于同样的原因，在二进制数字系统中，<code>2</code> 的幂的分割保证工作，但 <code>1/10</code> 变成一个无限的二进制分数。</p>
+<p>使用二进制系统只能存储 <em>0.1</em> 或 <em>0.2</em>，就像没有办法将三分之一存储为小数部分一样。</p>
+<p>数字格式 IEEE-754 通过四舍五入到最接近的可能数字来解决此问题。这些舍入规则通常不允许我们看到 <code>极小的精确度损失</code>，因此数字显示为 <code>0.3</code>。但要小心，损失依然存在。</p>
+<p>我们可以看到这一点：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 0.1.toFixed(20) ); // 0.10000000000000000555</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当我们给两个数字求和时，他们的“精度损失”会加起来。</p>
+<p>这就是为什么 <code>0.1 + 0.2</code> 不等于 <code>0.3</code> 的原因。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">不仅仅是 JavaScript</span></div>
+            <div class="important__content"><p>许多其他编程语言也存在同样的问题。</p>
+<p>PHP, Java, C, Perl, Ruby 给出完全相同的结果，因为它们基于相同的数字格式。</p>
+</div></div>
+<p>我们能解决这个问题吗？当然，有很多方法：</p>
+<ol>
+<li>
+<p>我们可以在特定函数的帮助下对结果进行四舍五入 <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed(n)</a>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // 0.30</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意 <code>toFixed</code> 总是返回一个字符串。它确保它在小数点后有 2 位数字。如果我们有电子购物并需要显示 <code>0.30 美元</code>，这实际上很方便。对于其他情况，我们可以使用一元加号将它强制为一个数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let sum = 0.1 + 0.2;
+alert( +sum.toFixed(2) ); // 0.3</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>我们可以暂时将数字转换为数学整数，然后将其恢复。它是这样工作的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是有效的，因为当我们做 <code>0.1 * 10 = 1</code> 和 <code>0.2 * 10 = 2</code> 时，那么这两个数字就变成了整数，并且没有精度损失。</p>
+</li>
+<li>
+<p>如果我们在与一家商店打交道，那么最激进的解决方案就是将所有价格存储在美分中，并且根本不使用分数。但是，如果我们应用 30％ 的折扣呢？在实践中，完全回避分数是很难实现的，所以上述解决方案有助于避免这种缺陷。</p>
+</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">有趣的事情</span></div>
+            <div class="important__content"><p>尝试运行这个：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// Hello! I'm a self-increasing number!
+alert( 9999999999999999 ); // shows 10000000000000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>出现了同样的问题：精度的损失。该号码有 64 位，其中 52 位可用于存储数字，但这还不够。所以最不重要的数字就消失了。</p>
+<p>JavaScript 在这种事件中不会触发错误。它尽最大努力使数字符合所需的格式，但不幸的是，这种格式不够大到满足需求。</p>
+</div></div>
+<pre><code class="language-samrt">数字内部表示的另一个有趣结果是存在两个零：`0` 和 `-0`。
+
+这是因为一个符号由一个位表示，所以每个数字可以是正数或负数，包括零。 
+
+在大多数情况下，这种区别并不明显，因为操作员可以将它们视为相同。
+</code></pre>
+<h2><a class="main__anchor" name="ce-shi-isfinite-he-isnan" href="#ce-shi-isfinite-he-isnan">测试：isFinite 和 isNaN</a></h2><p>还记得这两个特殊的数值吗？</p>
+<ul>
+<li><code>Infinite</code>（和 <code>-Infinite</code>）是一个特殊的数值，比任何数值都大（小）。</li>
+<li><code>NaN</code> 代表一个错误。</li>
+</ul>
+<p>它们属于 <code>数字</code> 类型，但不是 <code>普通</code> 数字，因此有特殊函数可以检查它们：</p>
+<ul>
+<li>
+<p><code>isNaN(value)</code> 将其参数转换为数字，然后测试它是否为 <code>NaN</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( isNaN(NaN) ); // true
+alert( isNaN(&quot;str&quot;) ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是我们需要这个功能吗？我们不能只使用比较 <code>=== NaN</code> 吗？对不起，但答案是否定的。值 “NaN” 是独一无二的，它不等于任何东西，包括它本身：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( NaN === NaN ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><code>isFinite(value)</code> 将其参数转换为数字，如果是常规数字，则返回 <code>true</code>，而不是 <code>NaN / Infinity / -Infinity</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( isFinite(&quot;15&quot;) ); // true
+alert( isFinite(&quot;str&quot;) ); // false, because a special value: NaN
+alert( isFinite(Infinity) ); // false, because a special value: Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>有时 <code>isFinite</code> 用于验证字符串值是否为常规数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let num = +prompt(&quot;Enter a number&quot;, '');
+
+// 结果会是 true，除非你输入无穷大，无穷大或不是数字
+alert( isFinite(num) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，所有数字函数（包括 <code>isFinite</code>）中的空字符串或空格字符串均被视为 <code>0</code>。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">与 Object.is 进行比较</span></div>
+            <div class="important__content"><p>有一种特殊的内置方法 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/is  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/is'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Object/is">Object.is</a>，它可以比较 <code>===</code> 等值，但对于两种边缘情况更可靠：</p>
+<ol>
+<li>它适用于 <code>NaN</code>： <code>Object.is（NaN，NaN）=== true</code>，这是件好事。</li>
+<li>值 <code>0</code> 和 <code>-0</code> 是不同的：<code>Object.is（0，-0）=== false</code>，它不是很重要，但这些值在技术上是不同的。</li>
+</ol>
+<p>在所有其他情况下，<code>Object.is(a，b)</code> 与 <code>a === b</code> 相同。</p>
+<p>这种比较方式经常用于 JavaScript 规范。当内部算法需要比较两个值完全相同时，它使用 Object.is（内部称为 <a href="javascript:if(confirm('https://tc39.github.io/ecma262/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://tc39.github.io/ecma262/#sec-samevalue'" tppabs="https://tc39.github.io/ecma262/#sec-samevalue">SameValue</a>）。</p>
+</div></div>
+<h2><a class="main__anchor" name="parseint-he-parsefloat" href="#parseint-he-parsefloat">parseInt 和 parseFloat</a></h2><p>使用加号 <code>+</code> 或 <code>Number()</code> 的数字转换是严格的。如果一个值不完全是一个数字，就会失败：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( +&quot;100px&quot; ); // NaN</code></pre>
+        </div>
+      </div>
+      
+      </div><p>唯一的例外是字符串开头或结尾的空格，因为它们会被忽略。</p>
+<p>但在现实生活中，我们经常以单位表示值，比如 CSS 中的 <code>&quot;100px&quot;</code> 或 <code>&quot;12pt&quot;</code>。在许多国家，货币符号也超过了金额，所以我们有 <code>&quot;19€&quot;</code>，并希望从中提取一个数值。</p>
+<p>这就是 <code>parseInt</code> 和 <code>parseFloat</code> 的作用。</p>
+<p>他们从字符串中“读出”一个数字，直到他们可以。如果发生错误，则返回收集的数字。函数 <code>parseInt</code> 返回一个整数，而 <code>parseFloat</code> 将返回一个浮点数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( parseInt('100px') ); // 100
+alert( parseFloat('12.5em') ); // 12.5
+
+alert( parseInt('12.3') ); // 12, only the integer part is returned
+alert( parseFloat('12.3.4') ); // 12.3, the second point stops the reading</code></pre>
+        </div>
+      </div>
+      
+      </div><p>有时候 <code>parseInt / parseFloat</code> 会返回 <code>NaN</code>。一般发生在没有数字可读的情况下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( parseInt('a123') ); // NaN, the first symbol stops the process</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">parseInt(str, radix)` 的第二个参数</span></div>
+            <div class="important__content"><p><code>parseInt()</code> 函数有一个可选的第二个参数。它指定了数字系统的基础，因此 <code>parseInt</code> 还可以解析十六进制数字，二进制数字等字符串：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( parseInt('0xff', 16) ); // 255
+alert( parseInt('ff', 16) ); // 255, without 0x also works
+
+alert( parseInt('2n9c', 36) ); // 123456</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="qi-ta-shu-xue-han-shu" href="#qi-ta-shu-xue-han-shu">其他数学函数</a></h2><p>JavaScript 有一个内置的 <a href="javascript:if(confirm('https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math'" tppabs="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a> 对象,包含一个数学函数和常量的小型库的对象。</p>
+<p>几个例子：</p>
+<dl>
+<dt><code>Math.random()</code></dt>
+<dd>
+<p>返回从 0 到 1 的随机数（不包括 1）</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Math.random() ); // 0.1234567894322
+alert( Math.random() ); // 0.5435252343232
+alert( Math.random() ); // ... (any random numbers)</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>Math.max(a, b, c...)</code> / <code>Math.min(a, b, c...)</code></dt>
+<dd>
+<p>从任意数量的参数中返回最大/最小值。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Math.max(3, 5, -10, 0, 1) ); // 5
+alert( Math.min(1, 2) ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>Math.pow(n, power)</code></dt>
+<dd>
+<p>返回经过 <code>n</code> 进制转换的 power 值</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Math.pow(2, 10) ); // 2 in power 10 = 1024</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>这里有 <code>Math</code> 对象中的更多函数和常量，包括三角函数，你可以在这里找到它 <a href="javascript:if(confirm('https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math'" tppabs="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math">docs for the Math</a>。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>写非常大的数字：</p>
+<ul>
+<li>附加 <code>&quot;e&quot;</code> 来省略 0，e 后面的数字就是零的个数。就像：<code>123e6</code> 是 <code>123</code> 后面接 6 个零。</li>
+<li><code>&quot;e&quot;</code> 后面的负数将导致数字除以 1 后面接着给定数量的零。e-6 那是一百万分之一。</li>
+</ul>
+<p>对于不同的进制：</p>
+<ul>
+<li>可以在十六进制（<code>0x</code>），八进制（<code>0o</code>）和二进制（<code>0b</code>）系统中直接写入数字。</li>
+<li><code>parseInt(str，base)</code> 解析来自任何数字系统的整数，其基数为：<code>2≤base≤36</code>。</li>
+<li><code>num.toString(base)</code> 将数字转换为数字系统中具有给定 <code>base</code> 的字符串。</li>
+</ul>
+<p>将 <code>12pt</code> 和 <code>100px</code> 等值转换为数字：</p>
+<ul>
+<li>使用 <code>parseInt / parseFloat</code> 进行 <code>软</code> 转换，它从字符串中读取一个数字，然后返回错误发生前可以读取的值。</li>
+</ul>
+<p>分数：</p>
+<ul>
+<li>使用 <code>Math.floor</code>，<code>Math.ceil</code>，<code>Math.trunc</code>，<code>Math.round</code> 或 <code>num.toFixed(precision)</code> 循环。</li>
+<li>请记住，使用分数时会损失精度。</li>
+</ul>
+<p>更多的数学函数：</p>
+<ul>
+<li>需要时请参阅 <a href="javascript:if(confirm('https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math'" tppabs="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a> 对象,虽然这个文档非常小,但是它可以满足基础的要求。</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#lai-zi-fang-ke-de-zong-shu" name="lai-zi-fang-ke-de-zong-shu">来自访客的总数</a></h3><a class="task__open-link" href="task/sum-interface.htm" tppabs="https://zh.javascript.info/task/sum-interface" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个脚本，提示访问者输入两个数字，然后显示它们的总和。</p>
+<a href="#" onclick="event.preventDefault(); runDemo(this)">运行 demo</a><p>提示：类型会有一个问题。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let a = +prompt(&quot;The first number?&quot;, &quot;&quot;);
+let b = +prompt(&quot;The second number?&quot;, &quot;&quot;);
+
+alert( a + b );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>注意一元符号 <code>+</code> 在 <code>prompt</code> 前面。它会把获取的值转换成数字。</p>
+<p>否则，<code>a</code> 和 <code>b</code> 会是字符串，它们的总和就是它们的连接，即：<code>“1”+“2”=“12”</code>。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#wei-shi-mo-6-35tofixed-1-6-3" name="wei-shi-mo-6-35tofixed-1-6-3">为什么 6.35.toFixed(1) == 6.3？</a></h3><a class="task__open-link" href="task/why-rounded-down.htm" tppabs="https://zh.javascript.info/task/why-rounded-down" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>根据文档 <code>Math.round</code> 和 <code>toFixed</code>，最近的数字四舍五入：<code>0..4</code> 会被舍去，而 <code>5..9</code> 会前进一位。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1.35.toFixed(1) ); // 1.4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在下面的类似例子中，为什么 <code>6.35</code> 被四舍五入为 <code>6.3</code> 而不是 <code>6.4</code>？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 6.35.toFixed(1) ); // 6.3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如何以正确的方式来四舍五入 <code>6.35</code>？</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>在 <code>6.35</code> 内部，小数部分是一个无限的二进制。在这种情况下，它存储的时候有一个精度的缺失。</p>
+<p>让我们来看看：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 6.35.toFixed(20) ); // 6.34999999999999964473</code></pre>
+        </div>
+      </div>
+      
+      </div><p>精度缺失可能会导致数字的增加和减小。在这种特殊情况下，数字可能会变小了一点，这就是为什么它减小了。</p>
+<p>那么 <code>1.35</code> 是怎样样的呢？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1.35.toFixed(20) ); // 1.35000000000000008882</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这里，精度缺失使得这个数字更大一些，所以这个数字变大了一些。</p>
+<p><strong>如果我们希望以正确的方式四舍五入，我们如何使用 <code>6.35</code> 为例来解决这个问题？</strong></p>
+<p>在四舍五入之前，我们应该把它接近整数：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( (6.35 * 10).toFixed(20) ); // 63.50000000000000000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意 <code>63.5</code> 完全没有精度缺失。这是因为小数部分 <code>0.5</code> 实际上是 <code>1 / 2</code>。除以2的幂的分数在二进制系统中被精确地表示，现在我们可以围绕它来解决问题：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Math.round(6.35 * 10) / 10); // 6.35 -&gt; 63.5 -&gt; 64(rounded) -&gt; 6.4</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zhong-fu-jian-ce-zhi-dao-shu-ru-shi-yi-ge-shu-zi" name="zhong-fu-jian-ce-zhi-dao-shu-ru-shi-yi-ge-shu-zi">重复检测，直到输入是一个数字</a></h3><a class="task__open-link" href="task/repeat-until-number.htm" tppabs="https://zh.javascript.info/task/repeat-until-number" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个函数 <code>readNumber</code>，它提示输入一个数字，直到访问者输入一个有效的数字。</p>
+<p>结果值必须作为数字返回。</p>
+<p>访问者也可以通过输入空行或按“取消”来停止该过程。在这种情况下，函数应该返回 <code>null</code>。</p>
+<a href="#" onclick="event.preventDefault(); runDemo(this)">运行 demo</a><p><a href="javascript:if(confirm('http://plnkr.co/edit/jg8Od8bAO6z7wU0TyE9T?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/jg8Od8bAO6z7wU0TyE9T?p=preview'" tppabs="http://plnkr.co/edit/jg8Od8bAO6z7wU0TyE9T?p=preview" target="_blank" data-plunk-id="jg8Od8bAO6z7wU0TyE9T">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function readNumber() {
+  let num;
+
+  do {
+    num = prompt(&quot;Enter a number please?&quot;, 0);
+  } while ( !isFinite(num) );
+
+  if (num === null || num === '') return null;
+
+  return +num;
+}
+
+alert(`Read: ${readNumber()}`);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>该解决方案有点复杂，可能是因为我们需要处理 null/空行。</p>
+<p>所以我们实际上接受输入，直到它成为“常规数字”。null（取消）和空行都适合该条件，因为在数字形式中它们是 <code>0</code>。</p>
+<p>在我们停止之后，我们需要专门处理 null 和空行（返回 null），因为将它们转换为数字将返回 <code>0</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/xuLtUaGAwJaBiR3A5XSE?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xuLtUaGAwJaBiR3A5XSE?p=preview'" tppabs="http://plnkr.co/edit/xuLtUaGAwJaBiR3A5XSE?p=preview" target="_blank" data-plunk-id="xuLtUaGAwJaBiR3A5XSE">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#" name=""></a></h3><a class="task__open-link" href="task/endless-loop-error.htm" tppabs="https://zh.javascript.info/task/endless-loop-error" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>#一个偶发的无限循环</p>
+<p>这个循环是无限的。它永远不会结束。为什么？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i != 10) {
+  i += 0.2;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>那是因为 <code>i</code> 永远不会等于 <code>10</code>。</p>
+<p>运行它以查看 <code>i</code> 的实际值：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+while (i &lt; 11) {
+  i += 0.2;
+  if (i &gt; 9.8 &amp;&amp; i &lt; 10.2) alert( i );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>他们中没有一个完全是 <code>10</code>。</p>
+<p>发生这样的事情是因为在添加像 <code>0.2</code> 这样的分数时出现了精度损失。</p>
+<p>结论：在处理小数部分时避免相等检查。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cong-zui-xiao-dao-zui-da-de-sui-ji-shu" name="cong-zui-xiao-dao-zui-da-de-sui-ji-shu">从最小到最大的随机数</a></h3><a class="task__open-link" href="task/random-min-max.htm" tppabs="https://zh.javascript.info/task/random-min-max" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 2</span></div><div class="task__content"><p>用内置函数Math.random() 创建一个从 0 到 1 的随机值（不包括 1 ）。</p>
+<p>编写随机函数（min，max）以生成从最小到最大（不包括最大值）的随机浮点数。</p>
+<p>实例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( random(1, 5) ); // 1.2345623452
+alert( random(1, 5) ); // 3.7894332423
+alert( random(1, 5) ); // 4.3435234525</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>我们需要将区间 0…1 中的所有值“映射”为从最小值到最大值。</p>
+<p>这可以分两个阶段完成：</p>
+<ol>
+<li>如果我们将 0…1 的随机数乘以 <code>max-min</code>，则可能值的间隔从 0…1 增加到 <code>0..max-min</code>。</li>
+<li>现在，如果我们添加 <code>min</code>，则可能的间隔将从 <code>min</code> 变为 <code>max</code>。</li>
+</ol>
+<p>函数实现：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function random(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+alert( random(1, 5) );
+alert( random(1, 5) );
+alert( random(1, 5) );</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#" name=""></a></h3><a class="task__open-link" href="task/random-int-min-max.htm" tppabs="https://zh.javascript.info/task/random-int-min-max" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 2</span></div><div class="task__content"><p>#从最小到最大的随机整数</p>
+<p>创建一个函数 <code>randomInteger(min，max)</code>，该函数从 <code>min</code> 到 <code>max</code> 生成随机整数，包括 <code>min</code> 和 <code>max</code> 作为可能值。</p>
+<p>来自间隔 <code>min..max</code> 的任何数字必须以相同的概率出现。</p>
+<p>功能示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( random(1, 5) ); // 1
+alert( random(1, 5) ); // 3
+alert( random(1, 5) ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>您可以使用<a href="task/random-min-max.htm" tppabs="https://zh.javascript.info/task/random-min-max">上一个任务</a>的解决方案作为基础。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">简单但错误的解决方案</button><div class="task__answer-content"><h4 class="task__step-title">简单但错误的解决方案</h4><p>最简单但错误的解决方案是从 <code>min</code> 到 <code>max</code> 生成一个值并取它四舍五入的值：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function randomInteger(min, max) {
+  let rand = min + Math.random() * (max - min);
+  return Math.round(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这个函数是能起作用的，但不正确。获得边缘值 <code>min</code> 和 <code>max</code> 的概率是其他值的两倍。</p>
+<p>如果你多次运行这个例子，你会很容易看到 <code>2</code> 出现的频率最高。</p>
+<p>发生这种情况是因为 <code>Math.round()</code> 从间隔 <code>1..3</code> 获得随机数并按如下所示进行四舍五入：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">values from 1    ... to 1.4999999999  become 1
+values from 1.5  ... to 2.4999999999  become 2
+values from 2.5  ... to 2.9999999999  become 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在我们可以清楚地看到 <code>1</code> 的值比 <code>2</code> 少两倍。和 <code>3</code> 一样。</p>
+</div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">正确的解决方案</button><div class="task__answer-content"><h4 class="task__step-title">正确的解决方案</h4><p>这项任务有很多正确的解决方案。其中之一是调整间隔边界。为了确保相同的时间间隔，我们可以生成从 0.5 到 3.5 的值，从而将所需的概率添加到边缘：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function randomInteger(min, max) {
+  // now rand is from  (min-0.5) to (max+0.5)
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另一种方法是使用 <code>Math.floor</code> 作为从 <code>min</code> 到 <code>max+1</code> 的随机数：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function randomInteger(min, max) {
+  // here rand is from min to (max+1)
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在所有间隔都以这种方式映射：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">values from 1  ... to 1.9999999999  become 1
+values from 2  ... to 2.9999999999  become 2
+values from 3  ... to 3.9999999999  become 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所有间隔的长度相同，所以最终能够均匀分配。所有整数出现的概率都相同了。</p>
+</div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="primitives-methods.htm" tppabs="https://zh.javascript.info/primitives-methods" data-tooltip="基本类型的方法"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="string.htm" tppabs="https://zh.javascript.info/string" data-tooltip="字符串"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/number","identifier":"\/number"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.htm" tppabs="https://zh.javascript.info/data-types">数据类型</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bian-xie-shu-zi-de-geng-duo-fang-fa">编写数字的更多方法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tostringbase">toString(base)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#si-she-wu-ru">四舍五入</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bu-jing-que-ji-suan">不精确计算</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ce-shi-isfinite-he-isnan">测试：isFinite 和 isNaN</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#parseint-he-parsefloat">parseInt 和 parseFloat</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#qi-ta-shu-xue-han-shu">其他数学函数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (6)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fnumber"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/02-number/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/02-number/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/05-data-types/02-number/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">装饰和转发，call/apply</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/call-apply-decorators"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="装饰和转发，call/apply"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="装饰和转发，call/apply"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/settimeout-setinterval"><link rel="next" href="/bind"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="装饰和转发，call/apply"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/call-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/call-apply-decorators'" tppabs="https://javascript.info/call-apply-decorators"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="call-apply-decorators.htm" tppabs="https://zh.javascript.info/call-apply-decorators"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/call-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/call-apply-decorators'" tppabs="https://ja.javascript.info/call-apply-decorators"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/call-apply-decorators">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/call-apply-decorators" selected>简体中文</option><option value="https://ja.javascript.info/call-apply-decorators">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="51" max="67" data-tooltip="第 67 章，第 51 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions" itemprop="url"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">装饰和转发，call/apply</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="装饰和转发，call/apply"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript在处理函数时提供了非凡的灵活性。它们可以被传递，用作对象，现在我们将看到如何在它们之间<strong>转发</strong>并<strong>装饰</strong>它们。</p>
+<h2><a class="main__anchor" name="tou-ming-huan-cun" href="#tou-ming-huan-cun">透明缓存</a></h2><p>假设我们有一个函数 <code>slow(x)</code> ，它是 CPU 重负载的，但它的结果是稳定的。换句话说，对于相同的 <code>x</code>，它总是返回相同的结果。</p>
+<p>如果经常调用该函数，我们可能希望缓存（记住）不同 <code>x</code> 的结果，以避免在重新计算上花费额外的时间。</p>
+<p>但是我们不是将这个功能添加到 <code>slow()</code> 中，而是创建一个包装器。正如我们将要看到的，这样做有很多好处。</p>
+<p>下面是代码和解释：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function slow(x) {
+  // 这里可能会有重负载的CPU密集型工作
+  alert(`Called with ${x}`);
+  return x;
+}
+
+function cachingDecorator(func) {
+  let cache = new Map();
+
+  return function(x) {
+    if (cache.has(x)) { // 如果结果在 map 里
+      return cache.get(x); // 返回它
+    }
+
+    let result = func(x); // 否则就调用函数
+
+    cache.set(x, result); // 然后把结果缓存起来
+    return result;
+  };
+}
+
+slow = cachingDecorator(slow);
+
+alert( slow(1) ); // slow(1) 被缓存起来了
+alert( &quot;Again: &quot; + slow(1) ); // 一样的
+
+alert( slow(2) ); // slow(2) 被缓存起来了
+alert( &quot;Again: &quot; + slow(2) ); // 也是一样</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在上面的代码中，<code>cachingDecorator</code> 是一个<strong>装饰器</strong>：一个特殊的函数，它接受另一个函数并改变它的行为。</p>
+<p>我们的想法是，我们可以为任何函数调用 <code>cachingDecorator</code>，它将返回缓存包装器。这很好，因为我们有很多函数可以使用这样的特性，而我们需要做的就是将 <code>cachingDecorator</code> 应用于它们。</p>
+<p>通过将缓存与主函数代码分开，我们还可以使主函数代码变得更简单。</p>
+<p>现在让我们详细了解它的工作原理吧。</p>
+<p><code>cachingDecorator(func)</code> 的结果是一个“包装器”：<code>function(x)</code> 将 <code>func(x)</code> 的调用 “包装” 到缓存逻辑中：</p>
+<figure><div class="image" style="width:417px">
+      <div class="image__ratio" style="padding-top:56.35491606714629%"></div>
+      <img src="article/call-apply-decorators/decorator-makecaching-wrapper.png" tppabs="https://zh.javascript.info/article/call-apply-decorators/decorator-makecaching-wrapper.png" alt="" width="417" height="235" class="image__image">
+      </div></figure><p>正如我们所看到的，包装器返回 <code>func(x)</code> “的结果”。从外部代码中，包装的 <code>slow</code> 函数仍然是一样的。它只是在其函数体中添加了一个缓存。</p>
+<p>总而言之，使用单独的 <code>cachingDecorator</code> 而不是改变 <code>slow</code> 本身的代码有几个好处：</p>
+<ul>
+<li><code>cachingDecorator</code> 是可重用的。我们可以将它应用于另一个函数。</li>
+<li>缓存逻辑是独立的，它没有增加 <code>slow</code> 本身的复杂性（如果有的话）。</li>
+<li>如果需要，我们可以组合多个装饰器（其他装饰器将遵循同样的逻辑）。</li>
+</ul>
+<h2><a class="main__anchor" name="shi-yong-funccall-zuo-wei-shang-xia-wen" href="#shi-yong-funccall-zuo-wei-shang-xia-wen">使用 “func.call” 作为上下文</a></h2><p>上面提到的缓存装饰器不适合使用对象方法。</p>
+<p>例如，在下面的代码中，<code>worker.slow()</code> 装饰后停止工作：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:30,&quot;end&quot;:30},{&quot;start&quot;:20,&quot;end&quot;:20}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 我们将让 work 缓存一个 slow 起来
+let worker = {
+  someMethod() {
+    return 1;
+  },
+
+  slow(x) {
+    // 显然, 这里会有一个 CPU 重负载的任务
+    alert(&quot;Called with &quot; + x);
+    return x * this.someMethod(); // (*)
+  }
+};
+
+// 和之前一样的代码
+function cachingDecorator(func) {
+  let cache = new Map();
+  return function(x) {
+    if (cache.has(x)) {
+      return cache.get(x);
+    }
+    let result = func(x); // (**)
+    cache.set(x, result);
+    return result;
+  };
+}
+
+alert( worker.slow(1) ); // 之前的函数起作用了
+
+worker.slow = cachingDecorator(worker.slow); // 现在让它缓存起来
+
+alert( worker.slow(2) ); // Whoops! Error: Cannot read property 'someMethod' of undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>错误发生在试图访问 <code>this.someMethod</code> 并且失败的行 <code>(*)</code> 中。你能明白为什么吗？</p>
+<p>原因是包装器将原始函数调用为 <code>(**)</code> 行中的 <code>func(x)</code>。并且，当这样调用时，函数得到 <code>this = undefined</code>。</p>
+<p>如果我们试图运行下面的代码，会观察到类似的问题：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let func = worker.slow;
+func(2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>因此，包装器将调用传递给原始方法，但没有上下文 <code>this</code>。因此错误。</p>
+<p>我们来解决这个问题。</p>
+<p>有一个特殊的内置函数方法 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call">func.call(context, …args)</a>，允许调用一个显式设置 <code>this</code> 的函数。</p>
+<p>语法如下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">func.call(context, arg1, arg2, ...)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>它运行 <code>func</code>，提供的第一个参数作为 <code>this</code>，后面的作为参数。</p>
+<p>简单地说，这两个调用几乎相同：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">func(1, 2, 3);
+func.call(obj, 1, 2, 3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>他们都调用的是 <code>func</code>，参数是 <code>1</code>，<code>2</code> 和 <code>3</code>。唯一的区别是 <code>func.call</code> 也将 <code>this</code> 设置为 <code>obj</code>。</p>
+<p>例如，在下面的代码中，我们在不同对象的上下文中调用 <code>sayHi</code>:<code>sayHi.call(user)</code> 运行 <code>sayHi</code> 提供 <code>this=user</code>，下一行设置 <code>this=admin</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert(this.name);
+}
+
+let user = { name: &quot;John&quot; };
+let admin = { name: &quot;Admin&quot; };
+
+// 使用 call 将不同的对象传递为 &quot;this&quot;
+sayHi.call( user ); // this = John
+sayHi.call( admin ); // this = Admin</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在这里我们用 <code>call</code> 用给定的上下文和短语调用 <code>say</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function say(phrase) {
+  alert(this.name + ': ' + phrase);
+}
+
+let user = { name: &quot;John&quot; };
+
+// user becomes this, and &quot;Hello&quot; becomes the first argument
+say.call( user, &quot;Hello&quot; ); // John: Hello</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在我们的例子中，我们可以在包装器中使用 <code>call</code> 将上下文传递给原始函数：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:17,&quot;end&quot;:17}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let worker = {
+  someMethod() {
+    return 1;
+  },
+
+  slow(x) {
+    alert(&quot;Called with &quot; + x);
+    return x * this.someMethod(); // (*)
+  }
+};
+
+function cachingDecorator(func) {
+  let cache = new Map();
+  return function(x) {
+    if (cache.has(x)) {
+      return cache.get(x);
+    }
+    let result = func.call(this, x); // &quot;this&quot; 现在被正确的传递了
+    cache.set(x, result);
+    return result;
+  };
+}
+
+worker.slow = cachingDecorator(worker.slow); // 现在让他缓存起来
+
+alert( worker.slow(2) ); // 生效了
+alert( worker.slow(2) ); // 生效了, 不会调用原始的函数了。被缓存起来了</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在一切都很好。</p>
+<p>为了清楚地说明，让我们更深入地了解 <code>this</code> 是如何传递的：</p>
+<ol>
+<li>在经过装饰之后，<code>worker.slow</code> 现在是包装器 <code>function (x) { ... }</code>。</li>
+<li>因此，当执行 <code>worker.slow(2)</code> 时，包装器将 <code>2</code> 作为参数并且 <code>this=worker</code>（它是点之前的对象）。</li>
+<li>在包装器内部，假设结果尚未缓存，<code>func.call(this, x)</code> 将当前的 <code>this</code> (<code>=worker</code>) 和当前参数 (<code>=2</code>) 传递给原始方法。</li>
+</ol>
+<h2><a class="main__anchor" name="shi-yong-funcapply-lai-chuan-di-duo-can-shu" href="#shi-yong-funcapply-lai-chuan-di-duo-can-shu">使用 “func.apply” 来传递多参数</a></h2><p>现在让我们让 <code>cachingDecorator</code> 变得更加通用。直到现在它只使用单参数函数。</p>
+<p>现在如何缓存多参数 <code>worker.slow</code> 方法？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let worker = {
+  slow(min, max) {
+    return min + max; // scary CPU-hogger is assumed
+  }
+};
+
+// should remember same-argument calls
+worker.slow = cachingDecorator(worker.slow);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们这里有两个要解决的任务。</p>
+<p>首先是如何在 <code>cache</code> map 中使用参数 <code>min</code> 和 <code>max</code> 作为键。以前，对于单个参数 <code>x</code>，我们可以只使用 <code>cache.set(x, result)</code> 来保存结果，并使用 <code>cache.get(x)</code> 来检索它。但是现在我们需要记住参数组合 * <code>(min,max)</code> 的结果。原生 <code>Map</code> 仅将单个值作为键。</p>
+<p>有许多解决方案可以实现：</p>
+<ol>
+<li>实现一个新的（或使用第三方）类似 map 的数据结构，它更通用并允许多键。</li>
+<li>使用嵌套映射：<code>cache.set(min)</code> 将是一个存储对 <code>(max, result)</code> 的 <code>Map</code>。所以我们可以将 <code>result</code> 改为 <code>cache.get(min).get(max)</code>。</li>
+<li>将两个值合并为一个。在我们的特定情况下，我们可以使用字符串 “min，max” 作为 <code>Map</code> 键。为了灵活性，我们可以允许为装饰器提供<strong>散列函数</strong>，它知道如何从多个中创建一个值。</li>
+</ol>
+<p>对于许多实际应用，第三种方式已经足够好，所以我们就用这个吧。</p>
+<p>要解决的第二个任务是如何将许多参数传递给 <code>func</code>。目前，包装器 <code>function(x)</code> 假设一个参数，<code>func.call(this, x)</code> 传递它。</p>
+<p>在这里我们可以使用另一种内置方法 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">func.apply</a>.</p>
+<p>语法如下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">func.apply(context, args)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>它运行 <code>func</code> 设置 <code>this=context</code> 并使用类似数组的对象 <code>args</code> 作为参数列表。</p>
+<p>例如，这两个调用几乎相同：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">func(1, 2, 3);
+func.apply(context, [1, 2, 3])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>两个都运行 <code>func</code> 给定的参数是 <code>1,2,3</code>。但是 <code>apply</code> 也设置了 <code>this = context</code>。</p>
+<p>例如，这里 <code>say</code> 用 <code>this=user</code> 和 <code>messageData</code> 作为参数列表调用：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function say(time, phrase) {
+  alert(`[${time}] ${this.name}: ${phrase}`);
+}
+
+let user = { name: &quot;John&quot; };
+
+let messageData = ['10:00', 'Hello']; // 成为时间和短语
+
+// user 成为 this，messageData 作为参数列表传递 (time, phrase)
+say.apply(user, messageData); // [10:00] John: Hello (this=user)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>call</code> 和 <code>apply</code> 之间唯一的语法区别是 <code>call</code> 接受一个参数列表，而 <code>apply</code> 则接受带有一个类似数组的对象。</p>
+<p>我们已经知道了 <a href="rest-parameters-spread-operator.htm" tppabs="https://zh.javascript.info/rest-parameters-spread-operator">Rest 参数与 Spread 操作符</a> 一章中的扩展运算符 <code>...</code>，它可以将数组（或任何可迭代的）作为参数列表传递。因此，如果我们将它与 <code>call</code> 一起使用，就可以实现与 <code>apply</code> 几乎相同的功能。</p>
+<p>这两个调用结果几乎相同：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let args = [1, 2, 3];
+
+func.call(context, ...args); // 使用 spread 运算符将数组作为参数列表传递
+func.apply(context, args);   // 与使用 apply 相同</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们仔细观察，那么 <code>call</code> 和 <code>apply</code> 的使用会有一些细微的差别。</p>
+<ul>
+<li>扩展运算符 <code>...</code> 允许将 <strong>可迭代的</strong> <code>参数列表</code> 作为列表传递给 <code>call</code>。</li>
+<li><code>apply</code> 只接受 <strong>类似数组一样的</strong> <code>参数列表</code>。</li>
+</ul>
+<p>所以，这些调用方式相互补充。我们期望有一个可迭代的 <code>call</code> 实现，我们也期望有一个类似数组，<code>apply</code> 的实现。</p>
+<p>如果 <code>参数列表</code> 既可迭代又像数组一样，就像真正的数组一样，那么我们在技术上可以使用它们中的任何一个，但是 <code>apply</code> 可能会更快，因为它只是一个操作。大多数 JavaScript 引擎内部优化比一对 <code>call + spread</code> 更好。</p>
+<p><code>apply</code> 最重要的用途之一是将调用传递给另一个函数，如下所示：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let wrapper = function() {
+  return anotherFunction.apply(this, arguments);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这叫做 <strong>呼叫转移</strong>。<code>wrapper</code> 传递它获得的所有内容：上下文 <code>this</code> 和 <code>anotherFunction</code> 的参数并返回其结果。</p>
+<p>当外部代码调用这样的 <code>wrapper</code> 时，它与原始函数的调用无法区分。</p>
+<p>现在让我们把它全部加入到更强大的 <code>cachingDecorator</code> 中：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15},{&quot;start&quot;:10,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let worker = {
+  slow(min, max) {
+    alert(`Called with ${min},${max}`);
+    return min + max;
+  }
+};
+
+function cachingDecorator(func, hash) {
+  let cache = new Map();
+  return function() {
+    let key = hash(arguments); // (*)
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    let result = func.apply(this, arguments); // (**)
+
+    cache.set(key, result);
+    return result;
+  };
+}
+
+function hash(args) {
+  return args[0] + ',' + args[1];
+}
+
+worker.slow = cachingDecorator(worker.slow, hash);
+
+alert( worker.slow(3, 5) ); // works
+alert( &quot;Again &quot; + worker.slow(3, 5) ); // same (cached)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，包装器可以使用任意数量的参数进行操作。</p>
+<p>这里有两个变化：</p>
+<ul>
+<li>在 <code>(*)</code> 行中它调用 <code>hash</code> 来从 <code>arguments</code> 创建一个单独的键。这里我们使用一个简单的 “连接” 函数，将参数 <code>(3, 5)</code> 转换为键 “3,5”。更复杂的情况可能需要其他散列函数。</li>
+<li>然后 <code>(**)</code> 使用 <code>func.apply</code> 传递上下文和包装器获得的所有参数（无论多少）到原始函数。</li>
+</ul>
+<h2><a class="main__anchor" name="method-borrowing" href="#method-borrowing">借用一种方法</a></h2><p>现在让我们在散列函数中做一个小改进：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function hash(args) {
+  return args[0] + ',' + args[1];
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>截至目前，它仅适用于两个参数。如果它可以适配任何数量的 <code>args</code> 会更好。</p>
+<p>自然的解决方案是使用 <a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/join  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/join'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Array/join">arr.join</a> 函数:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function hash(args) {
+  return args.join();
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…不幸的是，那不行。虽然我们调用 <code>hash(arguments)</code> 和 <code>arguments</code> 对象，它既可迭代又像数组一样，但它并不是真正的数组。</p>
+<p>所以在它上面调用 <code>join</code> 会失败，我们可以在下面看到：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function hash() {
+  alert( arguments.join() ); // 报错：arguments.join 不是函数
+}
+
+hash(1, 2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>不过，有一种简单的方法可以使用数组的 join 方法：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function hash() {
+  alert( [].join.call(arguments) ); // 1,2
+}
+
+hash(1, 2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这个技巧被称为 <strong>方法借用</strong>。</p>
+<p>我们从常规数组 <code>[].join</code> 中获取（借用）连接方法。并使用 <code>[].join.call</code> 在 <code>arguments</code> 的上下文中运行它。</p>
+<p>它为什么有效？</p>
+<p>那是因为本地方法 <code>arr.join(glue)</code> 的内部算法非常简单。</p>
+<p>从规范中得出几乎“原样”：</p>
+<ol>
+<li>让 <code>glue</code> 成为第一个参数，如果没有参数，则使用逗号 <code>&quot;,&quot;</code>。</li>
+<li>让 <code>result</code> 为空字符串。</li>
+<li>将 <code>this[0]</code> 附加到 <code>result</code>。</li>
+<li>附加 <code>glue</code> 和 <code>this[1]</code>。</li>
+<li>附加 <code>glue</code> 和 <code>this[2]</code>。</li>
+<li>…直到 <code>this.length</code> 项目粘在一起。</li>
+<li>返回 <code>result</code>。</li>
+</ol>
+<p>因此，从技术上讲，它需要 <code>this</code> 并将 <code>this[0]</code>，<code>this[1]</code> …… 等加在一起。它的编写方式是允许任何类似数组的 <code>this</code>（不是巧合，许多方法遵循这种做法）。这就是为什么它也适用于 <code>this=arguments</code>。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p><strong>装饰器</strong>是一个改变函数行为的包装器。主要工作仍由该函数来完成。</p>
+<p>除了一件小事，使用装饰器来替代函数或方法通常都是安全的。如果原始函数具有属性，例如 <code>func.calledCount</code> 或者其他什么，则装饰的函数将不提供它们。因为那是一个包装器。因此，如果使用它们，需要小心。一些装饰器提供它们自己的属性。</p>
+<p>装饰器可以被视为可以添加到函数中的“特征”或“方面”。我们可以添加一个或添加许多。而这一切都没有改变它的代码！</p>
+<p>为了实现 <code>cachingDecorator</code>，我们研究了方法：</p>
+<ul>
+<li><a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/call">func.call(context, arg1, arg2…)</a> —— 用给定的上下文和参数调用 <code>func</code>。</li>
+<li><a href="javascript:if(confirm('https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply'" tppabs="https://developer.mozilla.org/zh/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">func.apply(context, args)</a> —— 调用 <code>func</code> 将 <code>context</code> 作为 <code>this</code> 和类似数组的 <code>args</code> 传递给参数列表。</li>
+</ul>
+<p>通用 <strong>呼叫转移</strong> 通常使用 <code>apply</code> 完成：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let wrapper = function() {
+  return original.apply(this, arguments);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当我们从一个对象中获取一个方法并在另一个对象的上下文中“调用”它时，我们也看到了一个 <strong>方法借用</strong> 的例子。采用数组方法并将它们应用于参数是很常见的。另一种方法是使用静态参数对象，它是一个真正的数组。</p>
+<p>在 js 领域里有很多装饰器的使用方法 。快通过解决本章的任务来检查你掌握它们的程度吧。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jian-die-zhuang-shi-qi" name="jian-die-zhuang-shi-qi">间谍装饰器</a></h3><a class="task__open-link" href="task/spy-decorator.htm" tppabs="https://zh.javascript.info/task/spy-decorator" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个装饰器 <code>spy(func)</code>，它应该返回一个包装器，它在 <code>calls</code> 属性中保存所有函数调用。</p>
+<p>每个调用都保存为一个参数数组。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function work(a, b) {
+  alert( a + b ); // work 是一种任意的函数或方法
+}
+
+work = spy(work);
+
+work(1, 2); // 3
+work(4, 5); // 9
+
+for (let args of work.calls) {
+  alert( 'call:' + args.join() ); // &quot;call:1,2&quot;, &quot;call:4,5&quot;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>附：该装饰器有时用于单元测试，它的高级形式是 <a href="javascript:if(confirm('http://sinonjs.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://sinonjs.org/'" tppabs="http://sinonjs.org/">Sinon.JS</a> 库中的 <code>sinon.spy</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/lM1PAsRTlWJ04GKemWgU?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/lM1PAsRTlWJ04GKemWgU?p=preview'" tppabs="http://plnkr.co/edit/lM1PAsRTlWJ04GKemWgU?p=preview" target="_blank" data-plunk-id="lM1PAsRTlWJ04GKemWgU">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>在这里，我们可以使用 <code>calls.push(args)</code> 来存储日志中的所有参数，并使用 <code>f.apply(this, args)</code> 来转发调用。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/KxK7yK6Tk9LmqURjDglb?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/KxK7yK6Tk9LmqURjDglb?p=preview'" tppabs="http://plnkr.co/edit/KxK7yK6Tk9LmqURjDglb?p=preview" target="_blank" data-plunk-id="KxK7yK6Tk9LmqURjDglb">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#yan-chi-zhuang-shi-qi" name="yan-chi-zhuang-shi-qi">延迟装饰器</a></h3><a class="task__open-link" href="task/delay.htm" tppabs="https://zh.javascript.info/task/delay" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个装饰器 <code>delay(f, ms)</code>，将每次调用 <code>f</code> 延迟 <code>ms</code> 毫秒。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f(x) {
+  alert(x);
+}
+
+// create wrappers
+let f1000 = delay(f, 1000);
+let f1500 = delay(f, 1500);
+
+f1000(&quot;test&quot;); // 在 1000 ms 后展示 &quot;test&quot;
+f1500(&quot;test&quot;); // 在 1500 ms 后展示 &quot;test&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换句话说，<code>delay(f, ms)</code> 返回的是延迟 <code>ms</code> 后的 <code>f</code> 的变体。</p>
+<p>在上面的代码中，<code>f</code> 是单个参数的函数，但是你的解决方案应该传递所有参数和上下文 <code>this</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/8ynlAUPffW8b2tf4kOlh?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/8ynlAUPffW8b2tf4kOlh?p=preview'" tppabs="http://plnkr.co/edit/8ynlAUPffW8b2tf4kOlh?p=preview" target="_blank" data-plunk-id="8ynlAUPffW8b2tf4kOlh">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>解决方案：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function delay(f, ms) {
+
+  return function() {
+    setTimeout(() =&gt; f.apply(this, arguments), ms);
+  };
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>注意这里是如何使用箭头函数的。我们知道，箭头函数没有自己的 <code>this</code> 和 <code>arguments</code>，所以 <code>f.apply(this, arguments)</code>从包装器中获取 <code>this</code> 和 <code>arguments</code>。</p>
+<p>如果我们传递一个常规函数，<code>setTimeout</code> 将调用它且不带参数和 <code>this=window</code>（在浏览器中），所以我们需要编写更多代码来从包装器传递它们：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function delay(f, ms) {
+
+  // added variables to pass this and arguments from the wrapper inside setTimeout
+  return function(...args) {
+    let savedThis = this;
+    setTimeout(function() {
+      f.apply(savedThis, args);
+    }, ms);
+  };
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/y83TZKDJUBbvRWtuFv14?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/y83TZKDJUBbvRWtuFv14?p=preview'" tppabs="http://plnkr.co/edit/y83TZKDJUBbvRWtuFv14?p=preview" target="_blank" data-plunk-id="y83TZKDJUBbvRWtuFv14">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#qu-dou-zhuang-shi-qi" name="qu-dou-zhuang-shi-qi">去抖装饰器</a></h3><a class="task__open-link" href="task/debounce.htm" tppabs="https://zh.javascript.info/task/debounce" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p><code>debounce(f, ms)</code>装饰器的结果应该是一个包装器，它每隔几毫秒调用一次 <code>f</code>。</p>
+<p>换句话说，当我们调用 “debounced” 函数时，它保证将忽略最接近的 “ms” 内发生的情况。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let f = debounce(alert, 1000);
+
+f(1); // 立即执行
+f(2); // 忽略
+
+setTimeout( () =&gt; f(3), 100); // 忽略 (只过去了12 ms)
+setTimeout( () =&gt; f(4), 1100); // 运行
+setTimeout( () =&gt; f(5), 1500); // 忽略 (离最后一次执行不超过1000 ms)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在实践中，当我们知道在如此短的时间内没有什么新的事情可以做时，<code>debounce</code> 对于那些用于检索/更新的函数很有用，所以最好不要浪费资源。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/XbApr6yUyfeua2r6OJHT?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/XbApr6yUyfeua2r6OJHT?p=preview'" tppabs="http://plnkr.co/edit/XbApr6yUyfeua2r6OJHT?p=preview" target="_blank" data-plunk-id="XbApr6yUyfeua2r6OJHT">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function debounce(f, ms) {
+
+  let isCooldown = false;
+
+  return function() {
+    if (isCooldown) return;
+
+    f.apply(this, arguments);
+
+    isCooldown = true;
+
+    setTimeout(() =&gt; isCooldown = false, ms);
+  };
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对 <code>debounce</code> 的调用返回一个包装器。可能有两种状态：</p>
+<ul>
+<li><code>isCooldown = false</code> —— 准备好执行</li>
+<li><code>isCooldown = true</code> —— 等待时间结束</li>
+</ul>
+<p>在第一次调用 <code>isCooldown</code> 是假的，所以调用继续进行，状态变为 <code>true</code>。</p>
+<p>当 <code>isCooldown</code> 为真时，所有其他调用都被忽略。</p>
+<p>然后 <code>setTimeout</code> 在给定的延迟后将其恢复为 <code>false</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/q8l68JETerVYwcAFAXuM?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/q8l68JETerVYwcAFAXuM?p=preview'" tppabs="http://plnkr.co/edit/q8l68JETerVYwcAFAXuM?p=preview" target="_blank" data-plunk-id="q8l68JETerVYwcAFAXuM">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jie-liu-zhuang-shi-qi" name="jie-liu-zhuang-shi-qi">节流装饰器</a></h3><a class="task__open-link" href="task/throttle.htm" tppabs="https://zh.javascript.info/task/throttle" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>创建一个“节流”装饰器 <code>throttle(f, ms)</code> —— 返回一个包装器，每隔 “ms” 毫秒将调用最多传递给 <code>f</code> 一次。那些属于“冷却”时期的调用被忽略了。</p>
+<p><strong>与</strong><code>debounce</code> <strong>的区别 —— 如果被忽略的调用是冷却期间的最后一次，那么它会在延迟结束时执行。</strong></p>
+<p>让我们检查一下真实应用程序，以便更好地理解这个需求，并了解它的来源。</p>
+<p><strong>例如，我们想要跟踪鼠标移动。</strong></p>
+<p>在浏览器中，我们可以设置一个函数，鼠标的每次微小的运动都执行，并在移动时获取指针位置。在活动鼠标使用期间，此功能通常非常频繁地运行，可以是每秒 100 次（每 10 毫秒）。</p>
+<p><strong>跟踪功能应更新网页上的一些信息。</strong></p>
+<p>更新函数 <code>update()</code> 太重了，无法在每次微小动作上执行。每 100 毫秒更频繁地制作一次也没有任何意义。</p>
+<p>因此我们将 <code>throttle(update, 100)</code> 指定为在每次鼠标移动时运行的函数，而不是原始的 <code>update()</code>。装饰器将经常调用，但 <code>update()</code> 最多每 100ms 调用一次。</p>
+<p>在视觉上，它看起来像这样：</p>
+<ol>
+<li>对于第一个鼠标移动，装饰变体将调用传递给 <code>update</code>。这很重要，用户会立即看到我们对他行动的反应。</li>
+<li>然后当鼠标移动时，直到 “100ms” 没有任何反应。装饰的变体忽略了调用。</li>
+<li>在 <code>100ms</code>  结束时 – 最后一个坐标发生了一次 <code>update</code>。</li>
+<li>然后，最后，鼠标停在某处。装饰的变体等到 <code>100ms</code>到期，然后用最后一个坐标运行 <code>update</code>。因此，也许最重要的是处理最终的鼠标坐标。</li>
+</ol>
+<p>一个代码示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f(a) {
+  console.log(a)
+};
+
+// f1000 passes calls to f at maximum once per 1000 ms
+let f1000 = throttle(f, 1000);
+
+f1000(1); // shows 1
+f1000(2); // (throttling, 1000ms not out yet)
+f1000(3); // (throttling, 1000ms not out yet)
+
+// when 1000 ms time out...
+// ...outputs 3, intermediate value 2 was ignored</code></pre>
+        </div>
+      </div>
+      
+      </div><p>附：参数和传递给 <code>f1000</code> 的上下文 <code>this</code> 应该传递给原始的 <code>f</code>。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/qXPL9qyTVwrOmk5sG1l6?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/qXPL9qyTVwrOmk5sG1l6?p=preview'" tppabs="http://plnkr.co/edit/qXPL9qyTVwrOmk5sG1l6?p=preview" target="_blank" data-plunk-id="qXPL9qyTVwrOmk5sG1l6">打开带有测试的沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function throttle(func, ms) {
+
+  let isThrottled = false,
+    savedArgs,
+    savedThis;
+
+  function wrapper() {
+
+    if (isThrottled) { // (2)
+      savedArgs = arguments;
+      savedThis = this;
+      return;
+    }
+
+    func.apply(this, arguments); // (1)
+
+    isThrottled = true;
+
+    setTimeout(function() {
+      isThrottled = false; // (3)
+      if (savedArgs) {
+        wrapper.apply(savedThis, savedArgs);
+        savedArgs = savedThis = null;
+      }
+    }, ms);
+  }
+
+  return wrapper;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>调用 <code>throttle(func, ms)</code> 返回 <code>wrapper</code>。</p>
+<ol>
+<li>在第一次调用期间，<code>wrapper</code> 只运行 <code>func</code> 并设置冷却状态 （<code>isThrottled = true</code>）。</li>
+<li>在这种状态下，所有调用都记忆在  <code>savedArgs/savedThis</code> 中。请注意，上下文和参数都同样重要，应该记住。我们需要他们同时重现这个调用。</li>
+<li>…然后在 <code>ms</code> 毫秒过后，<code>setTimeout</code> 触发。冷却状态被删除 （<code>isThrottled = false</code>）。如果我们忽略了调用，则使用最后记忆的参数和上下文执行 <code>wrapper</code></li>
+</ol>
+<p>第3步不是 <code>func</code>，而是 <code>wrapper</code>，因为我们不仅需要执行 <code>func</code>，而是再次进入冷却状态并设置超时以重置它。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/eTaCSa1QWaj0OyErCWHt?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/eTaCSa1QWaj0OyErCWHt?p=preview'" tppabs="http://plnkr.co/edit/eTaCSa1QWaj0OyErCWHt?p=preview" target="_blank" data-plunk-id="eTaCSa1QWaj0OyErCWHt">使用沙箱的测试功能打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="settimeout-setinterval.htm" tppabs="https://zh.javascript.info/settimeout-setinterval" data-tooltip="调度：setTimeout 和 setInterval"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="bind.htm" tppabs="https://zh.javascript.info/bind" data-tooltip="函数绑定"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/call-apply-decorators","identifier":"\/call-apply-decorators"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tou-ming-huan-cun">透明缓存</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-yong-funccall-zuo-wei-shang-xia-wen">使用 “func.call” 作为上下文</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-yong-funcapply-lai-chuan-di-duo-can-shu">使用 “func.apply” 来传递多参数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#method-borrowing">借用一种方法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcall-apply-decorators"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/09-call-apply-decorators/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/09-call-apply-decorators/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/09-call-apply-decorators/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

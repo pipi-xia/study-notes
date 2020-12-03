@@ -1,0 +1,90 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+		<title>圆角边框</title>
+		<style type="text/css">
+			div{
+				/*box-shadow:横坐标 纵坐标 范围 颜色*/
+				box-shadow:  10px 20px 10px gray ;
+			
+				width: 100px  ;
+				height: 50px  ;
+				border: 3px solid red ;
+				/* border-radius: 10px 50px 80px 100px ;
+				border-radius: 50px  ; 
+				border-radius: 50px 100px  ;
+				border-radius: 50px 100px  10px ;*/
+				margin: 50px 0 ;
+			}
+			
+			.divclass2
+			{
+				width: 50px  ;
+				height: 100px  ;
+				border: 3px solid red ;
+			
+			}
+			
+			
+			
+			div:nth-of-type(2){
+				border-radius: 50px 50px 0 0 ;
+			}
+			
+						
+			div:nth-of-type(3){
+				border-radius:  0 0 50px 50px ;
+			}
+			
+			div:nth-of-type(4){
+				border-radius:  0 50px 50px 0 ;
+			}
+			
+			div:nth-of-type(5){
+				border-radius:  50px 0 0 50px ;
+			}
+			
+			#sx div
+			{
+				height: 50px ;
+				width: 50px ;
+				border: 3px blue solid ;
+			}
+			#sx div:nth-of-type(1){
+				border-radius:50px 0 0 0 ;
+			}
+						
+			#sx div:nth-of-type(2){
+				border-radius: 0 50px 0 0 ;
+			}
+						
+			#sx div:nth-of-type(3){
+				border-radius: 0 0 50px  0 ;
+			}
+						
+			#sx div:nth-of-type(4){
+					border-radius: 0 0 0 50px  ;
+			}
+			
+		</style>	
+	</head>
+	<body>  
+			<div></div>
+			<div></div>
+			<div ></div>
+			<div class="divclass2"></div>
+			<div class="divclass2"></div>
+			
+			<div id="sx">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+			
+			</div>
+
+	</body>
+</html>
+

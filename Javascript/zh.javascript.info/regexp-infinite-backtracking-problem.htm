@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">无限回溯问题</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/regexp-infinite-backtracking-problem"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="无限回溯问题"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="无限回溯问题"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/regexp-lookahead"><link rel="next" href="/async"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="无限回溯问题"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/regexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/regexp-infinite-backtracking-problem'" tppabs="https://javascript.info/regexp-infinite-backtracking-problem"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-infinite-backtracking-problem.htm" tppabs="https://zh.javascript.info/regexp-infinite-backtracking-problem"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/'" tppabs="https://ja.javascript.info/"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/regexp-infinite-backtracking-problem">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/regexp-infinite-backtracking-problem" selected>简体中文</option><option value="https://ja.javascript.info/">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="15" max="15" data-tooltip="第 15 章，第 15 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions" itemprop="url"><span itemprop="title">正则表达式</span></a></li></ol><h1 class="main__header-title">无限回溯问题</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="无限回溯问题"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>有些正则表达式看起来简单，但会执行很长很长的时间，甚至会“挂起” JavaScript 引擎。</p>
+<p>绝大多数开发者迟早会遇到这种行为。</p>
+<p>典型的情况 —— 一个正则表达式有时候工作正常，但对于特定的字符串它会“挂起”占用 100% 的 CPU。</p>
+<p>这甚至可能是一个漏洞。例如，如果 JavaScript 运行在服务器上，并且它使用正则表达式来处理用户数据，那么这样的输入可能会拒绝服务。笔者亲自看到并报告过这些漏洞，即使对于众所周知且广泛使用的程序也是如此。</p>
+<p>所以这个问题是绝对值得解决的。</p>
+<h2><a class="main__anchor" name="shi-li" href="#shi-li">实例</a></h2><p>计划将会是这样的：</p>
+<ol>
+<li>首先我们观察问题是如何出现的。</li>
+<li>然后我们简化场景并分析问题为什么会出现。</li>
+<li>然后我们修复它。</li>
+</ol>
+<p>例如，让我们考虑在 HTML 中查找标签。</p>
+<p>我们想要查找所有的标签，有或者没有属性 —— 比如 <code>&lt;a href=&quot;...&quot; class=&quot;doc&quot; ...&gt;</code>。我们需要正则表达式可靠地工作，因为 HMTL 是来自网络的并可能会很混乱。</p>
+<p>特别的，我们需要匹配像 <code>&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> —— 属性里有 <code>&lt;</code> 和 <code>&gt;</code> 的标签。这在 <a href="javascript:if(confirm('https://html.spec.whatwg.org/multipage/syntax.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://html.spec.whatwg.org/multipage/syntax.html#syntax-attributes'" tppabs="https://html.spec.whatwg.org/multipage/syntax.html#syntax-attributes">HTML standard</a> 中是允许的。</p>
+<p>现在我们可以看到像 <code>&lt;[^&gt;]+&gt;</code> 这样简单的正则表达式不起作用，因为它停在了第一个 <code>&gt;</code>，我们需要忽略属性里的 <code>&lt;&gt;</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 匹配没有抵达标签的末尾 —— 错误！
+alert( '&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;'.match(/&lt;[^&gt;]+&gt;/) ); // &lt;a test=&quot;&lt;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们需要整个标签。</p>
+<p>要正确处理这种情况我们需要一个更复杂的正则表达式。它将有 <code>&lt;tag (key=value)*&gt;</code> 这样的形式。</p>
+<p>在正则表达式语言中是 <code>&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;</code>：</p>
+<ol>
+<li><code>&lt;\w+</code> —— 是标签的开始,</li>
+<li><code>(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*</code> —— 是一个任意数量的 <code>word=value</code> 对，其中值可以是单词 <code>\w+</code> 或者一个带引号的字符串 <code>&quot;[^&quot;]*&quot;</code>。</li>
+</ol>
+<p>这还不支持 HTML 语法的一些细节，例如在“单个”引号中的字符串，但它们可以以后添加，因此它们和现实生活有些接近。目前我们想要简单的正则表达式。</p>
+<p>让我们实际操作一下：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;/g;
+
+let str='...&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;... &lt;b&gt;...';
+
+alert( str.match(reg) ); // &lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;, &lt;b&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>很好，它生效了。它找到了长标签 <code>&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> 和短标签 <code>&lt;b&gt;</code>。</p>
+<p>现在让我们看看问题。</p>
+<p>如果你运行下面的示例，它可能会挂起浏览器（或任何运行的 JavaScript 引擎）：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let reg = /&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;/g;
+
+let str = `&lt;tag a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+// 查询会耗费很长很长的时间
+alert( str.match(reg) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>一些正则表达式引擎可以处理该搜索，但大多数都不行。</p>
+<p>这是怎么回事？为什么在这么小的字符串上，一个简单的正则表达式会“挂起” ？</p>
+<p>让我们通过删除标记和引用的字符串来简化场景。</p>
+<p>这里我们只查看属性：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 只查找用空格分隔的属性
+let reg = /&lt;(\s*\w+=\w+\s*)*&gt;/g;
+
+let str = `&lt;a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+// 查询会耗费很长很长的时间
+alert( str.match(reg) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>同样的问题仍然存在。</p>
+<p>在这里，我们结束问题的演示，并开始研究发生了什么以及它为什么会挂起。</p>
+<h2><a class="main__anchor" name="hui-su" href="#hui-su">回溯</a></h2><p>为了使问题更简单，我们考虑一下 <code>(\d+)*$</code>。</p>
+<p>这个正则表达式也有同样的问题。在大多数正则表达式引擎中，搜索需要很长时间（小心 —— 会挂起）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( '12345678901234567890123456789123456789z'.match(/(\d+)*$/) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>那么这个正则表达式有什么问题？</p>
+<p>首先，有人可能注意到这个正则表达式有一点奇怪。量词 <code>*</code> 看起来是多余的。如果我们需要一个数字，我们可以使用 <code>\d+$</code>。</p>
+<p>实际上，正则表达式是人写的。但它缓慢的原因与我们上面看到的相同。所以让我们理解它，然后回到现实生活中的例子。</p>
+<p>在线路 <code>123456789z</code> 中搜索 <code>(\d+)*$</code> 期间发生了什么？</p>
+<ol>
+<li>
+<p>首先，regexp 引擎试图找到一个数字 <code>\d+</code>。默认情况下，加号 <code>+</code> 是贪婪的，所以它消耗所有数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>然后它试图在括号周围应用星号 <code>(\d+)*</code>，但没有更多的数字，所以星号没有给出任何东西。</p>
+<p>然后该模式具有字符串结束锚 <code>$</code>，并且在文本中我们有 <code>z</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">           X
+\d+........$
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>没有匹配！</p>
+</li>
+<li>
+<p>没有匹配，所以贪婪的量词 <code>+</code> 会减少重复次数（回溯）。</p>
+<p>现在 <code>\d+</code> 就不是所有数字了，而是除最后一个之外的所有数字：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......
+(12345678)9z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>现在引擎尝试从新位置（<code>9</code>）继续搜索。</p>
+<p>起始的 <code>(\d+)*</code> 可以被应用上 —— 它给出了数字 <code>9</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>引擎再次尝试匹配 <code>$</code>，但失败了，因为遇到 <code>z</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>没有匹配，因此引擎将继续回溯。</p>
+</li>
+<li>
+<p>现在第一个数字 <code>\d+</code> 将会有 7 位数，字符串的其余部分 <code>89</code> 是第二个数字 <code>\d+</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+......\d+
+(1234567)(89)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…仍然无法匹配 <code>$</code>。</p>
+<p>搜索引擎会再次回溯。回溯通常是这样工作的：只要可以最后一个贪心量词会减少重复次数。然后先前的贪心量词减少，依此类推。在我们的例子中，最后一个贪心量词是第二个 <code>\d+</code>，从 <code>89</code> 变为 <code>8</code>，星号匹配到 <code>9</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">               X
+\d+......\d+\d+
+(1234567)(8)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…再次失败。第二个和第三个 <code>\d+</code> 回溯到最后，所以第一个量词缩短为匹配 <code>123456</code>，然后星号匹配剩余部分：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">             X
+\d+.......\d+
+(123456)(789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>再次失败。重复该过程：最后一个贪心量词释放一个字符（<code>9</code>）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">               X
+\d+.....\d+ \d+
+(123456)(78)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…然后继续。</p>
+</li>
+</ol>
+<p>正则表达式引擎遍历了 <code>123456789</code> 子序列的所有组合。它们是有很多的，这就是为什么它会花费这么长时间。</p>
+<p>一个聪明的家伙可能在这里会说：“回溯？让我们打开懒惰模式 —— 不再有回溯！”。</p>
+<p>让我们用 <code>\d+?</code> 代替 <code>\d+</code>，看它是否生效（小心，会引起浏览器挂起）</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 非非非常慢
+alert( '12345678901234567890123456789123456789z'.match(/(\d+?)*$/) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>不，它没有（生效）。</p>
+<p>惰性量词实际上是一样的，只是顺序相反。试想一下搜索引擎在这种情况下会怎么工作。</p>
+<p>有些正则表达式引擎具有复杂的内置检查来检测无限回溯或其他方法来解决它们，但是没有通用的解决方案。</p>
+<p>在上面的例子中，当我们在字符串 <code>&lt;a=b a=b a=b a=b</code> 中查找 <code>&lt;(\s*\w+=\w+\s*)*&gt;</code> 时 —— 类似的情况发生了。</p>
+<p>字符串最后没有包含 <code>&gt;</code>，所以匹配是不可能的，但正则表达式引擎不知道这些。搜索回溯尝试 <code>(\s*\w+=\w+\s*)</code> 的不同组合：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">(a=b a=b a=b) (a=b)
+(a=b a=b) (a=b a=b)
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="ru-he-xiu-fu" href="#ru-he-xiu-fu">如何修复？</a></h2><p>问题 —— 即便我们不需要它们，回溯也有很多变种。</p>
+<p>例如，在模式 <code>(\d+)*$</code> 中，我们（人类）可以轻易的看到 <code>(\d+)</code> 不需要回溯。</p>
+<p>减少 <code>\d+</code> 的计数对匹配没有帮助，这两者没有区别：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code class="language-none">\d+........
+(123456789)z
+
+\d+...\d+....
+(1234)(56789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>让我们回到更现实生活中的例子：<code>&lt;(\s*\w+=\w+\s*)*&gt;</code>。我们想要查找键值对 <code>name=value</code>（尽可能多）。这里没有必要回溯。</p>
+<p>换而言之，如果它找到很多 <code>name=value</code> 对然后找不到 <code>&gt;</code>，那就没有必要减少重复次数。即使我们少匹配一对，它也不会给我们闭合的 <code>&gt;</code>：</p>
+<p>现代的正则表达式引擎支持所谓的“占有”量词。它们就像贪婪，但根本不回溯。很简单的，它们抓取尽可能多的东西，然后继续搜索。还有另一种叫做“原子组”的工具用来禁止括号内部的回溯。</p>
+<p>不幸的是，JavaScript 对这两项功能都不支持。</p>
+<p>虽然我们可以使用前瞻来获得类似的效果。在文章<a href="javascript:if(confirm('http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead'" tppabs="http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead">正则表达式: 使用前瞻模拟原子分组（和占有量词）</a>和<a href="javascript:if(confirm('http://blog.stevenlevithan.com/archives/mimic-atomic-groups  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://blog.stevenlevithan.com/archives/mimic-atomic-groups'" tppabs="http://blog.stevenlevithan.com/archives/mimic-atomic-groups">模拟原子组</a>中更多关于占有量词和前瞻之间的关系。</p>
+<p>在没有回溯的前提下尽可能多重复使用的模式是：<code>(?=(a+))\1</code>。</p>
+<p>换句话说，前瞻 <code>?=</code> 从当前位置查找最大 <code>a+</code> 的计数。然后他们被 <code>\1</code> 反向引用“消耗在结果中”。</p>
+<p>这里没有回溯，因为前瞻不会回溯。如果它检索了 5 次 <code>a+</code> 并且进一步匹配失败，那么它不会回到 4。</p>
+<p>让我们修复本章开头的带有属性标签的正则表达式 <code>&lt;\w+(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)*&gt;</code>。我们将使用前瞻来防止 <code>name=value</code> 对的回溯：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 搜索 name=value 的正则表达式
+let attrReg = /(\s*\w+=(\w+|&quot;[^&quot;]*&quot;)\s*)/
+
+// 在标签正则表达式中使用
+let reg = new RegExp('&lt;\\w+(?=(' + attrReg.source + '*))\\1&gt;', 'g');
+
+let good = '...&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;... &lt;b&gt;...';
+
+let bad = `&lt;tag a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b
+  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b  a=b`;
+
+alert( good.match(reg) ); // &lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;, &lt;b&gt;
+alert( bad.match(reg) ); // null (no results, fast!)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>很好，它起作用了。我们找到一个长标签 <code>&lt;a test=&quot;&lt;&gt;&quot; href=&quot;#&quot;&gt;</code> 和一个小标签 <code>&lt;b&gt;</code>，并且没有挂起引擎。</p>
+<p>请留意 <code>attrReg.source</code> 属性。<code>RegExp</code> 对象提供对其源字符串的访问。当我们想要将一个正则表达式插入另一个正则表达式时，这很方便。</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-lookahead.htm" tppabs="https://zh.javascript.info/regexp-lookahead" data-tooltip="前瞻断言（正在进行）"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="async.htm" tppabs="https://zh.javascript.info/async" data-tooltip="Promises, async/await"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/regexp-infinite-backtracking-problem","identifier":"\/regexp-infinite-backtracking-problem"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.htm" tppabs="https://zh.javascript.info/regular-expressions">正则表达式</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-li">实例</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#hui-su">回溯</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ru-he-xiu-fu">如何修复？</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fregexp-infinite-backtracking-problem"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/15-regexp-infinite-backtracking-problem/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/15-regexp-infinite-backtracking-problem/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/5-regular-expressions/15-regexp-infinite-backtracking-problem/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

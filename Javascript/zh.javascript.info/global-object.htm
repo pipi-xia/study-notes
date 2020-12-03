@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">å…¨å±€å¯¹è±¡</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/global-object"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="å…¨å±€å¯¹è±¡"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="å…¨å±€å¯¹è±¡"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/var"><link rel="next" href="/function-object"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="å…¨å±€å¯¹è±¡"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/global-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/global-object'" tppabs="https://javascript.info/global-object"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="global-object.htm" tppabs="https://zh.javascript.info/global-object"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/global-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/global-object'" tppabs="https://ja.javascript.info/global-object"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/global-object">English</option><option value="https://learn.javascript.ru/">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/global-object" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/global-object">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="47" max="67" data-tooltip="ç¬¬ 67 ç« ï¼Œç¬¬ 47 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript ç¼–ç¨‹è¯­è¨€</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions" itemprop="url"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">å…¨å±€å¯¹è±¡</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="å…¨å±€å¯¹è±¡"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript åˆåˆ›æ—¶ï¼Œå­˜åœ¨ä¸€ç§å€ŸåŠ©ã€Œå…¨å±€å¯¹è±¡ã€æä¾›å…¨å±€å˜é‡å’Œå‡½æ•°çš„æ€æƒ³ã€‚å®ƒçš„åˆè¡·æ˜¯å¤šä¸ªæµè§ˆå™¨ä¸­çš„ä»£ç å¯ä»¥é€šè¿‡ä¸€ä¸ªå…¨å±€å¯¹è±¡å…±äº«å˜é‡ã€‚</p>
+<p>ä»é‚£ä¹‹åï¼ŒJavaScript æœ‰äº†æå¤§çš„å‘å±•ï¼Œé‚£ç§é€šè¿‡å…¨å±€å˜é‡æ¥è¿é€šä»£ç çš„æƒ³æ³•ä¸å†å—æ¬¢è¿ã€‚åœ¨ç°ä»£ JavaScript ä¸­ï¼Œæ¨¡å—åŒ–æ¦‚å¿µæˆä¸ºä¸»æµã€‚</p>
+<p>ä½†æ˜¯å…¨å±€å¯¹è±¡ä»ç„¶åœ¨è§„èŒƒä¸­ä¿ç•™ç€ã€‚</p>
+<p>æµè§ˆå™¨ä¸­å®ƒè¢«å‘½åä¸º â€œwindowâ€ï¼Œå¯¹ Node.JS è€Œè¨€æ˜¯ â€œglobalâ€ï¼Œå…¶å®ƒç¯å¢ƒå¯èƒ½ç”¨çš„åˆ«çš„åå­—ã€‚</p>
+<p>å®ƒåšäº†ä¸¤ä»¶äº‹æƒ…ï¼š</p>
+<ol>
+<li>æä¾›å¯¹ç”±è§„èŒƒå’Œç¯å¢ƒå®šä¹‰çš„å†…ç½®å‡½æ•°å’Œå€¼çš„è®¿é—®ã€‚
+æ¯”å¦‚ï¼Œæˆ‘ä»¬å¯ä»¥ç›´æ¥è°ƒç”¨ <code>alert</code> æˆ–è€…ä»¥ <code>window</code> çš„æ–¹æ³•çš„å½¢å¼è°ƒç”¨ï¼š</li>
+</ol>
+<p>```js run
+alert(â€œHelloâ€);</p>
+<p>// ç­‰åŒäº
+Â  Â window.alert(â€œHelloâ€);
+```</p>
+<p>åŒæ ·çš„ï¼Œä¹Ÿé€‚ç”¨äºå…¶å®ƒå†…ç½®çš„ä¸œè¥¿ï¼Œæ¯”å¦‚ï¼Œæˆ‘ä»¬å¯ä»¥ä½¿ç”¨ <code>window.Array</code> è€Œä¸æ˜¯Â <code>Array</code>ã€‚</p>
+<ol start="2">
+<li>
+<p>æä¾›å¯¹å…¨å±€å£°æ˜å’Œ <code>var</code> å˜é‡çš„è®¿é—®ã€‚æˆ‘ä»¬å¯ä»¥ä½¿ç”¨å…¨å±€å¯¹è±¡çš„å±æ€§æ¥è¯»ã€å†™å®ƒä»¬ï¼Œæ¯”å¦‚ï¼š</p>
+ <!-- no-strict to move variables out of eval -->
+<div data-trusted="0" class="code-example" data-no-strict="1" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">var phrase = &quot;Hello&quot;;
+
+function sayHi() {
+  alert(phrase);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>// å¯ä»¥ä» window è¯»å–
+Â  Â alert( window.phrase ); // Helloï¼ˆå…¨å±€å˜é‡ï¼‰
+Â  Â alert( window.sayHi ); // functionï¼ˆå…¨å±€å‡½æ•°å£°æ˜ï¼‰</p>
+<p>// å¯ä»¥å†™å…¥ windowï¼ˆä¼šç”Ÿæˆæ–°çš„å…¨å±€å˜é‡ï¼‰
+window.test = 5;</p>
+<pre><code>alert(test); // 5
+```
+</code></pre>
+<p>â€¦ä½†æ˜¯å…¨å±€å¯¹è±¡é‡Œä¸ä¼šæœ‰ <code>let/const</code> å£°æ˜çš„å˜é‡ï¼</p>
+<div data-trusted="0" class="code-example" data-no-strict="1" data-refresh="1" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:3}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let user = &quot;John&quot;;
+alert(user); // John
+
+alert(window.user); // undefinedï¼Œä¸ä¼šæœ‰ let å£°æ˜çš„
+alert(&quot;user&quot; in window); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">å…¨å±€å¯¹è±¡ä¸æ˜¯å…¨å±€ç¯å¢ƒè®°å½•</span></div>
+            <div class="important__content"><p>åœ¨ ES-2015 ä¹‹å‰çš„ ECMAScript ç‰ˆæœ¬ä¸­ï¼Œè¿˜æ²¡æœ‰ <code>let/const</code> å˜é‡ï¼Œåªæœ‰ <code>var</code>ã€‚è€Œä¸”å…¨å±€å¯¹è±¡è¢«ç”¨ä½œå…¨å±€ç¯å¢ƒè®°å½•ï¼ˆæ–‡å­—æœ‰äº›ä¸åŒï¼Œä½†æ˜¯æœ¬è´¨æ˜¯ä¸€æ ·çš„ï¼‰ã€‚</p>
+<p>ä½†æ˜¯ä» ES-2015 å¼€å§‹ï¼Œè¿™äº›å®ä½“è¢«åˆ†å¼€äº†ã€‚å…¨å±€çš„è¯æ³•ç¯å¢ƒæœ‰äº†è‡ªå·±çš„ç¯å¢ƒè®°å½•ã€‚è€Œä¸”æœ‰äº†èƒ½å¤Ÿæä¾›<strong>ä¸€äº›</strong>å…¨å±€å˜é‡çš„å…¨å±€å¯¹è±¡ã€‚</p>
+<p>åœ¨å®é™…ä¸­çš„åŒºåˆ«æ˜¯ï¼Œå…¨å±€ <code>let/const</code> å˜é‡æ˜¯å…¨å±€ç¯å¢ƒè®°å½•çš„å±æ€§ï¼Œä½†æ˜¯å®ƒä»¬ä¸åœ¨å…¨å±€å¯¹è±¡é‡Œã€‚</p>
+<p>å¾ˆè‡ªç„¶åœ°ï¼Œé‚£æ˜¯å› ä¸ºå…¨å±€å¯¹è±¡ä½œä¸ºè®¿é—®ã€Œæ‰€æœ‰å…¨å±€å†…å®¹ã€çš„é€”å¾„ï¼Œè¿™ç§æ€æƒ³æ¥è‡ªäºæ—©æœŸã€‚å¦‚ä»Šï¼Œå®ƒå·²ç»ä¸è¢«çœ‹å¥½ã€‚è¯¸å¦‚ <code>let/const</code> çš„ç°ä»£è¯­è¨€ç‰¹æ€§æ— æ³•ä¸å®ƒä¸ºå‹ï¼Œä½†æ˜¯æ—§ä»£ç ä»ç„¶æ˜¯å…¼å®¹çš„ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="shi-yong-window" href="#shi-yong-window">ä½¿ç”¨ â€œwindowâ€</a></h2><p>åœ¨å¦‚ Node.JS çš„æœåŠ¡å™¨ç¯å¢ƒï¼Œ<code>global</code> å¯¹è±¡å¾ˆå°‘è¢«ä½¿ç”¨ã€‚æˆ–è€…å¯ä»¥è¯´å‡ ä¹ã€Œä»æ¥æ²¡æœ‰ã€ã€‚</p>
+<p>ä½†åœ¨æµè§ˆå™¨ç¯å¢ƒï¼Œ <code>window</code> æœ‰æ—¶ä¼šè¢«ä½¿ç”¨ã€‚</p>
+<p>é€šå¸¸ï¼Œä½¿ç”¨å…¨å±€å¯¹è±¡å¹¶ä¸æ˜¯ä¸€ä¸ªå¥½ä¸»æ„ï¼Œä½†æ˜¯æœ‰æ—¶ä½ ä¼šé‡åˆ°ä¸€äº›ä¸‹é¢çš„ä¾‹å­ï¼š</p>
+<ol>
+<li>
+<p>ä¸ºäº†è®¿é—®ä¸å‡½æ•°å±€éƒ¨å˜é‡åŒåçš„å…¨å±€å˜é‡ã€‚</p>
+<div data-trusted="0" class="code-example" data-no-strict="1" data-refresh="1" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">var user = &quot;Global&quot;;
+
+function sayHi() {
+  var user = &quot;Local&quot;;
+
+  alert(window.user); // Global
+}
+
+sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>è¿™æ˜¯ä¸€ä¸ªå˜é€šç”¨æ³•ã€‚æœ€å¥½ä¸è¦è¿™æ ·å†™ä»£ç ï¼Œè€Œæ˜¯ä½¿ç”¨ä¸åŒåç§°çš„å˜é‡ã€‚è€Œä¸”æ³¨æ„ <code>user</code> å‰çš„ <code>var</code>ï¼Œè¿™ç§æ–¹å¼å¯¹ <code>let</code> ä¸é€‚ç”¨ã€‚</p>
+<ol start="2">
+<li>ä¸ºäº†æ£€æµ‹æŸä¸ªç‰¹å®šå…¨å±€å˜é‡æˆ–å†…ç½®å‡½æ•°æ˜¯å¦å­˜åœ¨ã€‚
+Â  Â 
+Â  Â æ¯”å¦‚ï¼Œæˆ‘ä»¬æƒ³è¦æ£€æµ‹å…¨å±€å‡½æ•° <code>XMLHttpRequest</code> æ˜¯å¦å­˜åœ¨ã€‚</li>
+</ol>
+<p>æˆ‘ä»¬ä¸èƒ½ç”¨ <code>if (XMLHttpRequest)</code>ï¼Œå› ä¸ºå¦‚æœ <code>XMLHttpRequest</code> ä¸å­˜åœ¨ï¼Œä¼šå‡ºé”™ï¼ˆå˜é‡æ²¡æœ‰å®šä¹‰ï¼‰ã€‚</p>
+<p>ä½†æˆ‘ä»¬å¯ä»¥ä» <code>window.XMLHttpRequest</code> é‡Œè¯»å–ï¼š</p>
+<pre><code>```js run
+if (window.XMLHttpRequest) {
+  alert('XMLHttpRequest exists!')
+}
+```
+</code></pre>
+<p>å¦‚æœæ²¡æœ‰å…¨å±€å‡½æ•°ï¼Œé‚£ä¹ˆ <code>window.XMLHttpRequest</code> åªä¸è¿‡æ˜¯ä¸å­˜åœ¨çš„å¯¹è±¡å±æ€§ï¼Œä¼šå¾—åˆ° <code>undefined</code>ï¼Œè€Œä¸æ˜¯é”™è¯¯ï¼Œæ‰€ä»¥è¿™ç§å†™æ³•ä¼šç”Ÿæ•ˆã€‚</p>
+<p>æˆ‘ä»¬ä¹Ÿå¯ä»¥ä¸ç”¨ <code>window</code> æ¥æ£€æµ‹ï¼š</p>
+<pre><code>```js
+if (typeof XMLHttpRequest == 'function') {
+</code></pre>
+<p>/* æ˜¯å¦æœ‰å‡½æ•° XMLHttpRequestï¼Ÿ */
+}
+```</p>
+<p>è¿™é‡Œæ²¡æœ‰ä½¿ç”¨ <code>window</code>ï¼Œä½†æ˜¯ï¼ˆç†è®ºä¸Šï¼‰å®ƒä¸å¤Ÿå¯é ï¼Œå› ä¸º <code>typeof</code> å¯èƒ½ä¼šä½¿ç”¨å±€éƒ¨çš„ <code>XMLHttpRequest</code>ï¼Œè€Œæˆ‘ä»¬æƒ³è¦çš„æ˜¯å…¨å±€çš„é‚£ä¸ªã€‚</p>
+<ol start="3">
+<li>ä¸ºäº†ä»æ­£ç¡®çš„çª—å£ä¸­è·å–å˜é‡ï¼Œè¿™å¯èƒ½æ˜¯æœ€åˆç†çš„ä½¿ç”¨åœºæ™¯äº†ã€‚</li>
+</ol>
+<p>æµè§ˆå™¨å¯èƒ½ä¼šæ‰“å¼€å¤šä¸ªçª—å£æˆ–é¡µç­¾ã€‚ä¸€ä¸ªçª—å£è¿˜å¯èƒ½åµŒå…¥äº†å¦ä¸€ä¸ª <code>&lt;iframe&gt;</code>ã€‚æ¯ä¸€ä¸ªæµè§ˆå™¨çª—å£éƒ½æœ‰è‡ªå·±çš„ <code>window</code> å¯¹è±¡å’Œå…¨å±€å˜é‡ã€‚JavaScript å…è®¸æ¥è‡ªç›¸åŒç«™ç‚¹ï¼ˆç›¸åŒçš„åè®®ã€åŸŸåã€ç«¯å£ï¼‰çš„çª—å£äº’ç›¸è®¿é—®å½¼æ­¤çš„å˜é‡ã€‚</p>
+<p>è¿™ç§ç”¨æ³•å·²ç»æœ‰äº›è¶…å‡ºæˆ‘ä»¬è¿™é‡Œçš„èŒƒå›´ï¼Œä½†å®ƒå¤§ä½“æ˜¯è¿™æ ·çš„ï¼š</p>
+<p>```html run
+<iframe src="index.htm" tppabs="https://zh.javascript.info/" id="iframe"></iframe></p>
+<pre><code>&lt;script&gt;
+</code></pre>
+<p>alert( innerWidth ); // è·å–å½“å‰çª—å£çš„ innerWith å±æ€§ï¼ˆä»…åœ¨æµè§ˆå™¨ä¸­ï¼‰
+Â  Â   alert( Array ); // è·å–å½“å‰çª—å£çš„ Arrayï¼ˆjavascript æ ¸å¿ƒå†…ç½®å‡½æ•°ï¼‰</p>
+<p>// å½“ iframe åŠ è½½å â€¦
+Â  Â   iframe.onload = function() {
+Â  Â  Â   // è·å– iframe çª—å£çš„ innerWidth å±æ€§
+<em>!</em>
+alert( iframe.contentWindow.innerWidth );
+<em>/!</em>
+Â  Â  Â   // è·å– iframe çª—å£çš„å†…ç½® Array
+<em>!</em>
+alert( iframe.contentWindow.Array );
+<em>/!</em>
+};
+</script>
+```</p>
+<p>è¿™é‡Œï¼Œå‰ä¸¤ä¸ª <code>alert</code> ä½¿ç”¨å½“å‰çª—å£ï¼Œåä¸¤ä¸ªä½¿ç”¨ <code>iframe</code> çª—å£çš„å˜é‡ã€‚å¦‚æœ <code>iframe</code> æ¥è‡ªç›¸åŒåè®®ã€ä¸»æœºã€ç«¯å£ï¼Œé‚£ä¹ˆå°±å¯ä»¥è®¿é—®åˆ°ä»»ä½•å˜é‡ã€‚</p>
+<h2><a class="main__anchor" name="this-he-quan-ju-dui-xiang" href="#this-he-quan-ju-dui-xiang">â€œthisâ€ å’Œå…¨å±€å¯¹è±¡</a></h2><p>æœ‰æ—¶å€™ï¼Œ<code>this</code> çš„å€¼æ°å¥½æ˜¯å…¨å±€å¯¹è±¡ã€‚è¿™å¾ˆå°‘ç”¨ï¼Œä½†æœ‰äº›è„šæœ¬æ˜¯ä¾èµ–å®ƒçš„ã€‚</p>
+<ol>
+<li>
+<p>åœ¨æµè§ˆå™¨ä¸­ï¼Œå…¨å±€èŒƒå›´çš„ <code>this</code> å°±æ˜¯ <code>window</code>ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// outside of functions
+alert( this === window ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>åœ¨è¿™ç§åœºæ™¯ä¸‹ï¼Œå…¶å®ƒéæµè§ˆå™¨ç¯å¢ƒï¼Œå¯èƒ½ä½¿ç”¨å…¶å®ƒçš„å€¼æ¥èµ‹ç»™ <code>this</code>ã€‚</p>
+<ol start="2">
+<li>å½“ä¸€ä¸ªæœ‰ <code>this</code> çš„å‡½æ•°åœ¨éä¸¥æ ¼æ¨¡å¼ä¸‹è¢«è°ƒç”¨æ—¶ï¼Œå…¨å±€å¯¹è±¡ä¼šä½œä¸º <code>this</code>ï¼š</li>
+</ol>
+<p>```js run no-strict
+Â  Â // ä¸åœ¨ä¸¥æ ¼æ¨¡å¼ä¸‹ (!)
+function f() {
+alert(this); // [object Window]
+}</p>
+<p>f(); // æ²¡æœ‰é€šè¿‡å¯¹è±¡æ¥è°ƒç”¨
+```</p>
+<p>æ ¹æ®è§„èŒƒï¼Œè¿™ç§åœºæ™¯ä¸‹çš„ <code>this</code> å¿…é¡»æ˜¯å…¨å±€å¯¹è±¡ï¼Œå³ä½¿æ˜¯åœ¨éæµè§ˆå™¨ç¯å¢ƒï¼Œæ¯”å¦‚ Node.JSã€‚è¿™æ ·æ˜¯ä¸ºäº†å…¼å®¹æ—§çš„ä»£ç ï¼Œåœ¨ä¸¥æ ¼æ¨¡å¼ä¸‹ï¼Œ<code>this</code> ä¼šæ˜¯ <code>undefiend</code>ã€‚</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="var.htm" tppabs="https://zh.javascript.info/var" data-tooltip="æ—§æ—¶çš„ &quot;var&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="function-object.htm" tppabs="https://zh.javascript.info/function-object" data-tooltip="å‡½æ•°å¯¹è±¡ï¼ŒNFE"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/global-object","identifier":"\/global-object"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-yong-window">ä½¿ç”¨ â€œwindowâ€</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#this-he-quan-ju-dui-xiang">â€œthisâ€ å’Œå…¨å±€å¯¹è±¡</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fglobal-object"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/05-global-object/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/05-global-object/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/05-global-object/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

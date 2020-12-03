@@ -1,0 +1,903 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">类继承和 super</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/class-inheritance"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="类继承和 super"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="类继承和 super"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/class"><link rel="next" href="/instanceof"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="类继承和 super"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/class-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/class-inheritance'" tppabs="https://javascript.info/class-inheritance"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="class-inheritance.htm" tppabs="https://zh.javascript.info/class-inheritance"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/class-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/class-inheritance'" tppabs="https://ja.javascript.info/class-inheritance"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/class-inheritance">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/class-inheritance" selected>简体中文</option><option value="https://ja.javascript.info/class-inheritance">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="63" max="67" data-tooltip="第 67 章，第 63 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming" itemprop="url"><span itemprop="title">对象、类和继承</span></a></li></ol><h1 class="main__header-title">类继承和 super</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="类继承和 super"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>类可以继承另外一个类。这是一个非常棒的语法，在技术上是它基于原型继承实现的。</p>
+<p>为了继承另外一个类，我们需要在括号 <code>{..}</code> 前指定 <code>&quot;extends&quot;</code> 和父类</p>
+<p>这里我们写一个继承自 <code>Animal</code> 的 <code>Rabbit</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:19,&quot;end&quot;:24}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  run(speed) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stopped.`);
+  }
+
+}
+
+// 从 Animal 继承
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;);
+
+rabbit.run(5); // 白色兔子会以速度 5 奔跑。
+rabbit.hide(); // 白色兔子藏了起来！</code></pre>
+        </div>
+      </div>
+      
+      </div><p>就如你期望的那样，也正如我们之前所见，<code>extends</code> 关键字实际上是给 <code>Rabbit.prototype</code> 添加了一个属性 <code>[[Prototype]]</code>，并且它会指向 <code>Animal.prototype</code>。</p>
+<div class="markdown-error">图片 &quot;/article/class-inheritance/animal-rabbit-extends.png&quot; 未找到</div><p>所以，现在 <code>rabbit</code> 即可以访问它自己的方法，也可以访问 <code>Animal</code> 的方法。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Any expression is allowed after <code>extends</code></span></div>
+            <div class="important__content"><p>类语法不仅允许在 <code>extends</code> 后指定一个类，也允许指定任何表达式。</p>
+<p>举个例子，通过一个函数调用生成父类：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function f(phrase) {
+  return class {
+    sayHi() { alert(phrase) }
+  }
+}
+
+class User extends f(&quot;Hello&quot;) {}
+
+new User().sayHi(); // Hello</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里 <code>class User</code> 继承自 <code>f(&quot;Hello&quot;)</code> 的执行结果。</p>
+<p>对于一些高级的编程模式来说这可能会很有用，比如我们可以使用函数来根据许多条件生成不同的类，并可以从中继承。</p>
+</div></div>
+<h2><a class="main__anchor" name="zhong-xie-yi-ge-fang-fa" href="#zhong-xie-yi-ge-fang-fa">重写一个方法</a></h2><p>现在让我们继续前进并尝试重写一个方法。到目前为止，<code>Rabbit</code> 继承了 <code>Animal</code> 的 <code>stop</code> 方法，该方法设置了 <code>this.speed = 0</code>。</p>
+<p>如果我们在 <code>Rabbit</code> 中定义了我们自己的  <code>stop</code> 方法，那么它将被用来代替 <code>Animal</code> 的 <code>stop</code> 方法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  stop() {
+    // ...这将用于 rabbit.stop()
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…但是通常来说，我们不希望完全替换父类的方法，而是希望基于它做一些调整或者扩展。我们在我们的方法中做一些事情，但是在它之前/之后或在执行过程中调用父类的方法。</p>
+<p>为此，类提供了 <code>&quot;super&quot;</code> 关键字。</p>
+<ul>
+<li>执行 <code>super.method(...)</code> 来调用一个父类的方法。</li>
+<li>执行 <code>super(...)</code> 调用父类的构造函数 (只能在子类的构造函数中执行)。</li>
+</ul>
+<p>例如，让我们的兔子在停下时自动隐藏：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:24,&quot;end&quot;:27}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  run(speed) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stopped.`);
+  }
+
+}
+
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+
+  stop() {
+    super.stop(); // 调用父类的 stop 函数
+    this.hide(); // 并且在那之后隐藏
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;);
+
+rabbit.run(5); // White Rabbit runs with speed 5.
+rabbit.stop(); // White Rabbit stopped. White rabbit hides!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，<code>Rabbit</code> 有自己的 <code>stop</code> 函数，并且在执行过程中会调用父类的 <code>super.stop()</code>。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Arrow functions have no <code>super</code></span></div>
+            <div class="important__content"><p>就像在箭头函数 <a href="arrow-functions.htm" tppabs="https://zh.javascript.info/arrow-functions">深入研究箭头函数</a> 那一章节所提到的，箭头函数没有 <code>super</code>。</p>
+<p>如果被访问，它将从外部函数获取。举个例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  stop() {
+    setTimeout(() =&gt; super.stop(), 1000); // 1 秒后调用父类的 stop 函数
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>箭头函数中的 <code>super</code> 与 <code>stop()</code> 中的相同，所以它能按预期工作。如果我们在这里指定的是一个“普通”函数，那么将会抛出一个错误：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 未定义的 super
+setTimeout(function() { super.stop() }, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="zhong-xie-gou-zao-han-shu" href="#zhong-xie-gou-zao-han-shu">重写构造函数</a></h2><p>对于构造函数来说，重写则有点棘手。</p>
+<p>到目前为止，<code>Rabbit</code> 还没有自己的 <code>constructor</code>。</p>
+<p>根据<a href="javascript:if(confirm('https://tc39.github.io/ecma262/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://tc39.github.io/ecma262/#sec-runtime-semantics-classdefinitionevaluation'" tppabs="https://tc39.github.io/ecma262/#sec-runtime-semantics-classdefinitionevaluation">规范</a>，如果一个类继承了另一个类并且没有构造函数，那么将生成以下构造函数：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Animal {
+  // 为没有构造函数的继承类生成以下的构造函数
+  constructor(...args) {
+    super(...args);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们可以看到，它调用了父类的 <code>constructor</code> 并传递了所有的参数。如果我们不写自己的构造函数，就会出现这种情况。</p>
+<p>现在让我们给 <code>Rabbit</code> 增加一个自定义的构造函数。除了 <code>name</code> 它还会定义 <code>earLength</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:19,&quot;end&quot;:20},{&quot;start&quot;:10,&quot;end&quot;:14}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+  // ...
+}
+
+class Rabbit extends Animal {
+
+  constructor(name, earLength) {
+    this.speed = 0;
+    this.name = name;
+    this.earLength = earLength;
+  }
+
+  // ...
+}
+
+// 不生效！
+let rabbit = new Rabbit(&quot;White Rabbit&quot;, 10); // Error: this is not defined.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>哎呦！我们得到一个报错。现在我们没法新建兔子了。是什么地方出错了？</p>
+<p>简短的解释下原因：继承类的构造函数必须调用 <code>super(...)</code>，并且一定要在使用 <code>this</code> 之前调用。</p>
+<p>…但这是为什么呢？这里发生了什么？这个要求确实看起来很奇怪。</p>
+<p>当然，本文会给出一个解释。让我们深入细节，这样你就可以真正的理解发生了什么。</p>
+<p>在 JavaScript 中，“派生类的构造函数”与所有其他的构造函数之间存在区别。在派生类中，相应的构造函数会被标记为特殊的内部属性 <code>[[ConstructorKind]]:&quot;derived&quot;</code>。</p>
+<p>不同点就在于:</p>
+<ul>
+<li>当一个普通构造函数执行时，它会创建一个空对象作为 <code>this</code> 并继续执行。</li>
+<li>但是当派生的构造函数执行时，它并不会做这件事。它期望父类的构造函数来完成这项工作。</li>
+</ul>
+<p>因此，如果我们构建了我们自己的构造函数，我们必须调用 <code>super</code>，因为否则的话 <code>this</code> 指向的对象不会被创建，并且我们会收到一个报错。</p>
+<p>为了让 <code>Rabbit</code> 可以运行，我们需要在使用 <code>this</code> 之前调用 <code>super()</code>，就像下面这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:20,&quot;end&quot;:23},{&quot;start&quot;:13,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  // ...
+}
+
+class Rabbit extends Animal {
+
+  constructor(name, earLength) {
+    super(name);
+    this.earLength = earLength;
+  }
+
+  // ...
+}
+
+// now fine
+let rabbit = new Rabbit(&quot;White Rabbit&quot;, 10);
+alert(rabbit.name); // White Rabbit
+alert(rabbit.earLength); // 10</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="super-nei-bu-ji-yu-homeobject-shi-xian" href="#super-nei-bu-ji-yu-homeobject-shi-xian">Super: 内部基于 [[HomeObject]] 实现</a></h2><p>让我们再深入的去研究下 <code>super</code>。顺便说一句，我们会发现一些有趣的事情。</p>
+<p>首先要说的是，从我们迄今为止学到的知识来看，<code>super</code> 是不可能运行的。</p>
+<p>的确是这样，让我们问问自己，在技术上它是如何实现的？当一个对象方法运行时，它会将当前对象作为 <code>this</code>。如果之后我们调用 <code>super.method()</code>，那么如何检索 <code>method</code>？我们想当然地认为需要从当前对象的原型中获取 <code>method</code>。但是从技术上讲，我们（或者 JavaScript 的引擎）可以做到这一点吗？</p>
+<p>也许我们可以从 <code>this</code> 的 <code>[[Prototype]]</code> 上获得方法，就像 <code>this.__proto__.method</code>？不幸的是，这样是行不通的。</p>
+<p>让我们尝试去这么做看看。简单起见，我们不使用类，只使用普通对象。</p>
+<p>在这里，<code>rabbit.eat()</code> 会调用父对象的 <code>animal.eat()</code> 方法：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  name: &quot;Rabbit&quot;,
+  eat() {
+    // 这是 super.eat() 可能工作的原因
+    this.__proto__.eat.call(this); // (*)
+  }
+};
+
+rabbit.eat(); // Rabbit eats.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在 <code>(*)</code> 这一行，我们从 <code>animal</code> 的原型上获取 <code>eat</code>，并在当前对象的上下文中调用它。请注意，<code>.call(this)</code> 在这里非常重要，因为简单的调用 <code>this.__proto__.eat()</code> 将在原型的上下文中执行 <code>eat</code>，而非当前对象</p>
+<p>在上述的代码中，它按照期望运行：我们获得了正确的 <code>alert</code>。</p>
+<p>现在让我们在原型链上再添加一个额外的对象。我们将看到这件事是如何被打破的：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:23,&quot;end&quot;:23}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  eat() {
+    // ...新建一个兔子并调用父类的方法
+    this.__proto__.eat.call(this); // (*)
+  }
+};
+
+let longEar = {
+  __proto__: rabbit,
+  eat() {
+    // ...用长耳朵做一些事情，并调用父类（rabbit）的方法
+    this.__proto__.eat.call(this); // (**)
+  }
+};
+
+longEar.eat(); // Error: Maximum call stack size exceeded</code></pre>
+        </div>
+      </div>
+      
+      </div><p>代码无法再运行了！我们可以看到，在试图调用 <code>longEar.eat()</code> 时抛出了错误。</p>
+<p>原因可能不那么明显，但是如果我们跟踪 <code>longEar.eat()</code> 的调用，就可以发现原因。在 <code>(*)</code> 和 <code>(**)</code> 这两行中，<code>this</code> 的值都是当前对象 <code>longEar</code>。这是至关重要的一点：所有的对象方法都将当前对象作为 <code>this</code>，而非原型或其他什么东西。</p>
+<p>因此，在 <code>(*)</code> 和 <code>(**)</code> 这两行中，<code>this.__proto__</code> 的值是完全相同的，都是 <code>rabbit</code>。在这个无限循环中，他们都调用了 <code>rabbit.eat</code>，而不是在原型链上向上寻找方法。</p>
+<p>这张图介绍了发生的情况：</p>
+<figure><div class="image" style="width:297px">
+      <div class="image__ratio" style="padding-top:73.06397306397307%"></div>
+      <img src="article/class-inheritance/this-super-loop.png" tppabs="https://zh.javascript.info/article/class-inheritance/this-super-loop.png" alt="" width="297" height="217" class="image__image">
+      </div></figure><ol>
+<li>
+<p>在 <code>longEar.eat()</code> 中，<code>(**)</code> 这一行调用 <code>rabbit.eat</code> 并且此时 <code>this=longEar</code>.</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 在 longEar.eat() 中 this 指向 longEar
+this.__proto__.eat.call(this) // (**)
+// 变成了
+longEar.__proto__.eat.call(this)
+// 即等同于
+rabbit.eat.call(this);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>之后在 <code>rabbit.eat</code> 的 <code>(*)</code> 行中，我们希望将函数调用在原型链上向更高层传递，但是因为 <code>this=longEar</code>，因此 <code>this.__proto__.eat</code> 又是 <code>rabbit.eat</code>！</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 在 rabbit.eat() 中 this 依旧等于 longEar
+this.__proto__.eat.call(this) // (*)
+// 变成了
+longEar.__proto__.eat.call(this)
+// 再次等同于
+rabbit.eat.call(this);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>…所以 <code>rabbit.eat</code> 不停地循环调用自己，因此它无法进一步地往原型链的更高层调用</p>
+</li>
+</ol>
+<p>这个问题没法单独使用 <code>this</code> 来解决。</p>
+<h3><a class="main__anchor" name="homeobject" href="#homeobject"><code>[[HomeObject]]</code></a></h3><p>为了提供解决方法，JavaScript 为函数额外添加了一个特殊的内部属性：<code>[[HomeObject]]</code>。</p>
+<p><strong>当一个函数被定义为类或者对象方法时，它的 <code>[[HomeObject]]</code> 属性就成为那个对象</strong></p>
+<p>这实际上违反了 “解除绑定” 功能的想法，因为函数会记录他们的对象，并且 <code>[[HomeObject]]</code> 不能被改变，所以这个绑定是永久的。因此这是一个非常重要的语言变化。</p>
+<p>但是这种改变是安全的。<code>[[HomeObject]]</code> 只有使用 <code>super</code> 调用父类的方法是才会被使用。所以它不会破坏兼容性。</p>
+<p>让我们看看它是如何帮助 <code>super</code> 运行的 —— 我们再次使用普通对象：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:23,&quot;end&quot;:23}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  name: &quot;Animal&quot;,
+  eat() {         // [[HomeObject]] == animal
+    alert(`${this.name} eats.`);
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  name: &quot;Rabbit&quot;,
+  eat() {         // [[HomeObject]] == rabbit
+    super.eat();
+  }
+};
+
+let longEar = {
+  __proto__: rabbit,
+  name: &quot;Long Ear&quot;,
+  eat() {         // [[HomeObject]] == longEar
+    super.eat();
+  }
+};
+
+longEar.eat();  // Long Ear eats.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>每个方法都会在内部的 <code>[[HomeObject]]</code> 属性上标记它的对象。然后 <code>super</code> 利用它来解析父级原型。</p>
+<p><code>[[HomeObject]]</code> 是为类和简单对象中定义的方法定义的。但是对于对象，方法必须按照给定的方式定义：使用 <code>method()</code>，而不是 <code>&quot;method: function()&quot;</code>。</p>
+<p>在下面的例子中，使用非方法语法来进行对比。<code>[[HomeObject]]</code> 属性没有被设置，并且此时继承没有生效：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:13,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let animal = {
+  eat: function() { // 应该使用简短语法：eat() {...}
+    // ...
+  }
+};
+
+let rabbit = {
+  __proto__: animal,
+  eat: function() {
+    super.eat();
+  }
+};
+
+rabbit.eat();  // 调用 super 报错（因为没有 [[HomeObject]]）</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="jing-tai-fang-fa-he-ji-cheng" href="#jing-tai-fang-fa-he-ji-cheng">静态方法和继承</a></h2><p><code>class</code> 语法也支持静态属性的继承。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name, speed) {
+    this.speed = speed;
+    this.name = name;
+  }
+
+  run(speed = 0) {
+    this.speed += speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  static compare(animalA, animalB) {
+    return animalA.speed - animalB.speed;
+  }
+
+}
+
+// 继承自 Animal
+class Rabbit extends Animal {
+  hide() {
+    alert(`${this.name} hides!`);
+  }
+}
+
+let rabbits = [
+  new Rabbit(&quot;White Rabbit&quot;, 10),
+  new Rabbit(&quot;Black Rabbit&quot;, 5)
+];
+
+rabbits.sort(Rabbit.compare);
+
+rabbits[0].run(); // Black Rabbit runs with speed 5.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在我们可以假定调用 <code>Rabbit.compare</code> 时是调用了继承的 <code>Rabbit.compare</code>。</p>
+<p>它是如何工作的？正如你已经猜测的那样，继承也给 <code>Rabbit</code> 的 <code>[[Prototype]]</code> 添加一个引用指向 <code>Animal</code>。</p>
+<figure><div class="image" style="width:425px">
+      <div class="image__ratio" style="padding-top:71.05882352941177%"></div>
+      <img src="article/class-inheritance/animal-rabbit-static.png" tppabs="https://zh.javascript.info/article/class-inheritance/animal-rabbit-static.png" alt="" width="425" height="302" class="image__image">
+      </div></figure><p>所以，<code>Rabbit</code> 函数现在继承自 <code>Animal</code> 函数。<code>Animal</code> 函数因为没有继承自任何内容，它的 <code>[[Prototype]]</code> 指向 <code>Function.prototype</code>。</p>
+<p>现在，让我们来验证一下:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {}
+class Rabbit extends Animal {}
+
+// 验证静态属性和方法
+alert(Rabbit.__proto__ === Animal); // true
+
+// 下一步是验证 Function.prototype
+alert(Animal.__proto__ === Function.prototype); // true
+
+// 额外验证一下普通对象方法的原型链
+alert(Rabbit.prototype.__proto__ === Animal.prototype);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这样 <code>Rabbit</code> 就可以访问 <code>Animal</code> 的所有静态方法。</p>
+<h3><a class="main__anchor" name="nei-zhi-lei-mei-you-jing-tai-fang-fa-ji-cheng" href="#nei-zhi-lei-mei-you-jing-tai-fang-fa-ji-cheng">内置类没有静态方法继承</a></h3><p>请注意，内置类没有这种静态 <code>[[Prototype]]</code> 的引用。例如，
+<code>Object</code> 有 <code>Object.defineProperty</code>，<code>Object.keys</code> 等等的方法，但是 <code>Array</code>，<code>Date</code> 等等并不会继承他们。</p>
+<p>这里有一张图来描述 <code>Date</code> 和 <code>Object</code> 的结构：</p>
+<figure><div class="image" style="width:457px">
+      <div class="image__ratio" style="padding-top:77.24288840262582%"></div>
+      <img src="article/class-inheritance/object-date-inheritance.png" tppabs="https://zh.javascript.info/article/class-inheritance/object-date-inheritance.png" alt="" width="457" height="353" class="image__image">
+      </div></figure><p>请注意，<code>Date</code> 和 <code>Object</code> 之间没有关联。<code>Object</code> 和 <code>Date</code> 都是独立存在的。<code>Date.prototype</code> 继承自 <code>Object.prototype</code>，但也仅此而已。</p>
+<p>这种差异是由于历史原因而存在的：在 JavaScript 语言被创建时，并没有考虑过类语法和静态方法的继承</p>
+<h2><a class="main__anchor" name="yuan-sheng-fang-fa-shi-ke-kuo-zhan-de" href="#yuan-sheng-fang-fa-shi-ke-kuo-zhan-de">原生方法是可扩展的</a></h2><p>Array，Map 等 JavaScript 内置的类也是可以扩展的。</p>
+<p>例如，这里的 <code>PowerArray</code> 继承自原生的 <code>Array</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 给 Array 增加一个新方法（可以做更多功能）
+class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50);
+alert(arr.isEmpty()); // false
+
+let filteredArr = arr.filter(item =&gt; item &gt;= 10);
+alert(filteredArr); // 10, 50
+alert(filteredArr.isEmpty()); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>有一件非常有趣的事情需要注意。像 <code>filter</code>，<code>map</code> 或者其他原生的方法，都会根据继承的类型返回新的对象。他们都是依赖 <code>constructor</code> 属性实现的这一功能。</p>
+<p>在上面的例子中：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">arr.constructor === PowerArray</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以当调用 <code>arr.filter()</code> 时，就像 <code>new PowerArray</code> 一样，他会在内部创建新的结果数组。并且我们可以继续链式调用它的方法。</p>
+<p>更重要的是，我们可以定制这种行为。在这种情况下，如果存在静态的 getter <code>Symbol.species</code>，那么就会使用它的返回值作为构造函数。</p>
+<p>举个例子，这里因为有 <code>Symbol.species</code>，像 <code>map</code>，<code>filter</code> 这样的内置方法将返回“普通”数组：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:17,&quot;end&quot;:17},{&quot;start&quot;:5,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  // 内置函数会使用它作为构造函数
+  static get [Symbol.species]() {
+    return Array;
+  }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50);
+alert(arr.isEmpty()); // false
+
+// filter 使用 arr.constructor[Symbol.species] 作为构造函数创建了新数组
+let filteredArr = arr.filter(item =&gt; item &gt;= 10);
+
+// filteredArr 不是 PowerArray，而是一个 普通数组
+alert(filteredArr.isEmpty()); // Error: filteredArr.isEmpty is not a function</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在一些高级的场景中，我们可以使用它从结果值中剔除一些不需要的扩展功能。又或者可以进一步扩展它。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#chuang-jian-shi-li-shi-chu-cuo" name="chuang-jian-shi-li-shi-chu-cuo">创建实例时出错</a></h3><a class="task__open-link" href="task/class-constructor-error.htm" tppabs="https://zh.javascript.info/task/class-constructor-error" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这里有一份代码，是 <code>Rabbit</code> 继承 <code>Animal</code>。</p>
+<p>不幸的是，<code>Rabbit</code> 对象无法被创建，是哪里出错了呢？请解决这个问题。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    this.name = name;
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;); // Error: this is not defined
+alert(rabbit.name);</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>这是因为子类的构造函数必须调用 <code>super()</code>。</p>
+<p>这里是正确的代码：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15},{&quot;start&quot;:10,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Animal {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+}
+
+class Rabbit extends Animal {
+  constructor(name) {
+    super(name);
+    this.created = Date.now();
+  }
+}
+
+let rabbit = new Rabbit(&quot;White Rabbit&quot;); // ok now
+alert(rabbit.name); // White Rabbit</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ji-cheng-clock" name="ji-cheng-clock">继承 clock</a></h3><a class="task__open-link" href="task/clock-class-extended.htm" tppabs="https://zh.javascript.info/task/clock-class-extended" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>我们有一个 <code>Clock</code> 类。到目前为止，它每秒都会打印时间。</p>
+<p>从 <code>Clock</code> 继承并创建一个新的类 <code>ExtendedClock</code>，同时添加一个参数 <code>precision</code> —— 每次 “ticks” 之间间隔的毫秒数，默认是 <code>1000</code>（1秒）。</p>
+<ul>
+<li>你的代码在 <code>extended-clock.js</code> 文件里</li>
+<li>不要修改原来的 <code>clock.js</code>。只继承它。</li>
+</ul>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/kkB3j5w24oCiEtUz83M2?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/kkB3j5w24oCiEtUz83M2?p=preview'" tppabs="http://plnkr.co/edit/kkB3j5w24oCiEtUz83M2?p=preview" target="_blank" data-plunk-id="kkB3j5w24oCiEtUz83M2">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/Cm42zV0rxFHWbVZtSCUp?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/Cm42zV0rxFHWbVZtSCUp?p=preview'" tppabs="http://plnkr.co/edit/Cm42zV0rxFHWbVZtSCUp?p=preview" target="_blank" data-plunk-id="Cm42zV0rxFHWbVZtSCUp">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#lei-ji-cheng-zi-dui-xiang" name="lei-ji-cheng-zi-dui-xiang">类继承自对象？</a></h3><a class="task__open-link" href="task/class-extend-object.htm" tppabs="https://zh.javascript.info/task/class-extend-object" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>正如我们所知道的那样，所有的对象通常都继承自 <code>Object.prototype</code>，并且可以访问像 <code>hasOwnProperty</code> 那样的通用方法。</p>
+<p>举个例子:</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+// hasOwnProperty 方法来自 Object.prototype
+// rabbit.__proto__ === Object.prototype
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是如果我们明确的拼出 <code>&quot;class Rabbit extends Object&quot;</code>，那么结果会和简单的 <code>&quot;class Rabbit&quot;</code> 有所不同么？</p>
+<p>如果有的话，不同之处又在哪？</p>
+<p>这里是示例代码（它确实无法运行了，原因是什么？请解决它）：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>首先，让我们看看为什么之前的代码无法运行。</p>
+<p>如果我们尝试运行它，就会发现明显的原因。派生类的构造函数必须调用 <code>super()</code>。否则不会定义 <code>&quot;this&quot;</code>。</p>
+<p>这里就是解决问题的代码：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {
+  constructor(name) {
+    super(); // 需要在继承时调用父类的构造函数
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit(&quot;Rab&quot;);
+
+alert( rabbit.hasOwnProperty('name') ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但这还不是全部原因。</p>
+<p>即便是修复了问题，<code>&quot;class Rabbit extends Object&quot;</code> 和 <code>class Rabbit</code> 仍然存在着重要差异。</p>
+<p>我们知道，“extends” 语法会设置两个原型：</p>
+<ol>
+<li>在构造函数的 <code>&quot;prototype&quot;</code> 之间设置原型（为了获取实例方法）</li>
+<li>在构造函数之间会设置原型（为了获取静态方法）</li>
+</ol>
+<p>在我们的例子里，对于 <code>class Rabbit extends Object</code>，它意味着：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {}
+
+alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
+alert( Rabbit.__proto__ === Object ); // (2) true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以现在 <code>Rabbit</code> 对象可以通过 <code>Rabbit</code> 访问 <code>Object</code> 的静态方法，如下所示：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit extends Object {}
+
+// 通常我们调用 Object.getOwnPropertyNames
+alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // a,b</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是如果我们没有声明 <code>extends Object</code>，那么 <code>Rabbit.__proto__</code> 将不会被设置为 <code>Object</code>。</p>
+<p>这里有个示例：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Rabbit {}
+
+alert( Rabbit.prototype.__proto__ === Object.prototype ); // (1) true
+alert( Rabbit.__proto__ === Object ); // (2) false (!)
+alert( Rabbit.__proto__ === Function.prototype ); // 所有函数都是默认如此
+
+// 报错，Rabbit 上没有对应的函数
+alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所以在这种情况下，<code>Rabbit</code> 无法访问 <code>Object</code> 的静态方法。</p>
+<p>顺便说一下，<code>Function.prototype</code> 也有一些函数的通用方法，比如 <code>call</code>、<code>bind</code> 等等。在上述的两种情况下他们都是可用的，因为对于内置的 <code>Object</code> 构造函数来说，<code>Object.__proto__ === Function.prototype</code>。</p>
+<p>这里有一张图来解释：</p>
+<figure><div class="image" style="width:424px">
+      <div class="image__ratio" style="padding-top:76.41509433962264%"></div>
+      <img src="task/class-extend-object/rabbit-extends-object.png" tppabs="https://zh.javascript.info/task/class-extend-object/rabbit-extends-object.png" alt="" width="424" height="324" class="image__image">
+      </div></figure><p>所以，简而言之，这里有两点区别：</p>
+<table>
+<thead>
+<tr>
+<th>class Rabbit</th>
+<th>class Rabbit extends Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–</td>
+<td>needs to call <code>super()</code> in constructor</td>
+</tr>
+<tr>
+<td><code>Rabbit.__proto__ === Function.prototype</code></td>
+<td><code>Rabbit.__proto__ === Object</code></td>
+</tr>
+</tbody>
+</table>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="class.htm" tppabs="https://zh.javascript.info/class" data-tooltip="Class"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="instanceof.htm" tppabs="https://zh.javascript.info/instanceof" data-tooltip="类型检测：&quot;instanceof&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/class-inheritance","identifier":"\/class-inheritance"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming">对象、类和继承</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zhong-xie-yi-ge-fang-fa">重写一个方法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zhong-xie-gou-zao-han-shu">重写构造函数</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#super-nei-bu-ji-yu-homeobject-shi-xian">Super: 内部基于 [[HomeObject]] 实现</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#jing-tai-fang-fa-he-ji-cheng">静态方法和继承</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yuan-sheng-fang-fa-shi-ke-kuo-zhan-de">原生方法是可扩展的</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fclass-inheritance"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/10-class-inheritance/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/10-class-inheritance/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/10-class-inheritance/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

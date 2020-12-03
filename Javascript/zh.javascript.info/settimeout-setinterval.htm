@@ -1,0 +1,746 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">调度：setTimeout 和 setInterval</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/settimeout-setinterval"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="调度：setTimeout 和 setInterval"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="调度：setTimeout 和 setInterval"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/new-function"><link rel="next" href="/call-apply-decorators"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="调度：setTimeout 和 setInterval"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/settimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/settimeout-setinterval'" tppabs="https://javascript.info/settimeout-setinterval"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="settimeout-setinterval.htm" tppabs="https://zh.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/settimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/settimeout-setinterval'" tppabs="https://ja.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/settimeout-setinterval">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/settimeout-setinterval" selected>简体中文</option><option value="https://ja.javascript.info/settimeout-setinterval">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="50" max="67" data-tooltip="第 67 章，第 50 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions" itemprop="url"><span itemprop="title">Advanced working with functions</span></a></li></ol><h1 class="main__header-title">调度：setTimeout 和 setInterval</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="调度：setTimeout 和 setInterval"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>有时我们并不想立即执行一个函数，而是等待特定一段时间之后再执行，这种做法也叫“计划调用”。</p>
+<p>目前有两种方式可以实现：</p>
+<ul>
+<li><code>setTimeout</code> 将函数的执行推迟到一段时间之后再执行。</li>
+<li><code>setInterval</code> 让函数间隔一定时间周期性执行。</li>
+</ul>
+<p>这两个方法并不存在于 JavaScript 的规范中。但是大多数运行环境都有内置的调度器，而且也提供了这两个方法的实现。目前来讲，所有浏览器，包括 Node.js 都支持这两个方法。</p>
+<h2><a class="main__anchor" name="settimeout" href="#settimeout">setTimeout</a></h2><p>用法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let timerId = setTimeout(func|code, delay[, arg1, arg2...])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>参数说明：</p>
+<p><code>func|code</code>
+：想要执行的函数或代码字符串。
+一般传入的都是函数，介于某些历史原因，代码字符串也支持，但是不建议使用这种方式。</p>
+<p><code>delay</code>
+：执行前的延时，以毫秒为单位（1000 毫秒 = 1 秒）；</p>
+<p><code>arg1</code>，<code>arg2</code>…
+：要传入被执行函数（或代码字符串）的参数列表（IE9 以下不支持）</p>
+<p>在下面这个示例中，<code>sayHi()</code> 方法会在 1 秒后执行：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi() {
+  alert('Hello');
+}
+
+setTimeout(sayHi, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>带参数的情况：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function sayHi(phrase, who) {
+  alert( phrase + ', ' + who );
+}
+
+setTimeout(sayHi, 1000, &quot;Hello&quot;, &quot;John&quot;); // Hello, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果第一个参数位传入的是字符串，JavaScript 会自动为其创建一个函数。</p>
+<p>所以这么写也是可以的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setTimeout(&quot;alert('Hello')&quot;, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是，毕竟这种方式并不推崇，所以建议还是用函数格式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setTimeout(() =&gt; alert('Hello'), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">要函数，但不要执行函数</span></div>
+            <div class="important__content"><p>新手有时候会误将一对括号 <code>()</code> 加在函数后面：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 这样是不对的！
+setTimeout(sayHi(), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为什么不行呢，因为 <code>setTimeout</code> 需要的是函数的引用。而这里的 <code>sayHi()</code> 很明显是在执行函数，所以实际上传入 <code>setTimeout</code> 的是<strong>函数的执行结果</strong>。在这个例子中，<code>sayHi()</code> 的执行结果是 <code>undefined</code>（也就是说函数没有返回任何结果），所以实际上什么也没有调度。</p>
+</div></div>
+<h3><a class="main__anchor" name="yong-cleartimeout-lai-qu-xiao-tiao-du" href="#yong-cleartimeout-lai-qu-xiao-tiao-du">用 clearTimeout 来取消调度</a></h3><p><code>setTimeout</code> 在调用时会返回一个“定时器 id”—— 例子中为变量 <code>timerId</code> 持有，接下来用它取消调度。</p>
+<p>取消调度的语法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let timerId = setTimeout(...);
+clearTimeout(timerId);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在下面的代码中，我们对一个函数进行了调度，紧接着取消了这次调度（中途反悔了）。所以最后什么也没发生：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let timerId = setTimeout(() =&gt; alert(&quot;never happens&quot;), 1000);
+alert(timerId); // 定时器 id
+
+clearTimeout(timerId);
+alert(timerId); // 还是那个 id 没变（并没有因为调度被取消了而变成 null）</code></pre>
+        </div>
+      </div>
+      
+      </div><p>从 <code>alert</code> 的输出来看，定时器 id 在浏览器中是一串数字，然而在其他运行环境下可能是别的东西。就比如 Node.js 返回的是一个定时器对象，这个对象包含一系列方法。</p>
+<p>我再重申一遍，这俩方法没有统一的规范定义，但也无伤大雅。</p>
+<p>针对浏览器环境，定时器在 HTML5 的标准中有详细描述，详见 <a href="javascript:if(confirm('https://www.w3.org/TR/html5/webappapis.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.w3.org/TR/html5/webappapis.html#timers'" tppabs="https://www.w3.org/TR/html5/webappapis.html#timers">timers section</a>。</p>
+<h2><a class="main__anchor" name="setinterval" href="#setinterval">setInterval</a></h2><p><code>setInterval</code> 方法和 <code>setTimeout</code> 的用法是相同的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let timerId = setInterval(func|code, delay[, arg1, arg2...])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>所有参数的意义也是相同的，不过相对于 <code>setTimeout</code> 只执行一次，<code>setInterval</code> 是每间隔一定时间周期性执行。</p>
+<p>想要阻止后续调用，我们需要调用 <code>clearInterval(timerId)</code>。</p>
+<p>下面的例子中，每间隔 2 秒就会输出一条消息。5 秒之后，输出停止：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 每 2 秒重复一次
+let timerId = setInterval(() =&gt; alert('tick'), 2000);
+
+// 5 秒之后停止
+setTimeout(() =&gt; { clearInterval(timerId); alert('stop'); }, 5000);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">弹窗会让 Chrome/Opera/Safari 内的时钟停止</span></div>
+            <div class="important__content"><p>在众多浏览器中，IE 和 Firefox 在显示 <code>alert/confirm/prompt</code> 时，内部的定时器仍旧会继续滴答，但是在 Chrome、Opera 和 Safari 中，内部的定时器会暂停/冻结。</p>
+<p>所以，在执行以上代码时，如果在一定时间内没有关掉 <code>alert</code> 弹窗，那么在你关闭弹窗后，Firefox/IE 会立即显示下一个 <code>alert</code> 弹窗（前提是距离上一次执行超过了 2 秒），而 Chrome/Opera/Safari 这三个则需要再等待 2 秒以上的时间才会再显示（因为在 <code>alert</code> 弹窗期间，定时器并没有滴答）。</p>
+</div></div>
+<h2><a class="main__anchor" name="di-gui-ban-settimeout" href="#di-gui-ban-settimeout">递归版 setTimeout</a></h2><p>周期性调度有两种方式。</p>
+<p>一种是使用 <code>setInterval</code>，另外一种就是递归版的 <code>setTimeout</code>，就像这样：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">/** 这是一种：
+let timerId = setInterval(() =&gt; alert('tick'), 2000);
+*/
+
+let timerId = setTimeout(function tick() {
+  alert('tick');
+  timerId = setTimeout(tick, 2000); // (*)
+}, 2000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>setTimeout</code> 在这一次函数执行完时，立即安排下一次调用 <code>(*)</code>。</p>
+<p>递归版的 <code>setTimeout</code> 其实要比 <code>setInterval</code> 灵活的多，采用这种方式可以根据当前执行结果来安排下一次调用。</p>
+<p>譬如，我们要实现一个服务，每间隔 5 秒向服务器请求数据，如果服务器过载了，那么就要降低请求频率，比如将间隔增加到 10, 20, 40 秒等。</p>
+<p>以下是伪代码：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let delay = 5000;
+
+let timerId = setTimeout(function request() {
+  ...send request...
+
+  if (request failed due to server overload) {
+    // 下一次执行的间隔是当前的 2 倍
+    delay *= 2;
+  }
+
+  timerId = setTimeout(request, delay);
+
+}, delay);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果不时有一些占用 CPU 的任务，我们可以通过衡量执行时间来安排下次调用是应该提前还是推迟。</p>
+<p><strong>递归版 <code>setTimeout</code> 能保证每次执行间的延时都是准确的，<code>setInterval</code> 却不能够。</strong></p>
+<p>下面来比较两段代码，一个是用 <code>setInterval</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 1;
+setInterval(function() {
+  func(i);
+}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>另一个用递归版 <code>setTimeout</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 1;
+setTimeout(function run() {
+  func(i);
+  setTimeout(run, 100);
+}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对 <code>setInterval</code> 而言，内部的调度器会每间隔 100 毫秒执行一次 <code>func(i)</code>：</p>
+<figure><div class="image" style="width:553px">
+      <div class="image__ratio" style="padding-top:29.65641952983725%"></div>
+      <img src="article/settimeout-setinterval/setinterval-interval.png" tppabs="https://zh.javascript.info/article/settimeout-setinterval/setinterval-interval.png" alt="" width="553" height="164" class="image__image">
+      </div></figure><p>注意到了？</p>
+<p><strong>使用 <code>setInterval</code> 时，<code>func</code> 函数的实际调用间隔要比代码给出的间隔时间要短</strong></p>
+<p>这也是无可厚非，因为 <code>func</code> 的执行时间抵消掉了一部分间隔时间。</p>
+<p>还有一种可能，如果 <code>func</code> 的执行时间超出了 100 毫秒呢？</p>
+<p>这时候，JavaScript 引擎会等待 <code>func</code> 执行完，然后向调度器询问是否时间已到，如果是，那么<strong>立马</strong>再执行一次</p>
+<p>极端情况下，如果函数每次执行时间都超过 <code>delay</code> 设置的时间，那么每次调用之间将毫无停顿。</p>
+<p>再来看递归版 <code>setTimeout</code>：</p>
+<figure><div class="image" style="width:553px">
+      <div class="image__ratio" style="padding-top:32.1880650994575%"></div>
+      <img src="article/settimeout-setinterval/settimeout-interval.png" tppabs="https://zh.javascript.info/article/settimeout-setinterval/settimeout-interval.png" alt="" width="553" height="178" class="image__image">
+      </div></figure><p><strong>递归的 <code>setTimeout</code> 就能确保延时的固定（这里用的是 100 毫秒）。</strong></p>
+<p>这是因为下一次调用是在前一次调用完成时再调度的。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">垃圾回收</span></div>
+            <div class="important__content"><p>当一个函数传入 <code>setInterval/setTimeout</code> 时，内部会为其创建一个引用，保存在调度器中。这样，即使这个函数没有被引用，也能防止垃圾回收器（GC）将其回收。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 在调度器调用这个函数之前，这个函数将一直存在于内存中
+setTimeout(function() {...}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>对于 <code>setInterval</code>，传入的函数也是存在于内存中，直到 <code>clearInterval</code> 被调用。</p>
+<p>这里还要提到一个副作用。如果函数引用了外部变量（译者注：闭包），那么只要这个函数还存活着，外部变量也会随之存活，这样就可能会占用多于方法自身所需要的内存。所以，如果某个函数不需要再被调度，即使是个很小的函数，最好也将其取消。</p>
+</div></div>
+<h2><a class="main__anchor" name="settimeout0" href="#settimeout0">setTimeout(…,0)</a></h2><p>还有一种特殊的用法：<code>setTimeout(func, 0)</code>。</p>
+<p>这样调度可以让 <code>func</code> 尽快执行，但是只有在当前代码执行完后，调度器才会对其进行调用。</p>
+<p>也就是说，函数是在刚好当前代码执行完后执行，换而言之，那就是<strong>异步</strong>。</p>
+<p>下面例子中，代码会先输出 “Hello”，然后紧接着输出 “World”：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">setTimeout(() =&gt; alert(&quot;World&quot;), 0);
+
+alert(&quot;Hello&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>第一行代码“将调用安排到日程 0 毫秒处”，但是调度器只有在当前代码执行完毕时才会去“检查日程”，所以 <code>&quot;Hello&quot;</code> 先输出，然后才输出 <code>&quot;World&quot;</code>。</p>
+<h3><a class="main__anchor" name="fen-ge-cpu-gao-zhan-yong-de-ren-wu" href="#fen-ge-cpu-gao-zhan-yong-de-ren-wu">分割 CPU 高占用的任务</a></h3><p>下面讲一个用 <code>setTimeout</code> 分割 CPU 高占用任务的技巧。</p>
+<p>譬如，一个语法高亮脚本（用来给示例代码着色）会占用非常大的 CPU 资源。为了给代码进行高亮显示，它首先要进行代码分析，然后创建一堆着色后的元素，再将其添加到页面文档中 —— 文本量很大时，耗费时间也会很长。有时候甚至会导致浏览器“挂起”，这种情况是显然不能接受的。</p>
+<p>所以，我们不妨将长文本分割成几部分处理。首先处理前 100 行，然后用 <code>setTimeout(...,0)</code> 安排接下来 100 行的处理，以此类推。</p>
+<p>为了方便理解，来考虑一个稍微简单点的例子。比如我们有个函数，从 <code>1</code> 数到 <code>1000000000</code>。</p>
+<p>运行时，会观察到 CPU 挂起，服务器端 JS 表现的尤为明显。如果在浏览器下运行，试试点击页面的其他按钮，你会发现整个 JavaScript 的执行都暂停了，除非等这段代码运行完，否则什么也做不了。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+let start = Date.now();
+
+function count() {
+
+  // 执行一个耗时的任务
+  for (let j = 0; j &lt; 1e9; j++) {
+    i++;
+  }
+
+  alert(&quot;Done in &quot; + (Date.now() - start) + 'ms');
+}
+
+count();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>机会好的话，浏览器还会显示“the script takes too long（页面脚本执行时间过长）”这样的警告（实际上不太可能，毕竟给的数字也不是特别大）。</p>
+<p>下面用 <code>setTimeout</code> 分割任务：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+let start = Date.now();
+
+function count() {
+
+  // 先完成一部分任务(*)
+  do {
+    i++;
+  } while (i % 1e6 != 0);
+
+  if (i == 1e9) {
+    alert(&quot;Done in &quot; + (Date.now() - start) + 'ms');
+  } else {
+    setTimeout(count, 0); // 安排下一次任务 (**)
+  }
+
+}
+
+count();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在，浏览器的 UI 界面即使在“计数”正在进行的情况下也能正常工作了。</p>
+<p><code>(*)</code> 处代码是这么一步步完成任务的：</p>
+<ol>
+<li>第一次做：<code>i=1...1000000</code> 的计数。</li>
+<li>第二次做：<code>i=1000001..2000000</code> 的计数。</li>
+<li>…等等，其中 <code>while</code> 语句检查 <code>i</code> 是否刚好能被 <code>1000000</code> 整除。</li>
+</ol>
+<p>如果任务还没完成，在代码 <code>(*)</code> 处安排下一次调用。</p>
+<p><code>count</code> 函数调用的间隙足以让 JavaScript 引擎“缓口气了”，（浏览器）趁这段时间可以对用户的操作作出回应。</p>
+<p>用 <code>setTimeout</code> 进行分割和没用这两种做法在速度方面平分秋色，总的计数过程所花的时间几乎没什么差别。</p>
+<p>为了进一步阐述，下面做一下改进。</p>
+<p>将调度代码挪到 <code>count()</code> 函数开头位置：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+let start = Date.now();
+
+function count() {
+
+  // 现在将调度放在开头
+  if (i &lt; 1e9 - 1e6) {
+    setTimeout(count, 0); // 安排下一次调用
+  }
+
+  do {
+    i++;
+  } while (i % 1e6 != 0);
+
+  if (i == 1e9) {
+    alert(&quot;Done in &quot; + (Date.now() - start) + 'ms');
+  }
+
+}
+
+count();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>因为知道 <code>count()</code> 不会只执行一次，所以这一次在计数开始前就安排好下一次计数任务。</p>
+<p>如果你自己跑一遍，会观察到这次的耗时要短上不少。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">浏览器内，嵌套定时器运行的最小延时</span></div>
+            <div class="important__content"><p>在浏览器环境下，嵌套定时器的运行频率是受限制的。根据 <a href="javascript:if(confirm('https://www.w3.org/TR/html5/webappapis.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.w3.org/TR/html5/webappapis.html#timers'" tppabs="https://www.w3.org/TR/html5/webappapis.html#timers">HTML5 标准</a> 所言：“经过 5 重嵌套之后，定时器运行间隔强制要求至少达到 4 毫秒”。</p>
+<p>下面用具体示例来阐述。其中 <code>setTimeout</code> 每次都在 <code>0ms</code> 后就再安排一次递归，每次调用都会在 <code>times</code> 数组中记录上一次调用的实际时间。所以，最终延时如何？下面来揭晓：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let start = Date.now();
+let times = [];
+
+setTimeout(function run() {
+  times.push(Date.now() - start); // 保存上次调用的延时
+
+  if (start + 100 &lt; Date.now()) alert(times); // 100 毫秒之后，显示延时信息
+  else setTimeout(run, 0); // 没超过 100 毫秒则再进行调度
+}, 0);
+
+// 示例输出：
+// 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100</code></pre>
+        </div>
+      </div>
+      
+      </div><p>第一次，定时器是立即执行的（正如规范里所描述的那样），接下来延时就出现了，像 <code>9, 15, 20, 24...</code>。（译者注：这里作者没说清楚，timer 数组里存放的是每次定时器运行的时刻与 start 的差值，所以数字只会越来越大，实际上前后调用的延时是数组值的差值。示例中前几次都是 1，所以延时为 0）</p>
+<p>这个限制也是因为历史原因以及很多脚本都依赖于这个机制才得以存在至今。</p>
+<p>服务端 JavaScript 就没这个限制了，而且除此之外还有其他办法来调度这种即时异步任务，例如 Node.JS 的 <a href="javascript:if(confirm('https://nodejs.org/api/process.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://nodejs.org/api/process.html'" tppabs="https://nodejs.org/api/process.html">process.nextTick</a> 和 <a href="javascript:if(confirm('https://nodejs.org/api/timers.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://nodejs.org/api/timers.html'" tppabs="https://nodejs.org/api/timers.html">setImmediate</a>。所以这个提醒也只是针对浏览器环境。</p>
+</div></div>
+<h3><a class="main__anchor" name="gei-liu-lan-qi-xuan-ran-de-ji-hui" href="#gei-liu-lan-qi-xuan-ran-de-ji-hui">给浏览器渲染的机会</a></h3><p>行间脚本还有个益处，可以用来向用户展示进度条等。因为浏览器在所有脚本执行完后，才会开始“重绘（repainting）”过程。</p>
+<p>所以，如果运行一个非常耗时的函数，即便在这个函数中改变了文档内容，除非这个函数执行完，那么变化是不会立刻反映到页面上的。</p>
+<p>以下是一个示例：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;progress&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  let i = 0;
+
+  function count() {
+    for (let j = 0; j &lt; 1e6; j++) {
+      i++;
+      // 将当前 i 值放到 &lt;div&gt; 内
+      // （innerHTML 在以后具体章节会讲到，这行代码看懂应该没问题）
+      progress.innerHTML = i;
+    }
+  }
+
+  count();
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>运行后会发现，<code>i</code> 值只在整个计数过程完成后才显示。</p>
+<p>接下来用 <code>setTimeout</code> 对任务进行分割，这样就能在每一轮运行的间隙观察到变化了，效果要好得多：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;progress&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  let i = 0;
+
+  function count() {
+
+    // 每次只完成一部分 (*)
+    do {
+      i++;
+      progress.innerHTML = i;
+    } while (i % 1e3 != 0);
+
+    if (i &lt; 1e9) {
+      setTimeout(count, 0);
+    }
+
+  }
+
+  count();
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>现在就可以观察到 <code>&lt;div&gt;</code> 里 <code>i</code> 值的增长过程了。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li><code>setInterval(func, delay, ...args)</code> 和 <code>setTimeout(func, delay, ...args)</code> 可以让 <code>func</code> 定期或经历一段延时后一次性执行。</li>
+<li>要取消函数的执行需要调用 <code>clearInterval/clearTimeout</code>，只需将 <code>setInterval/setTimeout</code> 返回的值传入即可。</li>
+<li>嵌套 <code>setTimeout</code> 比 <code>setInterval</code> 用起来更加灵活，同时也能保证每一轮执行的最小时间间隔。</li>
+<li>0 延时调度 <code>setTimeout(...,0)</code> 用来安排在当前代码执行完时，需要尽快执行的函数。</li>
+</ul>
+<p><code>setTimeout(...,0)</code> 的一些用法示例：</p>
+<ul>
+<li>将耗费 CPU 的任务分割成多块，这样脚本运行不会进入“挂起”状态。</li>
+<li>进程繁忙时也能让浏览器抽身做其它事情（例如绘制进度条）。</li>
+</ul>
+<p>有一点需要注意，所有的调度方法都不能<strong>保证</strong>延时的准确性，所以在调度代码中，万不可依赖它。</p>
+<p>浏览器内部的定时器会因各种原因而出现降速情况，譬如：</p>
+<ul>
+<li>CPU 过载。</li>
+<li>浏览器页签切换到了后台模式。</li>
+<li>笔记本电脑用的是电池供电（译者注：使用电池会以降低性能为代价提升续航）。</li>
+</ul>
+<p>如果出现以上情况，定时器的最高精度（最高精确延时）可能会降到 300 毫秒，甚至是 1000 毫秒，具体以浏览器及其设置为准。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#mei-miao-shu-chu-yi-ci" name="mei-miao-shu-chu-yi-ci">每秒输出一次</a></h3><a class="task__open-link" href="task/output-numbers-100ms.htm" tppabs="https://zh.javascript.info/task/output-numbers-100ms" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>编写一个函数 <code>printNumbers(from, to)</code>，使其每秒输出一个数字，数字在 <code>from</code> 到 <code>to</code> 范围内。</p>
+<p>使用以下两种方法来实现。</p>
+<ol>
+<li>使用 <code>setInterval</code>。</li>
+<li>使用递归 <code>setTimeout</code>。</li>
+</ol>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>使用 <code>setInterval</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function printNumbers(from, to) {
+  let current = from;
+
+  let timerId = setInterval(function() {
+    alert(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }, 1000);
+}
+
+// 用例：
+printNumbers(5, 10);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用递归 <code>setTimeout</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function printNumbers(from, to) {
+  let current = from;
+
+  setTimeout(function go() {
+    alert(current);
+    if (current &lt; to) {
+      setTimeout(go, 1000);
+    }
+    current++;
+  }, 1000);
+}
+
+// 用例：
+printNumbers(5, 10);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这两种解法在首次输出时都有一个初始的延时，需要的话可以加一行让其立即输出，这并不难。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#yong-setinterval-zhong-xie-settimeout" name="yong-setinterval-zhong-xie-settimeout">用 setInterval 重写 setTimeout</a></h3><a class="task__open-link" href="task/rewrite-settimeout.htm" tppabs="https://zh.javascript.info/task/rewrite-settimeout" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>下面的函数用嵌套 <code>setTimeout</code> 将任务分成多个部分。</p>
+<p>试试用 <code>setInterval</code> 进行重写：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+let start = Date.now();
+
+function count() {
+
+  if (i == 1000000000) {
+    alert(&quot;Done in &quot; + (Date.now() - start) + 'ms');
+  } else {
+    setTimeout(count, 0);
+  }
+
+  // 任务的一部分
+  for(let j = 0; j &lt; 1000000; j++) {
+    i++;
+  }
+
+}
+
+count();</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+let start = Date.now();
+
+let timer = setInterval(count, 0);
+
+function count() {
+
+  for(let j = 0; j &lt; 1000000; j++) {
+    i++;
+  }
+
+  if (i == 1000000000) {
+    alert(&quot;Done in &quot; + (Date.now() - start) + 'ms');
+    clearInterval(timer);
+  }
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#settimeout-hui-xian-shi-shi-mo" name="settimeout-hui-xian-shi-shi-mo">setTimeout 会显示什么？</a></h3><a class="task__open-link" href="task/settimeout-result.htm" tppabs="https://zh.javascript.info/task/settimeout-result" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>下面代码中安排了一个 <code>setTimeout</code> 的调用，然后运行一个耗时的计算过程，且耗时超过 100 毫秒。</p>
+<p>被调度的函数会在何时运行？</p>
+<ol>
+<li>循环执行后。</li>
+<li>循环执行前。</li>
+<li>循环开始时。</li>
+</ol>
+<p><code>alert</code> 会在何时出现？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+setTimeout(() =&gt; alert(i), 100); // ?
+
+// 假设这段代码运行时间超过 100 毫秒
+for(let j = 0; j &lt; 100000000; j++) {
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><code>setTimeout</code> 只在当前代码运行完毕之后才会执行。</p>
+<p>所以 <code>i</code> 的取值为：<code>100000000</code>。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let i = 0;
+
+setTimeout(() =&gt; alert(i), 100); // 100000000
+
+// 假设这段代码运行时间超过 100 毫秒
+for(let j = 0; j &lt; 100000000; j++) {
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="new-function.htm" tppabs="https://zh.javascript.info/new-function" data-tooltip="&quot;new Function&quot; 语法"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="call-apply-decorators.htm" tppabs="https://zh.javascript.info/call-apply-decorators" data-tooltip="装饰和转发，call/apply"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/settimeout-setinterval","identifier":"\/settimeout-setinterval"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.htm" tppabs="https://zh.javascript.info/advanced-functions">Advanced working with functions</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#settimeout">setTimeout</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#setinterval">setInterval</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#di-gui-ban-settimeout">递归版 setTimeout</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#settimeout0">setTimeout(…,0)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fsettimeout-setinterval"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/08-settimeout-setinterval/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/08-settimeout-setinterval/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/06-advanced-functions/08-settimeout-setinterval/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

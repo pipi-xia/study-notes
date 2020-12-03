@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">代码风格</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/coding-style"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="代码风格"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="代码风格"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/debugging-chrome"><link rel="next" href="/comments"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="代码风格"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/coding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/coding-style'" tppabs="https://javascript.info/coding-style"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="coding-style.htm" tppabs="https://zh.javascript.info/coding-style"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/coding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/coding-style'" tppabs="https://ja.javascript.info/coding-style"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/coding-style">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/coding-style" selected>简体中文</option><option value="https://ja.javascript.info/coding-style">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="21" max="67" data-tooltip="第 67 章，第 21 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="code-quality.htm" tppabs="https://zh.javascript.info/code-quality" itemprop="url"><span itemprop="title">代码质量</span></a></li></ol><h1 class="main__header-title">代码风格</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="代码风格"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>我们的代码必须尽可能的清晰和易读。</p>
+<p>这实际是一种编程艺术 —— 以一种正确并且人类易读的方式编码来完成一个复杂的任务。</p>
+<p>有一个帮助你（实现上面的目标）的事情就是良好的代码风格。</p>
+<h2><a class="main__anchor" name="yu-fa" href="#yu-fa">语法</a></h2><p>一个含有规则的备忘录（更多细节如下）：</p>
+<figure><div class="image" style="width:692px">
+      <div class="image__ratio" style="padding-top:76.30057803468208%"></div>
+      <img src="article/coding-style/code-style.png" tppabs="https://zh.javascript.info/article/coding-style/code-style.png" alt="" width="692" height="528" class="image__image">
+      </div></figure><!--
+```js
+function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+let x = prompt("x?", "");
+let n = prompt("n?", "");
+
+if (n < 0) {
+  alert(`Power ${n} is not supported,
+    please enter an integer number, greater than 0`);
+} else {
+  alert( pow(x, n) );
+}
+```
+
+-->
+<p>现在我们来讨论一下图中的规则和它们的原因吧。</p>
+<p>没有什么规则是“刻在石头上”的，每一条都是可选的而且可修改的：这些是编码规则，而不是宗教教条。</p>
+<h3><a class="main__anchor" name="figurebrackets-da-kuo-hao" href="#figurebrackets-da-kuo-hao">Figure brackets（大括号）</a></h3><p>在大多数的 JavaScript 中，大括号（的开始部分）都是写在同一行而不是新换一行。这就是所谓的 “egyptian” 风格。（译者注： “egyptian” 风格又称 K&amp;R 风格 —— 代码段括号的开始位于一行的末尾，而不是另外起一行的风格。）对了，在括号的开始部分前面还有一个空格。</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">if (condition) {
+  // do this
+  // ...and that
+  // ...and that
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>单行结构也是一个重要的用例。我们是否应该使用括号？如果是，那么在哪里？</p>
+<p>下面是这几种情况的注释，你可以自己判断一下它们的可读性：</p>
+<!--
+```js no-beautify
+if (n < 0) {alert(`Power ${n} is not supported`);}
+
+if (n < 0) alert(`Power ${n} is not supported`);
+
+if (n < 0)
+  alert(`Power ${n} is not supported`);
+
+if (n < 0) {
+  alert(`Power ${n} is not supported`);
+}
+```
+-->
+<figure><div class="image" style="width:438px">
+      <div class="image__ratio" style="padding-top:102.96803652968036%"></div>
+      <img src="article/coding-style/figure-bracket-style.png" tppabs="https://zh.javascript.info/article/coding-style/figure-bracket-style.png" alt="" width="438" height="451" class="image__image">
+      </div></figure><p>总结：</p>
+<ul>
+<li>对于很短的代码，一行是可以接受的：例如 <code>if (cond) return null</code>.</li>
+<li>但是括号中的每个语句单独一行通常更好些。</li>
+</ul>
+<h3><a class="main__anchor" name="hang-de-chang-du" href="#hang-de-chang-du">行的长度</a></h3><p>一行的最大长度应该有所限制。没有人喜欢盯着一条长长的水平线。最好把它分割一下。</p>
+<p>一行的最大长度在团队层面上达成一致即可。通常是 80 或 120 个字符。</p>
+<h3><a class="main__anchor" name="suo-jin" href="#suo-jin">缩进</a></h3><p>有两种类型的缩进：</p>
+<ul>
+<li>
+<p><strong>水平方向上的缩进: 2(4) 个空格。</strong></p>
+<p>一个水平缩进通常由 2 或 4 个空格或者 “Tab” 制表符构成。选择哪一个方式是一场古老的圣战。如今空格更普遍一点。</p>
+<p>选择空格而不是 tabs 的优点之一是它们允许你做出比 “Tab” 制表符更加灵活的缩进配置。</p>
+<p>例如，我们可以将参数和括号的开头对齐，像下面这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">show(parameters,
+     aligned, // 左边有 5 个空格
+     one,
+     after,
+     another
+  ) {
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><strong>垂直方向上的缩进：用于将逻辑块中的代码进行分割的空行。</strong></p>
+<p>即使是单个函数通常也被分割为数个逻辑块。在下面的例子中，初始化的变量、主要的循环结构和返回值都被垂直分割了。</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+  //              &lt;--
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+  //              &lt;--
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>插入一个额外的空行有助于让代码更加地易读。连续超过 9 行都没有被垂直分割的代码是不应该出现的。</p>
+</li>
+</ul>
+<h3><a class="main__anchor" name="fen-hao" href="#fen-hao">分号</a></h3><p>每一个语句后面都应该有一个分号。即使它可能会被跳过。</p>
+<p>有一些语言的分号是可选的。那些语言中很少使用分号。但是在 JavaScript 中，极少数情况下，换行符有时不会被解释为分号。这些地方会造成编程错误。</p>
+<p>随着你变得更加成熟，你可以选择一个无分号的风格，比如 <a href="javascript:if(confirm('https://standardjs.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://standardjs.com/'" tppabs="https://standardjs.com/">StandardJS</a>，但只有当你熟悉 Javascript 并理解了可能的缺陷时才会这样。</p>
+<h3><a class="main__anchor" name="qian-tao-de-ceng-ji" href="#qian-tao-de-ceng-ji">嵌套的层级</a></h3><p>你不应该嵌套太多的层级。</p>
+<p>有时候在循环中使用 <a href="while-for.htm#continue" tppabs="https://zh.javascript.info/while-for#continue">“continue”</a> 指令避免额外的 <code>if(..) { ... }</code> 嵌套是一个好主意：</p>
+<p>例如：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  if (cond) {
+    ... // &lt;- 又一层嵌套
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们可以这样写：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:21}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">for (let i = 0; i &lt; 10; i++) {
+  if (!cond) continue;
+  ...  // &lt;- 没有额外的嵌套
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>使用 <code>if/else</code> 和 <code>return</code> 可以做类似的事情。</p>
+<p>例如，下面的两个结构是相同的。</p>
+<p>第一个：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n &lt; 0) {
+    alert(&quot;Negative 'n' not supported&quot;);
+  } else {
+    let result = 1;
+
+    for (let i = 0; i &lt; n; i++) {
+      result *= x;
+    }
+
+    return result;
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>还有这个：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  if (n &lt; 0) {
+    alert(&quot;Negative 'n' not supported&quot;);
+    return;
+  }
+
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>但是第二个更加的可读，因为 <code>n &lt; 0</code> 这个”边缘情况“已经提前被处理过，并且我们有一个 ”主“ 代码流，而不需要额外的嵌套。</p>
+<h2><a class="main__anchor" name="han-shu-zai-dai-ma-xia-mian" href="#han-shu-zai-dai-ma-xia-mian">函数在代码下面</a></h2><p>如果你正在写几个”辅助类“的函数和一些使用它们的代码，有三种方式来放置它们。</p>
+<ol>
+<li>
+<p>函数在调用它们的那些代码之上：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:13,&quot;cols&quot;:[{&quot;start&quot;:3,&quot;end&quot;:10}]},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:3,&quot;end&quot;:7}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 函数声明
+function createElement() {
+  ...
+}
+
+function setHandler(elem) {
+  ...
+}
+
+function walkAround() {
+  ...
+}
+
+// 使用函数的代码
+let elem = createElement();
+setHandler(elem);
+walkAround();</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>先写代码，再写函数</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:23}]},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:3,&quot;end&quot;:36}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// the code which uses the functions
+let elem = createElement();
+setHandler(elem);
+walkAround();
+
+// --- helper functions ---
+
+function createElement() {
+  ...
+}
+
+function setHandler(elem) {
+  ...
+}
+
+function walkAround() {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>混合，函数定义在它第一次被使用的地方。</p>
+</li>
+</ol>
+<p>大多数时候，第二种方式更好。</p>
+<p>这是因为当在阅读代码时，我们首先想要知道的是“它做了什么”。如果代码先行，它就会提供这些信息。或许我们一点也不需要阅读这些函数，尤其是他们的名字足够表示出他们做了什么的时候。</p>
+<h2><a class="main__anchor" name="feng-ge-zhi-nan" href="#feng-ge-zhi-nan">风格指南</a></h2><p>风格指南包含了“如果编写代码”的通用规则：使用什么引号、用多少空格来缩进、哪里放置换行等等很多的小细节。</p>
+<p>总的来说，当团队中的所有成员都使用同样的风格指南时，代码看起来是统一的。无论团队中谁写的，都是一样的风格。</p>
+<p>当然，一个团队可能会考虑一个他们自己的风格指南。但是现在，他们没必要这样做。现在有很多已经尝试过并制作好的风格指南，可以很容易采用。</p>
+<p>例如：</p>
+<ul>
+<li><a href="javascript:if(confirm('https://google.github.io/styleguide/javascriptguide.xml  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://google.github.io/styleguide/javascriptguide.xml'" tppabs="https://google.github.io/styleguide/javascriptguide.xml">Google JavaScript 风格指南</a></li>
+<li><a href="javascript:if(confirm('https://github.com/airbnb/javascript  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/airbnb/javascript'" tppabs="https://github.com/airbnb/javascript">Airbnb JavaScript 风格指南</a></li>
+<li><a href="javascript:if(confirm('https://github.com/rwaldron/idiomatic.js  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/rwaldron/idiomatic.js'" tppabs="https://github.com/rwaldron/idiomatic.js">Idiomatic.JS</a></li>
+<li><a href="javascript:if(confirm('https://standardjs.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://standardjs.com/'" tppabs="https://standardjs.com/">StandardJS</a></li>
+<li>(还有很多)</li>
+</ul>
+<p>如果你是一个初学者，你可以从本章中上面的内容开始，然后浏览风格指南并提取出常见规则或者选择一个。</p>
+<h2><a class="main__anchor" name="zi-dong-jian-ce-qi" href="#zi-dong-jian-ce-qi">自动检测器</a></h2><p>有很多工具可以自动检查你的代码风格。他们叫做 “linters”。</p>
+<p>它们有一个很棒的地方是风格检测也会发现一些 bug（问题），诸如变量名或者函数书写错误。</p>
+<p>因此推荐你安装一个，即使你不想坚持某个 “code style”。它们会帮你找出书写错误 —— 这就已经足够好了。</p>
+<p>最出名的工具有：</p>
+<ul>
+<li><a href="javascript:if(confirm('http://www.jslint.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.jslint.com/'" tppabs="http://www.jslint.com/">JSLint</a> – 第一批 linters 之一。</li>
+<li><a href="javascript:if(confirm('http://www.jshint.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.jshint.com/'" tppabs="http://www.jshint.com/">JSHint</a> – 比 JSHint 多了更多设置。</li>
+<li><a href="javascript:if(confirm('http://eslint.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://eslint.org/'" tppabs="http://eslint.org/">ESLint</a> – 可能是最新的一个。</li>
+</ul>
+<p>它们都能够做这些工作。笔者使用 <a href="javascript:if(confirm('http://eslint.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://eslint.org/'" tppabs="http://eslint.org/">ESLint</a>.</p>
+<p>大多数 linters 都可以与编辑器集成在一起：只需在编辑器中启用插件并配置风格即可。</p>
+<p>例如，要使用 ESLint 你应该这样做：</p>
+<ol>
+<li>安装 <a href="javascript:if(confirm('https://nodejs.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://nodejs.org/'" tppabs="https://nodejs.org/">Node.JS</a>.</li>
+<li>使用 <code>npm install -g eslint</code> 命令（npm 是 Node.JS 的包安装工具）安装 ESLint。</li>
+<li>在你项目的根目录（包含你所有文件的那个目录）创建一个名叫 <code>.eslintrc</code> 的配置文件。</li>
+</ol>
+<p>这有一个 <code>.eslintrc</code> 的例子：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">{
+  &quot;extends&quot;: &quot;eslint:recommended&quot;,
+  &quot;env&quot;: {
+    &quot;browser&quot;: true,
+    &quot;node&quot;: true,
+    &quot;es6&quot;: true
+  },
+  &quot;rules&quot;: {
+    &quot;no-console&quot;: 0,
+  },
+  &quot;indent&quot;: 2
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里的 <code>&quot;extends&quot;</code> 指令表示我们是基于 “eslint:recommended” 的设置项而进行设置的，并且我们还制定了我们自己的规则。</p>
+<p>在你的编辑器中安装 / 启用插件以和 ESLint 集成。大多数编辑都有的。</p>
+<p>你也可以从网上下载一些风格规则然后扩展它们。查看 <a href="javascript:if(confirm('http://eslint.org/docs/user-guide/getting-started  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://eslint.org/docs/user-guide/getting-started'" tppabs="http://eslint.org/docs/user-guide/getting-started">http://eslint.org/docs/user-guide/getting-started</a> 以获得有关安装的更多详细信息。</p>
+<p>使用一个 linter 会有一些很棒的副作用。Linters 可以捕捉错别字。例如，当一个 undefined 变量被访问时，linter 会检测出并把它高亮（如果和编辑器集成了）。在大多数情况下，这都是你打错啦。所以我们可以马上解决它。</p>
+<p>因此即使你不关心风格，也推荐你使用一个 linter。</p>
+<p>某些 IDE 还支持内置的 linting，但不像 ESLint 那么灵活可配置。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>本章的所有语法规则和样式指南旨在提高可读性，因此所有的内容都是值得商榷的。</p>
+<p>当我们思考“如何写地更好”的时候，唯一的标准是“什么会让代码更加可读和容易理解，什么会帮助我们避免错误”。这是当选择一种风格或讨论哪一种更好的时候要牢记的主要原则。</p>
+<p>阅读风格指南，以查看相关的最新想法，并遵循那些你发现的最好的。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#bu-hao-de-feng-ge" name="bu-hao-de-feng-ge">不好的风格</a></h3><a class="task__open-link" href="task/style-errors.htm" tppabs="https://zh.javascript.info/task/style-errors" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 4</span></div><div class="task__content"><p>下面的代码风格有什么问题？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x,n)
+{
+  let result=1;
+  for(let i=0;i&lt;n;i++) {result*=x;}
+  return result;
+}
+
+let x=prompt(&quot;x?&quot;,''), n=prompt(&quot;n?&quot;,'')
+if (n&lt;=0)
+{
+  alert(`Power ${n} is not supported, please enter an integer number greater than zero`);
+}
+else
+{
+  alert(pow(x,n))
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>修复它。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>你可以注意到以下几点：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x,n)  // &lt;- 参数之间没有空格
+{  // &lt;- 大括号单独一行
+  let result=1;   // &lt;- = 号两边没有空格
+  for(let i=0;i&lt;n;i++) {result*=x;}   // &lt;- 没有空格
+  // { ... } 里面的内容应该在一个新行上
+  return result;
+}
+
+let x=prompt(&quot;x?&quot;,''), n=prompt(&quot;n?&quot;,'') // &lt;-- 从技术角度来看是可以的，
+// 但是拆分成 2 行会更好，并且也没有空格和 ;
+if (n&lt;0)  // &lt;- (n &lt; 0) 里面没有空格，并且应该在前面加一个空行
+{   // &lt;- 大括号单独一行
+  // 下面的一行太长了，或许拆分成 2 行更好
+  alert(`Power ${n} is not supported, please enter an integer number greater than zero`);
+}
+else // &lt;- 可以像 &quot;} else {&quot; 这样写在一行上
+{
+  alert(pow(x,n))  // 没有空格和 ;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>修复的版本：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+let x = prompt(&quot;x?&quot;, &quot;&quot;);
+let n = prompt(&quot;n?&quot;, &quot;&quot;);
+
+if (n &lt; 0) {
+  alert(`Power ${n} is not supported,
+    please enter an integer number greater than zero`);
+} else {
+  alert( pow(x, n) );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="debugging-chrome.htm" tppabs="https://zh.javascript.info/debugging-chrome" data-tooltip="在 Chrome 中调试"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="comments.htm" tppabs="https://zh.javascript.info/comments" data-tooltip="注释"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/coding-style","identifier":"\/coding-style"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="code-quality.htm" tppabs="https://zh.javascript.info/code-quality">代码质量</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yu-fa">语法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#han-shu-zai-dai-ma-xia-mian">函数在代码下面</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#feng-ge-zhi-nan">风格指南</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-dong-jian-ce-qi">自动检测器</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fcoding-style"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/03-code-quality/02-coding-style/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/03-code-quality/02-coding-style/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/03-code-quality/02-coding-style/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

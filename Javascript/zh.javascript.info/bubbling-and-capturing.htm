@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="zh"><head><script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">冒泡和捕获</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/bubbling-and-capturing"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="冒泡和捕获"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="冒泡和捕获"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/introduction-browser-events"><link rel="next" href="/event-delegation"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="冒泡和捕获"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/bubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/bubbling-and-capturing'" tppabs="https://javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="bubbling-and-capturing.htm" tppabs="https://zh.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/bubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/bubbling-and-capturing'" tppabs="https://ja.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/bubbling-and-capturing">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/bubbling-and-capturing" selected>简体中文</option><option value="https://ja.javascript.info/bubbling-and-capturing">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="13" max="27" data-tooltip="第 27 章，第 13 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="events.htm" tppabs="https://zh.javascript.info/events" itemprop="url"><span itemprop="title">事件简介</span></a></li></ol><h1 class="main__header-title">冒泡和捕获</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="冒泡和捕获"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>我们先看一个示例。</p>
+<p>这个处理器被分配给 <code>&lt;div&gt;</code>，但是如果你单击像 <code>&lt;em&gt;</code> 或者 <code>&lt;code&gt;</code> 这样的嵌套标签也是可以运行的：</p>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div onclick=&quot;alert('The handler!')&quot;&gt;
+  &lt;em&gt;If you click on &lt;code&gt;EM&lt;/code&gt;, the handler on &lt;code&gt;DIV&lt;/code&gt; runs.&lt;/em&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-g7b3ud"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>这很奇怪不是么？为什么实际上是单击 <code>&lt;em&gt;</code>，而 <code>&lt;div&gt;</code> 上的处理器会运行？</p>
+<h2><a class="main__anchor" name="mao-pao" href="#mao-pao">冒泡</a></h2><p>冒泡原理很简单。</p>
+<p><strong>当事件发生在元素上，它首先会运行元素本身的处理器，然后运行父元素上的，再然后是其他祖先上的</strong>。</p>
+<p>比如我们有 3 层嵌套 <code>FORM &gt; DIV &gt; P</code>，它们都各自拥有一个处理器：</p>
+<div data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  body * {
+    margin: 10px;
+    border: 1px solid blue;
+  }
+&lt;/style&gt;
+
+&lt;form onclick=&quot;alert('form')&quot;&gt;FORM
+  &lt;div onclick=&quot;alert('div')&quot;&gt;DIV
+    &lt;p onclick=&quot;alert('p')&quot;&gt;P&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-7ypvzz"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>单击内部 <code>&lt;p&gt;</code> 会首先运行 <code>onclick</code>：</p>
+<ol>
+<li>在 <code>&lt;p&gt;</code> 上。</li>
+<li>然后是外部的 <code>&lt;div&gt;</code>。</li>
+<li>再然后是外部的 <code>&lt;form&gt;</code>。</li>
+<li>以此类推，直到最后的 <code>document</code> 对象。</li>
+</ol>
+<figure><div class="image" style="width:317px">
+      <div class="image__ratio" style="padding-top:54.25867507886435%"></div>
+      <img src="article/bubbling-and-capturing/event-order-bubbling.png" tppabs="https://zh.javascript.info/article/bubbling-and-capturing/event-order-bubbling.png" alt="" width="317" height="172" class="image__image">
+      </div></figure><p>因此，如果我们单击 <code>&lt;p&gt;</code>，那么我们将看到 3 个警告： <code>p</code> → <code>div</code> → <code>form</code>。</p>
+<p>这个过程被称为“冒泡”，因为事件“冒泡”从内部元素向上时，会经过父节点，就像水里的气泡一样。</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><em>Almost</em> all events bubble.</span></div>
+            <div class="important__content"><p>这个短语的关键词是“几乎”。</p>
+<p>例如，<code>focus</code> 事件不会冒泡。同样，我们以后还会遇到其他例子。但是这是例外，而不是规则，因为大多数事件都是冒泡的。</p>
+</div></div>
+<h2><a class="main__anchor" name="eventtarget" href="#eventtarget">event.target</a></h2><p>父元素上的处理器总是可以获取事件实际发生位置的详细信息。</p>
+<p><strong>引发事件的那个嵌套层级最深的元素被称为目标元素,可通过 <code>event.target</code> 访问。</strong></p>
+<p>注意与 <code>this</code> (=<code>event.currentTarget</code>) 之间的区别：</p>
+<ul>
+<li><code>event.target</code> ——  是引发事件的目标元素，它在冒泡过程中不会发生变化。。</li>
+<li><code>this</code> —— 是 “current” 元素，其中有一个当前正在运行的处理器。</li>
+</ul>
+<p>例如，如果我们有一个 <code>form.onclick</code> 处理器，那么它可以“抓”到所有表单内部元素上的点击事件。无论点击发生在哪里，它都会冒泡到 <code>&lt;form&gt;</code> 然后运行处理器。</p>
+<p><code>form.onclick</code> 处理器：</p>
+<ul>
+<li><code>this</code> (<code>=event.currentTarget</code>) 是 <code>&lt;form&gt;</code> 元素，因为处理器在它上面运行。</li>
+<li><code>event.target</code> 是表单中实际上被单击的元素。</li>
+</ul>
+<p>检查：</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">结果</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">example.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="在新窗口中打开" href="article/bubbling-and-capturing/bubble-target/index.htm" tppabs="https://zh.javascript.info/article/bubbling-and-capturing/bubble-target/"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="在沙箱中编辑" href="javascript:if(confirm('http://plnkr.co/edit/Azr1Zk3A2pFKufXU2UCC?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/Azr1Zk3A2pFKufXU2UCC?p=preview'" tppabs="http://plnkr.co/edit/Azr1Zk3A2pFKufXU2UCC?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:220px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/bubbling-and-capturing/bubble-target/index.htm" tppabs="https://zh.javascript.info/article/bubbling-and-capturing/bubble-target/"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>form.onclick = function(event) {
+  event.target.style.backgroundColor = 'yellow';
+
+  // chrome needs some time to paint yellow
+  setTimeout(() =&gt; {
+    alert(&quot;target = &quot; + event.target.tagName + &quot;, this=&quot; + this.tagName);
+    event.target.style.backgroundColor = ''
+  }, 0);
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>form {
+  background-color: green;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div {
+  background-color: blue;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: red;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+
+body {
+  line-height: 25px;
+  font-size: 16px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=utf-8;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;example.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  A click shows both &lt;code&gt;event.target&lt;/code&gt; and &lt;code&gt;this&lt;/code&gt; to compare:
+
+  &lt;form id=&quot;form&quot;&gt;FORM
+    &lt;div&gt;DIV
+      &lt;p&gt;P&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><p><code>event.target</code> 可能会等于 <code>this</code> —— 当单击事件发生在 <code>&lt;form&gt;</code> 元素上时。</p>
+<h2><a class="main__anchor" name="ting-zhi-mao-pao" href="#ting-zhi-mao-pao">停止冒泡</a></h2><p>冒泡事件从目标元素开始向上冒泡。通常情况下，它向上上升到 <code>&lt;html&gt;</code>，然后再到 <code>document</code> 对象，一些事件甚至到达了 <code>window</code>，它们会调用路径上的所有处理器。</p>
+<p>但是任何处理器都可以决定事件已经被完全处理，然后停止冒泡。</p>
+<p>方法是 <code>event.stopPropagation()</code>。</p>
+<p>例如，如果你单击 <code>&lt;button&gt;</code> 这里的 <code>body.onclick</code> 是无效的：</p>
+<div data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;body onclick=&quot;alert(`the bubbling doesn't reach here`)&quot;&gt;
+  &lt;button onclick=&quot;event.stopPropagation()&quot;&gt;Click me&lt;/button&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-dw28j8"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">event.stopImmediatePropagation()</span></div>
+            <div class="important__content"><p>如果元素在事件上有多个处理器，那么即使其中一个事件处理器停止冒泡，其他处理器也会继续执行。</p>
+<p>换句话说，<code>event.stopPropagation()</code> 停止向上移动，但是当前元素上的其他处理器都会继续运行。</p>
+<p>为了停止事件冒泡并阻止当前元素上的处理器运行，有一个 <code>event.stopImmediatePropagation()</code> 方法。使用之后，其他处理器就不会被执行。</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Don’t stop bubbling without a need!</span></div>
+            <div class="important__content"><p>冒泡很方便。不要在没有真正需求的时候阻止它：除非是显而易见的，或者是在架构上经过深思熟虑后。</p>
+<p>有时 <code>event.stopPropagation()</code> 会产生隐藏的陷阱，这可能会成为以后的问题。</p>
+<p>例如：</p>
+<ol>
+<li>我们创建一个嵌套目录，每个子目录各自处理对自己的单击事件，并调用 <code>stopPropagation</code>，这样外层目录就不会被触发。</li>
+<li>之后我们决定去捕获在整个窗口上的点击，来追踪用户的行为（用户点击了哪里）。有些分析系统会这样做。通常代码会使用 <code>document.addEventListener('click'…)</code> 来捕获所有的点击。</li>
+<li>我们的分析不适用于点击被 <code>stopPropagation</code> 所阻止的区域。我们有一个 “dead zone”。</li>
+</ol>
+<p>通常没有必要去阻止冒泡的产生。看似需要的任务，可以通过其他方法解决。其中之一就是使用自定义事件，我们稍后会进行讨论。此外，我们还可以将数据写入一个处理器中的 <code>event</code> 对象，并在另一个处理器中读取它，这样我们就可以向父处理器传递有关下层处理器的信息。</p>
+</div></div>
+<h2><a class="main__anchor" name="bu-huo" href="#bu-huo">捕获</a></h2><p>还有另一阶段的事件过程称为“捕获”。它在代码中很少被使用，但是有时是有用的。</p>
+<p><a href="javascript:if(confirm('http://www.w3.org/TR/DOM-Level-3-Events/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.w3.org/TR/DOM-Level-3-Events/'" tppabs="http://www.w3.org/TR/DOM-Level-3-Events/">DOM 事件</a>标准描述了事件传播的 3 个阶段：</p>
+<ol>
+<li>捕获阶段 —— 事件（从 Window）向下到达元素上。</li>
+<li>目标阶段 —— 事件到达目标元素。</li>
+<li>冒泡阶段 —— 事件从元素上开始冒泡。</li>
+</ol>
+<p>下面是在表格中单击 <code>&lt;td&gt;</code> 的图片，取自规范：</p>
+<figure><div class="image" style="width:605px">
+      <div class="image__ratio" style="padding-top:96.03305785123966%"></div>
+      <img src="article/bubbling-and-capturing/eventflow.png" tppabs="https://zh.javascript.info/article/bubbling-and-capturing/eventflow.png" alt="" width="605" height="581" class="image__image">
+      </div></figure><p>即：对于 <code>&lt;td&gt;</code> 的单击，事件首先通过祖先链向下传递到元素（捕获），然后到达目标，最后上升（冒泡），在途中调用处理器。</p>
+<p><strong>我们之前只讨论了冒泡，因为捕获阶段很少被使用。通常情况下，它对我们不可见</strong>。</p>
+<p>处理器 <code>on&lt;event&gt;</code> 属性或使用 HTML 属性或者使用 <code>addEventListener(event, handler)</code> 添加的处理器，不知道捕获，它们只知道第 2 和第 3 阶段。</p>
+<p>要在捕获阶段捕获事件，我们需要将 <code>addEventListener</code> 的第三个参数设置为 <code>true</code>。</p>
+<p>最后一个参数是可选的，有两个可能的值：</p>
+<ul>
+<li>如果为 <code>false</code>（默认值），则在冒泡阶段设置处理器。</li>
+<li>如果为 <code>true</code>，则在捕获阶段设置处理器。</li>
+</ul>
+<p>注意，虽然形式上有 3 个阶段，但第 2 阶段（“目标阶段”：事件到达元素）没有单独被处理：捕获阶段和冒泡阶段的处理器在该阶段都会被触发。</p>
+<p>如果将捕获阶段和冒泡阶段处理器放在目标上，捕获阶段处理器将在捕获阶段触发，而冒泡处理器将首先在冒泡阶段被触发。</p>
+<p>我们看一下效果：</p>
+<div data-trusted="1" class="code-example" data-demo-height="140" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;style&gt;
+  body * {
+    margin: 10px;
+    border: 1px solid blue;
+  }
+&lt;/style&gt;
+
+&lt;form&gt;FORM
+  &lt;div&gt;DIV
+    &lt;p&gt;P&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  for(let elem of document.querySelectorAll('*')) {
+    elem.addEventListener(&quot;click&quot;, e =&gt; alert(`Capturing: ${elem.tagName}`), true);
+    elem.addEventListener(&quot;click&quot;, e =&gt; alert(`Bubbling: ${elem.tagName}`));
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="code-result-dn8szc"
+            style="height:140px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>代码为文档中的<strong>每个</strong>元素设置点击处理器，以查看哪些元素上的点击事件处理器生效了。</p>
+<p>如果你点击了 <code>&lt;p&gt;</code>，那么顺序是：</p>
+<ol>
+<li><code>HTML</code> → <code>BODY</code> → <code>FORM</code> → <code>DIV</code> → <code>P</code>（捕获阶段，第一个监听者），然后：</li>
+<li><code>P</code> → <code>DIV</code> → <code>FORM</code> → <code>BODY</code> → <code>HTML</code>（冒泡阶段，第二个监听者）。</li>
+</ol>
+<p>请注意，<code>P</code> 出现了两次：在捕获结束和开始冒泡时。</p>
+<p>有一个 <code>event.eventPhase</code> 属性，它告诉我们事件被捕获阶段的数量。但它很少使用，因为我们通常在处理器中了解到它。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>事件处理过程：</p>
+<ul>
+<li>当事件发生时 —— 嵌套最深的那个元素被标记为“目标事件”(<code>event.target</code>)。</li>
+<li>然后事件先从文档根节点向下移动到 <code>event.target</code>，过程中调用分配给 <code>addEventListener(...., true)</code> 的处理器。</li>
+<li>再然后事件从 <code>event.target</code> 向上移动到根，调用使用 <code>on&lt;event&gt;</code> 和 <code>addEventListener</code> 分配的处理器，不使用第三个参数或第三个参数设置为 <code>false</code>。</li>
+</ul>
+<p>每个处理器都可以访问 <code>event</code> 对象属性：</p>
+<ul>
+<li><code>event.target</code> —— 事件最深的元素。</li>
+<li><code>event.currentTarget</code> (=<code>this</code>) —— 处理事件的当前元素（有处理器在其上运行的）</li>
+<li><code>event.eventPhase</code> —— 当前阶段（capturing=1, bubbling=3）。</li>
+</ul>
+<p>任何事件处理器都可以通过调用 <code>event.stopPropagation()</code> 来停止事件，但不建议如此，因为我们不确定是否后续会使用冒泡上来的事件，也许是完全不同的事情。</p>
+<p>捕获阶段很少使用，我们通常处理冒泡事件。这背后有一个逻辑。</p>
+<p>现实世界中，当事故发生时，当地警方第一时间作出反应。他们最了解发生这件事的地方。如果需要更高级别的权威。那么就会向上申请。</p>
+<p>事件处理却也是如此。在特定元素上设置处理器的代码了解该元素最详尽的信息。特定 <code>&lt;td&gt;</code> 上的处理器可能恰好适合于 <code>&lt;td&gt;</code>，它知道关于它的一切。所以它应该首先获得机会。然后，它的直系父节点也会获取上下文，但是会少一些，以此类推。而最顶层的元素最后才获取到信息，且只能了解到大致的情况。</p>
+<p>冒泡和捕获为“事件委托”奠定了基础 —— 我们将在下一章中研究非常强大的事件处理模式。</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="introduction-browser-events.htm" tppabs="https://zh.javascript.info/introduction-browser-events" data-tooltip="浏览器事件简介"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="event-delegation.htm" tppabs="https://zh.javascript.info/event-delegation" data-tooltip="事件委托"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/bubbling-and-capturing","identifier":"\/bubbling-and-capturing"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="events.htm" tppabs="https://zh.javascript.info/events">事件简介</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mao-pao">冒泡</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#eventtarget">event.target</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ting-zhi-mao-pao">停止冒泡</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bu-huo">捕获</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fbubbling-and-capturing"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/02-bubbling-and-capturing/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/02-bubbling-and-capturing/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/2-events/02-bubbling-and-capturing/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

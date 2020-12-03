@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">ç±»å‹è½¬æ¢</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/type-conversions"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="ç±»å‹è½¬æ¢"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ç±»å‹è½¬æ¢"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/types"><link rel="next" href="/operators"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="ç±»å‹è½¬æ¢"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">å¾ˆæŠ±æ­‰ï¼Œæˆ‘ä»¬ä¸æ”¯æŒ IE&lt;10 ç­‰æµè§ˆå™¨ï¼Œè¯·ä½¿ç”¨ä¸€ä¸ªæ›´æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">æˆ‘ä»¬å¸Œæœ›å°†è¿™ä¸ªå¼€æºé¡¹ç›®æä¾›ç»™å…¨ä¸–ç•Œçš„äººã€‚è¯·å¸®åŠ©æˆ‘ä»¬å°†æ•™ç¨‹çš„å†…å®¹ <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">ç¿»è¯‘ä¸ºä½ æ‰€æŒæ¡çš„è¯­è¨€</a> å¯¹åº”çš„ç‰ˆæœ¬ã€‚</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/type-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://javascript.info/type-conversions'" tppabs="https://javascript.info/type-conversions"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Ğ ÑƒÑÑĞºĞ¸Ğ¹</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="type-conversions.htm" tppabs="https://zh.javascript.info/type-conversions"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">ç®€ä½“ä¸­æ–‡</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/type-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://ja.javascript.info/type-conversions'" tppabs="https://ja.javascript.info/type-conversions"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">æ—¥æœ¬èª</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">è´­ä¹°</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="åœ¨ Javascript.info ç½‘ç«™ä¸­æœç´¢" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">æœç´¢</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="åœ¨æ•™ç¨‹ä¸­æœç´¢" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">æœç´¢</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/type-conversions">English</option><option value="https://learn.javascript.ru/">Ğ ÑƒÑÑĞºĞ¸Ğ¹</option><option value="https://zh.javascript.info/type-conversions" selected>ç®€ä½“ä¸­æ–‡</option><option value="https://ja.javascript.info/type-conversions">æ—¥æœ¬èª</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="9" max="67" data-tooltip="ç¬¬ 67 ç« ï¼Œç¬¬ 9 èŠ‚"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">æ•™ç¨‹</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript ç¼–ç¨‹è¯­è¨€</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps" itemprop="url"><span itemprop="title">JavaScript åŸºç¡€çŸ¥è¯†</span></a></li></ol><h1 class="main__header-title">ç±»å‹è½¬æ¢</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="ç±»å‹è½¬æ¢"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>å¤§å¤šæ•°æƒ…å†µä¸‹ï¼Œè¿ç®—ç¬¦å’Œå‡½æ•°ä¼šè‡ªåŠ¨è½¬æ¢å°†å€¼è½¬æ¢ä¸ºæ­£ç¡®çš„ç±»å‹ã€‚ç§°ä¹‹ä¸ºâ€œç±»å‹è½¬æ¢â€ã€‚</p>
+<p>æ¯”å¦‚ï¼Œ<code>alert</code> ä¼šè‡ªåŠ¨å°†ä»»ä½•å€¼è½¬æ¢ä¸ºå­—ç¬¦ä¸²ã€‚ç®—æœ¯è¿ç®—ç¬¦ä¼šå°†å€¼è½¬æ¢ä¸ºæ•°å­—ã€‚</p>
+<p>è¿˜æœ‰äº›ä¾‹å­ï¼Œéœ€è¦æ˜¾å¼è¿›è¡Œç±»å‹è½¬æ¢ï¼Œä»¥å¾—åˆ°æ­£ç¡®çš„ç»“æœã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">å¯¹è±¡è¿˜æœªçº³å…¥è®¨è®ºä¸­</span></div>
+            <div class="important__content"><p>æœ¬ç« å¹¶ä¸ä¼šè®¨è®º object ç±»å‹ã€‚å…ˆå­¦ä¹ åŸå§‹ç±»å‹ï¼Œä¹‹åæˆ‘ä»¬ä¼šå­¦ä¹  object ç±»å‹ã€‚å¯¹è±¡çš„ç±»å‹è½¬æ¢åœ¨ç« èŠ‚ <a href="object-toprimitive.htm" tppabs="https://zh.javascript.info/object-toprimitive">å¯¹è±¡åŸå§‹å€¼è½¬æ¢</a> ä»‹ç»ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="tostring" href="#tostring">ToString</a></h2><p>å½“éœ€è¦ä¸€ä¸ªå€¼çš„å­—ç¬¦ä¸²å½¢å¼ï¼Œå°±ä¼šè¿›è¡Œ string ç±»å‹è½¬æ¢ã€‚</p>
+<p>æ¯”å¦‚ï¼Œ<code>alert(value)</code> å°† <code>value</code> è½¬æ¢ä¸º string ç±»å‹ï¼Œç„¶åæ˜¾ç¤ºè¿™ä¸ªå€¼ã€‚</p>
+<p>ä¹Ÿå¯ä»¥æ˜¾å¼åœ°è°ƒç”¨ <code>String(value)</code> æ¥è¾¾åˆ°è¿™ä¸€ç›®çš„ï¼š</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let value = true;
+alert(typeof value); // boolean
+
+value = String(value); // ç°åœ¨ï¼Œå€¼æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²å½¢å¼çš„ &quot;true&quot;
+alert(typeof value); // string</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è½¬æ¢ä¸º string ç±»å‹çš„å€¼å¾€å¾€æ˜¯å¯é¢„è§çš„ã€‚<code>false</code> å˜æˆ <code>&quot;false&quot;</code>ï¼Œ<code>null</code> å˜æˆ <code>&quot;null&quot;</code> ç­‰ã€‚</p>
+<h2><a class="main__anchor" name="tonumber" href="#tonumber">ToNumber</a></h2><p>åœ¨ç®—æœ¯å‡½æ•°å’Œè¡¨è¾¾å¼ä¸­ï¼Œä¼šè‡ªåŠ¨è¿›è¡Œ number ç±»å‹è½¬æ¢ã€‚</p>
+<p>æ¯”å¦‚ï¼Œå½“ä½¿ç”¨ <code>/</code> ç”¨äºé number ç±»å‹ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( &quot;6&quot; / &quot;2&quot; ); // 3, strings are converted to numbers</code></pre>
+        </div>
+      </div>
+      
+      </div><p>ä¹Ÿå¯ä»¥ä½¿ç”¨ <code>Number(value)</code> æ˜¾å¼åœ°å°†è¿™ä¸ªå€¼è½¬æ¢ä¸º number ç±»å‹ã€‚</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let str = &quot;123&quot;;
+alert(typeof str); // string
+
+let num = Number(str); // å˜æˆ number ç±»å‹ 123
+
+alert(typeof num); // number</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å½“ä» string ç±»å‹æºè¯»å–å€¼æ—¶ï¼Œæ¯”å¦‚ä¸€ä¸ªæ–‡æœ¬è¡¨å•ï¼Œä½†æ˜¯æˆ‘ä»¬æœŸå¾…æ•°å­—è¾“å…¥ï¼Œå°±ç»å¸¸è¿›è¡Œæ˜¾å¼è½¬æ¢ã€‚</p>
+<p>å¦‚æœå­—ç¬¦ä¸²ä¸æ˜¯ä¸€ä¸ªæœ‰æ•ˆçš„æ•°å­—ï¼Œè½¬æ¢çš„ç»“æœä¼šæ˜¯ <code>NaN</code>ï¼Œä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let age = Number(&quot;an arbitrary string instead of a number&quot;);
+
+alert(age); // NaN, conversion failed</code></pre>
+        </div>
+      </div>
+      
+      </div><p>number ç±»å‹è½¬æ¢è§„åˆ™ï¼š</p>
+<table>
+<thead>
+<tr>
+<th>å€¼</th>
+<th>å˜æˆâ€¦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>undefined</code></td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>trueÂ å’ŒÂ false</code></td>
+<td><code>1</code> and <code>0</code></td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>å­—ç¬¦ä¸²å¼€å§‹å’Œæœ«å°¾çš„ç©ºç™½ä¼šè¢«ç§»é™¤ï¼Œå‰©ä¸‹çš„å¦‚æœæ˜¯ç©ºå­—ç¬¦ä¸²ï¼Œç»“æœä¸º <code>0</code>ï¼Œå¦åˆ™ â€”â€” ä»å­—ç¬¦ä¸²ä¸­è¯»å‡ºæ•°å­—ã€‚é”™è¯¯è¿”å› <code>NaN</code>ã€‚</td>
+</tr>
+</tbody>
+</table>
+<p>ä¾‹å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Number(&quot;   123   &quot;) ); // 123
+alert( Number(&quot;123z&quot;) );      // NaN (error reading a number at &quot;z&quot;)
+alert( Number(true) );        // 1
+alert( Number(false) );       // 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¯·æ³¨æ„ <code>null</code> å’Œ <code>undefined</code> æœ‰ç‚¹ä¸åŒã€‚<code>null</code> å˜æˆæ•°å­— <code>0</code>ï¼Œ<code>undefined</code> å˜æˆ <code>NaN</code>ã€‚</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">åŠ å·â€™+â€™ è¿æ¥å­—ç¬¦ä¸²</span></div>
+            <div class="important__content"><p>å‡ ä¹æ‰€æœ‰çš„ç®—æœ¯è¿ç®—ç¬¦éƒ½å°†å€¼è½¬æ¢ä¸ºæ•°å­—ï¼ŒåŠ å· <code>+</code> æ˜¯ä¸ªä¾‹å¤–ã€‚å¦‚æœå…¶ä¸­ä¸€ä¸ªè¿ç®—å…ƒæ˜¯å­—ç¬¦ä¸²ï¼Œåˆ™å¦ä¸€ä¸ªä¹Ÿä¼šè½¬æ¢ä¸ºå­—ç¬¦ä¸²ã€‚</p>
+<p>ç„¶åï¼Œè¿æ¥ä¸¤è€…ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( 1 + '2' ); // '12' (å­—ç¬¦ä¸²åœ¨åŠ å·å³è¾¹)
+alert( '1' + 2 ); // '12' (å­—ç¬¦ä¸²åœ¨åŠ å·å·¦è¾¹)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>è¿™ä»…ä»…å‘ç”Ÿåœ¨å…¶ä¸­ä¸€æ–¹ä¸ºå­—ç¬¦ä¸²(è¯‘è€…æ³¨ï¼šæˆ–è€…åŒæ–¹éƒ½ä¸ºå­—ç¬¦ä¸²) çš„æƒ…å†µä¸‹ã€‚å…¶ä»–æƒ…å†µä¸‹ä¼šè¢«è½¬æ¢ä¸ºæ•°å­—ã€‚</p>
+</div></div>
+<h2><a class="main__anchor" name="toboolean" href="#toboolean">ToBoolean</a></h2><p>è½¬æ¢ä¸º boolean ç±»å‹æ˜¯æœ€ä¸ºç®€å•çš„ä¸€ä¸ªã€‚</p>
+<p>é€»è¾‘æ“ä½œæˆ–æ˜¾å¼è°ƒç”¨ <code>Boolean(value)</code> ä¼šè§¦å‘ boolean ç±»å‹è½¬æ¢ã€‚</p>
+<p>è½¬æ¢è§„åˆ™å¦‚ä¸‹ï¼š</p>
+<ul>
+<li>å‡å€¼ï¼Œæ¯”å¦‚ <code>0</code>ã€ç©ºçš„å­—ç¬¦ä¸²ã€<code>null</code>ã€<code>undefined</code> å’Œ <code>NaN</code> å˜æˆ <code>false</code>ã€‚</li>
+<li>å…¶ä»–å€¼å˜æˆ <code>true</code>ã€‚</li>
+</ul>
+<p>æ¯”å¦‚ï¼š</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Boolean(1) ); // true
+alert( Boolean(0) ); // false
+
+alert( Boolean(&quot;hello&quot;) ); // true
+alert( Boolean(&quot;&quot;) ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">è¯·æ³¨æ„: åŒ…å« 0 çš„å­—ç¬¦ä¸² <code>&quot;0&quot;</code> æ˜¯ <code>true</code></span></div>
+            <div class="important__content"><p>ä¸€äº›å˜æˆè¯­è¨€(æ¯”å¦‚ PHP) è§† <code>&quot;0&quot;</code> ä¸º <code>false</code>ã€‚ä½†åœ¨ JavaScript ä¸­ï¼Œéç©ºçš„å­—ç¬¦ä¸²æ€»æ˜¯ <code>true</code>ã€‚</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="è¿è¡Œ" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="åœ¨æ²™ç®±ä¸­æ‰“å¼€" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">alert( Boolean(&quot;0&quot;) ); // true
+alert( Boolean(&quot; &quot;) ); // ç©ºç™½, ä¹Ÿæ˜¯ true (ä»»ä½•éç©ºå­—ç¬¦ä¸²æ˜¯ true)</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">æ€»ç»“</a></h2><p>æœ‰ä¸‰ç§å¸¸ç”¨çš„ç±»å‹è½¬æ¢ï¼šè½¬æ¢ä¸º string ç±»å‹ã€è½¬æ¢ä¸º number ç±»å‹å’Œè½¬æ¢ä¸º boolean ç±»å‹ã€‚</p>
+<p><strong><code>ToString</code></strong> â€”â€” è¾“å‡ºå†…å®¹æ—¶ <code>ToString</code> å‘ç”Ÿè½¬æ¢ï¼Œæˆ–é€šè¿‡ <code>String(value)</code> è¿›è¡Œæ˜¾å¼è½¬æ¢ã€‚åŸå§‹ç±»å‹å€¼çš„ string ç±»å‹è½¬æ¢é€šå¸¸æ˜¯å¯é¢„è§çš„ã€‚</p>
+<p><strong><code>ToNumber</code></strong> â€“ è¿›è¡Œç®—æœ¯æ“ä½œæ—¶å‘ç”Ÿ <code>ToNumber</code> è½¬æ¢ï¼Œæˆ–é€šè¿‡ <code>Number(value)</code> è¿›è¡Œæ˜¾å¼è½¬æ¢ã€‚</p>
+<p><code>ToNumber</code> è½¬æ¢éµå¾ªä»¥ä¸‹è§„åˆ™ï¼š</p>
+<table>
+<thead>
+<tr>
+<th>å€¼</th>
+<th>å˜æˆâ€¦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>undefined</code></td>
+<td><code>NaN</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>trueÂ /Â false</code></td>
+<td><code>1 / 0</code></td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>å­—ç¬¦ä¸²â€œæŒ‰åŸæ ·è¯»å–â€ï¼Œä¸¤ç«¯çš„ç©ºç™½è¢«å¿½ç•¥ã€‚ç©ºå­—ç¬¦ä¸²å˜æˆ <code>0</code>ã€‚å‡ºé”™å˜æˆ <code>NaN</code>ã€‚</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>ToBoolean</code></strong> â€“ è¿›è¡Œé€»è¾‘æ“ä½œæ—¶å‘ç”Ÿ <code>ToBoolean</code> è½¬æ¢ã€‚æˆ–é€šè¿‡ <code>Boolean(value)</code> è¿›è¡Œæ˜¾å¼è½¬æ¢ã€‚</p>
+<p><code>ToBoolean</code> éµå¾ªä»¥ä¸‹è§„åˆ™ï¼š</p>
+<table>
+<thead>
+<tr>
+<th>å€¼</th>
+<th>å˜æˆâ€¦</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>, <code>&quot;&quot;</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>å…¶ä»–å€¼</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p>ä¸Šè¿°çš„å¤§å¤šæ•°è§„åˆ™éƒ½å®¹æ˜“ç†è§£å’Œè®°å¿†ã€‚ç»å¸¸çŠ¯é”™çš„ä¾‹å¤–æœ‰ï¼š</p>
+<ul>
+<li><code>undefined</code> è¿›è¡Œ <code>ToNumber</code> æ—¶å˜æˆ <code>NaN</code>ï¼Œè€Œé <code>0</code>ã€‚</li>
+<li><code>&quot;0&quot;</code> å’Œåªæœ‰ç©ºæ ¼çš„å­—ç¬¦ä¸²(æ¯”å¦‚ï¼š<code>&quot; &quot;</code> )åœ¨è¿›è¡Œ <code>ToBoolean</code> å˜æˆ <code>true</code>ã€‚</li>
+</ul>
+<p>å¯¹è±¡çš„è½¬æ¢å¹¶æœªåœ¨æ­¤æåŠï¼Œæˆ‘ä»¬ä¼šåœ¨ç« èŠ‚ <a href="object-toprimitive.htm" tppabs="https://zh.javascript.info/object-toprimitive">å¯¹è±¡åŸå§‹å€¼è½¬æ¢</a> ä»‹ç»ï¼Œéšåæˆ‘ä»¬ä¼šå­¦ä¹  JavaScript æ›´å¤šåŸºç¡€çš„ç»†èŠ‚ã€‚</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">ä»»åŠ¡</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#lei-xing-zhuan-huan" name="lei-xing-zhuan-huan">ç±»å‹è½¬æ¢</a></h3><a class="task__open-link" href="task/primitive-conversions-questions.htm" tppabs="https://zh.javascript.info/task/primitive-conversions-questions" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="ä»»åŠ¡çš„é‡è¦ç¨‹åº¦æœ‰å¤šé«˜ï¼Œç­‰çº§ä» 1 åˆ° 5ã€‚">é‡è¦ç¨‹åº¦: 5</span></div><div class="task__content"><p>ä¸‹é¢è¿™äº›è¡¨è¾¾å¼çš„ç»“æœæ˜¯ä»€ä¹ˆï¼Ÿ</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">&quot;&quot; + 1 + 0
+&quot;&quot; - 1 + 0
+true + false
+6 / &quot;3&quot;
+&quot;2&quot; * &quot;3&quot;
+4 + 5 + &quot;px&quot;
+&quot;$&quot; + 4 + 5
+&quot;4&quot; - 2
+&quot;4px&quot; - 2
+7 / 0
+&quot;  -9\n&quot; + 5
+&quot;  -9\n&quot; - 5
+null + 1
+undefined + 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>å¥½å¥½æ€è€ƒä¸€ä¸‹ï¼ŒæŠŠå®ƒä»¬å†™ä¸‹æ¥ç„¶åå’Œç­”æ¡ˆæ¯”è¾ƒä¸€ä¸‹ã€‚</p>
+<button class="task__solution" type="button">è§£å†³æ–¹æ¡ˆ</button><div class="task__answer"><div class="task__answer-content"><div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">&quot;&quot; + 1 + 0 = &quot;10&quot; // (1)
+&quot;&quot; - 1 + 0 = -1 // (2)
+true + false = 1
+6 / &quot;3&quot; = 2
+&quot;2&quot; * &quot;3&quot; = 6
+4 + 5 + &quot;px&quot; = &quot;9px&quot;
+&quot;$&quot; + 4 + 5 = &quot;$45&quot;
+&quot;4&quot; - 2 = 2
+&quot;4px&quot; - 2 = NaN
+7 / 0 = Infinity
+&quot; -9\n&quot; + 5 = &quot; -9\n5&quot;
+&quot; -9\n&quot; - 5 = -14
+null + 1 = 1 // (3)
+undefined + 1 = NaN // (4)</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>å­—ç¬¦ä¸²çš„åŠ æ³• <code>&quot;&quot; + 1</code> ä¼šå°† <code>1</code> è½¬æ¢ä¸ºä¸€ä¸ªå­—ç¬¦ä¸²ï¼š<code>&quot;&quot; + 1 = &quot;1&quot;</code>ï¼Œç„¶åæˆ‘ä»¬å¾—åˆ°äº† <code>&quot;1&quot; + 0</code>ï¼Œå†æ¬¡åº”ç”¨åŒæ ·çš„è§„åˆ™ã€‚</li>
+<li>å‡æ³• <code>-</code> ï¼ˆå°±åƒå¤§å¤šæ•°æ•°å­¦æ“ä½œé‚£æ ·ï¼‰åªèƒ½ç”¨äºæ•°å­—ï¼Œå®ƒä¼šå°†ç©ºå­—ç¬¦ä¸² <code>&quot;&quot;</code> è½¬æ¢ä¸º <code>0</code>ã€‚</li>
+<li><code>null</code> ç»è¿‡æ•°å­—åŒ–è½¬æ¢ä¹‹åä¼šå˜ä¸º <code>0</code>ã€‚</li>
+<li><code>undefined</code> ç»è¿‡æ•°å­—åŒ–è½¬æ¢ä¹‹åä¼šå˜ä¸º <code>NaN</code>ã€‚</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="å…³é—­"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="types.htm" tppabs="https://zh.javascript.info/types" data-tooltip="æ•°æ®ç±»å‹"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸Šä¸€èŠ‚</span></a><a class="page__nav page__nav_next" href="operators.htm" tppabs="https://zh.javascript.info/operators" data-tooltip="è¿ç®—ç¬¦"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">ä¸‹ä¸€èŠ‚</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">åˆ†äº«</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">æ•™ç¨‹è·¯çº¿å›¾</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">è¯„è®º</a></h2><div class="comments__read-before"><span class="comments__read-before-link">åœ¨è¯„è®ºä¹‹å‰å…ˆé˜…è¯»æœ¬å†…å®¹â€¦</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>æ¬¢è¿ä½ åœ¨æ–‡ç« ä¸‹æ·»åŠ è¡¥å……å†…å®¹ã€æå‡ºä½ çš„é—®é¢˜æˆ–å›ç­”æå‡ºçš„é—®é¢˜ã€‚</li><li>ä½¿ç”¨ <code>&lt;code&gt;</code> æ ‡ç­¾æ’å…¥å‡ è¡Œä»£ç ï¼Œå¯¹äºå¤šè¡Œä»£ç  â€” å¯ä»¥ä½¿ç”¨ <code>&lt;pre&gt;</code>ï¼Œå¯¹äºè¶…è¿‡åè¡Œçš„ä»£ç  â€” å»ºè®®ä½¿ç”¨æ²™ç®±ï¼ˆ<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>ã€<a href="javascript:if(confirm('http://jsbin.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> å’Œ <a href="javascript:if(confirm('http://codepen.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> ç­‰ï¼‰ã€‚</li><li>å¦‚æœä½ æ— æ³•ç†è§£æ–‡ç« ä¸­çš„å†…å®¹ â€” è¯·è¯¦ç»†è¯´æ˜ã€‚</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/type-conversions","identifier":"\/type-conversions"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="æ•™ç¨‹è·¯çº¿å›¾"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">ç« èŠ‚</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.htm" tppabs="https://zh.javascript.info/first-steps">JavaScript åŸºç¡€çŸ¥è¯†</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">è¯¾ç¨‹å¯¼èˆª</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tostring">ToString</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tonumber">ToNumber</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#toboolean">ToBoolean</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">æ€»ç»“</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">ä»»åŠ¡ (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">è¯„è®º</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">åˆ†äº«</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Ftype-conversions"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/06-type-conversions/article.md  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/06-type-conversions/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/02-first-steps/06-type-conversions/article.md">åœ¨ Github ä¸Šç¼–è¾‘</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">Â©&nbsp;2007â€”2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">è”ç³»æˆ‘ä»¬</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">å…³äºæœ¬é¡¹ç›®</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

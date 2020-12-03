@@ -1,0 +1,84 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+
+		<title>盒子模型-商品列表</title>
+		
+		<style type="text/css">
+			div,h1,ul,li,a
+			{
+				/*为了防止各个浏览器的内边距、外边距不兼容情况，一般在开发时 第一步将边距全设置为0  */
+				margin: 0px ; 
+				padding:0px ;
+			}
+			
+			ul,li
+			{
+				list-style-type: none ;
+			}
+			
+			#production
+			{
+				/* background-color: yellow ; */
+				width: 318px ;
+			}
+			
+			#production>h1{
+				margin-left: 5px ;
+				background-color: #24221e ;
+				font-family: SimHei, Georgia, 'New York', Times, TimesNR, 'New Century Schoolbook',
+     serif;
+				font-weight: 700;
+				font-size: 24px;
+				color: #FFF ;
+				line-height: 32px;
+				padding-left: 18px;
+			}
+			
+			ul li a img
+			{
+				border: 5px solid #FFF;
+			}
+			
+			ul li a:hover img
+			{
+				border: 5px solid rgba(255,144,0, 0.3);
+			}
+			
+			
+		</style>	
+	</head>
+	<body>  
+	
+		<div id="production">
+			<h1>1F 电子设备</h1>
+			<ul>
+				<li> 
+					<a href="#"> 
+							<img src="imgs/1.png" title="xxx" alt="替换文字"> </img>   
+					</a>  
+				</li>
+				
+				<li> 
+					<a href="#"> 
+							<img src="imgs/2.png" title="xxx" alt="替换文字"> </img>   
+					</a>  
+				</li>
+				
+				<li> 
+					<a href="#"> 
+							<img src="imgs/3.png" title="xxx" alt="替换文字"> </img>   
+					</a>  
+				</li>
+				
+
+				
+			</ul>
+			
+			
+		</div>
+	</body>
+</html>
+

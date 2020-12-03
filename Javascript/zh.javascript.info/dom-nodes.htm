@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">DOM 树</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/dom-nodes"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="DOM 树"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="DOM 树"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/browser-environment"><link rel="next" href="/dom-navigation"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><link rel='stylesheet' href="../zh.js.cx/libs/domtree.css" tppabs="https://zh.js.cx/libs/domtree.css">
+<script src="../cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" tppabs="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="../zh.js.cx/libs/domtree.js" tppabs="https://zh.js.cx/libs/domtree.js"></script>
+<style>
+span.devtools {
+  display: inline-block;
+  background-image: url("article/dom-nodes/toolbarButtonGlyphs.svg")/*tpa=https://zh.javascript.info/article/dom-nodes/toolbarButtonGlyphs.svg*//*tpa=https://zh.javascript.info/article/dom-nodes/toolbarButtonGlyphs.svg*/;
+  height:16px;
+  width:16px;
+}
+</style>
+<meta property="og:title" content="DOM 树"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/dom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/dom-nodes'" tppabs="https://javascript.info/dom-nodes"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="dom-nodes.htm" tppabs="https://zh.javascript.info/dom-nodes"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/dom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/dom-nodes'" tppabs="https://ja.javascript.info/dom-nodes"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/dom-nodes">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/dom-nodes" selected>简体中文</option><option value="https://ja.javascript.info/dom-nodes">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="27" data-tooltip="第 27 章，第 2 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">DOM 树</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="DOM 树"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>HTML 文档的骨干是标签。</p>
+<p>根据文档对象模型（DOM），每个 HTML 标签都是一个对象。嵌套标签被称为闭合标签的“子标签”。</p>
+<p>标签内的文本也是一个对象。</p>
+<p>所有这些对象都可以用 JavaScript 来操作。</p>
+<h2><a class="main__anchor" name="dom-de-li-zi" href="#dom-de-li-zi">DOM 的例子</a></h2><p>例如，我们来研究这个文档的 DOM：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;About elks&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  The truth about elks.
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>DOM 将 HTML 表示为标签的树形结构。它是这个样子的：</p>
+<div class="domtree"></div>
+<script>
+let node1 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n    "},{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elks"}]},{"name":"#text","nodeType":3,"content":"\n  "}]},{"name":"#text","nodeType":3,"content":"\n  "},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elks."}]}]}
+
+drawHtmlTree(node1, 'div.domtree', 690, 320);
+</script>
+<p>在上面的图片中，你可以点击元素节点，他们的子节点会打开/折叠。</p>
+<p>标签被称为<strong>元素节点</strong>（或者仅仅是元素）。嵌套标签称为闭合标签的子标签。因此我们有这样一个元素树：<code>&lt;html&gt;</code> 在根目录下，然后 <code>&lt;head&gt;</code> 和 <code>&lt;body&gt;</code> 是它的子项，等等。</p>
+<p>元素内的文本形成<strong>文本节点</strong>，标记为 <code>＃text</code>。文本节点只包含一个字符串。它没有子项，永远是树的一片叶子。</p>
+<p>例如，<code>&lt;title&gt;</code> 标签里面有文本 <code>&quot;About elks&quot;</code>。</p>
+<p>请注意文本节点中的特殊字符：</p>
+<ul>
+<li>换行符：<code>↵</code>（在 JavaScript 中称为<code>\n</code>）</li>
+<li>一个空格：<code>␣</code></li>
+</ul>
+<p>空格和换行符是完全有效的字符，它们形成文本节点并成为 DOM 的一部分。因此，在上面的例子中，<code>&lt;head&gt;</code> 标签在 <code>&lt;title&gt;</code> 之前包含了一些空格，并且该文本变成了一个 <code>#text</code> 节点（它只包含换行符和一些空格）。</p>
+<p>只有两个顶级排除项目：</p>
+<ol>
+<li>由于历史原因，<code>&lt;head&gt;</code> 之前的空格和换行符被忽略，</li>
+<li>如果我们在 <code>&lt;/body&gt;</code> 之后放置了一些东西，那么它会自动移动到 <code>body</code> 内部，因为 HTML 规范要求所有内容必须位于 <code>&lt;body&gt;</code> 内。所以 <code>&lt;/body&gt;</code> 后面可能没有空格。</li>
+</ol>
+<p>在其他情况下，一切都很简单 —— 如果文档中有空格（就像任何字符一样），那么它们将成为 DOM 中的文本节点，如果我们删除它们，则不会有任何内容。</p>
+<p>这里是没有空格的文本节点：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;&lt;head&gt;&lt;title&gt;About elks&lt;/title&gt;&lt;/head&gt;&lt;body&gt;The truth about elks.&lt;/body&gt;&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="domtree"></div>
+<script>
+let node2 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elks"}]}]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"The truth about elks."}]}]}
+
+drawHtmlTree(node2, 'div.domtree', 690, 210);
+</script>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Edge spaces and in-between empty text are usually hidden in tools</span></div>
+            <div class="important__content"><p>与 DOM 协同工作的浏览器工具（不久将会覆盖）通常不会在文本的开始/结尾处显示空格，并且在标记之间不会显示空文本节点（换行符）。</p>
+<p>这是因为它们主要用于装饰 HTML，并且不会影响其显示方式（在大多数情况下）。</p>
+<p>在进一步的 DOM 图片上，我们有时候会忽略它们，因为它们是无关紧要的，所以要保持简短。</p>
+</div></div>
+<h2><a class="main__anchor" name="zi-dong-xiu-zheng" href="#zi-dong-xiu-zheng">自动修正</a></h2><p>如果浏览器遇到格式不正确的 HTML，它会在形成 DOM 时自动修正它。</p>
+<p>例如，顶部标签总是 <code>&lt;html&gt;</code>。即使它不在于文档中 —— 它将在 DOM 中出现，因为浏览器会创建它。<code>&lt;body&gt;</code> 也是一样。</p>
+<p>例如，如果 HTML 文件是单个单词“Hello”，浏览器将把它包装到 <code>&lt;html&gt;</code> 和 <code>&lt;body&gt;</code> 中，添加所需的 <code>&lt;head&gt;</code>，DOM 将会变成：</p>
+<div class="domtree"></div>
+<script>
+let node3 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"Hello"}]}]}
+
+drawHtmlTree(node3, 'div.domtree', 690, 150);
+</script>
+<p>在生成 DOM 时，浏览器会自动处理文档中的错误，关闭标签等等。</p>
+<p>这样的“无效”文档：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;p&gt;Hello
+&lt;li&gt;Mom
+&lt;li&gt;and
+&lt;li&gt;Dad</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…将成为一个正常的 DOM，因为浏览器会读取标签并恢复丢失的部分：</p>
+<div class="domtree"></div>
+<script>
+let node4 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"P","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"Hello"}]},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"Mom"}]},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"and"}]},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"Dad"}]}]}]}
+
+drawHtmlTree(node4, 'div.domtree', 690, 360);
+</script>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Tables always have <code>&lt;tbody&gt;</code></span></div>
+            <div class="important__content"><p>表格是一个有趣的“特例”。按照 DOM 规范，它们必须具有 <code>&lt;tbody&gt;</code>，但 HTML 文本可能（官方的）忽略它。然后浏览器自动在 DOM 中创建 <code>&lt;tbody&gt;</code>。</p>
+<p>对于 HTML：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;table id=&quot;table&quot;&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>DOM 结构会变成：</p>
+<div class="domtree"></div>
+<script>
+let node5 = {"name":"TABLE","nodeType":1,"children":[{"name":"TBODY","nodeType":1,"children":[{"name":"TR","nodeType":1,"children":[{"name":"TD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"1"}]}]}]}]};
+
+drawHtmlTree(node5,  'div.domtree', 600, 200);
+</script>
+<p>看到了吗？<code>&lt;tbody&gt;</code> 出现了。在使用表格时，应该牢记这一点以避免意外。</p>
+<h2><a class="main__anchor" name="qi-ta-jie-dian-lei-xing" href="#qi-ta-jie-dian-lei-xing">其他节点类型</a></h2><p>让我们在页面中添加更多标签和评论：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;body&gt;
+  The truth about elks.
+  &lt;ol&gt;
+    &lt;li&gt;An elk is a smart&lt;/li&gt;
+    &lt;!-- comment --&gt;
+    &lt;li&gt;...and cunning animal!&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="domtree"></div>
+<script>
+let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elks.\n    "},{"name":"OL","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"An elk is a smart"}]},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"#comment","nodeType":8,"content":"comment"},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"...and cunning animal!"}]},{"name":"#text","nodeType":3,"content":"\n    "}]},{"name":"#text","nodeType":3,"content":"\n  \n"}]}]};
+
+drawHtmlTree(node6, 'div.domtree', 690, 500);
+</script>
+<p>在这里我们看到一个新的树节点类型 —— <em>comment node</em>，标记为 <code>#comment</code>。</p>
+<p>我们可能会想 —— 为什么要将评论添加到 DOM 中？它不会以任何方式影响视觉表示。但是有一条规则 —— 如果 HTML 中有东西，那么它也必须在 DOM 树中。</p>
+<p><strong>HTML 中的所有内容甚至注释都成为 DOM 的一部分。</strong></p>
+<p>甚至 HTML 开头的 <code>&lt;!DOCTYPE...&gt;</code> 指令也是一个 DOM 节点。它在 <code>&lt;html&gt;</code> 之前的 DOM 树中。我们不会触及那个节点，我们甚至不会因为那个原因在图表上绘制它，但它就在那里。</p>
+<p>表示整个文档的 <code>document</code> 对象在形式上也是一个 DOM 节点。</p>
+<p>有 <a href="javascript:if(confirm('https://dom.spec.whatwg.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://dom.spec.whatwg.org/#node'" tppabs="https://dom.spec.whatwg.org/#node">12 中节点类型</a>。实际上，我们通常用到的是其中的 4 个：</p>
+<ol>
+<li><code>document</code>—— DOM 中的“入口点”。</li>
+<li>元素节点 —— HTML 标签，树构建块。</li>
+<li>文本节点 —— 包含文本。</li>
+<li>注释 —— 有时我们可以将内容放入其中，它不会显示，但 JS 可以从 DOM 中读取它。</li>
+</ol>
+<h2><a class="main__anchor" name="zi-hang-cha-kan" href="#zi-hang-cha-kan">自行查看</a></h2><p>要实时查看 DOM 结构，请尝试 <a href="javascript:if(confirm('http://software.hixie.ch/utilities/js/live-dom-viewer/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://software.hixie.ch/utilities/js/live-dom-viewer/'" tppabs="http://software.hixie.ch/utilities/js/live-dom-viewer/">Live DOM Viewer</a>。只需输入文档，它就会立即显示 DOM。</p>
+<h2><a class="main__anchor" name="zai-liu-lan-qi-zhong-jian-cha" href="#zai-liu-lan-qi-zhong-jian-cha">在浏览器中检查</a></h2><p>研究 DOM 的另一种方式是使用浏览器开发工具。事实上，这正是我们开发时所使用的工具。</p>
+<p>请打开网页 <a href="article/dom-nodes/elks.html" tppabs="https://zh.javascript.info/article/dom-nodes/elks.html">elks.html</a>，打开浏览器开发工具并切换到元素选项卡。</p>
+<p>它是这样的：</p>
+<figure><div class="image" style="width:689px">
+      <div class="image__ratio" style="padding-top:54.71698113207547%"></div>
+      <img src="article/dom-nodes/elks.png" tppabs="https://zh.javascript.info/article/dom-nodes/elks.png" alt="" width="689" height="377" class="image__image">
+      </div></figure><p>你可以看到 DOM，点击元素，查看其中的细节等等。</p>
+<p>请注意，开发者工具中的 DOM 结构已经过简化。文本节点仅以文本形式显。根本没有“空白”（只有空格）的文本节点。这其实很好，因为大部分时间我们都对元素节点感兴趣。</p>
+<p>点击左上角的 <code>&lt;span class=&quot;devtools&quot; style=&quot;background-position:-328px -124px&quot;&gt;&lt;/span&gt;</code> 按钮可以使用鼠标（或其他指针设备）从网页中选择一个节点并“检查”它（在“元素”选项卡中滚动到该节点）。当我们有一个巨大的 HTML 页面（和相应的巨大 DOM），并希望看到其中的一个特定元素的位置时，这很有用。</p>
+<p>另一种方法是在网页上右键单击并在上下文菜单中选择“检查”。</p>
+<figure><div class="image" style="width:690px">
+      <div class="image__ratio" style="padding-top:59.42028985507246%"></div>
+      <img src="article/dom-nodes/inspect.png" tppabs="https://zh.javascript.info/article/dom-nodes/inspect.png" alt="" width="690" height="410" class="image__image">
+      </div></figure><p>在工具的右侧部分有以下子表单：</p>
+<ul>
+<li><strong>Styles</strong> —— 我们可以看到应用于当前元素的 CSS 中的一条条规则，包括内置规则（灰色）。几乎所有东西都可以在原地进行编辑，包括下面框中的尺寸/边距/填充。</li>
+<li><strong>Computed</strong> —— 按属性查看应用于元素的 CSS：对于每个属性，我们可以看到一条规则（包括 CSS 继承等）。</li>
+<li><strong>Event Listeners</strong> —— 查看附加到 DOM 元素的事件侦听器（我们将在本教程的下一部分介绍它们）。</li>
+<li>…等等。</li>
+</ul>
+<p>研究它们的最佳方式就是多多点击。大多数值都是可以原地编辑的。</p>
+<h2><a class="main__anchor" name="yu-kong-zhi-tai-jiao-hu" href="#yu-kong-zhi-tai-jiao-hu">与控制台交互</a></h2><p>在我们研究 DOM 时，我们也可能想要使用 JavaScript。就比如：获取一个节点并运行一些代码来修改它，看看它长什么样。这里有一些在元素选项卡和控制台之间传输数据的提示。</p>
+<ul>
+<li>在元素标签中选择第一个 <code>&lt;li&gt;</code>。</li>
+<li>按下 <kbd class="shortcut">Esc</kbd> —— 它将在元素标签下方打开控制台。</li>
+</ul>
+<p>现在最后选中的元素可以用 <code>$0</code> 来进行操作，以前选择的是 <code>$1</code>，如此等等。</p>
+<p>我们可以在它们之上运行命令。例如，<code>$0.style.background = 'red'</code> 使选定的列表项变成红色，如下所示：</p>
+<figure><div class="image" style="width:692px">
+      <div class="image__ratio" style="padding-top:71.09826589595376%"></div>
+      <img src="article/dom-nodes/domconsole0.png" tppabs="https://zh.javascript.info/article/dom-nodes/domconsole0.png" alt="" width="692" height="492" class="image__image">
+      </div></figure><p>另一方面，如果我们处在控制台中，并且有一个引用 DOM 节点的变量，那么我们可以使用命令 <code>inspect（node）</code> 在元素窗格中查看它。</p>
+<p>或者我们可以在控制台中输出它并“就地”测试它，如下面的 <code>document.body</code>：</p>
+<figure><div class="image" style="width:695px">
+      <div class="image__ratio" style="padding-top:70.93525179856115%"></div>
+      <img src="article/dom-nodes/domconsole1.png" tppabs="https://zh.javascript.info/article/dom-nodes/domconsole1.png" alt="" width="695" height="493" class="image__image">
+      </div></figure><p>这当然是用于调试的目的。从下一章我们将使用 JavaScript 访问和修改 DOM。</p>
+<p>浏览器开发者工具对开发有很大的帮助：我们可以研究 DOM，做一些测试并查看出了什么问题。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>HTML/XML 文档在浏览器内表示为 DOM 树。</p>
+<ul>
+<li>标签成为元素节点并形成文档结构。</li>
+<li>文本成为文本节点。</li>
+<li>…如此等等，HTML 中的所有东西在 DOM 中都有它的位置，甚至是注释。</li>
+</ul>
+<p>我们可以使用开发者工具来检查 DOM 并手动修改它。</p>
+<p>在这里，我们介绍了基本知识，入门最常用和最重要的操作。在 https://developers.google.com/web/tools/chrome-devtools 上有大量有关 Chrome 开发者工具的文档。学习这些工具的最佳方式是四处点击，阅读菜单：大多数选项都很明显。而后，当你差不多了解它们时，阅读文档并学习其余的部分。</p>
+<p>DOM 节点具有在它们之间传递数据，修改、移动页面等功能的属性和方法。我们将在接下来的章节中讨论他们。</p>
+</div></div>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="browser-environment.htm" tppabs="https://zh.javascript.info/browser-environment" data-tooltip="浏览器环境，规格"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="dom-navigation.htm" tppabs="https://zh.javascript.info/dom-navigation" data-tooltip="遍历 DOM"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/dom-nodes","identifier":"\/dom-nodes"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dom-de-li-zi">DOM 的例子</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-dong-xiu-zheng">自动修正</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#qi-ta-jie-dian-lei-xing">其他节点类型</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zi-hang-cha-kan">自行查看</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zai-liu-lan-qi-zhong-jian-cha">在浏览器中检查</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yu-kong-zhi-tai-jiao-hu">与控制台交互</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fdom-nodes"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/02-dom-nodes/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/02-dom-nodes/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/02-dom-nodes/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

@@ -1,0 +1,86 @@
+<html>
+
+	<head>
+
+		<meta charset="utf-8" /> 
+
+		<title>盒子模型-商品列表</title>
+		
+		<style type="text/css">
+			body,div,h1,dl,dt,dd{
+				margin: 0px;
+				padding: 0px ;
+			}
+			
+			#production{
+				background-color: #fffff2 ;
+				width: 195px ;
+			}
+			
+			#production>h1
+			{
+					font-size: 25px ;
+					font-weight: bold ;
+					line-height: 40px ;
+					text-indent: 1em ;
+			}
+			
+			#production>dl>dt{
+				padding-left: 25px ;
+				line-height: 30px ;
+				font-size: 15px ;
+			}
+			
+			#production>dl>dd{
+				padding-left: 25px ;
+				line-height: 25px ;
+				font-size: 13px ;
+				border-bottom: 1px dashed lightgray	 ;
+			}
+			
+			#production .dianzi
+			{
+				background: url(imgs/dianzi.png) 4px 5px no-repeat
+			
+			}
+			
+			#production .fuzhuang
+			{
+				background: url(imgs/fuzhuang.png) 4px 5px no-repeat
+				
+			}
+			
+			
+		</style>	
+	</head>
+	<body>  
+
+	
+	
+		<div id="production">
+			<h1>全部分类</h1>
+			<dl>
+				<dt class="dianzi">电子设备</dt>
+				<dd>	
+					手机/电脑/笔记本/鼠标<br/>
+					手机/电脑/笔记本/鼠标<br/>
+					手机/电脑/笔记本/鼠标<br/>
+					手机/电脑/笔记本/鼠标<br/>
+					手机/电脑/笔记本/鼠标<br/>
+				</dd>
+			</dl>
+
+			<dl>
+				<dt class="fuzhuang">服装</dt>
+				<dd>	
+					男装/女装/春装/秋装<br/>
+					男装/女装/春装/秋装<br/>
+					男装/女装/春装/秋装<br/>
+					男装/女装/春装/秋装<br/>
+					男装/女装/春装/秋装<br/>
+				</dd>
+			</dl>
+		</div>
+	</body>
+</html>
+

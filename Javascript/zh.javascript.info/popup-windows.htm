@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">弹窗和 window 的方法</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/popup-windows"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="弹窗和 window 的方法"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="弹窗和 window 的方法"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/frames-and-windows"><link rel="next" href="/cross-window-communication"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="弹窗和 window 的方法"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/popup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/popup-windows'" tppabs="https://javascript.info/popup-windows"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="popup-windows.htm" tppabs="https://zh.javascript.info/popup-windows"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/'" tppabs="https://ja.javascript.info/"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/popup-windows">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/popup-windows" selected>简体中文</option><option value="https://ja.javascript.info/">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="1" max="3" data-tooltip="第 3 章，第 1 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="frames-and-windows.htm" tppabs="https://zh.javascript.info/frames-and-windows" itemprop="url"><span itemprop="title">框架和窗口</span></a></li></ol><h1 class="main__header-title">弹窗和 window 的方法</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="弹窗和 window 的方法"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>弹窗是向用户展示额外内容最传统的方式之一。</p>
+<p>基本上，你只需要执行：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">window.open('http://javascript.info/')</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… 它将打开一个给定 URL 的新窗口。大多数的现代浏览器都配置为打开新的选项卡而不是单独的窗口。</p>
+<h2><a class="main__anchor" name="zu-zhi-dan-chuang" href="#zu-zhi-dan-chuang">阻止弹窗</a></h2><p>弹窗在很久之前就存在。最初的想法是在不关闭主窗口的情况下显示额外的内容。到目前为止，还有其他的方式可以实现这一点：JavaScript 可以向服务器发送请求，所以很少使用弹窗了。但有些时候他们依然很方便。</p>
+<p>在过去很多恶意网站滥用弹窗。一个恶意页面可能会打开大量带有广告的弹窗。所以现在大多数浏览器都会通过阻止弹窗来保护用户。</p>
+<p><strong>如果在用户触发的事件处理函数（如<code>onclick</code>）之外调用它们，大多数浏览器会阻止弹窗</strong></p>
+<p>如果你仔细想一想，这就有些棘手了。如果代码是直接绑定到 <code>onclick</code> 的处理函数上，那就很简单。但是在 <code>setTimeout</code> 中弹窗会怎样呢？</p>
+<p>试试这段代码：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// open after 3 seconds
+setTimeout(() =&gt; window.open('http://google.com'), 3000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>弹窗在 Chrome 中会打开，但是在 Firefox 被阻止。</p>
+<p>…而这段代码在 Firefox 又有效果：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// open after 1 seconds
+setTimeout(() =&gt; window.open('http://google.com'), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>不同之处在于 Firefox 可以接受 2000 毫秒或更短的延迟，但是超过这个时间 — Firefox 就会取消“信任”，认为这“不属于用户操作”。所以第一个弹窗被禁止，而第二个却没有。</p>
+<h2><a class="main__anchor" name="xian-dai-yong-fa" href="#xian-dai-yong-fa">现代用法</a></h2><p>到目前位置，我们有很多方法可以使用 JavaScript 加载和显示页面上的数据。但是仍然有弹窗表现更好的情况。</p>
+<p>例如，许多购物网站为咨询的人们提供在线聊天。访问者点击按钮，就会执行 <code>window.open</code> 并打开聊天弹窗。</p>
+<p>为什么这种情况下弹窗更好，而不是在页面上？</p>
+<ol>
+<li>弹窗是一个独立的窗口，具有自己独立的 JavaScript 运行环境。因此，聊天服务不需要和主要的购物网站的脚本集成在一起。</li>
+<li>弹窗很容易附加到网站，几乎没有开销。只需要一个小按钮，不需要额外的脚本。</li>
+<li>即使用户离开页面，弹窗依然可以存在。例如，一个咨询建议的用户访问了一个新的 “Super-Cooler” 活动页。用户从主窗口进入新页面，而不用退出聊天。</li>
+</ol>
+<h2><a class="main__anchor" name="windowopen" href="#windowopen">window.open</a></h2><p>打开弹窗的语法是：<code>window.open(url, name, params)</code>：</p>
+<dl>
+<dt>url</dt>
+<dd>要在新窗口中加载的 URL。</dd>
+<dt>name</dt>
+<dd>新窗口的名称。每个窗口都有一个 <code>window.name</code> 的属性，在这里我们可以指定哪个窗口用于弹窗。如果已经有一个这样名字的窗口 — 给定的 URL 将在其中打开，否则会打开一个新窗口。</dd>
+<dt>params</dt>
+<dd>新窗口的配置字符串。它包括设置，由逗号分隔开来。参数之间必须没有空格，例如：<code>width:200,height=100</code>。</dd>
+</dl>
+<p><code>params</code> 的设置项：</p>
+<ul>
+<li>位置:
+<ul>
+<li><code>left/top</code>（数字）— 距离屏幕左上角的坐标。这有一个限制：新窗口不能脱离屏幕。</li>
+<li><code>width/height</code>（数字）— 新窗口的宽高。有一个宽/高的最小值，所以不可能创建一个不可见的窗口。</li>
+</ul>
+</li>
+<li>窗口特征：
+<ul>
+<li><code>menubar</code>（yes/no）— 显示或隐藏新窗口中的浏览器菜单。</li>
+<li><code>toolbar</code>（yes/no）— 在新窗口中显示或隐藏浏览器导航栏（后退、前进和重新加载等）。</li>
+<li><code>location</code>（yes/no）— 在新窗口中显示或隐藏 URL 字段。FF 和 IE 默认是不允许隐藏的。</li>
+<li><code>status</code>（yes/no）— 显示或隐藏状态栏。同样，大多数浏览器强制它显示。</li>
+<li><code>resizable</code>（yes/no）— 允许禁用新窗口调整大小。不建议使用。</li>
+<li><code>scrollbars</code>（yes/no）— 允许禁用新窗口的滚动条。不建议使用。</li>
+</ul>
+</li>
+</ul>
+<p>还有一些不太受支持的，浏览器特有的功能。通常不使用这些功能。详情请看 <a href="javascript:if(confirm('https://developer.mozilla.org/en/DOM/window.open  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://developer.mozilla.org/en/DOM/window.open'" tppabs="https://developer.mozilla.org/en/DOM/window.open">window.open in MDN</a>。</p>
+<h2><a class="main__anchor" name="shi-li-yi-ge-jian-dan-de-chuang-kou" href="#shi-li-yi-ge-jian-dan-de-chuang-kou">示例：一个简单的窗口</a></h2><p>让我们打开一设置尽可能少的窗口，来看看哪些特性是浏览器允许禁用的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=0,height=0,left=-1000,top=-1000`;
+
+open('/', 'test', params);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里大多数的“窗口特征”都被禁用而且窗口的位置脱离屏幕。执行看看究竟会发生什么。大多数浏览器修复了像零 <code>width/height</code> 和脱离屏幕的 <code>left/top</code> 的奇怪设置。例如，Chrome 打开这样一个全 width/height 的窗口，使其占满整个屏幕。</p>
+<p>让我们添加正常的定位选项和合理的 <code>width</code>、<code>height</code>、<code>left</code> 和 <code>top</code> 坐标：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+width=600,height=300,left=100,top=100`;
+
+open('/', 'test', params);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>大多数浏览器根据需要显示了上面的示例。</p>
+<p>省略设置的规则：</p>
+<ul>
+<li>如果 <code>open</code> 调用中没有第三个参数，或者它是空的，则使用默认的窗口参数。</li>
+<li>如果存在参数字符串，但是省略了某些 yes/no 的特性，那么如果浏览器允许，则禁用省略的特性。因此，如果指定参数，请确保将所有必需的特性明确设置为 yes。</li>
+<li>如果参数中没有 <code>left/top</code>，则浏览器会尝试在最后打开的窗口附近打开一个新窗口。</li>
+<li>如果没有“宽度/高度”，则新窗口的大小与上次打开的大小相同。</li>
+</ul>
+<h2><a class="main__anchor" name="fang-wen-dan-chuang" href="#fang-wen-dan-chuang">访问弹窗</a></h2><p><code>open</code> 的调用会返回对新窗口的引用。它可以用来操作弹窗的属性，改变位置甚至更多。</p>
+<p>在下面的示例中，新窗口的内容在加载后被修改。</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let newWindow = open('/', 'example', 'width=300,height=300')
+newWindow.focus();
+
+newWindow.onload = function() {
+  let html = `&lt;div style=&quot;font-size:30px&quot;&gt;Welcome!&lt;/div&gt;`;
+  newWindow.document.body.insertAdjacentHTML('afterbegin', html);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，外部的 <code>document</code> 内容仅可被同源（相同的协议：//域名：端口）的 window 访问。</p>
+<p>对于具有来自其他站点的 URL 的窗口，我们可以通过指定 <code>newWindow.location=...</code> 来改变地址，但是我们无法读取地址或者访问内容。这是为了用户安全，这样一来恶意网站就无法打开 <code>http://gmail.com</code> 并获取数据。我们将在稍后进一步讨论。</p>
+<h2><a class="main__anchor" name="fang-wen-kai-qi-chuang-kou" href="#fang-wen-kai-qi-chuang-kou">访问开启窗口</a></h2><p>一个弹窗可以访问“开启者”窗口。其中的 JavaScript 可以通过 <code>window.opener</code> 来访问打开它的窗口。除了弹窗之外，对其他所有的窗口来说都是 <code>null</code>。</p>
+<p>因此主窗口和弹窗都有相互的引用。如果它们同源，则可以自由地相互修改。如果不是,他们仍然有沟通的手段, 将在下一章介绍 <a href="cross-window-communication.htm" tppabs="https://zh.javascript.info/cross-window-communication">跨窗口通信</a>。</p>
+<h2><a class="main__anchor" name="guan-bi-dan-chuang" href="#guan-bi-dan-chuang">关闭弹窗</a></h2><p>如果我们不再需要弹窗，我们可以在其上调用 <code>newWindow.close()</code>。</p>
+<p>技术上来将，<code>close()</code> 方法可以关闭任何 <code>window</code>，但是，如果 <code>window</code> 不是通过 <code>window.open()</code> 打开的，大多数浏览器会忽略 <code>window.close()</code> 方法。</p>
+<p>如果窗口被关闭 <code>newWindow.closed</code> 会返回 <code>true</code>。 这对于检查弹窗（或主窗口）是否仍然打开非常有用。用户可以关闭它，我们的代码应该确定到这种可能性。</p>
+<p>这段代码加载之后又关闭了弹窗：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let newWindow = open('/', 'example', 'width=300,height=300')
+newWindow.onload = function() {
+  newWindow.close();
+  alert(newWindow.closed); // true
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="dan-chuang-de-ju-jiao-shi-jiao" href="#dan-chuang-de-ju-jiao-shi-jiao">弹窗的聚焦/失焦</a></h2><p>理论上，用 <code>window.focus()</code> 或 <code>window.blur()</code> 方法可以使窗口获得或失去焦点。此外还有 <code>focus/blur</code> 事件，可以聚焦窗口并捕捉访问者切换到其他地方的时机。</p>
+<p>它们曾被恶意网站所滥用。例如，看这段代码:</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">window.onblur = () =&gt; window.focus();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当一个用户尝试从窗口切换出去（<code>blur</code>），这段代码又让窗口重新获得焦点。目的是将用户“锁定”在 <code>window</code> 内。</p>
+<p>因此，存在禁用相似代码的措施。保护用户免受广告和恶意网站的限制有很多。这取决于浏览器。</p>
+<p>例如，移动浏览器通常完全忽略这种调用。当弹窗在单独的选项卡而不是新窗口中打开时，聚焦也不起作用。</p>
+<p>然而，依然可以用他们来做一些事。</p>
+<p>例如：</p>
+<ul>
+<li>当我们打开弹窗时，在它上面执行 <code>newWindow.focus()</code> 可能是个好主意。为了以防万一，对于某些 OS/浏览器组合，它确保用户现在处于新窗口中。</li>
+<li>如果我们想要跟踪访问者何时在实际使用我们的网页应用，我们可以跟踪 <code>window.onfocus/onblur</code>。这允许我们在暂停/恢复页面活动，动画等。但是请注意，<code>blur</code> 事件意味着访问者从窗口切换出来，但他仍然可以观察它。窗口在后台，但仍有可能是可见的。</li>
+</ul>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><ul>
+<li>弹窗可以通过 <code>open(url, name, params)</code> 调用。它返回新窗口的引用。</li>
+<li>默认情况下，浏览器会阻止来自用户操作之外的代码中的 <code>open</code> 调用。通常会出现通知，以便用户可以允许它们。</li>
+<li>弹窗可以使用 <code>window.opener</code> 属性访问开启窗口，因此两者相连。</li>
+<li>如果主窗口和弹窗同源，它们彼此之间可以自由的读取和修改。否则，他们可以改变彼此的地址并使用消息进行通信（后续章节）。</li>
+<li>关闭弹窗：通过调用 <code>close()</code> 方法。用户也可以关闭它们（就像任何其他窗口一样）。关闭之后 <code>window.closed</code> 返回 <code>true</code>。</li>
+<li><code>focus()</code> and <code>blur()</code> 方法允许聚焦/失焦窗口。有时候。</li>
+<li><code>focus</code>和 <code>blur</code> 事件允许跟踪窗口的切换。但请注意，在 <code>blur</code> 之后，即使在后台，窗口仍有可能是可见的。</li>
+</ul>
+<p>此外，如果我们打开一个弹窗，通知用户是一种好的做法。带有图标的打开窗口可以帮助访客免受焦点切换的困扰并记住两个窗口。</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="frames-and-windows.htm" tppabs="https://zh.javascript.info/frames-and-windows" data-tooltip="框架和窗口"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="cross-window-communication.htm" tppabs="https://zh.javascript.info/cross-window-communication" data-tooltip="跨窗口通信"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://vkontakte.ru/share.php?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/popup-windows","identifier":"\/popup-windows"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="frames-and-windows.htm" tppabs="https://zh.javascript.info/frames-and-windows">框架和窗口</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zu-zhi-dan-chuang">阻止弹窗</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#xian-dai-yong-fa">现代用法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#windowopen">window.open</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-li-yi-ge-jian-dan-de-chuang-kou">示例：一个简单的窗口</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fang-wen-dan-chuang">访问弹窗</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fang-wen-kai-qi-chuang-kou">访问开启窗口</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#guan-bi-dan-chuang">关闭弹窗</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dan-chuang-de-ju-jiao-shi-jiao">弹窗的聚焦/失焦</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://twitter.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows'" tppabs="https://plus.google.com/share?url=https%3A%2F%2Fzh.javascript.info%2Fpopup-windows"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/4-frames-and-windows/01-popup-windows/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/4-frames-and-windows/01-popup-windows/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/4-frames-and-windows/01-popup-windows/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

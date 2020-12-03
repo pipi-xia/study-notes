@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>表单</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+			<form action="resources/b.html">
+				用户名（必填）：<input type="text"  required /><br/>
+				电话（必填）：<input type="text" required pattern="^1[358]\d{9}$" /> <br/>
+				
+				
+				<!--type="email"会初步校验 内容是否为邮箱，如果不是 就会终止提交 -->
+				邮箱（必填）：<input type="email" required /><br/>
+				请输入网址：<input type="url" /><br/>
+				请输入数字：<input type="number" min="0" max="100" step="10"/><br/>
+				数字滑块：<input type="range" min="0" max="100" step="10"/><br/>
+				
+				
+				搜索：<input type="search" placeholder="请输入商品名" /><br/>
+				
+				<input type="submit" value="提交">
+
+			</form>
+	</body>
+</html>
+

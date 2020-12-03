@@ -1,0 +1,450 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">Class</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/class"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Class"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Class"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/class-patterns"><link rel="next" href="/class-inheritance"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="Class"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/class  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/class'" tppabs="https://javascript.info/class"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="class.htm" tppabs="https://zh.javascript.info/class"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/class  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/class'" tppabs="https://ja.javascript.info/class"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/class">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/class" selected>简体中文</option><option value="https://ja.javascript.info/class">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="62" max="67" data-tooltip="第 67 章，第 62 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="js.htm" tppabs="https://zh.javascript.info/js" itemprop="url"><span itemprop="title">JavaScript 编程语言</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming" itemprop="url"><span itemprop="title">对象、类和继承</span></a></li></ol><h1 class="main__header-title">Class</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Class"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>“class” 结构允许你使用一种干净、整洁的语法来定义基于 prototype 的类。</p>
+<h2><a class="main__anchor" name="class-yu-fa" href="#class-yu-fa">“class” 语法</a></h2><p><code>class</code> 语法丰富多彩，我们将通过一个简例开始本章的学习。</p>
+<p>这是一个基于 prototype 定义的 class <code>User</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User(name) {
+  this.name = name;
+}
+
+User.prototype.sayHi = function() {
+  alert(this.name);
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…我们可以用 <code>class</code> 语法完成相同的工作：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
+}
+
+let user = new User(&quot;John&quot;);
+user.sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>我们可以很容易地看出两个示例的功能是相似的。值得注意的是，我们并不需要使用逗号隔开定义在 class 中的方法。初学者经常会忘记这点，错误地在类方法间添加逗号只会让代码停止工作。我们需要正确地区分字面量 Object 和 class 语法。</p>
+<p>所以，<code>class</code> 究竟做了什么呢？我们可能会猜想它定义了一个全新的语言级实体，不过这样的猜想并不正确。</p>
+<p><code>class User {...}</code> 在这里实际上完成了两件事：</p>
+<ol>
+<li>声明了一个名为 <code>User</code> 的变量，并将它的值指向了 <code>&quot;constructor&quot;</code> 函数。</li>
+<li>把所有类中定义的方法“挂”到 <code>User.prototype</code> 上。如示例中的 <code>sayHi</code> 和 <code>constructor</code> 两个方法。</li>
+</ol>
+<p>下面将通过代码来实验以上说法是否正确：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  constructor(name) { this.name = name; }
+  sayHi() { alert(this.name); }
+}
+
+// 证明：User 指向了 &quot;constructor&quot; 函数
+alert(User === User.prototype.constructor); // true
+
+// 证明：在 &quot;prototype&quot; 上挂载了两个方法
+alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi</code></pre>
+        </div>
+      </div>
+      
+      </div><p>下图展示了如何使用 <code>class User</code> 声明类：</p>
+<figure><div class="image" style="width:465px">
+      <div class="image__ratio" style="padding-top:18.494623655913976%"></div>
+      <img src="article/class/class-user.png" tppabs="https://zh.javascript.info/article/class/class-user.png" alt="" width="465" height="86" class="image__image">
+      </div></figure><p>综上可以发现 <code>class</code> 是一个特殊的语法，它可以同时定义类的构造函数和它原型链上的方法。</p>
+<p>…不过它与传统定义方法间还是存在一些细微差别：</p>
+<dl>
+<dt>构造器必须与 <code>new</code> 关键字一同使用</dt>
+<dd>不同于普通的函数，class 的 <code>constructor</code> 虽然是函数，却只能与 <code>new</code> 一同使用：</dd>
+</dl>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  constructor() {}
+}
+
+alert(typeof User); // function
+User(); // Error：构造器 User 不能直接以 'new' 的方式被调用</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt>不同的字符串输出结果</dt>
+<dd>如果我们像这样 <code>alert(User)</code> 打印 User，一些运行时的结果会是 <code>&quot;class User...&quot;</code>，而另一些可能是 <code>&quot;function User...&quot;</code>。</dd>
+</dl>
+<p>请不要被这种现象迷惑：虽然 class 表现为字符串时结果可能多样，但它本质上仍然是一个函数，在 JavaScript 中不存在一个独立的 “class” 实体。</p>
+<dl>
+<dt>class 中的方法是 non-enumerable（不可枚举）的</dt>
+<dd>在 class 中，所有 <code>&quot;prototype&quot;</code> 上的方法，其 <code>enumerable</code> 标志会被自动设置为 <code>false</code>。这很棒，因为当我们使用 <code>for..in</code> 遍历 object 的属性时，我们通常不希望结果中包含有类上的方法。</dd>
+<dt>class 拥有一个默认的 <code>constructor() {}</code></dt>
+<dd>如果在 <code>class</code> 结构中没有定义 <code>constructor</code>，那么 JavaScript 会生成一个默认的空构造函数，这和手写一个 <code>constructor() {}</code> 是一样的效果。</dd>
+<dt>class 永远是 <code>use strict</code> 的</dt>
+<dd>所有 class 结构中的代码，都自动开启了严格模式。</dd>
+</dl>
+<h3><a class="main__anchor" name="gettersetter" href="#gettersetter">Getter/Setter</a></h3><p>在 Class 中也可以使用 getter/setter 方法，下面是一个简单的利用 getter/setter 操作 <code>user.name</code> 属性的例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:11},{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+
+  constructor(name) {
+    // 调用 setter 方法
+    this.name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    if (value.length &lt; 4) {
+      alert(&quot;Name is too short.&quot;);
+      return;
+    }
+    this._name = value;
+  }
+
+}
+
+let user = new User(&quot;John&quot;);
+alert(user.name); // John
+
+user = new User(&quot;&quot;); // Name too short.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>在 JavaScript 内部，getter 和 setter 的实现都是在 <code>User</code> prototype 上创建相应的方法：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">Object.defineProperties(User.prototype, {
+  name: {
+    get() {
+      return this._name
+    },
+    set(name) {
+      // ...
+    }
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="class-zhong-zhi-neng-ding-yi-fang-fa" href="#class-zhong-zhi-neng-ding-yi-fang-fa">Class 中只能定义方法</a></h3><p>与字面量 Object 不同，<code>class</code> 内部不允许出现形如 <code>property:value</code> 的赋值，它的内部只能出现普通方法或 getter/setter。class 的最新规范还在进一步讨论，新的规范有可能打破当前的使用限制。</p>
+<p>如果我们确实需要在原型链上定义一些非函数类型的取值，我们可以像这样手动更改 <code>prototype</code>：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User { }
+
+User.prototype.test = 5;
+
+alert( new User().test ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>因此，增加原型链上的属性在技术上是完全可行的，只是我们需要清楚自己为什么这样做。定义的属性会被此类实例化的所有实体继承。</p>
+<p>如果非要在 class 结构中增加属性，可以变通地使用 getter 实现：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  get test() {
+    return 5;
+  }
+}
+
+alert( new User().test ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>由上述两种方法增加的属性，在使用上别无二致，深究起来 getter 的实现方式效率会略低一点。</p>
+<h2><a class="main__anchor" name="class-biao-da-shi" href="#class-biao-da-shi">Class 表达式</a></h2><p>与 function 一样，Class 可以定义在其他表达式中，也同样可以被当作参数传递、作为返回值返回等。</p>
+<p>下列代码展示了一个返回值是 class 的函数（“class 工厂”）：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function makeClass(phrase) {
+  // 声明一个 class 并作为返回值返回
+  return class {
+    sayHi() {
+      alert(phrase);
+    };
+  };
+}
+
+let User = makeClass(&quot;Hello&quot;);
+
+new User().sayHi(); // Hello</code></pre>
+        </div>
+      </div>
+      
+      </div><p>如果我们还记得 <code>class</code> 只是一个定义 prototype 的语法糖函数，那么上面的代码行为理解起来毫无压力了。</p>
+<p>与命名函数一样，我们也可以为 Class 取名，自定义的别名只在 Class 内可见：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:17,&quot;end&quot;:24}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// &quot;Named Class Expression&quot;（这是我自定义的术语，当前还没有官方术语来描述这个命名行为）
+let User = class MyClass {
+  sayHi() {
+    alert(MyClass); // 类名 MyClass 只在类内部可见
+  }
+};
+
+new User().sayHi(); // 可以成功打印 MyClass 的定义
+
+alert(MyClass); // 这样会报错，MyClass 在 class 外部并不可见</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="jing-tai-fang-fa" href="#jing-tai-fang-fa">静态方法</a></h2><p>我们可以在 class 函数上新增方法，这种新增在函数上而非 <code>&quot;prototype&quot;</code> 上的方法，我们称为<strong>静态方法</strong>。</p>
+<p>举个例子：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class User {
+  static staticMethod() {
+    alert(this === User);
+  }
+}
+
+User.staticMethod(); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这和直接给函数赋值一个函数属性是一样的：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function User() { }
+
+User.staticMethod = function() {
+  alert(this === User);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>User.staticMethod()</code> 中的 <code>this</code> 理所当然指向了 class 构造器 <code>User</code>（this 判断规则之“this 指向方法的调用者”）。</p>
+<p>通常，静态方法是为了增加专属于 class 的方法，且这些方法不属于任何 class 实例对象。</p>
+<p>例如，为了比较 <code>Article</code> 对象的大小，我们可能需要定义一个 <code>Article.compare</code> 函数：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18},{&quot;start&quot;:6,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Article {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+
+  static compare(articleA, articleB) {
+    return articleA.date - articleB.date;
+  }
+}
+
+// usage
+let articles = [
+  new Article(&quot;Mind&quot;, new Date(2016, 1, 1)),
+  new Article(&quot;Body&quot;, new Date(2016, 0, 1)),
+  new Article(&quot;JavaScript&quot;, new Date(2016, 11, 1))
+];
+
+articles.sort(Article.compare);
+
+alert( articles[0].title ); // Body</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这里的 <code>Article.compare</code> “矗立”于所有 article 对象之上，用于比较 article 对象两两间的大小。它不是单个 article 对象的实例方法，它是属于更高一层的 Article 类。</p>
+<p>“factory” 方法也是一个极好的静态方法示例。想象一下，我们需要不止一种创建 article 实例的方法：</p>
+<ol>
+<li>通过给定的入参创建（<code>title</code>、<code>date</code> 等）。</li>
+<li>通过当天的日期创建一个空对象。</li>
+<li>…</li>
+</ol>
+<p>第一种创建方法可以通过构造器实现，而第二种创建方法我们可以使用类的静态方法实现。</p>
+<p>如下例的 <code>Article.createTodays()</code>：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class Article {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+
+  static createTodays() {
+    // 记住 this = Article
+    return new this(&quot;Today's digest&quot;, new Date());
+  }
+}
+
+let article = Article.createTodays();
+
+alert( article.title ); // Todays digest</code></pre>
+        </div>
+      </div>
+      
+      </div><p>好了，当我们需要创建一个今日摘要时，我们可以调用 <code>Article.createTodays()</code> 方法了。再次提醒，静态方法是属于 class 的方法，它不属于任何一个 article 对象。</p>
+<p>静态方法还常用于与数据库“打交道”的实体类，例如在实体上进行 search/save/remove 等数据库操作：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 假设 Article 是一个特殊的 article 管理类
+// 它有一个删除 article 的静态方法：
+Article.remove({id: 12345});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="xiao-jie" href="#xiao-jie">小结</a></h2><p>基础的 class 语法如下所示：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">class MyClass {
+  constructor(...) {
+    // ...
+  }
+  method1(...) {}
+  method2(...) {}
+  get something(...) {}
+  set something(...) {}
+  static staticMethod(..) {}
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>MyClass</code> 是一个指向 <code>constructor</code> 的构造函数。如果 class 中没有定义 <code>constructor</code>，那么 class 会提供一个空函数代替。</p>
+<p>无论如何请记得，所有在 class 中定义的方法都会被添加到 <code>prototype</code> 上。只有静态方法是个例外，它们会被添加为 class 自身的属性，通过 <code>MyClass.staticMethod()</code> 的形式进行调用。静态方法通常都与 class 自身有关，而不是 class 实例化的对象。</p>
+<p>在下一章中，我们会学习更多关于 Class 的知识，包括如何进行类间的继承。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zhong-xie-class-sheng-ming" name="zhong-xie-class-sheng-ming">重写 class 声明</a></h3><a class="task__open-link" href="task/rewrite-to-class.htm" tppabs="https://zh.javascript.info/task/rewrite-to-class" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>按要求重写所有的 <code>Clock</code> 类声明方式，把所有类定义方式从 prototype 变为“现代”的 “class” 语法。</p>
+<p>P.S. clock 仅在 console 中打印，请打开 console 查看。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/OCClynqedkw0jChXFcoT?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/OCClynqedkw0jChXFcoT?p=preview'" tppabs="http://plnkr.co/edit/OCClynqedkw0jChXFcoT?p=preview" target="_blank" data-plunk-id="OCClynqedkw0jChXFcoT">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p><a href="javascript:if(confirm('http://plnkr.co/edit/yJJu7j8ZljPFPlGqpn76?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/yJJu7j8ZljPFPlGqpn76?p=preview'" tppabs="http://plnkr.co/edit/yJJu7j8ZljPFPlGqpn76?p=preview" target="_blank" data-plunk-id="yJJu7j8ZljPFPlGqpn76">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="class-patterns.htm" tppabs="https://zh.javascript.info/class-patterns" data-tooltip="ES6 中的 Class"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="class-inheritance.htm" tppabs="https://zh.javascript.info/class-inheritance" data-tooltip="类继承和 super"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/class","identifier":"\/class"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-oriented-programming.htm" tppabs="https://zh.javascript.info/object-oriented-programming">对象、类和继承</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#class-yu-fa">“class” 语法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#class-biao-da-shi">Class 表达式</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#jing-tai-fang-fa">静态方法</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#xiao-jie">小结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fclass"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fclass"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/09-class/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/09-class/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/1-js/07-object-oriented-programming/09-class/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>

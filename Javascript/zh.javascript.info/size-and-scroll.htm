@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv=Content-Type content='text/html; charset=utf-8'>
+<script>window.currentUser = null;</script><script>window.rateUsdToNative = 6.8872;</script><title itemprop="name">元素的尺寸与滚动</title><link href="pack/styles.9ab2708780c33bc8dadc.css" tppabs="https://zh.javascript.info/pack/styles.9ab2708780c33bc8dadc.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="../fonts.googleapis.com/css-family=Open+Sans-400italic,700italic,400,700-Open+Sans+Condensed-700&subset=latin,latin-ext,cyrillic,cyrillic-ext.css" tppabs="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700%7COpen+Sans+Condensed:700&subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="/img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://zh.javascript.info/size-and-scroll"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="/img/favicon/favicon.png"><meta itemprop="image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="元素的尺寸与滚动"><meta property="og:image" content="https://zh.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="元素的尺寸与滚动"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://zh.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="/styles-and-classes"><link rel="next" href="/size-and-scroll-window"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" tppabs="https://www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" tppabs="https://mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6Lf9NyETAAAAACZlg-a9Us2SxvYbeVC1ROWaWv4O";</script><script src="pack/init.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/init.9ab2708780c33bc8dadc.js"></script><script src="pack/head.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/head.9ab2708780c33bc8dadc.js" defer></script><meta property="og:title" content="元素的尺寸与滚动"><meta property="og:type" content="article"><script src="pack/tutorial.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/tutorial.9ab2708780c33bc8dadc.js" defer></script><script src="pack/footer.9ab2708780c33bc8dadc.js" tppabs="https://zh.javascript.info/pack/footer.9ab2708780c33bc8dadc.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if lt IE 10]><div style="color:red;text-align:center">很抱歉，我们不支持 IE&lt;10 等浏览器，请使用一个更新版本的浏览器。</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ZH</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__text">我们希望将这个开源项目提供给全世界的人。请帮助我们将教程的内容 <a href="javascript:if(confirm('https://github.com/iliakan/javascript-tutorial-en  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/iliakan/javascript-tutorial-en'" tppabs="https://github.com/iliakan/javascript-tutorial-en" rel="noopener noreferrer" target="_blank">翻译为你所掌握的语言</a> 对应的版本。</div><div class="supported-langs__container"><ul class="supported-langs__list" style="height:128px"><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://javascript.info/size-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://javascript.info/size-and-scroll'" tppabs="https://javascript.info/size-and-scroll"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://learn.javascript.ru/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://learn.javascript.ru/'" tppabs="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="size-and-scroll.htm" tppabs="https://zh.javascript.info/size-and-scroll"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="javascript:if(confirm('https://ja.javascript.info/size-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://ja.javascript.info/size-and-scroll'" tppabs="https://ja.javascript.info/size-and-scroll"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li></ul></div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.htm" tppabs="https://zh.javascript.info/"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" tppabs="https://zh.javascript.info/img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.htm" tppabs="https://zh.javascript.info/ebook"><span class="buy-book-button__extra-text">购买</span>EPUB/PDF</a></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><form class="sitetoolbar__search" method="GET" action="https://zh.javascript.info/search"><button class="sitetoolbar__search-toggle" type="button"></button><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="在 Javascript.info 网站中搜索" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">搜索</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://zh.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="在教程中搜索" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">搜索</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://javascript.info/size-and-scroll">English</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://zh.javascript.info/size-and-scroll" selected>简体中文</option><option value="https://ja.javascript.info/size-and-scroll">日本語</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="9" max="27" data-tooltip="第 27 章，第 9 节"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");var pageWrapper=document.querySelector(".page-wrapper");pageWrapper&&pageWrapper.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")},0);</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-1"><a class="breadcrumbs__link" href="index.htm" tppabs="https://zh.javascript.info/" itemprop="url"><span class="breadcrumbs__hidden-text" itemprop="title">教程</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="breadcrumb-2" itemprop="child"><a class="breadcrumbs__link" href="ui.htm" tppabs="https://zh.javascript.info/ui" itemprop="url"><span itemprop="title">浏览器：文档、事件和接口</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a class="breadcrumbs__link" href="document.htm" tppabs="https://zh.javascript.info/document" itemprop="url"><span itemprop="title">Document</span></a></li></ol><h1 class="main__header-title">元素的尺寸与滚动</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="元素的尺寸与滚动"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript 中存在许多属性让我们能够读取元素的宽度、高度或其他具有几何特征的信息。</p>
+<p>在移动或定位 JavaScript 元素时，我们经常需要它们来计算元素的坐标。</p>
+<h2><a class="main__anchor" name="shi-li-yuan-su" href="#shi-li-yuan-su">示例元素</a></h2><p>作为演示属性的示例元素，我们将使用下面给出的一个元素：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;div id=&quot;example&quot;&gt;
+  ...Text...
+&lt;/div&gt;
+&lt;style&gt;
+  #example {
+    width: 300px;
+    height: 200px;
+    border: 25px solid #E8C48F;
+    padding: 20px;
+    overflow: auto;
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>它有边框、内填充和滚动条等全部特征属性，但是这不包括外边距，因为它不是元素本身的一部分，并且它们没什么特殊的属性。</p>
+<p>元素就像这样：</p>
+<figure><div class="image" style="width:541px">
+      <div class="image__ratio" style="padding-top:76.52495378927911%"></div>
+      <img src="article/size-and-scroll/metric-css.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-css.png" alt="" width="541" height="414" class="image__image">
+      </div></figure><p>你可以 <a href="javascript:if(confirm('http://plnkr.co/edit/JTHfPsS0UDOk8fgABnOX?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/JTHfPsS0UDOk8fgABnOX?p=preview'" tppabs="http://plnkr.co/edit/JTHfPsS0UDOk8fgABnOX?p=preview">在sandbox中打开文档</a>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">注意滚动条</span></div>
+            <div class="important__content"><p>上例图片演示了当元素有滚动条时最复杂的情况，一些浏览器（不是全部）通过牺牲内容空间来保留滚动条。</p>
+<p>因此，没有滚动条时，内容宽度将是 <code>300 px</code>，但是如果滚动条宽度是 <code>16px</code>（不同的设备和浏览器，宽度可能会不一样），那么还剩下 <code>300 - 16＝280px</code>，这是我们必须考虑到的事。这就是为什么本章的例子总是假设有滚动条的原因。如果没有滚动条，那么事情就会更简单一些。</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">文本可能会溢出到 <code>padding-bottom</code> 中</span></div>
+            <div class="important__content"><p>内填充通常在插图中显示的是空的，但是如果元素中有很多文本，并且溢出，那么浏览器在 <code>padding-bottom</code> 中显示“溢出”文本，这可以在示例中看到。但是填充物仍然存在，除非另有说明。</p>
+</div></div>
+<h2><a class="main__anchor" name="ji-he-xue" href="#ji-he-xue">几何学</a></h2><p>提供宽度、高度和其他几何形状的元素属性通过数值来计算。它们被假定为像素。</p>
+<p>以下是显示总体情况的图片：</p>
+<figure><div class="image" style="width:670px">
+      <div class="image__ratio" style="padding-top:89.8507462686567%"></div>
+      <img src="article/size-and-scroll/metric-all.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-all.png" alt="" width="670" height="602" class="image__image">
+      </div></figure><p>它们有很多属性，很难将它们全部放在单个图片中，但是它们的值很简单，容易理解。</p>
+<p>让我们从元素的外部开始探索它们。</p>
+<h2><a class="main__anchor" name="offsetparentoffsetlefttop" href="#offsetparentoffsetlefttop">offsetParent, offsetLeft/Top</a></h2><p>这些属性很少出现，但它们仍然是“最外层”的几何属性，所以我们将从它们开始。</p>
+<p><code>offsetParent</code> 是最近的祖先元素:</p>
+<ol>
+<li>CSS 定位（<code>position</code> 为 <code>absolute</code>、<code>relative</code> 或 <code>fixed</code>），</li>
+<li>或者 <code>&lt;td&gt;</code>、<code>&lt;th&gt;</code>、<code>&lt;table&gt;</code>，</li>
+<li>或者 <code>&lt;body&gt;</code>。</li>
+</ol>
+<p>在大多数实际情况下，我们可以使用 <code>offsetParent</code> 来获得最近的 CSS 定位祖先。<code>offsetLeft/offsetTop</code> 提供相对于元素左上角的 x/y 坐标。</p>
+<p>在下面的例子中，内部 <code>&lt;div&gt;</code> 有 <code>&lt;main&gt;</code> 作为 <code>offsetParent</code>，并且 <code>offsetLeft/offsetTop</code> 让它从左上角位移（<code>180</code>）：</p>
+<div data-trusted="1" class="code-example" data-demo-height="10">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;main style=&quot;position: relative&quot; id=&quot;main&quot;&gt;
+  &lt;article&gt;
+    &lt;div id=&quot;example&quot; style=&quot;position: absolute; left: 180px; top: 180px&quot;&gt;...&lt;/div&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;script&gt;
+  alert(example.offsetParent.id); // main
+  alert(example.offsetLeft); // 180 (note: a number, not a string &quot;180px&quot;)
+  alert(example.offsetTop); // 180
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:597px">
+      <div class="image__ratio" style="padding-top:87.10217755443887%"></div>
+      <img src="article/size-and-scroll/metric-offset-parent.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-offset-parent.png" alt="" width="597" height="520" class="image__image">
+      </div></figure><p>有以下几种情况 <code>offsetParent</code> 的值为 <code>null</code>：</p>
+<ol>
+<li>未显示的元素（<code>display:none</code> 或者不在文档中）。</li>
+<li><code>&lt;body&gt;</code> 与 <code>&lt;html&gt;</code>。</li>
+<li><code>position:fixed</code> 的元素。</li>
+</ol>
+<h2><a class="main__anchor" name="offsetwidthheight" href="#offsetwidthheight">offsetWidth/Height</a></h2><p>现在让我们关注元素本身。</p>
+<p>这两个属性是最简单的。它们提供元素的“外部”宽度/高度。换句话说，它的完整大小包括边框。</p>
+<figure><div class="image" style="width:479px">
+      <div class="image__ratio" style="padding-top:101.87891440501045%"></div>
+      <img src="article/size-and-scroll/metric-offset-width-height.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-offset-width-height.png" alt="" width="479" height="488" class="image__image">
+      </div></figure><p>在我们的示例元素中：</p>
+<ul>
+<li><code>offsetWidth = 390</code> — 外部宽度，计算方法是内部 css 宽度（<code>300px</code>）加上内填充（<code>2 * 20px</code>）和边框宽度（<code>2 * 25px</code>）。</li>
+<li><code>offsetHeight = 290</code> — 外部高度。</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">未显示的几何元素的属性值为 0/null</span></div>
+            <div class="important__content"><p>几何属性仅为显示出来的元素计算。</p>
+<p>如果元素（或其任何祖先）在文档中显示为 <code>display:none</code> 或本身不在文档中，则所有几何属性都是 0 或者值为 <code>null</code>，这取决于它是什么。</p>
+<p>例如，<code>offsetParent</code> 为 <code>null</code>，并且 <code>offsetWidth</code>，<code>offsetHeight</code> 为 <code>0</code>。</p>
+<p>我们可以用它来检查一个元素是否被隐藏，像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">function isHidden(elem) {
+  return !elem.offsetWidth &amp;&amp; !elem.offsetHeight;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>请注意，<code>isHidden</code> 返回 <code>true</code> 表示元素不在页面中显示，但不代表尺寸为 0（like an empty <code>&lt;div&gt;</code>）。</p>
+</div></div>
+<h2><a class="main__anchor" name="clienttopleft" href="#clienttopleft">clientTop/Left</a></h2><p>在元素内部，我们有边框。</p>
+<p>要测量它们，可使用 <code>clientTop</code> 和 <code>clientLeft</code>。</p>
+<p>在例子中：</p>
+<ul>
+<li><code>clientLeft = 25</code> — 左边框宽度</li>
+<li><code>clientTop = 25</code> — 上边框宽度</li>
+</ul>
+<figure><div class="image" style="width:353px">
+      <div class="image__ratio" style="padding-top:89.51841359773371%"></div>
+      <img src="article/size-and-scroll/metric-client-left-top.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-client-left-top.png" alt="" width="353" height="316" class="image__image">
+      </div></figure><p>…但确切地说，它们不是边框，而是内侧与外侧的相对坐标。</p>
+<p>有什么区别？</p>
+<p>当文档是从右向左渲染时就会显现出来（操作系统是阿拉伯语或希伯来语）。此时滚动条不在右边，而是在左边，而 <code>clientLeft</code> 则包含了滚动条的宽度。</p>
+<p>在这种情况下，<code>clientLeft</code> 的值将不是 <code>25</code>，而是加上滚动条的宽度 <code>25 + 16 = 41</code>：</p>
+<figure><div class="image" style="width:359px">
+      <div class="image__ratio" style="padding-top:88.02228412256268%"></div>
+      <img src="article/size-and-scroll/metric-client-left-top-rtl.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-client-left-top-rtl.png" alt="" width="359" height="316" class="image__image">
+      </div></figure><h2><a class="main__anchor" name="clientwidthheight" href="#clientwidthheight">clientWidth/Height</a></h2><p>这些属性提供元素边框内区域的大小。</p>
+<p>他们包含内容宽度和内填充宽度，但不包括滚动条宽度：</p>
+<figure><div class="image" style="width:481px">
+      <div class="image__ratio" style="padding-top:97.5051975051975%"></div>
+      <img src="article/size-and-scroll/metric-client-width-height.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-client-width-height.png" alt="" width="481" height="469" class="image__image">
+      </div></figure><p>在上面的图片中，我们首先考虑 <code>clientHeight</code>：这很容易计算。没有水平滚动条，所以它正好是边界内的总和：CSS 高度 <code>200px</code> 加上顶部和底部的内填充宽度（<code>2 * 20px</code>），总计 <code>240px</code>。</p>
+<p>这种情况下的 <code>clientWidth</code> — 这里的内容宽度不是 <code>300px</code>，而是<code>284px</code>，因为 <code>16px</code> 是滚动条的宽度。所以加起来就是 <code>284px</code> 加上左右内间距，总和 <code>324px</code>。</p>
+<p><strong>如果没有内间距，那么 <code>clientWidth/Height</code> 就是代表内容的宽度, 这里的内容指的是内间距和滚动条以内 (如果还有其他的)。</strong></p>
+<figure><div class="image" style="width:409px">
+      <div class="image__ratio" style="padding-top:114.18092909535453%"></div>
+      <img src="article/size-and-scroll/metric-client-width-nopadding.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-client-width-nopadding.png" alt="" width="409" height="467" class="image__image">
+      </div></figure><p>因此，当没有内填充时，我们可以使用 <code>clientWidth/clientHeight</code> 来获取内容区域大小。</p>
+<h2><a class="main__anchor" name="scrollwidthheight" href="#scrollwidthheight">scrollWidth/Height</a></h2><ul>
+<li>属性 <code>clientWidth/clientHeight</code> 只考虑元素的可见部分。</li>
+<li>属性 <code>scrollWidth/scrollHeight</code> 还包括滚动（隐藏）部分：</li>
+</ul>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:115.76673866090712%"></div>
+      <img src="article/size-and-scroll/metric-scroll-width-height.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-scroll-width-height.png" alt="" width="463" height="536" class="image__image">
+      </div></figure><p>上图：</p>
+<ul>
+<li><code>scrollHeight = 723</code> — 是内容区域的完整内部高度，包括滚动部分。</li>
+<li><code>scrollWidth = 324</code> — 是完整的内部宽度，这里没有水平滚动条，所以它等于 <code>clientWidth</code>。</li>
+</ul>
+<p>我们可以使用这些属性将元素扩展到其完全宽度/高度。</p>
+<p>就像这样：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 扩展元素高度到完全高度
+element.style.height = `${element.scrollHeight}px`;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>单击按钮展开元素：</p>
+<div id="element" style="width:300px;height:200px; padding: 0;overflow: auto; border:1px solid black;">text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</div>
+<p><button style="padding:0" onclick="element.style.height = `${element.scrollHeight}px`">element.style.height = <code>${element.scrollHeight}px</code></button></p>
+<h2><a class="main__anchor" name="scrollleftscrolltop" href="#scrollleftscrolltop">scrollLeft/scrollTop</a></h2><p>属性 <code>scrollLeft/scrollTop</code> 是元素隐藏、滚动部分的宽度/高度。</p>
+<p>下面的图片我们可以看到 <code>scrollHeight</code> 和 <code>scrollTop</code> 是一个垂直滚动块的属性。</p>
+<figure><div class="image" style="width:489px">
+      <div class="image__ratio" style="padding-top:110.83844580777095%"></div>
+      <img src="article/size-and-scroll/metric-scroll-top.png" tppabs="https://zh.javascript.info/article/size-and-scroll/metric-scroll-top.png" alt="" width="489" height="542" class="image__image">
+      </div></figure><p>换种说法，<code>scrollTop</code> 就是 “滚动了多少” 的意思。</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>scrollLeft/scrollTop</code> 可修改 </span></div>
+            <div class="important__content"><p>大多数几何属性是只读的，但是 <code>scrollLeft/scrollTop</code> 可以改变，浏览器将会直接滚动元素。</p>
+<p>如果单击下面的元素，代码 <code>elem.scrollTop += 10</code> 将会执行，这使得元素向下滚动 <code>10px</code>。</p>
+<div onclick="this.scrollTop+=10" style="cursor:pointer;border:1px solid black;width:100px;height:80px;overflow:auto">Click<br>Me<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
+<p>将 <code>scrollTop</code> 设置为 <code>0</code> 或 <code>Infinity</code> 将使元素分别滚动到顶部/底部。</p>
+</div></div>
+<h2><a class="main__anchor" name="bu-yao-cong-css-zhong-huo-qu-kuan-gao" href="#bu-yao-cong-css-zhong-huo-qu-kuan-gao">不要从 CSS 中获取宽高</a></h2><p>我们刚刚介绍了 DOM 元素的几何属性。它们通常用于获得宽度、高度和计算距离。</p>
+<p>但是，正如我们从《信息：样式和类》一章所知道的，我们可以使用 <code>getComputedStyle</code> 来读取CSS的高度和宽度。</p>
+<p>那么为什么不像这样读取一个元素的高度呢？</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let elem = document.body;
+
+alert( getComputedStyle(elem).width ); // show CSS width for elem</code></pre>
+        </div>
+      </div>
+      
+      </div><p>为什么我们应该使用几何属性呢？有两个原因：</p>
+<ol>
+<li>
+<p>首先，CSS 宽度/高度取决于另一个属性：<code>box-sizing</code>，它定义了 “什么是” CSS 宽度和高度。用作 CSS 样式的 <code>box-sizing</code> 的更改可能会破坏这样的 JavaScript 定义。</p>
+</li>
+<li>
+<p>其次，CSS 的 <code>width/height</code> 可能是 <code>auto</code>，例如内联元素：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="展示" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;span id=&quot;elem&quot;&gt;Hello!&lt;/span&gt;
+
+&lt;script&gt;
+  alert( getComputedStyle(elem).width ); // auto
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>从 CSS 的观点来看，<code>width:auto</code> 是完全正常的，但是在 JavaScript 中，我们需要一个精确的 <code>px</code> 大小，以便我们在计算过程中使用它，所以 CSS 宽度根本没用。</p>
+</li>
+</ol>
+<p>还有一个原因：滚动条。有时，没有滚动条的代码工作得很好，因为它在一些浏览器中占据了内容的一部分空间。因此，内容的实际宽度比 CSS 宽度要小。而 <code>clientWidth/clientHeight</code> 考虑到这一点。</p>
+<p>但是，<code>getComputedStyle(elem).width</code> 的情况是不同的。一些浏览器（例如 Chrome）返回真正的内部宽度，这种情况不考虑滚动条，以及其中一些（例如Firefox）— CSS 宽度（忽略滚动条）。这样的跨浏览器差异是不使用 <code>getComputedStyle</code> 样式的原因，而是依赖于几何属性。</p>
+<p>如果浏览器保留滚动条的空间（大多数 Windows 中的浏览器），那么你可以在下面测试它。</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/article/size-and-scroll/cssWidthScroll/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/article/size-and-scroll/cssWidthScroll/'" tppabs="https://zh.js.cx/article/size-and-scroll/cssWidthScroll/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="javascript:if(confirm('https://zh.js.cx/article/size-and-scroll/cssWidthScroll/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/article/size-and-scroll/cssWidthScroll/'" tppabs="https://zh.js.cx/article/size-and-scroll/cssWidthScroll/"></iframe>
+  </div><p>包含文本的元素有这样的样式 <code>width:300px</code>。</p>
+<p>在桌面 Windows 操作系统上，Firefox、Chrome、Edgy 都为滚动条保留空间，但 Firefox 显示 <code>300px</code>，而 Chrome 和 Edgy 显示较少。这是因为 Firefox 返回 CSS 宽度，其他浏览器返回“真实”宽度。</p>
+<p>请注意，所描述的差异只是关于从 JavaScript 读取的 <code>getComputedStyle(...).width</code>，而视觉上一切都是正确的。</p>
+<h2><a class="main__anchor" name="zong-jie" href="#zong-jie">总结</a></h2><p>元素具有以下几何属性：</p>
+<ul>
+<li><code>offsetParent</code> — 是最近的有定位属性的祖先元素，或者是 <code>td</code>、<code>th</code>、<code>table</code>、<code>body</code>。</li>
+<li><code>offsetLeft/offsetTop</code> — 是相对于 <code>offsetParent</code> 的左上角边缘坐标。</li>
+<li><code>offsetWidth/offsetHeight</code> — 元素的“外部”宽/高 ，边框尺寸计算在内。</li>
+<li><code>clientLeft/clientTop</code> — 从元素左上角外部到内部的距离，对于从左到右渲染元素的操作系统，它始终是左/顶部边界的宽度，而对于从右到左的操作系统，垂直滚动条在左边，所以 <code>clientLeft</code> 也包括滚动条的宽度。</li>
+<li><code>clientWidth/clientHeight</code> — 内容的宽度/高度，包括内间距，但没有滚动条。</li>
+<li><code>scrollWidth/scrollHeight</code> — 内容的宽度/高度，包括可滚动的可视区域外的尺寸，也包括内间距，但不包括滚动条。</li>
+<li><code>scrollLeft/scrollTop</code> — 从左上角开始的元素的滚动部分的宽度/高度。</li>
+</ul>
+<p>除了 <code>scrollLeft/scrollTop</code> 之外，所有属性都是只读的。如果更改，浏览器会使元素滚动。</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">任务</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#xiang-dui-yu-di-bu-gun-dong-liao-duo-shao" name="xiang-dui-yu-di-bu-gun-dong-liao-duo-shao">相对于底部滚动了多少？</a></h3><a class="task__open-link" href="task/get-scroll-height-bottom.htm" tppabs="https://zh.javascript.info/task/get-scroll-height-bottom" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p><code>elem.scrollTop</code> 属性是从顶部滚动出来的部分的大小，何获得 <code>scrollBottom</code> —— 从底部滚动的尺寸？</p>
+<p>编写适用于任意元素的代码。</p>
+<p>P.S. 请检查您的代码：如果没有滚动条或元素完全向下滚动，那么它应该返回 “0”。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>解决方式：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>换句话说：（完全高度）减去（已滚动的高度）减去（可见部分的高度）— 得到的结果就是下方隐藏部分的高度。</p>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#zen-yang-ji-suan-gun-dong-tiao-kuan-du" name="zen-yang-ji-suan-gun-dong-tiao-kuan-du">怎样计算滚动条宽度？</a></h3><a class="task__open-link" href="task/scrollbar-width.htm" tppabs="https://zh.javascript.info/task/scrollbar-width" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 3</span></div><div class="task__content"><p>编写返回标准滚动条宽度的代码。</p>
+<p>对于Windows，它通常在 <code>12px</code> 和 <code>20px</code> 之间变化。如果浏览器不为它保留任何空间，那么它可能是 <code>0px</code>。</p>
+<p>P.S. 代码应该适用于任何HTML文档，且不依赖于它的内容元素。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>为了获得滚动条宽度，我们可以创建一个带有滚动条的元素，但是没有边框和内间距。</p>
+<p>然后，它的完全宽度 <code>offsetWidth</code> 和内容宽度 <code>clientWidth</code> 之间的差就是滚动条的宽度：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="运行" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="在沙箱中打开" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">// 创建一个包含滚动条的块
+let div = document.createElement('div');
+
+div.style.overflowY = 'scroll';
+div.style.width = '50px';
+div.style.height = '50px';
+
+// 必须添加到文档中，否则尺寸为 0
+document.body.append(div);
+let scrollWidth = div.offsetWidth - div.clientWidth;
+
+div.remove();
+
+alert(scrollWidth);</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#jiang-xiao-qiu-zhi-yu-you-xiao-fan-wei-de-zhong-xin" name="jiang-xiao-qiu-zhi-yu-you-xiao-fan-wei-de-zhong-xin">将小球置于有效范围的中心</a></h3><a class="task__open-link" href="javascript:if(confirm('https://zh.javascript.info/task/put-ball-in-center  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������, �����������, ����Ŀ����ֹͣ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.javascript.info/task/put-ball-in-center'" tppabs="https://zh.javascript.info/task/put-ball-in-center" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p>这是源文件：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="javascript:if(confirm('https://zh.js.cx/task/put-ball-in-center/source/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/put-ball-in-center/source/'" tppabs="https://zh.js.cx/task/put-ball-in-center/source/" target="_blank" title="在新窗口中打开" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="javascript:if(confirm('http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview'" tppabs="http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview" target="_blank" title="在沙箱中打开"
+        data-plunk-id="w1Ukkdv9hgyrJXJx9Ujc" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="javascript:if(confirm('https://zh.js.cx/task/put-ball-in-center/source/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://zh.js.cx/task/put-ball-in-center/source/'" tppabs="https://zh.js.cx/task/put-ball-in-center/source/"></iframe>
+  </div><p>有效范围的中心坐标是多少？</p>
+<p>计算并将小球置于有效范围中心：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="../zh.js.cx/task/put-ball-in-center/solution/index.htm" tppabs="https://zh.js.cx/task/put-ball-in-center/solution/"></iframe>
+  </div><ul>
+<li>元素应该通过 JavaScript 移除，而不是 CSS。</li>
+<li>代码应该在不限制小球尺寸（<code>10</code>、<code>20</code>、<code>30</code> 像素）或任何有效范围内的尺寸的情况下正常运行，而不是直接为元素绑定尺寸。</li>
+</ul>
+<p>P.S. 当然了，置中的操作可以通过 CSS 完成，但是这里我们需要通过 JavaScript 完成。此外，当必须使用 JavaScript 时，我们可能会遇到其他话题或更加复杂的情况，这里我们只是做一个 “热身”。</p>
+<p><a href="javascript:if(confirm('http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview'" tppabs="http://plnkr.co/edit/w1Ukkdv9hgyrJXJx9Ujc?p=preview" target="_blank" data-plunk-id="w1Ukkdv9hgyrJXJx9Ujc">打开一个任务沙箱。</a></p><button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>为小球设置 <code>position:absolute</code>。这意味着它的 <code>left/top</code> 坐标根据相对它最近的并且设置了定位的元素来测量，这个元素的有效范围就是 <code>#field</code>（因为它有 <code>position:relative</code>）。</p>
+<p>坐标从设置了相对定位的最近的元素的左上角开始：</p>
+<figure><div class="image" style="width:224px">
+      <div class="image__ratio" style="padding-top:66.96428571428571%"></div>
+      <img src="task/put-ball-in-center/field.png" tppabs="https://zh.javascript.info/task/put-ball-in-center/field.png" alt="" width="224" height="150" class="image__image">
+      </div></figure><p>该元素内容区域的宽/高是 <code>clientWidth/clientHeight</code>，所以该元素有效范围的中心的坐标为 <code>(clientWidth/2, clientHeight/2)</code>。</p>
+<p>…不过如果我们将 <code>ball.style.left/top</code> 设置为上面计算出的值，那么最终的效果与有效范围的中心重合的不是小球的中心，而是小球左上角的坐标：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ball.style.left = Math.round(field.clientWidth / 2) + 'px';
+ball.style.top = Math.round(field.clientHeight / 2) + 'px';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>这是它将显示出的效果：</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="../zh.js.cx/task/put-ball-in-center/ball-half/index.htm" tppabs="https://zh.js.cx/task/put-ball-in-center/ball-half/"></iframe>
+  </div><p>为了把球中心和有效范围中心对准，我们应该把球移到左边宽度的一半，把 top 设置为有效范围高度的一半：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code class="language-javascript">ball.style.left = Math.round(field.clientWidth / 2 - ball.offsetWidth / 2) + 'px';
+ball.style.top = Math.round(field.clientHeight / 2 - ball.offsetHeight / 2) + 'px';</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>注意：陷阱！</strong></p>
+<p>如果 <code>&lt;img&gt;</code> 没有宽/高，代码将无法正常工作：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;img src=&quot;ball.png&quot; id=&quot;ball&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>当浏览器还不知道图片的宽/高（图片的尺寸可能来自标签属性或 CSS）的时候它会假设它们的尺寸为 <code>0</code>直到图片加载完成。</p>
+<p>实际使用过程中，浏览器会在图片第一次加载完成后缓存该图片，方便下次再次访问时立即显示图片。</p>
+<p>但是在第一次加载时 <code>ball.offsetWidth</code> 的值为 <code>0</code>，这会导致错误的坐标出现。</p>
+<p>此时我们应该为 <code>&lt;img&gt;</code> 添加 <code>width/height</code> 属性：</p>
+<div data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:20,&quot;end&quot;:42}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code class="language-markup">&lt;img src=&quot;ball.png&quot; width=&quot;40&quot; height=&quot;40&quot; id=&quot;ball&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…或者在 CSS 中提供尺寸：</p>
+<div data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code class="language-css">#ball {
+  width: 40px;
+  height: 40px;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="javascript:if(confirm('http://plnkr.co/edit/xZcfJQXtwi3cevbXAxMM?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/xZcfJQXtwi3cevbXAxMM?p=preview'" tppabs="http://plnkr.co/edit/xZcfJQXtwi3cevbXAxMM?p=preview" target="_blank" data-plunk-id="xZcfJQXtwi3cevbXAxMM">使用沙箱打开解决方案。</a></p></div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#bu-tong-dian-css-kuan-du-yu-clientwidth" name="bu-tong-dian-css-kuan-du-yu-clientwidth">不同点：CSS 宽度与 clientWidth</a></h3><a class="task__open-link" href="task/width-vs-clientwidth.htm" tppabs="https://zh.javascript.info/task/width-vs-clientwidth" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="任务的重要程度有多高，等级从 1 到 5。">重要程度: 5</span></div><div class="task__content"><p><code>getComputedStyle(elem).width</code> 与 <code>elem.clientWidth</code> 之间的差别在哪？</p>
+<p>指出至少三种不同点，越多越好。</p>
+<button class="task__solution" type="button">解决方案</button><div class="task__answer"><div class="task__answer-content"><p>不同点：</p>
+<ol>
+<li><code>clientWidth</code> 值是数值，然而 <code>getComputedStyle(elem).width</code> 返回一个包含 <code>px</code> 的字符串。</li>
+<li><code>getComputedStyle</code> 可能返回非数值的结果，例如内联元素的 <code>&quot;auto&quot;</code>。</li>
+<li><code>clientWidth</code> 是元素的内部内容区域加上内间距，而 CSS 宽度（具有标准的 <code>box-sizing</code>）是内部<strong>不包括内间距</strong>的空间区域。</li>
+<li>如果有一个滚动条，一般浏览器保留它的空间，有的浏览器从 CSS 宽度中减去这个空间（因为它不再用于内容），而有些则不这样做。<code>clientWidth</code> 属性总是相同的：如果保留了滚动条，那么它的宽度将被删去。</li>
+</ol>
+</div><button class="close-button task__answer-close" type="button" title="关闭"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="styles-and-classes.htm" tppabs="https://zh.javascript.info/styles-and-classes" data-tooltip="样式和类"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">上一节</span></a><a class="page__nav page__nav_next" href="size-and-scroll-window.htm" tppabs="https://zh.javascript.info/size-and-scroll-window" data-tooltip="Window 的尺寸和滚动"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">下一节</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">分享</span><a class="share share_tw" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_fb" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p%5Burl%5D=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_gp" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_vk" href="javascript:if(confirm('https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://vkontakte.ru/share.php?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map"><span class="map__text">教程路线图</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">评论</a></h2><div class="comments__read-before"><span class="comments__read-before-link">在评论之前先阅读本内容…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>欢迎你在文章下添加补充内容、提出你的问题或回答提出的问题。</li><li>使用 <code>&lt;code&gt;</code> 标签插入几行代码，对于多行代码 — 可以使用 <code>&lt;pre&gt;</code>，对于超过十行的代码 — 建议使用沙箱（<a href="javascript:if(confirm('http://plnkr.co/edit/?p=preview  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://plnkr.co/edit/?p=preview'" tppabs="http://plnkr.co/edit/?p=preview">plnkr</a>、<a href="javascript:if(confirm('http://jsbin.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://jsbin.com/'" tppabs="http://jsbin.com/">JSBin</a> 和 <a href="javascript:if(confirm('http://codepen.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://codepen.io/'" tppabs="http://codepen.io/">codepen</a> 等）。</li><li>如果你无法理解文章中的内容 — 请详细说明。</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/zh.javascript.info\/size-and-scroll","identifier":"\/size-and-scroll"}); };</script><script>var disqus_shortname = "zh-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.htm" tppabs="https://zh.javascript.info/tutorial/map" data-action="tutorial-map" data-tooltip="教程路线图"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">章节</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.htm" tppabs="https://zh.javascript.info/document">Document</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">课程导航</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#shi-li-yuan-su">示例元素</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ji-he-xue">几何学</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#offsetparentoffsetlefttop">offsetParent, offsetLeft/Top</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#offsetwidthheight">offsetWidth/Height</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#clienttopleft">clientTop/Left</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#clientwidthheight">clientWidth/Height</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#scrollwidthheight">scrollWidth/Height</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#scrollleftscrolltop">scrollLeft/scrollTop</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bu-yao-cong-css-zhong-huo-qu-kuan-gao">不要从 CSS 中获取宽高</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#zong-jie">总结</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">任务 (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">评论</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">分享</div><a class="share share_tw sidebar__share" href="javascript:if(confirm('https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://twitter.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_fb sidebar__share" href="javascript:if(confirm('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a><a class="share share_gp sidebar__share" href="javascript:if(confirm('https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll'" tppabs="https://plus.google.com/share?url=http%3A%2F%2Fzh.javascript.info%2Fsize-and-scroll"></a></div><div class="sidebar__section"><a class="sidebar__link" href="javascript:if(confirm('https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/09-size-and-scroll/article.md  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/09-size-and-scroll/article.md'" tppabs="https://github.com/xitu/javascript-tutorial-zh/blob/zh-hans/2-ui/1-document/09-size-and-scroll/article.md">在 Github 上编辑</a></div></div></div></div></div></div><div class="page-footer"><div class="page-footer__left"><ul class="page-footer__list"><li class="page-footer__item">©&nbsp;2007—2018&nbsp; Ilya Kantor</li><li class="page-footer__item"><a class="page-footer__link" href="about.htm#contact-us" tppabs="https://zh.javascript.info/about#contact-us">联系我们</a></li><li class="page-footer__item"><a class="page-footer__link" href="about.htm" tppabs="https://zh.javascript.info/about">关于本项目</a></li></ul></div><div class="page-footer__right"><ul class="page-footer__list"><li><a class="page-footer__link" rel="nofollow" href="javascript:if(confirm('http://github.com/iliakan/javascript-tutorial-zh  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/iliakan/javascript-tutorial-zh'" tppabs="http://github.com/iliakan/javascript-tutorial-zh">open source</a></li></ul></div></div></body></html>
